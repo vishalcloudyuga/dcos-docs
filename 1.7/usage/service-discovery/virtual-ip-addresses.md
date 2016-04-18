@@ -193,7 +193,7 @@ You can also assign a VIP to your application via the DC/OS Marathon web interfa
 - Paste your application definition into a JSON file, such as `vip-tutorial.json`.
 - Add the app to Marathon:
 ```
-$ dcos marathon app add nginx.json
+$ dcos marathon app add vip-tutorial.json
 ```
 - Verify that the app has been added:
 ```
