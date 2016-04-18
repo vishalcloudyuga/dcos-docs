@@ -13,7 +13,7 @@ In this tutorial you will learn how to deploy a Wordpress + MySQL installation o
 
 Let's assume our goal is to deploy a simple Wordpress website which consists of two distinct services: a Wordpress installation, `/wordpress` and a MySQL database, `/mysql`. Obviously we want our webserver to be reachable from the outside but the database should only be accessible internally to our cluster.
 
-[Marathon LB](#) can help us connecting the outside world to our app, but how can we reliably enable Wordpress to communicate with the MySQL instance?
+[Marathon LB](https://docs.mesosphere.com/overview-3/) can help us connecting the outside world to our app, but how can we reliably enable Wordpress to communicate with the MySQL instance?
 
 Thanks to **VIPs** we will only need to specify a virtual address for the database service and simply use it as a static configuration in our web app. The traffic will be automatically load balanced from the app to the service. Also, when instances of the database service die (due to power failures or other issues), new connections will automatically be directed to healthy instances of the service with a very short reaction time.
 
