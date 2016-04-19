@@ -93,7 +93,7 @@ Let's begin by deploying a MySQL database. Here is a simple JSON definition that
 }
 ````
 
-The `VIP_0` label is defined in the `portMappings` array. `VIP_0` tells DC/OS to reserve that IP:port tuple for your MySQL server, which will make it reachable by other services in the cluster by using the VIP `3.3.0.6:3306`. The index-based label allows you to specify multiple VIPs per port. To add a second VIP, add a second `VIP_0` entry:
+The `VIP_0` label is defined in the `portMappings` array. `VIP_0` tells DC/OS to reserve that IP:port tuple for your MySQL server, which will make it reachable by other services in the cluster by using the VIP `3.3.0.6:3306`. The index-based label allows you to specify multiple VIPs per port. To add a second VIP, add a second `VIP_1` entry:
 
 ````json
 "portMappings": [
@@ -103,7 +103,7 @@ The `VIP_0` label is defined in the `portMappings` array. `VIP_0` tells DC/OS to
           "protocol": "tcp",
           "labels": {
             "VIP_0": "3.3.0.6:3306",
-            "VIP_0": "4.4.0.7:3306"
+            "VIP_1": "4.4.0.7:3306"
           }
         }
       ]
