@@ -22,10 +22,10 @@ A bootstrap node is required to run the scripts and to bootstrap the DC/OS clust
 
 1.  Create the bootstrap node using the Google Cloud Console. In these examples we used a [n1-standard-1](https://cloud.google.com/compute/docs/machine-types) instance running CentOS 7 with a 10 GB persistent disk in `zone europe-west1-c`. The bootstrap node must have "Allow full access to all Cloud APIs" in the Identity and API access section. Also enable Block project-wide SSH keys in the SSH Keys section. Create the instance.
 
-1.  After creating the micro instance, start the instance and run the following from the shell. These commands install prerequisite software on your bootstrap node.
+1.  After creating the boot instance, start the instance and run the following from the shell. These commands install prerequisite software on your bootstrap node.
 
     ```bash
-    $ gcloud components update &&
+    $ sudo gcloud components update &&
     sudo yum update &&
     sudo yum install epel-release &&
     sudo yum install python-pip &&
@@ -54,7 +54,7 @@ You must create the RSA public/private keypairs to allow passwordless logins via
 1.  Open RSA pub key:
 
     ```bash
-    $ vi ~/.ssh/id_rsa.pub
+    $ sudo vi ~/.ssh/id_rsa.pub
     ```
 
     You should see something like this:
@@ -145,7 +145,7 @@ You must create the RSA public/private keypairs to allow passwordless logins via
     $ cd dcos-gce
     ```
 
-1.  Review and customize the `dcos/gce/group_vars/all`. You should review `project`, `subnet`, `login_name`, `bootstrap_public_ip`, and `zone`.
+1.  Review and customize the `dcos_gce/group_vars/all`. You should review `project`, `subnet`, `login_name`, `bootstrap_public_ip`, and `zone`.
 
 1.  Insert following into `~/.ansible.cfg` to stop host key checking.
 
@@ -159,6 +159,7 @@ You must create the RSA public/private keypairs to allow passwordless logins via
     [ssh_connection]
     ssh_args = -o ControlMaster=auto -o ControlPersist=60s -o UserKnownHostsFile=/dev/null
     ```
+Ensure The IP address for master0 in ./hosts is the next consecutive IP from bootstrap_public_ip.
 
 1.  To create and configure the master nodes run this command:
 
