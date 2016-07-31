@@ -16,6 +16,8 @@ You must have a single bootstrap node, Mesos master nodes, and Mesos agent nodes
 *   A High-availability (HA) TCP/Layer 3 load balancer, such as HAProxy, to balance the following TCP ports to all master nodes: 80, 443, 8080, 8181, 2181, 5050.
 *  An unencrypted SSH key that can be used to authenticate with the cluster nodes over SSH. Encrypted SSH keys are not supported.
 
+**Important:** The bootstrap node must be separate from your cluster nodes.
+
 ## Cluster nodes
 
 The cluster nodes are designated Mesos masters and agents during installation.
@@ -139,7 +141,7 @@ For more more information, see Docker's <a href="http://docs.docker.com/engine/i
 
 ### Disable sudo password prompts
 
-To use the [GUI][4] or [CLI][1] installation methods, you must disable password prompts for sudo. 
+To use the [GUI][4] or [CLI][1] installation methods, you must disable password prompts for sudo.
 
 Run this command to disable the sudo password prompt:
 
@@ -152,6 +154,8 @@ Alternatively, you can SSH as the root user.
 ## Bootstrap node
 
 The bootstrap node is a permanent part of your cluster and is required for DC/OS recovery. The leader state and leader election of your Mesos masters is maintained in Exhibitor ZooKeeper. Before installing DC/OS, you must ensure that your bootstrap node has the following prerequisites.
+
+**Important:** The bootstrap node must be separate from your cluster nodes.
 
 ### DC/OS setup file
 
@@ -204,6 +208,6 @@ On each of your cluster nodes, use the following command to:
 
 [1]: /docs/1.7/administration/installing/custom/cli/
 [2]: /docs/1.7/administration/installing/custom/system-requirements/install-docker-centos/
-[3]: https://downloads.dcos.io/dcos/EarlyAccess/dcos_generate_config.sh
+[3]: https://downloads.dcos.io/dcos/EarlyAccess/commit/14509fe1e7899f439527fb39867194c7a425c771/dcos_generate_config.sh
 [4]: /docs/1.7/administration/installing/custom/gui/
 [5]: /docs/1.7/administration/installing/custom/advanced/
