@@ -8,10 +8,10 @@ This page covers general advice and information about creating a DC/OS Universe 
 
 Each DC/OS Universe package consists of 4 JSON files:
 
-`package.json` - High-level metadata about the package.
-`resource.json` - Contains all of the externally hosted resources (e.g. Docker images, HTTP objects and images) that are required to install the application.
-`config.json` - Configuration properties supported by the package, represented as a json-schema.
-`marathon.json.mustache` - A mustache template that, when rendered, creates a Marathon app definition capable of running your service.
+* `package.json` - High-level metadata about the package.
+* `resource.json` - Contains all of the externally hosted resources (e.g. Docker images, HTTP objects and images) that are required to install the application.
+* `config.json` - Configuration properties supported by the package, represented as a json-schema.
+* `marathon.json.mustache` - A mustache template that, when rendered, creates a Marathon app definition capable of running your service.
 
 # `package.json`
 
