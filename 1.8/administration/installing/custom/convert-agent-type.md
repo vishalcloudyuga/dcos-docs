@@ -19,13 +19,13 @@ These steps must be performed on a machine that is configured as a DC/OS node. A
 ### Determine the node type
 You can determine the node type by running this command from the DC/OS CLI. 
 
--   Run this command to determine whether your node is a private agent. A result of `1` indicates that it is a private agent, `0` means it is not. 
+-   Run this command to determine how many private agents are there in the cluster. A result of `0` indicates that there are no private agents.
 
     ```bash
     $ dcos node --json | jq --raw-output '.[] | select(.reserved_resources.slave_public == null) | .id' | wc -l
     ```
 
--   Run this command to determine whether your node is a public agent. A result of `1` indicates that it is a public agent, `0` means it is not. 
+-   Run this command to determine how many public agents are there in the cluster. A result of `0` indicates that there are no public agents.
     
     ```bash
     $ dcos node --json | jq --raw-output '.[] | select(.reserved_resources.slave_public != null) | .id' | wc -l
