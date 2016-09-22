@@ -3,7 +3,6 @@ post_title: DC/OS Ports
 menu_order: 9001
 ---
 
-# Admin Router Ports
 The following is a list of ports used by internal DC/OS [components](/1.8/overview/components/), and their corresponding systemd unit.
 
 ## All roles
