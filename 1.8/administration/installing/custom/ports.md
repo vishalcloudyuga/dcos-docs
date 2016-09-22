@@ -3,9 +3,6 @@ post_title: DC/OS Ports
 menu_order: 9001
 ---
 
-Each node must have unfettered IP-to-IP connectivity from itself to all nodes in the DC/OS cluster.
-
-
 # Admin Router Ports
 The following is a list of ports used by internal DC/OS [components](/1.8/overview/components/), and their corresponding systemd unit.
 
