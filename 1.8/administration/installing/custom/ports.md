@@ -7,7 +7,7 @@ Each node must have unfettered IP-to-IP connectivity from itself to all nodes in
 
 
 # Admin Router Ports
-The following is a list of ports used by internal DC/OS services, and their corresponding systemd unit.
+The following is a list of ports used by internal DC/OS [components](/1.8/overview/components/), and their corresponding systemd unit.
 
 ## All roles
 
@@ -64,5 +64,5 @@ The following is a list of ports used by internal DC/OS services, and their corr
 |Port   |systemd unit   | 
 |---|---|
 |  5051 |  Mesos Agent (`dcos-mesos-slave.service`) |  
-|  61001 |  dcos-adminrouter-agent |  
+|  61001 |  Admin Router Agent (`dcos-adminrouter-agent`) |  
   
