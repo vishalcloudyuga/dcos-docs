@@ -32,7 +32,7 @@ This will uninstall DC/OS on your cluster. You may need to manually remove /var/
 ====> END OF SUMMARY FOR uninstall_dcos
 ```
 
-Uninstall individual nodes
+## Uninstall individual nodes
 
 You can uninstall DC/OS from individual nodes by using this method.
 
