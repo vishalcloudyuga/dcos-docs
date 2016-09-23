@@ -10,13 +10,13 @@ A named VIP contains 3 components:
  * Port (a port which the service is available on)
  * Service name
 
-You can assign a VIP to your application from the DC/OS web interface. The values you enter when you deploy a new service are translated into the appropriate `portDefininitions` or `portMappings` entry in your Marathon application definition.* Toggle to `JSON mode` as you create your app to see and edit your application definition.
+You can assign a VIP to your application from the DC/OS web interface. The values you enter when you deploy a new service are translated into the appropriate `portDefininitions` or `portMappings` entry in your Marathon application definition.* VIPs follow the naming convention `<service-name>.marathon.l4lb.thisdcos.directory:<port>`
 
 ## Prerequisite:
 
 *   A pool of VIP addresses that are unique to your application.
 
-To create a VIP:
+## Create a VIP:
 
 1.  From the DC/OS web interface, click on the **Services** tab and either click your service name or click "Deploy Service" to create a new service.
 
@@ -29,23 +29,23 @@ To create a VIP:
 
     The resulting JSON includes a `portDefinitions` field with the VIP you specified:
     
-```json
-{
-  "id": "/my-service",
-  "cmd": "sleep 10",
-  "cpus": 1,
-  "portDefinitions": [
+    ```json
     {
-      "protocol": "tcp",
-      "port": 5555,
-      "labels": {
-        "VIP_0": "/my-service:5555"
-      },
-      "name": "my-vip"
+      "id": "/my-service",
+      "cmd": "sleep 10",
+      "cpus": 1,
+      "portDefinitions": [
+        {
+          "protocol": "tcp",
+          "port": 5555,
+          "labels": {
+            "VIP_0": "/my-service:5555"
+          },
+          "name": "my-vip"
+        }
+      ]
     }
-  ]
-}
-```
+    ```
 
     In the example above, clients can access the service at `my-service.marathon.l4lb.thisdcos.directory:5555`.
     
@@ -55,7 +55,7 @@ To create a VIP:
     dcos marathon app add <service-name>.json
     ```
     
-* Whether your application definition requires `portMappings` or `portDefinitions` depends on whether you are using BRIDGE or HOST networking. If you create your service in the DC/OS web interface, the appropriate field is selected for you. For more information on port configuration, see the [Marathon ports documentation][1].
+\* Whether your application definition requires `portMappings` or `portDefinitions` depends on whether you are using BRIDGE or HOST networking. If you create your service in the DC/OS web interface, the appropriate field is selected for you. For more information on port configuration, see the [Marathon ports documentation][1].
 
 ## Using VIPs with DC/OS Services
 
