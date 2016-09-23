@@ -45,7 +45,7 @@ All of these options work fine, however in this tutorial we focus on using a sel
 
 ## Configure your cluster nodes
 
-1.  Open an [SSH connection](/docs/1.8/administration/sshcluster/) to a master node in the cluster with credentials forwarding enabled (option `-A`), so that an SSH connection can be made to other nodes in the cluster. Note: this tutorial uses [jq](https://stedolan.github.io/jq/), but you can also carry out the steps using, for example, `grep`.
+1.  Open an [SSH connection](/docs/1.8/administration/access-node/sshcluster/) to a master node in the cluster with credentials forwarding enabled (option `-A`), so that an SSH connection can be made to other nodes in the cluster. Note: this tutorial uses [jq](https://stedolan.github.io/jq/), but you can also carry out the steps using, for example, `grep`.
 
 1.  Apply this workaround for Layer 4 Load Balancer to all of your cluster nodes so that you can push and pull images to and from the registry.
 
