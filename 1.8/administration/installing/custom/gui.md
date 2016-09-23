@@ -143,8 +143,11 @@ The DC/OS installation creates these folders:
 
     ![postflight](../img/dcos-gui-postflight.png)
 
-    **Tip:** You can click **Download Logs** to view your logs locally.
-    **Tip:** If this takes longer than about 10 minutes, you've probably misconfigured your cluster. Go checkout the [troubleshooting documentation][9]
+    **Tips:** 
+    
+    *  If you encounter errors such as `Time is marked as bad`, `adjtimex`, or `Time not in sync` during Post-Flight, verify that Network Time Protocol (NTP) is enabled on all nodes. For more information, see the [system requirements](/docs/1.8/administration/installing/custom/system-requirements/#port-and-protocol).
+    *  You can click **Download Logs** to view your logs locally.
+    *  If this takes longer than about 10 minutes, you've probably misconfigured your cluster. Go checkout the [troubleshooting documentation][9].
 
 8.  Click **Log In To DC/OS**. If this doesn't work, take a look at the [troubleshooting docs][9].
 
