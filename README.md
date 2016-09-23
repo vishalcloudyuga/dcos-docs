@@ -21,7 +21,7 @@ Issues on Github will be disabled soon.**
 
 - Use relative links.
 
-- Begin all links at the root `docs` level and include the version number subdirectory. (e.g., `/docs/1.8/administration/sshcluster/`).
+- Begin all links at the root `docs` level and include the version number subdirectory. (e.g., `/docs/1.8/administration/access-node/sshcluster/`).
 
 - Each directory must contain an `index.md` file. This acts as the base-level topic for each folder in the site (required).
 

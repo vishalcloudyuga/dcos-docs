@@ -218,4 +218,4 @@ Now, if you navigate to the ELB public DNS address in your browser, you should s
  [1]: /docs/1.8/administration/installing/
  [2]: /docs/1.8/usage/cli/install/
  [3]: /docs/1.8/administration/managing-aws/
- [4]: /docs/1.8/administration/sshcluster/
+ [4]: /docs/1.8/administration/access-node/sshcluster/
