@@ -8,7 +8,7 @@ You can configure a secure communication channel from a custom hostname and port
  
 The HTTP Proxy must perform on-the-fly HTTP request and response header modification because DC/OS is not aware of the custom hostname and port that is being used by user agents to address the HTTP proxy.
 
-These instructions provide a tested [HAProxy](http://www.haproxy.org/) configuration example that handles the named request/response rewriting. This example ensures that the communication between HAProxy and DC/OS Admin Router is TLS-encrypted. It uses the DC/OS [CA certificate](/1.8/administration/tls-ssl/) so that HAProxy can verify the TLS certificate presented by Admin Router.
+These instructions provide a tested [HAProxy](http://www.haproxy.org/) configuration example that handles the named request/response rewriting. This example ensures that the communication between HAProxy and DC/OS Admin Router is TLS-encrypted.
 
 
 1.  Install HAProxy [1.6.9](http://www.haproxy.org/#down).
@@ -54,10 +54,47 @@ These instructions provide a tested [HAProxy](http://www.haproxy.org/) configura
       http-request set-header Host dcoshost
     
     backend dcos
-      balance source
-      # The local file `dcos-ca.crt` is the root CA certificate that corresponds to
-      # that individual DC/OS cluster that is being proxied to. It must be retrieved
-      # out-of-band, for example via https://dcoshost/ca/dcos-ca.crt.
+      # Option 1: use TLS-encrypted communication with DC/OS Admin Router and
+      # perform server certificate verification (including hostname verification).
+      # DC/OS users must configure Admin Router with a custom TLS server
+      # certificate, see https://dcos.io/docs/1.8/administration/securing-your-cluster/.
+      # TLS-encrypted communication is included with Enterprise DC/OS.
+      #
+      # Explanation for the parameters in the following `server` definition line:
+      # 
+      # 1.2.3.4:443
+      #
+      #   IP address and port that HAProxy uses to connect to DC/OS Admin
+      #   Router. This needs to be adjusted to your setup.
+      #   
+      #
+      # ssl verify required
+      #
+      #   Instruct HAProxy to use TLS, and to error out if server certificate
+      #   verification fails.
+      #
+      # ca-file dcos-ca.crt
+      #
+      #   The local file `dcos-ca.crt` is expected to contain the CA certificate
+      #   that Admin Router's certificate will be verified against. It must be
+      #   retrieved out-of-band (on Mesosphere Enterprise DC/OS this can be
+      #   obtained via https://dcoshost/ca/dcos-ca.crt)
+      #
+      # verifyhost frontend-xxx.eu-central-1.elb.amazonaws.com
+      #
+      #   When verifying the TLS certificate presented by DC/OS Admin Router,
+      #   perform hostname verification using the hostname specified here
+      #   (expect the server certificate to contain a DNSName SAN that is
+      #   equivalent to the hostname defined here). The hostname shown here is
+      #   just an example and needs to be adjusted to your setup.
+    
+      server dcos-1 1.2.3.4:443 ssl verify required ca-file dcos-ca.crt verifyhost frontend-xxx.eu-central-1.elb.amazonaws.com
+    
+      # Variant 2: use TLS-encrypted communication with DC/OS Admin Router, but do
+      # not perform server certificate verification (warning: this is insecure, and
+      # we hope that you know what you are doing).
+    
+      # server dcos-1 1.2.3.4:443 ssl verify none
       server dcos-1 52.57.1.99:443 check-ssl ssl verify required ca-file dcos-ca.crt verifyhost frontend-ElasticL-JW6HOE0W6MAT-1017800469.eu-central-1.elb.amazonaws.com
     
       # Rewrite response Location header if it contains an absolute URL
