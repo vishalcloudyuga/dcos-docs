@@ -16,7 +16,7 @@ To demonstrate Marathon-LB, you can boot a DC/OS cluster on AWS to run an intern
 
         $ dcos package install Marathon-LB
 
-    To check that Marathon-LB is working, [find the IP for your public node][3] and navigate to `http://<public agent ip>:9090/haproxy?stats`. You willl see a statistics report page like this:
+    To check that Marathon-LB is working, [find the IP for your public node](/docs/1.8/administration/locate-public-agent/) and navigate to `http://<public agent ip>:9090/haproxy?stats`. You willl see a statistics report page like this:
 
     ![lb2](../img/lb2.jpg)
 
@@ -217,5 +217,5 @@ Now, if you navigate to the ELB public DNS address in your browser, you should s
 
  [1]: /docs/1.8/administration/installing/
  [2]: /docs/1.8/usage/cli/install/
- [3]: /docs/1.8/administration/managing-aws/
+ [3]: /docs/1.8/administration/locate-public-agent/
  [4]: /docs/1.8/administration/access-node/sshcluster/
