@@ -101,7 +101,14 @@ Here are the agent node hardware requirements.
 
 *   Secure Shell (SSH) must be enabled on all nodes.
 *   Internet Control Message Protocol (ICMP) must be enabled on all nodes.
-*   Network Time Protocol (NTP) must be enabled on all nodes for clock synchronization.
+*   Network Time Protocol (NTP) must be enabled on all nodes for clock synchronization. By default, during DC/OS startup you will receive an error if this is not enabled. You can check if NTP is enabled by running one of these commands, depending on your OS and configuration:
+
+    ```bash
+    $ ntptime
+    $ adjtimex -p
+    $ timedatectl
+    ```
+    Although it is not recommended, you can disable the startup check for NTP by setting the `check_time: 'false'` in the [configuration file](/1.8/administration/installing/custom/configuration-parameters/#check-time).
 *   Each node is network accessible from the bootstrap node.
 *   Each node has unfettered IP-to-IP connectivity from itself to all nodes in the DC/OS cluster.
 *   UDP must be open for ingress to port 53 on the masters. To attach to a cluster, the Mesos agent node service (`dcos-mesos-slave`) uses this port to find `leader.mesos`.
