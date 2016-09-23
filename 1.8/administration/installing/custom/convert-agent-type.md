@@ -91,7 +91,7 @@ Copy the archived DC/OS installer file (`dcos-install.tar`) to the node that tha
     Public agent nodes:
     
     ```bash
-    $ dcos node --json | jq --raw-output '.[] | select(.reserved_resources.slave_public != null) | .id' | wc -l
+    $ sudo bash /opt/dcos_install_tmp/dcos_install.sh slave_public
     ```
 
  [1]: /docs/1.8/administration/installing/custom/gui/
