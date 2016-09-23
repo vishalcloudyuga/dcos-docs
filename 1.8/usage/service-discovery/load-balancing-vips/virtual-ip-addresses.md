@@ -48,4 +48,31 @@ To create a VIP:
 
 For more information on port configuration, see the [ports documentation][1].
 
+## Using VIPs with DC/OS Services
+
+Some DC/OS Services, such as Kafka, automatically create VIPs when you install them. The naming convention is: `broker.<service.name>.l4lb.thisdcos.directory:9092`.
+
+To see the VIP for Kafka, run `dcos kafka connection` from the DC/OS CLI. The following is a sample response:
+
+$ dcos kafka connection
+
+```json
+{
+    "address": [
+        "10.0.0.211:9843",
+        "10.0.0.217:10056",
+        "10.0.0.214:9689"
+    ],
+    "dns": [
+        "broker-0.kafka.mesos:9843",
+        "broker-1.kafka.mesos:10056",
+        "broker-2.kafka.mesos:9689"
+    ],
+    "vip": "broker.kafka.l4lb.thisdcos.directory:9092",
+    "zookeeper": "master.mesos:2181/dcos-service-kafka"
+}
+```
+
+You can use this VIP to address any one of the Kafka brokers in the cluster.
+
  [1]: http://mesosphere.github.io/marathon/docs/ports.html
