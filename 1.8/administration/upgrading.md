@@ -71,7 +71,7 @@ Identify your Mesos leader node. This node should be the last master node that y
     $ sudo rm -rf /opt/mesosphere /etc/mesosphere
     ```
 
-1. **Important:** If `exhibitor_storage_backend` is set to `zookeeper`, add the user `dcos_exhibitor` and give it ownership of the ZooKeeper data directory:
+1. **Important:** If the type of storage backend for Exhibitor is not set to `exhibitor_storage_backend: static`, add the user `dcos_exhibitor` and give it ownership of the ZooKeeper data directory:
 
     ```
     $ sudo useradd --system --home-dir /opt/mesosphere --shell /sbin/nologin -c 'DCOS System User' dcos_exhibitor
