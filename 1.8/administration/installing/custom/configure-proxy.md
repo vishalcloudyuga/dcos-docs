@@ -8,7 +8,7 @@ By default the DC/OS [Universe](https://github.com/mesosphere/universe) reposito
 
 ## Configure DC/OS Master node
 
-1.  Create `/var/lib/dcos/` directory if it doesn't exist and add the following variables in the file `/var/lib/dcos/environment.proxy`:
+1. Edit the file `/opt/mesosphere/etc/proxy.env` to add the following variables:
 
     ```
     http_proxy=http://user:pass@host:port
@@ -34,7 +34,7 @@ By default the DC/OS [Universe](https://github.com/mesosphere/universe) reposito
 
 ## Configure DC/OS Private Agent Node
 
-1.  Create `/var/lib/dcos/` directory if it doesn't exist and add `http_proxy`, `https_proxy`, and `no_proxy` lines from above in the file `/var/lib/dcos/mesos-slave-common`.
+1. Edit the file `/opt/mesosphere/etc/proxy.env` to add `http_proxy`, `https_proxy`, and `no_proxy` lines from above. 
 
 
 1.  Restart the Mesos Agent service for the changes to take effect.
@@ -45,7 +45,7 @@ By default the DC/OS [Universe](https://github.com/mesosphere/universe) reposito
 
 ## Configure DC/OS Public Agent Node
 
-1.  Create `/var/lib/dcos/` directory if it doesn't exist and add `http_proxy, `https_proxy` and `no_proxy` lines from above in the file `/var/lib/dcos/mesos-slave-common`.
+1. Edit the file `/opt/mesosphere/etc/proxy.env` to add `http_proxy`, `https_proxy`, and `no_proxy` lines from above.
 
 
 1.  Restart the Mesos Agent service for the changes to take effect.
