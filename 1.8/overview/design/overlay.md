@@ -4,7 +4,7 @@ nav_title: Overlay
 menu_order: 5
 ---
 
-# [DRAFT] DC/OS overlay: An IP-per-Container solution for DC/OS
+# DC/OS overlay: An IP-per-Container solution for DC/OS
 
 ## Introduction
 
