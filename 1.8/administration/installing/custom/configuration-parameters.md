@@ -77,6 +77,41 @@ This option specifies that Mesos agents are used to discover the masters by givi
 This parameter specifies a YAML nested list (`-`) of IPv4 addresses to your [public agent](/docs/1.8/overview/concepts/#public) host names.
 
 ## Networking
+
+### <a name="dcos-overlay-enable"></a>dcos_overlay_enable
+
+This parameter specifies whether to enable the DC/OS overlay network. 
+
+*  `dcos_overlay_enable: 'false'` Do not enable the DC/OS overlay network.
+*  `dcos_overlay_enable: 'true'` Enable the DC/OS overlay network. This is the default value. When the overlay network is enabled you can also specify the following parameters:
+
+    *  `dcos_overlay_config_attempts` This parameter specifies how many failed configuration attempts are allowed before the overlay configuration modules stop trying to configure an overlay network. 
+    
+        __Tip:__ The failures might be related to a malfunctioning Docker daemon.
+    
+    *  `dcos_overlay_mtu` This parameter specifies the maximum transmission unit (MTU) of the Virtual Ethernet (vEth) on the containers that are launched on the overlay.
+    
+    *  `dcos_overlay_network` This group of parameters define an overlay network for DC/OS.  The default configuration of DC/OS provides an overlay network named `dcos` whose YAML configuration is as follows:
+    
+        ```
+        dcos_overlay_network:
+            vtep_subnet: 44.128.0.0/20
+            vtep_mac_oui: 70:B3:D5:00:00:00
+            overlays:
+              - name: dcos
+                subnet: 9.0.0.0/8
+                prefix: 26
+        ```
+        
+        *  `vtep_subnet` This parameter specifies a dedicated address space that is used for the VxLAN backend for the overlay network. This address space should not be routeable from outside the agents or master. 
+        *  `vtep_mac_oui` This parameter specifies the MAC address of the interface connecting to it in the public node.
+        *  __overlays__ 
+            *  `name` This parameter specifies the canonical name (see [limitations](/1.8/administration/overlay-networks/) for constraints on naming overlay networks).
+            *  `subnet` This parameter specifies the subnet that is allocated to the overlay network.
+            *  `prefix` This parameter specifies the size of the subnet that is allocated to each agent and thus defines the number of agents on which the overlay can run. The size of the subnet is carved from the overlay subnet. 
+            
+ For more information see the [example](#overlay) and [documentation](/docs/1.8/administration/overlay-networks/).
+ 
 ### <a name="dns-search"></a>dns_search
 This parameter specifies a space-separated list of domains that are tried when an unqualified domain is entered (e.g. domain searches that do not contain &#8216;.&#8217;). The Linux implementation of `/etc/resolv.conf` restricts the maximum number of domains to 6 and the maximum number of characters the setting can have to 256. For more information, see <a href="http://man7.org/linux/man-pages/man5/resolv.conf.5.html">man /etc/resolv.conf</a>.
 
