@@ -181,7 +181,7 @@ If you’ve already installed your cluster and would like to disable this in-pla
 
 # <a name="examples1"></a>Example Configurations
 
-#### DC/OS cluster with three masters, five privatge agents, and Exhibitor/ZooKeeper managed internally.
+#### DC/OS cluster with three masters, five private agents, and Exhibitor/ZooKeeper managed internally.
 
 ```yaml
 ---
