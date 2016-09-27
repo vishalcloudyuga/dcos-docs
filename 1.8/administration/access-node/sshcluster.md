@@ -72,7 +72,7 @@ To install these programs, download the Windows installer <a href="http://www.ch
 
     2.  Select **SSH-2 RSA** as the key type, click **Save private key**, then choose the name and location to save your new .ppk key.
 
-        ![Windows](/docs/1.8/adminstration/access-node/img/windowsputtykey.png)
+        ![Windows](/docs/1.8/administration/access-node/img/windowsputtykey.png)
 
     3.  Close PuTTYgen.
 
@@ -84,15 +84,15 @@ To install these programs, download the Windows installer <a href="http://www.ch
 
         2.  Open PuTTY and enter the master node IP address in the **Host Name (or IP address)** field.
 
-            ![Putty Configuration](/docs/1.8/adminstration/access-node/img/windowsputtybasic.png)
+            ![Putty Configuration](/docs/1.8/administration/access-node/img/windowsputtybasic.png)
 
         3.  In the **Category** pane on the left side of the PuTTY window, choose **Connection > SSH > Auth**, click **Browse**, locate and select your `.ppk` file, then click **Open**.
 
-            ![Putty SSH Options](/docs/1.8/adminstration/access-node/img/windowsputtysshopt.png)
+            ![Putty SSH Options](/docs/1.8/administration/access-node/img/windowsputtysshopt.png)
 
         4.  Login as user "core" if you're running CoreOS. The default user on CentOS is "centos".
 
-            ![Windows Login](/docs/1.8/adminstration/access-node/img/windowscore.png)
+            ![Windows Login](/docs/1.8/administration/access-node/img/windowscore.png)
 
     *   **To SSH to an agent node**
 
@@ -106,7 +106,7 @@ To install these programs, download the Windows installer <a href="http://www.ch
 
             2.  Click the **Browse** button and locate the `.ppk` file that you created previously using PuTTYgen.
 
-                ![Windows Forwarding](/docs/1.8/adminstration/access-node/img/windowsforwarding.png)
+                ![Windows Forwarding](/docs/1.8/administration/access-node/img/windowsforwarding.png)
 
         2.  Add the `.ppk` file to Pageant.
 
@@ -116,7 +116,7 @@ To install these programs, download the Windows installer <a href="http://www.ch
 
             3.  Locate the `.ppk` file that you created using PuTTYgen and click **Open** to add your key to Pageant.
 
-                ![Windows Pageant](/docs/1.8/adminstration/access-node/img/windowspageant.png)
+                ![Windows Pageant](/docs/1.8/administration/access-node/img/windowspageant.png)
 
             4.  Click the **Close** button to close the Pageant window.
 
@@ -128,7 +128,7 @@ To install these programs, download the Windows installer <a href="http://www.ch
 
             4.  Login as user "core" if you're running CoreOS. The default user on CentOS is "centos".
 
-                ![Windows Login](/docs/1.8/adminstration/access-node/img/windowscore.png)
+                ![Windows Login](/docs/1.8/administration/access-node/img/windowscore.png)
 
         4.  From the master node, SSH into the agent node.
 
