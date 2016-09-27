@@ -4,7 +4,7 @@ nav_title: Creating a Universe Package
 menu_order: 10
 ---
 
-This page covers general advice and information about creating a DC/OS Universe package. Consult the [Publish a Package][2] page of the Universe documentation for full details.
+This page covers general advice and information about creating a DC/OS package that can be published to the Mesosphere Universe. Consult the [Publish a Package][2] page of the Universe documentation for full details.
 
 Each DC/OS Universe package consists of 4 JSON files:
 
@@ -19,7 +19,7 @@ Every package in Universe must have a `package.json` file that specifies the hig
 
 Currently, a package can specify one of two values for `.packagingVersion`, either 2.0 or 3.0. The version declared will dictate which other files are required for the complete package as well as the schemas all the files must adhere to.
 
-Consider the following guidelines when creating a your `package.json` file:
+Consider the following guidelines when creating your `package.json` file:
 
 * Focus the description on the service. Assume that all users are familiar with DC/OS and Mesos.
 * The `tags` parameter is used for user searches (`dcos package search <criteria>`). Add tags that distinguish the service in some way. Avoid the following terms: Mesos, Mesosphere, DC/OS, and datacenter. For example, the unicorns service could have: `"tags": ["rainbows", "mythical"]`.
@@ -78,7 +78,7 @@ This file declares all the externally hosted assets the package will need—for 
 
 # `config.json`
 
-This file declares the packages configuration properties, such as the amount of CPUs, number of instances, and allotted memory.  The defaults specified in `config.json` will be part of the context when `marathon.json.mustache` is rendered.
+This file declares the packages configuration properties, such as the amount of CPUs, number of instances, and allotted memory. The defaults specified in `config.json` will be part of the context when `marathon.json.mustache` is rendered. This file describes the configuration properties supported by the package, represented as a [json-schema](http://spacetelescope.github.io/understanding-json-schema/).
 
 Each property should provide a default value, specify whether it's required, and provide validation (minimum and maximum values). Users can then override specific values at installation time by passing an options file to the DC/OS CLI or by setting config values through the DC/OS web interface.
 
