@@ -1,10 +1,10 @@
 ---
-post_title: Configuring HTTP Proxy in Front of Admin Router
-nav_title: Configure HTTP Proxy
+post_title: Configuring HAProxy in Front of Admin Router
+nav_title: Configure HAProxy
 menu_order: 61
 ---
 
-You can configure a secure communication channel from a custom hostname and port to DC/OS Admin Router by using an HTTP Proxy.
+You can use HAPRoxy to set up an HTTP proxy in front of the DC/OS Admin Router.
  
 The HTTP Proxy must perform on-the-fly HTTP request and response header modification because DC/OS is not aware of the custom hostname and port that is being used by user agents to address the HTTP proxy.
 
@@ -56,9 +56,10 @@ These instructions provide a tested [HAProxy](http://www.haproxy.org/) configura
     backend dcos
       # Option 1: use TLS-encrypted communication with DC/OS Admin Router and
       # perform server certificate verification (including hostname verification).
-      # DC/OS users must configure Admin Router with a custom TLS server
-      # certificate, see https://dcos.io/docs/1.8/administration/securing-your-cluster/.
-      # TLS-encrypted communication is included with Enterprise DC/OS.
+      # If you are using the community-supported version of DC/OS, you must 
+      # configure Admin Router with a custom TLS server certificate, see 
+      # https://dcos.io/docs/1.8/administration/securing-your-cluster/. This step 
+      # is not required for Enterprise DC/OS.
       #
       # Explanation for the parameters in the following `server` definition line:
       # 
