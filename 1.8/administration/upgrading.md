@@ -51,7 +51,13 @@ This document provides instructions for upgrading a DC/OS cluster from version 1
 
 ### DC/OS Masters
 
-Identify your Mesos leader node. This node should be the last master node that you upgrade. Proceed with upgrading every master node using the following procedure. When you complete each upgrade, monitor the logs to ensure the unit has re-joined the cluster and completed reconciliation.
+Identify the ZooKeeper leader among the masters. This node should be the last master node that you upgrade. You can determine whether a master node is a ZooKeeper leader by sending the `stat` command to the ZooKeeper client port.
+
+```
+$ echo stat | /opt/mesosphere/bin/toybox nc localhost 2181 | grep "Mode:"
+```
+
+Proceed with upgrading every master node using the following procedure. When you complete each upgrade, monitor the logs to ensure the node has re-joined the cluster and completed reconciliation.
 
 1.  Download the `dcos_install.sh` script:
 
