@@ -23,7 +23,7 @@ DC/OS overlay networks allow containers launched through the Mesos Containerizer
 
 DC/OS overlay network architecture:
 
-![Overview of the DC/OS Overlay Networks architecture](../img/overlay-networks.png)
+![Overview of the DC/OS Overlay Networks architecture](docs/1.8/administration/overlay-networks/img/overlay-networks.png)
 
 DC/OS overlay networks do not require an external IP address management (IPAM) solution because IP allocation is handled via the Mesos Master replicated log. Overlay networks do not support external IPAMs.
 
