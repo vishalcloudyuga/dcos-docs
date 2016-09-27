@@ -10,6 +10,7 @@ There main tabs in the DC/OS UI are:
 
 - [Dashboard](#dashboard)
 - [Services](#services)
+- [Jobs](#jobs)
 - [Network](#network)
 - [Nodes](#nodes)
 - [Universe](#universe)
