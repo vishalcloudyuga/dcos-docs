@@ -18,7 +18,7 @@ This required parameter specifies the URI path for the DC/OS installer to store 
 This parameter specifies the name of your cluster.
 
 ### exhibitor_storage_backend
-This parameter specifies the type of storage backend to use for Exhibitor. You can use internal DC/OS storage (`static`) or specify an external storage system (`zookeeper`, `aws_s3`, and `azure`) for configuring and orchestrating Zookeeper with Exhibitor on the master nodes. Exhibitor automatically configures your Zookeeper installation on the master nodes during your DC/OS installation.
+This parameter specifies the type of storage backend to use for Exhibitor. You can use internal DC/OS storage (`static`) or specify an external storage system (`zookeeper`, `aws_s3`, and `azure`) for configuring and orchestrating ZooKeeper with Exhibitor on the master nodes. Exhibitor automatically configures your ZooKeeper installation on the master nodes during your DC/OS installation.
 
 *   `exhibitor_storage_backend: static`
     This option specifies that the Exhibitor storage backend is managed internally within your cluster.
@@ -80,7 +80,7 @@ This parameter specifies a YAML nested list (`-`) of IPv4 addresses to your [pub
 
 ### <a name="dcos-overlay-enable"></a>dcos_overlay_enable
 
-This parameter specifies whether to enable the DC/OS overlay network. 
+This parameter specifies whether to enable DC/OS overlay networks. 
 
 *  `dcos_overlay_enable: 'false'` Do not enable the DC/OS overlay network.
 *  `dcos_overlay_enable: 'true'` Enable the DC/OS overlay network. This is the default value. When the overlay network is enabled you can also specify the following parameters:
@@ -181,7 +181,7 @@ If you’ve already installed your cluster and would like to disable this in-pla
 
 # <a name="examples1"></a>Example Configurations
 
-#### DC/OS cluster with 3 masters, 5 agents, and static master list specified.
+#### DC/OS cluster with three masters, five privatge agents, and Exhibitor/ZooKeeper managed internally.
 
 ```yaml
 ---
@@ -208,7 +208,7 @@ ssh_port: '<port-number>'
 ssh_user: <username>
 ```
 
-#### <a name="aws"></a>DC/OS Cluster with 3 masters, an Exhibitor/ZooKeeper backed by an AWS S3 bucket, AWS DNS, and a public agent node
+#### <a name="aws"></a>DC/OS cluster with three masters, an Exhibitor/ZooKeeper backed by an AWS S3 bucket, AWS DNS, five private agents, and one public agent node
 
 ```yaml
 ---
@@ -242,7 +242,7 @@ ssh_port: '<port-number>'
 ssh_user: <username>
 ```
 
-#### <a name="zk"></a>DC/OS cluster with 3 masters, an Exhibitor/ZooKeeper backed by ZooKeeper, http load balancer master discovery, public agent node, and Google DNS
+#### <a name="zk"></a>DC/OS cluster with three masters, an Exhibitor/ZooKeeper backed by ZooKeeper, masters that have an HTTP load balancer in front of them, one public agent node, five private agents, and Google DNS
 
 ```yaml
 ---
