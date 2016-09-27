@@ -4,7 +4,7 @@ nav_title: Development
 menu_order: 4
 ---
 
-# <a name="universe"></a> DC/OS Universe
+# <a name="universe"></a> Mesosphere Universe
 
 [Universe][1] is the DC/OS package repository that contains services like Spark, Cassandra, Jenkins, and many others. At their simplest, DC/OS packages are bundled containerized apps that can be deployed onto a cluster. Everyone is welcome and encouraged to submit a package to Universe. Some packages are "selected" by Mesosphere and are identified as such in the DC/OS UI and DC/OS CLI.
 
