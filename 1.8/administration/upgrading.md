@@ -57,7 +57,7 @@ Identify the ZooKeeper leader among the masters. This node should be the last ma
 $ echo stat | /opt/mesosphere/bin/toybox nc localhost 2181 | grep "Mode:"
 ```
 
-Proceed with upgrading every master node using the following procedure. When you complete each upgrade, monitor the Mesos master metrics to ensure the node has re-joined the cluster and completed reconciliation.
+Proceed with upgrading every master node using the following procedure. When you complete each upgrade, monitor the Mesos master metrics to ensure the node has rejoined the cluster and completed reconciliation.
 
 1.  Download the `dcos_install.sh` script:
 
@@ -92,7 +92,7 @@ Proceed with upgrading every master node using the following procedure. When you
 
 1.  Validate the upgrade
 
-    - Monitor the Exhibitor UI to confirm that the Master re-joins the ZooKeeper quorum successfully (the status indicator will turn green).  The Exhibitor UI is available at `http://<dcos_master>:8181/`.
+    - Monitor the Exhibitor UI to confirm that the Master rejoins the ZooKeeper quorum successfully (the status indicator will turn green).  The Exhibitor UI is available at `http://<dcos_master>:8181/`.
     - Verify that `curl http://<dcos_master_private_ip>:5050/metrics/snapshot` has the metric `registrar/log/recovered` with a value of `1`.
     - Verify that `http://<dcos_master>/mesos` indicates that the upgraded master is running Mesos 1.0.1.
 
@@ -144,7 +144,7 @@ Proceed with upgrading every master node using the following procedure. When you
 1.  Validate the upgrade
 
     - Verify that `curl http://<dcos_agent_private_ip>:5051/metrics/snapshot` has the metric `slave/registered` with a value of `1`.
-    - Monitor the Mesos UI to verify that the upgraded node re-joins the DC/OS cluster and that tasks are reconciled (`http://<dcos_master>/mesos`).
+    - Monitor the Mesos UI to verify that the upgraded node rejoins the DC/OS cluster and that tasks are reconciled (`http://<dcos_master>/mesos`).
 
 ## <a name="troubleshooting"></a>Troubleshooting Recommendations
 
