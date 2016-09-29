@@ -37,8 +37,7 @@ To see the pod definition, run the following command:
 ```
 dcos marathon pod show <pod-id>
 ```
-
-Use this command to read data about the pod programmatically.
+You can use the `show` command to read data about the pod programmatically.
 
 # Update Pod
 To update a pod, first modify the JSON definition for the pod. Then, run 
