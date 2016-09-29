@@ -34,7 +34,7 @@ You are now going to see how easy it is to make use of this feature in DC/OS.
 
 Let's begin by deploying a MySQL database. Here is a simple JSON definition that you can use to deploy the Docker container `mysql:5.6.12` by using Marathon:
 
-````json
+```json
 {
   "id": "/mysql",
   "cpus": 1,
@@ -91,11 +91,11 @@ Let's begin by deploying a MySQL database. Here is a simple JSON definition that
     "maximumOverCapacity": 0
   }
 }
-````
+```
 
 The `VIP_0` label is defined in the `portMappings` array. `VIP_0` tells DC/OS to reserve that IP:port tuple for your MySQL server, which will make it reachable by other services in the cluster by using the VIP `3.3.0.6:3306`. The index-based label allows you to specify multiple VIPs per port. To add a second VIP, add a second `VIP_1` entry:
 
-````json
+```json
 "portMappings": [
         {
           "containerPort": 3306,
@@ -108,11 +108,11 @@ The `VIP_0` label is defined in the `portMappings` array. `VIP_0` tells DC/OS to
         }
       ]
 
-````
+```
 
 Next, you will use the VIP to tell WordPress how to reach the database, using environment variables:
 
-````json
+```json
 {
   "id": "/wordpress",
   "cmd": null,
@@ -168,7 +168,7 @@ Next, you will use the VIP to tell WordPress how to reach the database, using en
     }
   ]
 }
-````
+```
 
 - `"WORDPRESS_DB_HOST": "3.3.0.6:3306"` configures the database host by the `wordpress` Docker container.
 
