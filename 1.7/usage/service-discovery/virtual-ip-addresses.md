@@ -28,7 +28,7 @@ You are now going to see how easy it is to make use of this feature in DC/OS.
 ## Prerequisites
 
 - A [DC/OS cluster](/docs/1.7/administration/installing) with at least 1 private agent and 1 public agent.
-- The public IP address of your DCOS public agent.
+- The [public IP address](/docs/1.7/administration/locate-public-agent/) of your DCOS public agent.
 
 ## Deploying your apps
 
@@ -172,7 +172,7 @@ Next, you will use the VIP to tell WordPress how to reach the database, using en
 
 - `"WORDPRESS_DB_HOST": "3.3.0.6:3306"` configures the database host by the `wordpress` Docker container.
 
-- The `acceptedRoles` array specifies the `slave_public` role, which will ensure WordPress will be installed on a public node. For more information, refer to the [Deploying a Containerized App on a Public Node](https://docs.mesosphere.com/usage/tutorials/containerized-app/) tutorial.
+- The `acceptedRoles` array specifies the `slave_public` role, which will ensure WordPress will be installed on a public node. For more information, refer to the [Deploying a Containerized App on a Public Node](/docs/1.7/usage/tutorials/public-app/) tutorial.
 
 Now that you have your application definitions ready, let's fire up the DC/OS Marathon web UI and deploy them.
 
@@ -192,13 +192,13 @@ You can also assign a VIP to your application via the DC/OS Marathon web interfa
 
 - Paste your application definition into a JSON file, such as `vip-tutorial.json`.
 - Add the app to Marathon:
-```
-$ dcos marathon app add vip-tutorial.json
-```
+  ```bash
+  $ dcos marathon app add vip-tutorial.json
+  ```
 - Verify that the app has been added:
-```
-$ dcos marathon app list
-```
+  ```bash
+  $ dcos marathon app list
+  ```
 
 For more information on port configuration, see the [ports documentation][1].
 
