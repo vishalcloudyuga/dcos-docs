@@ -5,7 +5,7 @@ menu_order: 30
 
 # A pod with multiple containers
 	
-The following pod definition defines a pod with 3 containers.
+The following pod definition specifies a pod with 3 containers.
 
 ```json
 {
@@ -119,6 +119,8 @@ The following pod definition defines a pod with 3 containers.
 
 # A Pod that Uses Ephemeral Volumes
 
+The following pod definition specifies an ephemeral volume called `v1`.
+
 ```json
 {
   "id": "/with-ephemeral-vol",
@@ -164,7 +166,7 @@ The following pod definition defines a pod with 3 containers.
 
 ## IP-per-Pod Networking
 
-This pod declares a virtual (user) network named `my-virtual-network-name`.
+The following pod definition specifies a virtual (user) network named `my-virtual-network-name`.
 
 ```json
 {
