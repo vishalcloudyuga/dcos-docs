@@ -112,7 +112,7 @@ This parameter specifies whether to enable DC/OS overlay networks.
         *  `vtep_subnet` This parameter specifies a dedicated address space that is used for the VxLAN backend for the overlay network. This address space should not be routeable from outside the agents or master. 
         *  `vtep_mac_oui` This parameter specifies the MAC address of the interface connecting to it in the public node.
         *  __overlays__ 
-            *  `name` This parameter specifies the canonical name (see [limitations](/1.8/administration/overlay-networks/) for constraints on naming overlay networks).
+            *  `name` This parameter specifies the canonical name (see [limitations](/docs/1.8/administration/overlay-networks/) for constraints on naming overlay networks).
             *  `subnet` This parameter specifies the subnet that is allocated to the overlay network.
             *  `prefix` This parameter specifies the size of the subnet that is allocated to each agent and thus defines the number of agents on which the overlay can run. The size of the subnet is carved from the overlay subnet. 
             
@@ -128,7 +128,7 @@ In this example, `example.com` has public website `www.example.com` and all of t
 ```yaml
 dns_search: dc1.example.com dc1.example.com example.com dc1.example.com dc2.example.com example.com
 ```
-### resolvers
+### <a name="#resolvers"></a>resolvers
 
 This required parameter specifies a YAML nested list (`-`) of DNS resolvers for your DC/OS cluster nodes. You can specify a maximum of 3 resolvers. Set this parameter to the most authoritative nameservers that you have.
 
@@ -143,6 +143,19 @@ This required parameter specifies a YAML nested list (`-`) of DNS resolvers for 
 -  If you do not have a DNS infrastructure and do not have access to internet DNS servers, you can specify `resolvers: []`. By specifying this setting, all requests to non-`.mesos` will return an error. For more information, see the Mesos-DNS [documentation](/docs/1.8/usage/service-discovery/mesos-dns/).
 
 **Caution:** If you set the `resolvers` parameter incorrectly, you will permanently damage your configuration and have to reinstall DC/OS.
+
+### use_proxy
+
+This parameters specifies whether to enable the DC/OS proxy. 
+
+*  `use_proxy: 'false'` Do not configure DC/OS [components](/docs/1.8/overview/components/) to use a custom proxy. This is the default value. 
+*  `use_proxy: 'true'` Configure DC/OS [components](/docs/1.8/overview/components/) to use a custom proxy. If you specify `use_proxy: 'true'`, you can also specify these parameters:
+    **Important:** The specified proxies must be resolvable from the provided list of [resolvers](#resolvers).
+    *  `http_proxy: <your_http_proxy>` This parameter specifies the HTTP proxy.
+    *  `https_proxy: <your_https_proxy>` This parameter specifies the HTTPS proxy.
+    *  `no_proxy: - <ip-address>` This parameter specifies YAML nested list (-) of addresses to exclude from the proxy.
+
+For more information, see the [examples](#http-proxy).
 
 ## <a name="performance-and-tuning"></a>Performance and Tuning
 
@@ -276,6 +289,35 @@ resolvers:
 ssh_key_path: /genconf/ssh-key
 ssh_port: '<port-number>'
 ssh_user: <username>
+```
+
+#### <a name="http-proxy"></a>DC/OS cluster with three masters, an Exhibitor/ZooKeeper managed internally, a custom HTTP proxy, two private agents, and Google DNS
+
+```yaml
+    agent_list:
+    - <agent-private-ip-1>
+    - <agent-private-ip-2>
+    - <agent-private-ip-3>
+    # Use this bootstrap_url value unless you have moved the DC/OS installer assets.
+    bootstrap_url: file:///opt/dcos_install_tmp
+    cluster_name: <cluster-name>
+    master_discovery: static
+    master_list:
+    - <master-private-ip-1>
+    - <master-private-ip-2>
+    - <master-private-ip-3>
+    resolvers:
+    # You probably do not want to use these values since they point to public DNS servers.
+    # Instead use values that are more specific to your particular infrastructure.
+    - 8.8.4.4
+    - 8.8.8.8
+    ssh_port: 22
+    ssh_user: centos
+    use_proxy: 'true'
+    http_proxy: http://<your_http_proxy>/
+    https_proxy: https://<your_https_proxy>/
+    no_proxy: 
+    - '*.int.example.com'
 ```
 
  [1]: https://en.wikipedia.org/wiki/YAML
