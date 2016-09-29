@@ -112,7 +112,7 @@ This parameter specifies whether to enable DC/OS overlay networks.
         *  `vtep_subnet` This parameter specifies a dedicated address space that is used for the VxLAN backend for the overlay network. This address space should not be routeable from outside the agents or master. 
         *  `vtep_mac_oui` This parameter specifies the MAC address of the interface connecting to it in the public node.
         *  __overlays__ 
-            *  `name` This parameter specifies the canonical name (see [limitations](/1.8/administration/overlay-networks/) for constraints on naming overlay networks).
+            *  `name` This parameter specifies the canonical name (see [limitations](/docs/1.8/administration/overlay-networks/) for constraints on naming overlay networks).
             *  `subnet` This parameter specifies the subnet that is allocated to the overlay network.
             *  `prefix` This parameter specifies the size of the subnet that is allocated to each agent and thus defines the number of agents on which the overlay can run. The size of the subnet is carved from the overlay subnet. 
             
@@ -148,8 +148,8 @@ This required parameter specifies a YAML nested list (`-`) of DNS resolvers for 
 
 This parameters specifies whether to enable the DC/OS proxy. 
 
-*  `use_proxy: 'false'` Do not configure DC/OS [components](/1.8/overview/components/) to use a custom proxy. This is the default value. 
-*  `use_proxy: 'true'` Configure DC/OS [components](/1.8/overview/components/) to use a custom proxy. If you specify `use_proxy: 'true'`, you can also specify these parameters:
+*  `use_proxy: 'false'` Do not configure DC/OS [components](/docs/1.8/overview/components/) to use a custom proxy. This is the default value. 
+*  `use_proxy: 'true'` Configure DC/OS [components](/docs/1.8/overview/components/) to use a custom proxy. If you specify `use_proxy: 'true'`, you can also specify these parameters:
     **Important:** The specified proxies must be resolvable from the provided list of [resolvers](#resolvers).
     *  `http_proxy: <your_http_proxy>` This parameter specifies the HTTP proxy.
     *  `https_proxy: <your_https_proxy>` This parameter specifies the HTTPS proxy.
