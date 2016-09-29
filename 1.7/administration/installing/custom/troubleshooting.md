@@ -1,7 +1,7 @@
 ---
 post_title: Troubleshooting your DC/OS installation
 nav_title: Troubleshooting
-menu_order: 5
+menu_order: 400
 ---
 
 During DC/OS installation, each of the components will converge from a failing state to a running state in the logs.
@@ -120,7 +120,7 @@ DC/OS Marathon is started on the master nodes. The native Marathon instance that
 
 # Admin Router
 
-The Admin router is started on the master nodes. The admin router provides central authentication and proxy to DC/OS services within the cluster. This allows you to administer your cluster from outside the network without VPN or a SSH tunnel. For HA, an optional load balancer can be configured in front of each master node, load balancing port 80, to provide failover and load balancing.
+The Admin Router is started on the master nodes. The Admin Router provides central authentication and proxy to DC/OS services within the cluster. This allows you to administer your cluster from outside the network without VPN or a SSH tunnel. For HA, an optional load balancer can be configured in front of each master node, load balancing port 80, to provide failover and load balancing.
 
 **Troubleshooting:**
 
@@ -130,7 +130,7 @@ The Admin router is started on the master nodes. The admin router provides centr
     $ journalctl -u dcos-nginx -b
     ```
 
-    For example, here is a snippet of the Admin router log as it converges to a successful state:
+    For example, here is a snippet of the Admin Router log as it converges to a successful state:
 
     ```bash
     systemd[1]: Starting A high performance web server and a reverse proxy server...
@@ -199,11 +199,11 @@ Publicly accessible applications are run in the public agent node. Public agent 
     mesos-slave[1080]: I1118 14:00:43.697928  1080 slave.cpp:395] Slave checkpoint: true
     ```
 
- [1]: ../configuration-parameters/#scrollNav-5
+ [1]: /docs/1.7/administration/installing/custom/configuration-parameters/#scrollNav-5
  [2]: https://open.mesosphere.com/reference/mesos-master/
- [3]: ../configuration-parameters/#scrollNav-7
+ [3]: /docs/1.7/administration/installing/custom/configuration-parameters/#scrollNav-7
  [4]: /docs/1.7/overview/architecture/#boot
- [5]: ../configuration-parameters
+ [5]: /docs/1.7/administration/installing/custom/configuration-parameters
  [6]: /docs/1.7/administration/sshcluster/
- [7]: /docs/1.7/overview/webinterface/#scrollNav-3
+ [7]: /docs/1.7/usage/webinterface/
 

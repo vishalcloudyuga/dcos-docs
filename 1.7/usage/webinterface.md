@@ -1,7 +1,7 @@
 ---
-post_title: DC/OS Web Graphical User Interface
+post_title: GUI
 nav_title: GUI
-menu_order: 1
+menu_order: 0
 ---
 
 The DC/OS web interface provides a rich graphical view of your DC/OS cluster. With the web interface you can view the current state of your entire cluster and DC/OS services. The web interface is installed as a part of your DC/OS installation.
@@ -36,6 +36,13 @@ The Services page provides a comprehensive view of all of the services that you 
 
 By default all of your services are displayed, sorted by service name. You can also sort the services by health status, number of tasks, CPU, memory, or disk space allocated.
 
+*   **SERVICE NAME** Displays the DC/OS service name.
+*   **HEALTH** Displays the [Marathon health check][3] status for the service.
+*   **TASKS** Display the number of running tasks.
+*   **CPU** Displays the percentage of CPU in use.
+*   **MEM** Displays the amount of memory used.
+*   **DISK** Displays the amount of disk space used.
+
 Clicking the service name opens the Services side panel, which provides CPU, memory, and disk usage graphs and lists all tasks using the service. Use the dropdown or a custom filter to sort tasks and click on details for more information. For services with a web interface, you can click **Open Service** to view it. Click on a task listed on the Services side panel to see detailed information about the task’s CPU, memory, and disk usage and the task’s files and directory tree.
 
 **Tip:** You can access the Mesos web interface at `<hostname>/mesos`.
@@ -53,3 +60,21 @@ You can switch to **Grid** view to see a "donuts" percentage visualization.
 ![Nodes](../img/dcos-donuts-1.7.png)
 
 Clicking on a node opens the Nodes side panel, which provides CPU, memory, and disk usage graphs and lists all tasks on the node. Use the dropdown or a custom filter to sort tasks and click on details for more information. Click on a task listed on the Nodes side panel to see detailed information about the task’s CPU, memory, and disk usage and the task’s files and directory tree.
+
+# <a name="universe"></a>Universe
+
+The Universe page shows all of the available DC/OS services. You can install packages from the DC/OS Universe with a single click. The packages can be installed with defaults or customized directly in the web interface. 
+
+![universe](../img/ui-dashboard-universe.gif)
+
+# <a name="system"></a>System
+
+The System page provides access to the administration controls of DC/OS. From this page you can:
+ 
+- View the system health of your DC/OS components
+- Manage your DC/OS package repositories
+- Manage user access 
+
+![system](../img/ui-dashboard-system1.gif)
+
+[3]: https://mesosphere.github.io/marathon/docs/health-checks.html

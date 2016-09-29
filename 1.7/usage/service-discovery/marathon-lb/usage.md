@@ -1,26 +1,26 @@
 ---
-post_title: Getting Started
-post_excerpt: ""
-layout: docs.jade
+post_title: Getting Started with Marathon-LB
+nav_title: Getting Started
+menu_order: 10
 ---
-To demonstrate marathon-lb, you can boot a DC/OS cluster on AWS to run an internal and external load balancer. The external load balancer will be used for routing external HTTP traffic into the cluster, and the internal load balancer will be used for internal service discovery and load balancing. Since we’ll be doing this on AWS, external traffic will first hit an external load balancer configured to expose our "public" agent nodes.
+To demonstrate Marathon-LB, you can boot a DC/OS cluster on AWS to run an internal and external load balancer. The external load balancer will be used for routing external HTTP traffic into the cluster, and the internal load balancer will be used for internal service discovery and load balancing. Since we’ll be doing this on AWS, external traffic will first hit an external load balancer configured to expose our "public" agent nodes.
 
-## Prequisistes
+## Prerequisites
 
 *   [A DC/OS cluster][1]
 *   [DC/OS and DC/OS CLI][2] are installed.
 
 ## Steps
 
-1.  Install marathon-lb.
+1.  Install Marathon-LB.
 
         $ dcos package install marathon-lb
 
-    To check that marathon-lb is working, [find the IP for your public node][3] and navigate to `http://<public slave ip>:9090/haproxy?stats`. You willl see a statistics report page like this:
+    To check that Marathon-LB is working, [find the IP for your public node][3] and navigate to `http://<public agent ip>:9090/haproxy?stats`. You willl see a statistics report page like this:
 
     ![lb2](../img/lb2.jpg)
 
-2.  Set up your internal load balancer. To do this, we must first specify some configuration options for the marathon-lb package. Create a file called `options.json` with the following contents:
+2.  Set up your internal load balancer. To do this, we must first specify some configuration options for the Marathon-LB package. Create a file called `options.json` with the following contents:
 
         {
           "marathon-lb":{
@@ -37,7 +37,7 @@ To demonstrate marathon-lb, you can boot a DC/OS cluster on AWS to run an intern
 
         $ dcos package install --options=options.json marathon-lb
 
-3.  Now there are 2 load balancers: an internal load balancer and an external one, which was installed along with marathon-lb. Launch an external version of nginx to demonstrate the features. Launch this app on DC/OS by pasting the JSON below into a file called `nginx-external.json`.
+3.  Now there are 2 load balancers: an internal load balancer and an external one, which was installed along with Marathon-LB. Launch an external version of nginx to demonstrate the features. Launch this app on DC/OS by pasting the JSON below into a file called `nginx-external.json`.
 
         {
           "id": "nginx-external",
@@ -73,7 +73,7 @@ To demonstrate marathon-lb, you can boot a DC/OS cluster on AWS to run an intern
 
         $ dcos marathon app add nginx-external.json
 
-    The application definition includes a special label with the key `HAPROXY_GROUP`. This label tells marathon-lb whether or not to expose the application. The external marathon-lb was started with the `--group` parameter set to `external`, which is the default.
+    The application definition includes a special label with the key `HAPROXY_GROUP`. This label tells Marathon-LB whether or not to expose the application. The external Marathon-LB was started with the `--group` parameter set to `external`, which is the default.
 
 4.  Now, launch the internal nginx.
 
@@ -113,7 +113,7 @@ To demonstrate marathon-lb, you can boot a DC/OS cluster on AWS to run an intern
           }
         }
 
-    Notice that we’re specifying a servicePort parameter. The servicePort is the port that exposes this service on marathon-lb. By default, port 10000 through to 10100 are reserved for marathon-lb services, so you should begin numbering your service ports from 10000.
+    Notice that we’re specifying a servicePort parameter. The servicePort is the port that exposes this service on Marathon-LB. By default, port 10000 through to 10100 are reserved for Marathon-LB services, so you should begin numbering your service ports from 10000.
 
     Add one more instance of nginx to be exposed both internally and externally:
 
@@ -166,17 +166,13 @@ To demonstrate marathon-lb, you can boot a DC/OS cluster on AWS to run an intern
 
 ## Virtual hosts
 
-An important feature of marathon-lb is support for virtual hosts. This allows you to route HTTP traffic for multiple hosts (FQDNs) and route requests to the correct endpoint. For example, you could have two distinct web properties, `ilovesteak.com` and `steaknow.com`, with DNS for both pointing to the same LB on the same port, and HAProxy will route traffic to the correct endpoint based on the domain name.
+An important feature of Marathon-LB is support for virtual hosts. This allows you to route HTTP traffic for multiple hosts (FQDNs) and route requests to the correct endpoint. For example, you could have two distinct web properties, `ilovesteak.com` and `steaknow.com`, with DNS for both pointing to the same LB on the same port, and HAProxy will route traffic to the correct endpoint based on the domain name.
 
-To test the vhost feature, navigate to the AWS console and look for your public ELB. We’re going to make 2 changes to the public ELB in order to test it. First, we’ll modify the health checks to use HAProxy’s built in health check:
-
-![lb4](../img/lb4.jpg)
-
-Change the health check to ping the hosts on port 9090, at the path `/_haproxy_health_check`. Now, if you navigate to the instances tab, you should see the instances listed as `InService`, like this:
+To test the vhost feature, navigate to the AWS console and look for your public ELB. Now, if you navigate to the instances tab, you should see the instances listed as `InService`, like this:
 
 ![lb5](../img/lb5.jpg)
 
-Now our ELB is able to route traffic to HAProxy. Next, let’s modify our nginx app to expose our service. To do this, you’ll need to get the public DNS name for the ELB from the `Description` tab. In this example, my public DNS name is `brenden-j-PublicSl-1LTLKZEH6B2G6-1145355943.us-west-2.elb.amazonaws.com`.
+Our ELB is able to route traffic to HAProxy. Next, let’s modify our nginx app to expose our service. To do this, you’ll need to get the public DNS name for the ELB from the `Description` tab. In this example, my public DNS name is `brenden-j-PublicSl-1LTLKZEH6B2G6-1145355943.us-west-2.elb.amazonaws.com`.
 
 Modify the external nginx app to look like this:
 
@@ -207,11 +203,11 @@ Modify the external nginx app to look like this:
       }],
       "labels":{
         "HAPROXY_GROUP":"external",
-        "HAPROXY_0_VHOST":"brenden-j-PublicSl-1LTLKZEH6B2G6-1145355943.us-west-2.elb.amazonaws.com"
+        "HAPROXY_0_VHOST":"brenden-j-publicsl-1ltlkzeh6b2g6-1145355943.us-west-2.elb.amazonaws.com"
       }
     }
 
-We’ve added the label `HAPROXY_0_VHOST`, which tells marathon-lb to expose nginx on the external load balancer with a vhost. The `0` in the label key corresponds to the servicePort index, beginning from 0. If you had multiple servicePort definitions, you would iterate them as 0, 1, 2, and so on.
+We’ve added the label `HAPROXY_0_VHOST`, which tells Marathon-LB to expose nginx on the external load balancer with a virtual host. The `0` in the label key corresponds to the servicePort index, beginning from 0. If you had multiple servicePort definitions, you would iterate them as 0, 1, 2, and so on. Note that if you _do_ specify a vhost, you don't strictly need to provide a service port—Marathon will assign one for you.
 
 Now, if you navigate to the ELB public DNS address in your browser, you should see the following:
 
@@ -219,5 +215,5 @@ Now, if you navigate to the ELB public DNS address in your browser, you should s
 
  [1]: /docs/1.7/administration/installing/
  [2]: /docs/1.7/usage/cli/install/
- [3]: /docs/1.7/administration/managing-a-dcos-cluster-in-aws/#scrollNav-1
+ [3]: /docs/1.7/administration/managing-aws/
  [4]: /docs/1.7/administration/sshcluster/

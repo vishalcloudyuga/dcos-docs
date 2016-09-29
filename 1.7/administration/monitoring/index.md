@@ -46,9 +46,9 @@ $ curl <host_ip>:1050/system/health/v1
 Aggregation of the cluster health endpoints is accomplished by the same diagnostics application, but is only run on the master nodes. You can explore this API further by making a few queries to any master in your cluster:
 
 ```bash
-$ curl <master_ip>:1050/api/v1/health/units
-$ curl <master_ip>:1050/api/v1/health/nodes
-$ curl <master_ip>:1050/api/v1/health/report
+$ curl <master_ip>:1050/system/health/v1/units
+$ curl <master_ip>:1050/system/health/v1/nodes
+$ curl <master_ip>:1050/system/health/v1/report
 ```
 
 The DC/OS user interface uses these aggregation endpoints to generate the data you explore in the system health console.
@@ -60,18 +60,18 @@ What we refer to as components are in fact the [systemd units](https://www.freed
 You can query this HTTP API for any host in the cluster:
 
 ```bash
-curl <host_ip>:1050/api/v1/health
+curl <host_ip>:1050/system/health/v1
 ```
 
 Here is an explanation of the components shown in the UI.
 
 ### Admin Router
 
-The admin router is an open-source Nginx configuration created by Mesosphere that provides central authentication and proxy to DC/OS services within the cluster.<!-- dcos-adminrouter.service/ -->
+The Admin Router is an open-source Nginx configuration created by Mesosphere that provides central authentication and proxy to DC/OS services within the cluster.<!-- dcos-adminrouter.service/ -->
 
 ### Admin Router Reloader
 
-Restarts the Admin router Nginx server so that it can pick up new DNS resolutions, for example `master.mesos` and `leader.mesos`.<!-- dcos-adminrouter-reload.service/ -->
+Restarts the Admin Router Nginx server so that it can pick up new DNS resolutions, for example `master.mesos` and `leader.mesos`.<!-- dcos-adminrouter-reload.service/ -->
 
 ### Admin Router Reloader Timer
 
@@ -186,9 +186,9 @@ You can sort system health by systemd unit. However, this search can bring up mi
 
 The system health API relies on Mesos-DNS to know about all the cluster hosts. It finds these hosts by combining a query from `mesos.master` A records as well as `leader.mesos:5050/slaves` to get the complete list of hosts in the cluster.
 
-This system has a known bug where an agent will not show up in the list returned from `leader.mesos:5050/slaves` if the Mesos slave service is not healthy. This means the system health API will not show this host.
+This system has a known bug where an agent will not show up in the list returned from `leader.mesos:5050/slaves` if the Mesos agent service is not healthy. This means the system health API will not show this host.
 
-If you experience this behavior it's most likely your Mesos slave service on the missing host is unhealthy.
+If you experience this behavior it's most likely your Mesos agent service on the missing host is unhealthy.
 
 ## Troubleshooting
 

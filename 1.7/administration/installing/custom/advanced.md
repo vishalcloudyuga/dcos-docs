@@ -1,7 +1,7 @@
 ---
 post_title: Advanced DC/OS Installation Guide
 nav_title: Advanced
-menu_order: 4
+menu_order: 300
 ---
 
 With this installation method, you package the DC/OS distribution yourself and connect to every node manually to run the DC/OS installation commands. This installation method is recommended if you want to integrate with an existing system or if you don’t have SSH access to your cluster.
@@ -13,14 +13,16 @@ The advanced installer requires:
 
 The DC/OS installation creates these folders:
 
-*   `/opt/mesosphere`
-    :   Contains all the DC/OS binaries, libraries, cluster configuration. Do not modify.
+| Folder                                  | Description                                                                                                                                            |
+|-----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `/opt/mesosphere`                       | Contains all the DC/OS binaries, libraries, cluster configuration. Do not modify.                                                                      |
+| `/etc/systemd/system/dcos.target.wants` | Contains the systemd services which start the things that make up systemd. They must live outside of `/opt/mesosphere` because of systemd constraints. |
+| `/etc/systemd/system/dcos.<units>`      | Contains copies of the units in `/etc/systemd/system/dcos.target.wants`. They must be at the top folder as well as inside `dcos.target.wants`.         |
+| `/var/lib/zookeeper`                    | Contains the [ZooKeeper](/docs/1.7/overview/concepts/#zookeeper) data.                                                                                      |
+| `/var/lib/docker`                       | Contains the Docker data.                                                                                                                              |
+| `/var/lib/dcos`                         | Contains the DC/OS data.                                                                                                                               |
+| `/var/lib/mesos`                        | Contains the Mesos data.                                                                                                                               |
 
-*   `/etc/systemd/system/dcos.target.wants`
-    :   Contains the systemd services which start the things that make up systemd. They must live outside of `/opt/mesosphere` because of systemd constraints.
-
-*   Various units prefixed with `dcos` in `/etc/systemd/system`
-    :   Copies of the units in `/etc/systemd/system/dcos.target.wants`. They must be at the top folder as well as inside `dcos.target.wants`.
 
 # Configure your cluster
 
@@ -34,21 +36,17 @@ The DC/OS installation creates these folders:
 
     In this step you create a YAML configuration file that is customized for your environment. DC/OS uses this configuration file during installation to generate your cluster installation files.
 
-    You can use this template to get started. This template specifies 5 Mesos agents, 3 Mesos masters, 3 ZooKeeper instances for Exhibitor storage, static master discovery list, and Google DNS resolvers. If your servers are installed with a domain name in your `/etc/resolv.conf`, you should add `dns_search` to your `config.yaml` file. For parameters descriptions and configuration examples, see the [documentation][1].
+    You can use this template to get started. This template specifies 3 Mesos masters, 3 ZooKeeper instances for Exhibitor storage, static master discovery list, internal storage backend for Exhibitor, and Google DNS resolvers. If your servers are installed with a domain name in your `/etc/resolv.conf`, you should add `dns_search` to your `config.yaml` file. For parameters descriptions and configuration examples, see the [documentation][1].
+
+    **Tip:** If Google DNS is not available in your country, you can replace the Google DNS servers `8.8.8.8` and `8.8.4.4` with your local DNS servers.
 
     ```yaml
     ---
-    agent_list:
-    - <agent-private-ip-1>
-    - <agent-private-ip-2>
-    - <agent-private-ip-3>
-    - <agent-private-ip-4>
-    - <agent-private-ip-5>
     bootstrap_url: http://<bootstrap_public_ip>:<your_port>
     cluster_name: '<cluster-name>'
     exhibitor_storage_backend: static
     ip_detect_filename: /genconf/ip-detect
-    master_discovery: static
+    master_discovery: static 
     master_list:
     - <master-private-ip-1>
     - <master-private-ip-2>
@@ -88,7 +86,7 @@ The DC/OS installation creates these folders:
         # Uses the GCE metadata server to get the node's internal
         # ipv4 address
 
-        curl -fsSl -H "Metadata-Flavor: Google" http://169.254.169.254/computeMetadata/v1/instance/network-interfaces/0/ip
+        curl -fsSL -H "Metadata-Flavor: Google" http://169.254.169.254/computeMetadata/v1/instance/network-interfaces/0/ip
         ```
 
     *   #### Use the IP address of an existing interface
@@ -112,18 +110,33 @@ The DC/OS installation creates these folders:
 
         ```bash
         #!/usr/bin/env bash
-        set -o nounset -o errexit
-
-        MASTER_IP=172.28.128.3
-
-        echo $(/usr/sbin/ip route show to match 172.28.128.3 | grep -Eo '[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}' | tail -1)
+        set -o nounset -o errexit -o pipefail
+        export PATH=/sbin:/usr/sbin:/bin:/usr/bin:$PATH
+        MASTER_IP=$(dig +short master.mesos || true)
+        MASTER_IP=${MASTER_IP:-172.28.128.3}
+        INTERFACE_IP=$(ip r g ${MASTER_IP} | \
+        awk -v master_ip=${MASTER_IP} '
+        BEGIN { ec = 1 }
+        {
+          if($1 == master_ip) {
+            print $7
+            ec = 0
+          } else if($1 == "local") {
+            print $6
+            ec = 0
+          }
+          if (ec == 0) exit;
+        }
+        END { exit ec }
+        ')
+        echo $INTERFACE_IP
         ```
 
 # Install DC/OS
 
 In this step you create a custom DC/OS build file on your bootstrap node and then install DC/OS onto your cluster. With this method you package the DC/OS distribution yourself and connect to every server manually and run the commands.
 
-**Tip:** If something goes wrong and you want to rerun your setup, use these cluster [cleanup instructions][2].
+**Tip:** If something goes wrong and you want to rerun your setup, use these cluster [cleanup instructions][8].
 
 **Prerequisites**
 
@@ -132,10 +145,10 @@ In this step you create a custom DC/OS build file on your bootstrap node and the
 
 To install DC/OS:
 
-1.  Download the [DC/OS installer][4]
+1.  Download the [DC/OS installer][4].
 
     ```bash
-    $ curl -O https://downloads.dcos.io/dcos/EarlyAccess/dcos_generate_config.sh
+    $ curl -O https://downloads.dcos.io/dcos/EarlyAccess/commit/14509fe1e7899f439527fb39867194c7a425c771/dcos_generate_config.sh
     ```
 
 1.  From the bootstrap node, run the DC/OS installer shell script to generate a customized DC/OS build file. The setup script extracts a Docker container that uses the generic DC/OS install files to create customized DC/OS build files for your cluster. The build files are output to `./genconf/serve/`.
@@ -156,7 +169,7 @@ To install DC/OS:
 
     **Tip:** For the install script to work, you must have created `genconf/config.yaml` and `genconf/ip-detect`.
 
-1.  From your home directory, run this command to host the DC/OS install package through an nginx Docker container. For `<your-port>`, specify the port value that is used in the `bootstrap_url`.
+1.  <a name="nginx"></a>From your home directory, run this command to host the DC/OS install package through an nginx Docker container. For `<your-port>`, specify the port value that is used in the `bootstrap_url`.
 
     ```bash
     $ sudo docker run -d -p <your-port>:80 -v $PWD/genconf/serve:/usr/share/nginx/html:ro nginx
@@ -242,12 +255,12 @@ To install DC/OS:
 - [Use your cluster][3]
 - [Uninstalling DC/OS][8]
 
-[1]: ../configuration-parameters/
+[1]: /docs/1.7/administration/installing/custom/configuration-parameters/
 [2]: /docs/1.7/usage/cli/install/
 [3]: /docs/1.7/usage/
-[4]: https://downloads.dcos.io/dcos/EarlyAccess/dcos_generate_config.sh
+[4]: https://downloads.dcos.io/dcos/EarlyAccess/commit/14509fe1e7899f439527fb39867194c7a425c771/dcos_generate_config.sh
 [6]: /docs/1.7/overview/concepts/#public
 [7]: /docs/1.7/overview/concepts/#private
-[8]: ../uninstall/
-[9]: ../troubleshooting/
+[8]: /docs/1.7/administration/installing/custom/uninstall/
+[9]: /docs/1.7/administration/installing/custom/troubleshooting/
 [10]: /docs/1.7/administration/user-management/

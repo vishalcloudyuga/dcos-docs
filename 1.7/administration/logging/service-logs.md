@@ -1,7 +1,6 @@
 ---
 post_title: Service and Task Logging
-post_excerpt: ""
-layout: docs.jade
+menu_order: 0
 ---
 
 As soon as you move from one machine to many, accessing and aggregating logs becomes difficult. Once you hit a certain scale, keeping these logs and making them available to others can add massive overhead to your cluster. After watching how users interact with their logs, we’ve scoped the problem to two primary use cases. This allows you to pick the solution with the lowest overhead that solves your specific problem.
@@ -18,7 +17,7 @@ Let’s say that you’ve got a service misbehaving. For some reason, it is cont
 
 ## CLI
 
-If you’ve created a service named `service` in marathon and would like to see stdout for every instance of that in real time, you can run the following:
+If you’ve created a service named `service` in Marathon and would like to see stdout for every instance of that in real time, you can run the following:
 
 ```
 $ dcos task log --follow service
@@ -26,7 +25,6 @@ $ dcos task log --follow service
 
 For more advanced usage, you can check out the CLI documentation:
 
-- [Debugging Services][4]
 - [DC/OS CLI Usage][1]
 
 ## GUI
@@ -35,8 +33,7 @@ For those who are more comfortable with the GUI, we have a solution as well! By 
 
 Check out some of the DC/OS UI documentation for more details:
 
-- [Debugging Services][4]
-- [DC/OS UI][5]
+- [DC/OS UI](/docs/1.7/usage/webinterface/)
 
 # Compliance
 
@@ -48,5 +45,3 @@ Unfortunately, streaming logs from machines in your cluster isn’t always viabl
 [1]: /docs/1.7/usage/cli/
 [2]: ../elk/
 [3]: ../splunk/
-[4]: FIXME
-[5]: FIXME
