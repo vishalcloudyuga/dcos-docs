@@ -3,7 +3,9 @@ post_title: Quick Start
 menu_order: 0
 ---
 
-# Prerequisites: A DC/OS Cluster, DC/OS CLI installed
+# Prerequisites
+- A DC/OS cluster
+- [DC/OS CLI installed](/docs/1.9/usage/cli/install/)
 
 # Launch a Pod from the DC/OS CLI
 
