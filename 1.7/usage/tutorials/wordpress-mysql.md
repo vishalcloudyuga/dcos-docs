@@ -5,7 +5,7 @@ layout: docs.jade
 menu_order: 4
 ---
 
-In this tutorial you will learn how to deploy a WordPress + MySQL installation on a DC/OS cluster and stop worrying about network management.
+In this tutorial you will learn how to deploy a WordPress and MySQL installation on a DC/OS cluster and stop worrying about network management.
 
 ## Overview
 
