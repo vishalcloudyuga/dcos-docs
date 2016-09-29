@@ -4,9 +4,15 @@ nav_title: Config
 menu_order: 600
 ---
 
-These configuration parameters are specified in [YAML][1] format in your config.yaml file. During DC/OS installation the configuration file is used to generate a customized DC/OS build. <!-- A config.yaml template file is available [here][2]. -->
+These configuration parameters are specified in [YAML][1] format in your config.yaml file. During DC/OS installation the configuration file is used to generate a customized DC/OS build. 
 
-# Cluster Setup
+*  [Cluster Setup](#cluster-setup)
+*  [Security and Authentication](#security-and-authentication)
+*  [Networking](#networking)
+*  [Performance and Tuning](#performance-and-tuning)
+*  [Example Configurations](#examples1)
+
+# <a name="cluster-setup"></a>Cluster Setup
 
 ### agent_list
 This parameter specifies a YAML nested list (`-`) of IPv4 addresses to your [private agent](/docs/1.8/overview/concepts/#private) host names.
@@ -76,7 +82,7 @@ This option specifies that Mesos agents are used to discover the masters by givi
 ### <a name="public-agent"></a>public_agent_list
 This parameter specifies a YAML nested list (`-`) of IPv4 addresses to your [public agent](/docs/1.8/overview/concepts/#public) host names.
 
-## Networking
+## <a name="networking"></a>Networking
 
 ### <a name="dcos-overlay-enable"></a>dcos_overlay_enable
 
@@ -138,7 +144,7 @@ This required parameter specifies a YAML nested list (`-`) of DNS resolvers for 
 
 **Caution:** If you set the `resolvers` parameter incorrectly, you will permanently damage your configuration and have to reinstall DC/OS.
 
-## Performance and Tuning
+## <a name="performance-and-tuning"></a>Performance and Tuning
 
 ### <a name="check-time"></a>check_time
 This parameter specifies whether to check if Network Time Protocol (NTP) is enabled during DC/OS startup. It recommended that NTP is enabled for a production environment.
@@ -160,7 +166,7 @@ This parameter specifies the allowable amount of time, in seconds, for an action
 
 **Tip:** If have a slower network environment, consider changing to `process_timeout: 600`.
 
-## Security And Authentication
+## <a name="security-and-authentication"></a>Security And Authentication
 
 ### oauth_enabled
 This parameter specifies whether to enable authentication for your cluster. <!-- DC/OS auth -->
