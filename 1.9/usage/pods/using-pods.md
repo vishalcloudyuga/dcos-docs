@@ -3,12 +3,12 @@ post_title: Using Pods
 menu_order: 10
 ---
 
-DC/OS treats and represents pods as single services. From the perspective of Marathon, pods are pods are members of [groups](http://mesosphere.github.io/marathon/docs/application-groups.html). Containers in pods share networking namespace and ephemeral volumes.
+DC/OS treats and represents pods as single services. From the perspective of Marathon, pods are members of [groups](http://mesosphere.github.io/marathon/docs/application-groups.html). Containers in pods share networking namespace and ephemeral volumes.
 
-You can create and manage pods with the [DC/OS CLI](/docs/1.9/usage/pods/pods-cli/) or via the /v2/pods endpoint of the [Marathon REST API](http://mesosphere.github.io/marathon/docs/generated/api.html).
+You can create and manage pods with the [DC/OS CLI](/docs/1.9/usage/pods/pods-cli/) or via the /v2/pods/ endpoint of the [Marathon REST API](http://mesosphere.github.io/marathon/docs/generated/api.html).
 
 # Pod Definitions
-Pods are configured via a JSON pod definition, which is similar to a Marathon application definition. [link to docs on that]. See the [Examples](/docs/1.9/usage/pods/examples/) section for more information. You must declare the resources required by each container in the pod, even if Mesos is isolating at a higher (pod) level. 
+Pods are configured via a JSON pod definition, which is similar to a [Marathon application definition](http://mesosphere.github.io/marathon/docs/application-basics.html). See the [Examples](/docs/1.9/usage/pods/examples/) section for more information. You must declare the resources required by each container in the pod, even if Mesos is isolating at a higher (pod) level. 
 
 **Note:** DC/OS reserves 32MB and .1 CPUs per pod for overhead. Take this overhead into account when declaring resource needs for the containers in your pod.
 
