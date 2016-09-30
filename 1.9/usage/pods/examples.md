@@ -1,5 +1,5 @@
 ---
-post_title: Pods CLI
+post_title: Examples
 menu_order: 30
 ---
 
