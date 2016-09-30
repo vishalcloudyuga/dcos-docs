@@ -5,7 +5,7 @@ menu_order: 30
 
 # A pod with multiple containers
 	
-The following pod definition specifies a pod with 3 containers.
+The following pod definition specifies a pod with 3 containers. <!-- Validated. JSH 9/30/16 -->
 
 ```json
 {
@@ -119,7 +119,7 @@ The following pod definition specifies a pod with 3 containers.
 
 # A Pod that Uses Ephemeral Volumes
 
-The following pod definition specifies an ephemeral volume called `v1`.
+The following pod definition specifies an ephemeral volume called `v1`. <!-- Validated. JSH 9/30/16 -->
 
 ```json
 {
@@ -166,7 +166,7 @@ The following pod definition specifies an ephemeral volume called `v1`.
 
 ## IP-per-Pod Networking
 
-The following pod definition specifies a virtual (user) network named `my-virtual-network-name`.
+The following pod definition specifies a virtual (user) network named `my-virtual-network-name`. <!-- Validated. JSH 9/30/16 -->
 
 ```json
 {
@@ -183,7 +183,7 @@ The following pod definition specifies a virtual (user) network named `my-virtua
 }
 ```
 
-This pod declares a “web” endpoint that listens on port 80.
+This pod declares a “web” endpoint that listens on port 80. <!-- DOES NOT WORK. JSH 9/30/16 2:05PM -->
 
 ```json
 {
@@ -194,14 +194,14 @@ This pod declares a “web” endpoint that listens on port 80.
       "name": "sleep1",
       "exec": { "command": { "shell": "sleep 1000" } },
       "resources": { "cpus": 0.1, "mem": 32 },
-      "endpoints": [ { "name": "web", "containerPort": 80 } ]
+      "endpoints": [ { "name": "web", "containerPort": 80, "protocol": [ "http" ] } ]
     }
   ],
-  "networks": [ { "mode": "container", "name": "my-virtual-network-name" } ]
+  "networks": [ { "mode": "container" } ]
 }
 ```
 
-This pod adds a health check that references the “web” endpoint; mesos will execute an HTTP request against `http://<ip-address-of-the-pod>:80/ping`. 
+This pod adds a health check that references the “web” endpoint; mesos will execute an HTTP request against `http://<master-ip>:80/ping`. <!-- DOES NOT WORK. JSH 9/30/16 2:05PM -->
 
 ```json
 {
@@ -212,7 +212,7 @@ This pod adds a health check that references the “web” endpoint; mesos will 
       "name": "sleep1",
       "exec": { "command": { "shell": "sleep 1000" } },
       "resources": { "cpus": 0.1, "mem": 32 },
-      "endpoints": [ { "name": "web", "containerPort": 80 } ],
+      "endpoints": [ { "name": "web", "containerPort": 80, "protocol": [ "http" ] } ],
       "healthCheck": { "http": { "endpoint": "web", "path": "/ping" } }
     }
   ],
@@ -221,7 +221,7 @@ This pod adds a health check that references the “web” endpoint; mesos will 
 ```
 
 # Complete Pod 
-The following pod definition can serve as a reference to create more complicated pods.
+The following pod definition can serve as a reference to create more complicated pods. <!-- DOES NOT WORK. JSH 9/30/16 2:05PM -->
 
 ```
 {
@@ -280,10 +280,10 @@ The following pod definition can serve as a reference to create more complicated
       },
       "endpoints": [
         {
-          "name": "foo",
-          "containerPort": 0,
+          "name": "http-endpoint",
+          "containerPort": 80,
           "hostPort": 0,
-          "protocol": "tcp",
+          "protocol": [ "http" ],
           "labels": {}
         }
       ],
@@ -305,7 +305,7 @@ The following pod definition can serve as a reference to create more complicated
         "http": {
           "path": "/health",
           "scheme": "HTTP",
-          "endpoint": "httpEndpoint"
+          "endpoint": "http-endpoint"
         }
       },
       "volumeMounts": [
