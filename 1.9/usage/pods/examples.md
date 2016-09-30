@@ -183,7 +183,7 @@ The following pod definition specifies a virtual (user) network named `my-virtua
 }
 ```
 
-This pod declares a “web” endpoint that listens on port 80. <!-- DOES NOT WORK. JSH 9/30/16 2:05PM -->
+This pod declares a “web” endpoint that listens on port 80. <!-- Validated. JSH 9/30/16 3:23pm -->
 
 ```json
 {
@@ -197,11 +197,11 @@ This pod declares a “web” endpoint that listens on port 80. <!-- DOES NOT WO
       "endpoints": [ { "name": "web", "containerPort": 80, "protocol": [ "http" ] } ]
     }
   ],
-  "networks": [ { "mode": "container" } ]
+  "networks": [ { "mode": "container", "name": "my-virtual-network-name" } ]
 }
 ```
 
-This pod adds a health check that references the “web” endpoint; mesos will execute an HTTP request against `http://<master-ip>:80/ping`. <!-- DOES NOT WORK. JSH 9/30/16 2:05PM -->
+This pod adds a health check that references the “web” endpoint; mesos will execute an HTTP request against `http://<master-ip>:80/ping`. <!-- Validated. JSH 9/30/16 3:11pm -->
 
 ```json
 {
@@ -221,7 +221,7 @@ This pod adds a health check that references the “web” endpoint; mesos will 
 ```
 
 # Complete Pod 
-The following pod definition can serve as a reference to create more complicated pods. <!-- DOES NOT WORK. JSH 9/30/16 2:05PM -->
+The following pod definition can serve as a reference to create more complicated pods. <!-- Validated. JSH 9/30/16 3:11pm -->
 
 ```
 {
