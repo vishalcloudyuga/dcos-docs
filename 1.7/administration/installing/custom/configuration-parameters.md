@@ -25,7 +25,7 @@ This parameter specifies the type of storage backend to use for Exhibitor. You c
 *   `exhibitor_storage_backend: zookeeper`
     This option specifies a ZooKeeper instance for shared storage. If you use a ZooKeeper instance to bootstrap Exhibitor, this ZooKeeper instance must be separate from your DC/OS cluster. You must have at least 3 ZooKeeper instances running at all times for high availability. If you specify `zookeeper`, you must also specify these parameters.
     *   **exhibitor_zk_hosts**
-        This parameter specifies a comma-separated list (`<ZK_IP>:<ZK_PORT>, <ZK_IP>:<ZK_PORT>, <ZK_IP:ZK_PORT>`) of one or more ZooKeeper node IP and port addresses to use for configuring the internal Exhibitor instances. Exhibitor uses this ZooKeeper cluster to orchestrate it's configuration. Multiple ZooKeeper instances are recommended for failover in production environments. 
+        This parameter specifies a comma-separated list (`<ZK_IP>:<ZK_PORT>, <ZK_IP>:<ZK_PORT>, <ZK_IP:ZK_PORT>`) of one or more ZooKeeper node IP and port addresses to use for configuring the internal Exhibitor instances. Exhibitor uses this ZooKeeper cluster to orchestrate it's configuration. Multiple ZooKeeper instances are recommended for failover in production environments.
     *   **exhibitor_zk_path**
         This parameter specifies the filepath that Exhibitor uses to store data, including the `zoo.cfg` file.
 *   `exhibitor_storage_backend: aws_s3`
@@ -79,6 +79,8 @@ This option specifies that Mesos agents are used to discover the masters by givi
     *   **exhibitor_address** This required parameter specifies the location (preferably an IP address) of the load balancer in front of the masters. The load balancer must accept traffic on ports 8080, 5050, 80, and 443; and forward it to the same ports on the master (for example, 8080 on lb -> 8080 on one master, 5050 on lb -> 5050 on one master). The master should forward any new connections via round robin, and should avoid machines that do not respond to requests on port 5050 to ensure the master is up.
     *  **num_masters**
        This required parameter specifies the number of Mesos masters in your DC/OS cluster. It cannot be changed later. The number of masters behind the load balancer must never be greater than this number, though it can be fewer during failures.
+
+*Note*: On platforms like AWS where internal IPs are allocated dynamically, you should not use a static master list. If a master instance were to terminate for any reason, it could lead to cluster instability.
 
 ## Networking
 ### <a name="dns-search"></a>dns_search
