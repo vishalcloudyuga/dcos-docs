@@ -71,7 +71,7 @@ The following instructions demonstrate how to use Docker with OverlayFS on CentO
 1.  Configure systemd to run the Docker Daemon with OverlayFS:
 
     ```bash
-    $ sudo mkdir -p /etc/systemd/system/docker.service.d && sudo tee /etc/systemd/system/docker.service.d/override.conf <<- EOF
+    $ sudo mkdir -p /etc/systemd/system/docker.service.d && sudo tee /etc/systemd/system/docker.service.d/override.conf <<- 'EOF'
     [Service]
     ExecStart=
     ExecStart=/usr/bin/docker daemon --storage-driver=overlay -H fd://
