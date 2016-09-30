@@ -105,6 +105,10 @@ This method builds and launches a Docker container. For more information, see th
     **Tip:** This can take up to 15 minutes to complete.
 1. Visit [localhost](http://localhost:3000)
 
+#### Troubleshooting
+
+- If your build fails with an error (e.g. `npm ERR!     /website/npm-debug.log`), try deleting the `/dcos-docs/tmp` directory and re-running the `make` command. 
+
 
 ### Manual build
 
