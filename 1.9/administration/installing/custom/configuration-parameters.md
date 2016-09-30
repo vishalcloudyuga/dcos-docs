@@ -20,6 +20,36 @@ This parameter specifies a YAML nested list (`-`) of IPv4 addresses to your [pri
 ### bootstrap_url
 This required parameter specifies the URI path for the DC/OS installer to store the customized DC/OS build files. If you are using the automated DC/OS installer, you should specify `bootstrap_url: file:///opt/dcos_install_tmp` unless you have moved the installer assets. By default the automated DC/OS installer places the build files in `file:///opt/dcos_install_tmp`.
 
+### cluster_docker_credentials
+This parameter specifies a dictionary of Docker credentials to pass. 
+
+- If unset, the default is an empty credentials file is placed in the
+`/etc/mesosphere/docker_credentials` during DC/OS install. You can then use sysadmin scripts to edit the file and do a `systemctl restart dcos-mesos-slave` or `systemctl restart dcos-mesos-slave-public`.
+- You can also set as the `--docker_config` JSON [format](http://mesos.apache.org/documentation/latest/configuration/). In the `config.yaml` file you can write YAML and it will automatically be mapped to the JSON format for you. This will store the Docker credentials in the same location as the DC/OS internal configuration (`/opt/mesosphere`). If you need to update or change the configuration, you will have to create a new DC/OS internal configuration.
+
+You can use the following options to further configure the Docker credentials:
+
+*  **cluster_docker_credentials_dcos_owned** This parameter specifies whether to store the credentials file in `/opt/mesosphere` or `/etc/mesosphere/docker_credentials`.
+
+    *  `cluster_docker_credentials_dcos_owned: 'true'` The credentials file is stored in `/opt/mesosphere`.
+    
+        *  **cluster_docker_credentials_write_to_etc** This parameter specifies whether to write a cluster credentials file.
+        
+            *  `cluster_docker_credentials_write_to_etc: 'true'` Do not write a credentials file. This can be useful if overwriting your credentials file will cause problems (e.g. if it is part of a machine image or AMI). This is the default value.
+            *  `cluster_docker_credentials_write_to_etc: 'false'` Write a credentials file.
+            
+    *  `cluster_docker_credentials_dcos_owned: 'false'` The credentials file is stored in `/etc/mesosphere/docker_credentials`.
+
+*  **cluster_docker_credentials_enabled** This parameter specifies whether to pass the Mesos `--docker_config` option to Mesos.
+
+    *  `cluster_docker_credentials_enabled: 'true'` Pass the Mesos `--docker_config` option to Mesos.
+    *  `cluster_docker_credentials_enabled: 'false'` Do not pass the Mesos `--docker_config` option to Mesos.
+    
+For more information, see the [examples](#docker-credentials).
+
+### cluster_docker_registry_url
+This parameter specifies a custom URL that Mesos uses to pull Docker images from. If set, it will configure the Mesos' `--docker_registry` flag to the specified URL. This changes the default URL Mesos uses for pulling Docker images. By default `https://registry-1.docker.io` is used.
+
 ### cluster_name
 This parameter specifies the name of your cluster.
 
@@ -320,6 +350,37 @@ ssh_user: <username>
     https_proxy: https://<your_https_proxy>/
     no_proxy:
     - '*.int.example.com'
+```
+
+#### <a name="docker-credentials"></a>DC/OS cluster with three masters, an Exhibitor/ZooKeeper managed internally, custom Docker credentials, two private agents, and Google DNS
+
+```yaml
+    agent_list:
+    - <agent-private-ip-1>
+    - <agent-private-ip-2>
+    - <agent-private-ip-3>
+    # Use this bootstrap_url value unless you have moved the DC/OS installer assets.
+    bootstrap_url: file:///opt/dcos_install_tmp
+    cluster_docker_credentials:
+      auths:
+        'https://registry.example.com/v1/':
+          auth: foo
+          email: user@example.com
+    cluster_docker_credentials_dcos_owned: false
+    cluster_docker_registry_url: https://registry.example.com
+    cluster_name: <cluster-name>
+    master_discovery: static
+    master_list:
+    - <master-private-ip-1>
+    - <master-private-ip-2>
+    - <master-private-ip-3>
+    resolvers:
+    # You probably do not want to use these values since they point to public DNS servers.
+    # Instead use values that are more specific to your particular infrastructure.
+    - 8.8.4.4
+    - 8.8.8.8
+    ssh_port: 22
+    ssh_user: centos
 ```
 
  [1]: https://en.wikipedia.org/wiki/YAML
