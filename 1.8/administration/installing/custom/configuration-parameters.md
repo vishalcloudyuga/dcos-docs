@@ -4,7 +4,7 @@ nav_title: Config
 menu_order: 600
 ---
 
-These configuration parameters are specified in [YAML][1] format in your config.yaml file. During DC/OS installation the configuration file is used to generate a customized DC/OS build. 
+These configuration parameters are specified in [YAML][1] format in your config.yaml file. During DC/OS installation the configuration file is used to generate a customized DC/OS build.
 
 *  [Cluster Setup](#cluster-setup)
 *  [Security and Authentication](#security-and-authentication)
@@ -31,7 +31,7 @@ This parameter specifies the type of storage backend to use for Exhibitor. You c
 *   `exhibitor_storage_backend: zookeeper`
     This option specifies a ZooKeeper instance for shared storage. If you use a ZooKeeper instance to bootstrap Exhibitor, this ZooKeeper instance must be separate from your DC/OS cluster. You must have at least 3 ZooKeeper instances running at all times for high availability. If you specify `zookeeper`, you must also specify these parameters.
     *   **exhibitor_zk_hosts**
-        This parameter specifies a comma-separated list (`<ZK_IP>:<ZK_PORT>, <ZK_IP>:<ZK_PORT>, <ZK_IP:ZK_PORT>`) of one or more ZooKeeper node IP and port addresses to use for configuring the internal Exhibitor instances. Exhibitor uses this ZooKeeper cluster to orchestrate it's configuration. Multiple ZooKeeper instances are recommended for failover in production environments. 
+        This parameter specifies a comma-separated list (`<ZK_IP>:<ZK_PORT>, <ZK_IP>:<ZK_PORT>, <ZK_IP:ZK_PORT>`) of one or more ZooKeeper node IP and port addresses to use for configuring the internal Exhibitor instances. Exhibitor uses this ZooKeeper cluster to orchestrate it's configuration. Multiple ZooKeeper instances are recommended for failover in production environments.
     *   **exhibitor_zk_path**
         This parameter specifies the filepath that Exhibitor uses to store data, including the `zoo.cfg` file.
 *   `exhibitor_storage_backend: aws_s3`
@@ -79,6 +79,8 @@ This option specifies that Mesos agents are used to discover the masters by givi
     *  **num_masters**
        This required parameter specifies the number of Mesos masters in your DC/OS cluster. It cannot be changed later. The number of masters behind the load balancer must never be greater than this number, though it can be fewer during failures.
 
+*Note*: On platforms like AWS where internal IPs are allocated dynamically, you should not use a static master list. If a master instance were to terminate for any reason, it could lead to cluster instability.
+
 ### <a name="public-agent"></a>public_agent_list
 This parameter specifies a YAML nested list (`-`) of IPv4 addresses to your [public agent](/docs/1.8/overview/concepts/#public) host names.
 
@@ -86,19 +88,19 @@ This parameter specifies a YAML nested list (`-`) of IPv4 addresses to your [pub
 
 ### <a name="dcos-overlay-enable"></a>dcos_overlay_enable
 
-This parameter specifies whether to enable DC/OS overlay networks. 
+This parameter specifies whether to enable DC/OS overlay networks.
 
 *  `dcos_overlay_enable: 'false'` Do not enable the DC/OS overlay network.
 *  `dcos_overlay_enable: 'true'` Enable the DC/OS overlay network. This is the default value. When the overlay network is enabled you can also specify the following parameters:
 
-    *  `dcos_overlay_config_attempts` This parameter specifies how many failed configuration attempts are allowed before the overlay configuration modules stop trying to configure an overlay network. 
-    
+    *  `dcos_overlay_config_attempts` This parameter specifies how many failed configuration attempts are allowed before the overlay configuration modules stop trying to configure an overlay network.
+
         __Tip:__ The failures might be related to a malfunctioning Docker daemon.
-    
+
     *  `dcos_overlay_mtu` This parameter specifies the maximum transmission unit (MTU) of the Virtual Ethernet (vEth) on the containers that are launched on the overlay.
-    
+
     *  `dcos_overlay_network` This group of parameters define an overlay network for DC/OS.  The default configuration of DC/OS provides an overlay network named `dcos` whose YAML configuration is as follows:
-    
+
         ```
         dcos_overlay_network:
             vtep_subnet: 44.128.0.0/20
@@ -108,16 +110,16 @@ This parameter specifies whether to enable DC/OS overlay networks.
                 subnet: 9.0.0.0/8
                 prefix: 26
         ```
-        
-        *  `vtep_subnet` This parameter specifies a dedicated address space that is used for the VxLAN backend for the overlay network. This address space should not be routeable from outside the agents or master. 
+
+        *  `vtep_subnet` This parameter specifies a dedicated address space that is used for the VxLAN backend for the overlay network. This address space should not be routeable from outside the agents or master.
         *  `vtep_mac_oui` This parameter specifies the MAC address of the interface connecting to it in the public node.
-        *  __overlays__ 
+        *  __overlays__
             *  `name` This parameter specifies the canonical name (see [limitations](/docs/1.8/administration/overlay-networks/) for constraints on naming overlay networks).
             *  `subnet` This parameter specifies the subnet that is allocated to the overlay network.
-            *  `prefix` This parameter specifies the size of the subnet that is allocated to each agent and thus defines the number of agents on which the overlay can run. The size of the subnet is carved from the overlay subnet. 
-            
+            *  `prefix` This parameter specifies the size of the subnet that is allocated to each agent and thus defines the number of agents on which the overlay can run. The size of the subnet is carved from the overlay subnet.
+
  For more information see the [example](#overlay) and [documentation](/docs/1.8/administration/overlay-networks/).
- 
+
 ### <a name="dns-search"></a>dns_search
 This parameter specifies a space-separated list of domains that are tried when an unqualified domain is entered (e.g. domain searches that do not contain &#8216;.&#8217;). The Linux implementation of `/etc/resolv.conf` restricts the maximum number of domains to 6 and the maximum number of characters the setting can have to 256. For more information, see <a href="http://man7.org/linux/man-pages/man5/resolv.conf.5.html">man /etc/resolv.conf</a>.
 
@@ -146,9 +148,9 @@ This required parameter specifies a YAML nested list (`-`) of DNS resolvers for 
 
 ### use_proxy
 
-This parameters specifies whether to enable the DC/OS proxy. 
+This parameters specifies whether to enable the DC/OS proxy.
 
-*  `use_proxy: 'false'` Do not configure DC/OS [components](/docs/1.8/overview/components/) to use a custom proxy. This is the default value. 
+*  `use_proxy: 'false'` Do not configure DC/OS [components](/docs/1.8/overview/components/) to use a custom proxy. This is the default value.
 *  `use_proxy: 'true'` Configure DC/OS [components](/docs/1.8/overview/components/) to use a custom proxy. If you specify `use_proxy: 'true'`, you can also specify these parameters:
     **Important:** The specified proxies must be resolvable from the provided list of [resolvers](#resolvers).
     *  `http_proxy: <your_http_proxy>` This parameter specifies the HTTP proxy.
@@ -316,7 +318,7 @@ ssh_user: <username>
     use_proxy: 'true'
     http_proxy: http://<your_http_proxy>/
     https_proxy: https://<your_https_proxy>/
-    no_proxy: 
+    no_proxy:
     - '*.int.example.com'
 ```
 
