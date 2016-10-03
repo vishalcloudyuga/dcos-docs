@@ -1,0 +1,19 @@
+## What are your changes?
+
+## What type of changes does your doc introduce?
+- [ ] Bug fix
+- [ ] New feature 
+
+## What is the urgency level of this change?
+- [ ] Blocker
+- [ ] High
+- [ ] Medium
+
+## I have completed these items:
+- [ ] I have tested all commands and code snippets.
+- [ ] My doc follows the style guide: https://github.com/dcos/dcos-docs#contributing.
+
+Ping @emanic @sascala @joel-hamill for reviewing pull request changes.
+
+
+## If you included a comment with your commit, it appears here:
