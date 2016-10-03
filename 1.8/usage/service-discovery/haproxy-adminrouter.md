@@ -4,7 +4,7 @@ nav_title: Configure HAProxy
 menu_order: 61
 ---
 
-You can use HAPRoxy to set up an HTTP proxy in front of the DC/OS Admin Router.
+You can use HAProxy to set up an HTTP proxy in front of the DC/OS Admin Router.
  
 The HTTP Proxy must perform on-the-fly HTTP request and response header modification because DC/OS is not aware of the custom hostname and port that is being used by user agents to address the HTTP proxy.
 
