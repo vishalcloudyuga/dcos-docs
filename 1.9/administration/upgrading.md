@@ -178,4 +178,4 @@ $ sudo journalctl -u dcos-mesos-slave
 
 - Packages available in the DC/OS 1.8 Universe are newer than those in the DC/OS 1.8 Universe. Services are not automatically upgraded when  DC/OS 1.8 is installed because not all DC/OS services have upgrade paths that will preserve existing state.
 
-[advanced-install]: /docs/1.8/administration/installing/custom/advanced/
+[advanced-install]: /docs/1.9/administration/installing/custom/advanced/

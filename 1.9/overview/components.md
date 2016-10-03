@@ -66,7 +66,7 @@ You can view the DC/OS component details in the <a href="https://github.com/dcos
   </tr>
   <tr>
     <td>Exhibitor</td>
-    <td>This component (`dcos-exhibitor.service`) is the Exhibitor supervisor for Zookeeper. DC/OS uses Exhibitor, a project from <a href="https://github.com/Netflix/exhibitor">Netflix</a>, to manage and automate the deployment of <a href="/docs/1.8/overview/concepts/#exhibitorforzookeeper">ZooKeeper</a>.</td>
+    <td>This component (`dcos-exhibitor.service`) is the Exhibitor supervisor for Zookeeper. DC/OS uses Exhibitor, a project from <a href="https://github.com/Netflix/exhibitor">Netflix</a>, to manage and automate the deployment of <a href="/docs/1.9/overview/concepts/#exhibitorforzookeeper">ZooKeeper</a>.</td>
   </tr>
   <tr>
     <td>Generate resolv.conf</td>
@@ -82,11 +82,11 @@ You can view the DC/OS component details in the <a href="https://github.com/dcos
   </tr>
   <tr>
     <td>Job</td>
-    <td>This component (`dcos-metronome.service`) powers the DC/OS Jobs feature. For more information, see the <a href="/docs/1.8/usage/jobs/">documentation</a>.</td>
+    <td>This component (`dcos-metronome.service`) powers the DC/OS Jobs feature. For more information, see the <a href="/docs/1.9/usage/jobs/">documentation</a>.</td>
   </tr>
   <tr>
     <td>Layer 4 Load Balancer</td>
-    <td>This component (`dcos-minuteman.service`), also known as <a href="https://github.com/dcos/minuteman">Minuteman</a>, is the DC/OS Layer 4 Load Balancer that enables multi-tier microservices architectures. For more information, see the <a href="/docs/1.8/usage/service-discovery/load-balancing-vips/">documentation</a>.</td>
+    <td>This component (`dcos-minuteman.service`), also known as <a href="https://github.com/dcos/minuteman">Minuteman</a>, is the DC/OS Layer 4 Load Balancer that enables multi-tier microservices architectures. For more information, see the <a href="/docs/1.9/usage/service-discovery/load-balancing-vips/">documentation</a>.</td>
   </tr>
   <tr>
     <td>Logrotate Mesos Master</td>
@@ -106,15 +106,15 @@ You can view the DC/OS component details in the <a href="https://github.com/dcos
   </tr>
   <tr>
     <td>Mesos Agent</td>
-    <td>This component (`dcos-mesos-slave.service`) is the mesos-slave process for <a href="/docs/1.8/overview/concepts/#private">private</a> agent nodes.</td>
+    <td>This component (`dcos-mesos-slave.service`) is the mesos-slave process for <a href="/docs/1.9/overview/concepts/#private">private</a> agent nodes.</td>
   </tr>
   <tr>
     <td>Mesos Agent Public</td>
-    <td>This component (`dcos-mesos-slave-public.service`) is the mesos-slave process for <a href="/docs/1.8/overview/concepts/#public">public</a> agent nodes.</td>
+    <td>This component (`dcos-mesos-slave-public.service`) is the mesos-slave process for <a href="/docs/1.9/overview/concepts/#public">public</a> agent nodes.</td>
   </tr>
   <tr>
     <td>Mesos DNS</td>
-    <td>This component (`dcos-mesos-dns.service`) provides service discovery within the cluster. Mesos-DNS is the internal DNS service (`dcos-mesos-dns.service`) for the DC/OS cluster. <a href="/docs/1.8/overview/concepts/#mesosdns">Mesos-DNS</a> provides the namespace `$service.mesos` to all cluster hosts. For example, you can login to your leading mesos master with `ssh leader.mesos`.</td>
+    <td>This component (`dcos-mesos-dns.service`) provides service discovery within the cluster. Mesos-DNS is the internal DNS service (`dcos-mesos-dns.service`) for the DC/OS cluster. <a href="/docs/1.9/overview/concepts/#mesosdns">Mesos-DNS</a> provides the namespace `$service.mesos` to all cluster hosts. For example, you can login to your leading mesos master with `ssh leader.mesos`.</td>
   </tr>
   <tr>
     <td>History Service</td>
