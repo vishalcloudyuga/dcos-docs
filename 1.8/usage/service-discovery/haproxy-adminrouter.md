@@ -15,7 +15,7 @@ These instructions provide a tested [HAProxy](http://www.haproxy.org/) configura
 
 1.  Create an HAProxy configuration for DC/OS. This example is for a DC/OS cluster on AWS. For more information on HAProxy configuration parameters, see the [documentation](https://cbonte.github.io/haproxy-dconv/configuration-1.6.html#3).
 
-    ```text
+    ```
     global
       daemon
       log 127.0.0.1 local0
