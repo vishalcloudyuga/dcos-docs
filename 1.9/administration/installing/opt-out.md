@@ -29,8 +29,8 @@ Or
 
 Note that if you’ve already installed your cluster and would like to disable this in-place, you can go through an [upgrade][3] with the same parameter set.
 
-[1]: /docs/1.8/administration/installing/custom/cli/
-[2]: /docs/1.8/administration/installing/custom/advanced/
-[3]: /docs/1.8/administration/installing/custom/configuration-parameters/
-[4]: /docs/1.8/administration/installing/custom/configuration-parameters/
+[1]: /docs/1.9/administration/installing/custom/cli/
+[2]: /docs/1.9/administration/installing/custom/advanced/
+[3]: /docs/1.9/administration/installing/custom/configuration-parameters/
+[4]: /docs/1.9/administration/installing/custom/configuration-parameters/
 

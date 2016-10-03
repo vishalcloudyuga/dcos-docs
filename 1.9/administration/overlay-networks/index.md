@@ -35,7 +35,7 @@ The components of the overlay network interact in the following ways:
 
 - For intra-node IP discovery we use an overlay orchestrator called Virtual Network Service. This operator-facing system component is responsible for programming the overlay backend using a library called [lashup](https://github.com/dcos/lashup) that implements a gossip protocol to disseminate and coordinate overlay routing information among all Mesos agents in the DC/OS cluster.
 
-**Note:** Your network must adhere to the [DC/OS system requirements](https://dcos.io/docs/1.8/administration/installing/custom/system-requirements/) to use DC/OS overlay networks.
+**Note:** Your network must adhere to the [DC/OS system requirements](https://dcos.io/docs/1.9/administration/installing/custom/system-requirements/) to use DC/OS overlay networks.
 
 # Navstar DNS
 

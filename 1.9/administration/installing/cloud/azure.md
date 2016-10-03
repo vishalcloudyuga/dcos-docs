@@ -123,7 +123,7 @@ If you've created a new resource group in the deployment step, it is as easy as 
 - [Use your cluster][4]
 - [Scaling considerations][3]
 
-[1]: /docs/1.8/usage/cli/install/
+[1]: /docs/1.9/usage/cli/install/
 [3]: https://azure.microsoft.com/en-us/documentation/articles/best-practices-auto-scaling/
-[4]: /docs/1.8/usage/
-[10]: /docs/1.8/administration/user-management/
+[4]: /docs/1.9/usage/
+[10]: /docs/1.9/administration/user-management/
