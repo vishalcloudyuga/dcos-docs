@@ -171,4 +171,4 @@ Public agents:
 ### Template reference
 For the complete advanced configuration options, see the template reference [documentation](/docs/1.9/administration/installing/cloud/aws/advanced/template-reference/).
 
- [2]: /docs/1.8/usage/cli/install/
+ [2]: /docs/1.9/usage/cli/install/

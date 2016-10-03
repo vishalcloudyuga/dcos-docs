@@ -227,8 +227,8 @@ On each of your cluster nodes, use the following command to:
 - [CLI DC/OS Installation Guide][1]
 - [Advanced DC/OS Installation Guide][5]
 
-[1]: /docs/1.8/administration/installing/custom/cli/
-[2]: /docs/1.8/administration/installing/custom/system-requirements/install-docker-centos/
+[1]: /docs/1.9/administration/installing/custom/cli/
+[2]: /docs/1.9/administration/installing/custom/system-requirements/install-docker-centos/
 [3]: https://downloads.dcos.io/dcos/stable/dcos_generate_config.sh
-[4]: /docs/1.8/administration/installing/custom/gui/
-[5]: /docs/1.8/administration/installing/custom/advanced/
+[4]: /docs/1.9/administration/installing/custom/gui/
+[5]: /docs/1.9/administration/installing/custom/advanced/

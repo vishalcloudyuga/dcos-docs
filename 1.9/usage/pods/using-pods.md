@@ -13,7 +13,7 @@ Pods are configured via a JSON pod definition, which is similar to a [Marathon a
 **Note:** DC/OS reserves 32 MB and .1 CPUs per pod for overhead. Take this overhead into account when declaring resource needs for the containers in your pod.
 
 # Networking
-Pods only support the [DC/OS Universal containerizer runtime](https://dcos.io/docs/1.8/usage/containerizers/), which simplifies networking among containers. The containers of each pod instance share a network namespace and can communicate over localhost. 
+Pods only support the [DC/OS Universal containerizer runtime](https://dcos.io/docs/1.9/usage/containerizers/), which simplifies networking among containers. The containers of each pod instance share a network namespace and can communicate over localhost. 
 
 Containers in pods are created with endpoints. Other applications communicate with pods by addressing those endpoints. You can specify a default container network by using the CLI `dcos marathon` command. If you specify a container network without a name in a pod definition, it will be assigned to this default network.
 

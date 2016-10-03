@@ -63,8 +63,8 @@ DC/OS is installed in your environment by using a dynamically generated setup fi
 
 We recommend using CoreOS, matched with its correct versions and sensible defaults of Docker, filesystem, and other settings.
 
-[1]: /docs/1.8/usage/service-discovery/load-balancing-vips/
-[2]: /docs/1.8/usage/service-discovery/
+[1]: /docs/1.9/usage/service-discovery/load-balancing-vips/
+[2]: /docs/1.9/usage/service-discovery/
 [3]: http://mesos.apache.org/documentation/latest/attributes-resources/
 [4]: https://support.mesosphere.com/hc/en-us/articles/206474745-How-to-reserve-resources-for-certain-frameworks-in-Mesos-cluster-
-[5]: /docs/1.8/administration/installing/custom/convert-agent-type/
+[5]: /docs/1.9/administration/installing/custom/convert-agent-type/

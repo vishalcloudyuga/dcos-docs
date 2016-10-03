@@ -311,15 +311,15 @@ $ dcos package uninstall jenkins
 
   * [Jenkins project website][jenkins-website] (jenkins-ci.org)
   * [Jenkins service documentation][jenkins-service-docs] (mesosphere.com)
-  * [Marathon service documentation](https://docs.mesosphere.com/1.8/usage/service-guides/marathon/) (mesosphere.com)
+  * [Marathon service documentation](https://docs.mesosphere.com/1.9/usage/service-guides/marathon/) (mesosphere.com)
   * [Mesos plugin for Jenkins][jenkins-mesos-plugin] (github.com)
 
 [amazon-efs-console]: https://console.aws.amazon.com/efs/
 [azure-storage-account]: https://portal.azure.com/#create/Microsoft.StorageAccount-ARM
-[dcos-nfs-docs]: https://dcos.io/docs/1.8/administration/storage/nfs/
+[dcos-nfs-docs]: https://dcos.io/docs/1.9/administration/storage/nfs/
 [jenkins-mesos-plugin]: https://github.com/jenkinsci/mesos-plugin
 [jenkins-service-docs]: https://docs.mesosphere.com/manage-service/jenkins/
 [jenkins-website]: https://jenkins-ci.org
-[marathon-service-docs]: https://dcos.io/docs/1.8/usage/managing-services/install/
+[marathon-service-docs]: https://dcos.io/docs/1.9/usage/managing-services/install/
 [mesosphere-universe-jenkins]: https://github.com/mesosphere/universe/tree/version-2.x/repo/packages/J/jenkins
 [mount-file-share-azure]: https://azure.microsoft.com/en-us/documentation/articles/storage-how-to-use-files-linux/

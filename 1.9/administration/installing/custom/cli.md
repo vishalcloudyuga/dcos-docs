@@ -373,12 +373,12 @@ After DC/OS is installed and deployed across your cluster, you can add more agen
     18:17:14:: ====> 10.10.0.160:22 FAILED
     ```
 
- [2]: /docs/1.8/usage/cli/install/
- [4]: /docs/1.8/administration/installing/custom/system-requirements/
+ [2]: /docs/1.9/usage/cli/install/
+ [4]: /docs/1.9/administration/installing/custom/system-requirements/
  [5]: https://downloads.dcos.io/dcos/stable/dcos_generate_config.sh
- [6]: /docs/1.8/administration/installing/custom/configuration-parameters/
- [7]: /docs/1.8/administration/installing/custom/uninstall/
- [8]: /docs/1.8/usage/
- [9]: /docs/1.8/administration/installing/custom/troubleshooting/
- [10]: /docs/1.8/administration/user-management/
- [11]: /docs/1.8/administration/installing/custom/convert-agent-type/
+ [6]: /docs/1.9/administration/installing/custom/configuration-parameters/
+ [7]: /docs/1.9/administration/installing/custom/uninstall/
+ [8]: /docs/1.9/usage/
+ [9]: /docs/1.9/administration/installing/custom/troubleshooting/
+ [10]: /docs/1.9/administration/user-management/
+ [11]: /docs/1.9/administration/installing/custom/convert-agent-type/

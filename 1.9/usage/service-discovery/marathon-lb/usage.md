@@ -214,7 +214,7 @@ Now, if you navigate to the ELB public DNS address in your browser, you should s
 
 ![lb6](../img/lb6.jpg)
 
- [1]: /docs/1.8/administration/installing/
- [2]: /docs/1.8/usage/cli/install/
- [3]: /docs/1.8/administration/locate-public-agent/
- [4]: /docs/1.8/administration/access-node/sshcluster/
+ [1]: /docs/1.9/administration/installing/
+ [2]: /docs/1.9/usage/cli/install/
+ [3]: /docs/1.9/administration/locate-public-agent/
+ [4]: /docs/1.9/administration/access-node/sshcluster/
