@@ -41,9 +41,9 @@ The components of the overlay network interact in the following ways:
 
 Navstar maps IPs to names on your overlay network. During DNS lookup for a task’s IP, there are situations when it is unknown to the DNS server if the IP address stored in NetworkInfo is accessible or not. Three entries in Navstar DNS help to remedy this situation:
 
-* **taskname.marathon.agentip.dcos: agentip**: Provides the agent IP address.
-* **taskname.marathon.containerip.dcos: containerip**: Provides the container IP address.
-* **taskname.marathon.autoip.dcos: autoip**: Provides a best guess of a task's IP address.
+* **taskname.marathon.agentip.dcos.thisdcos.directory: agentip**: Provides the agent IP address.
+* **taskname.marathon.containerip.dcos.thisdcos.directory: containerip**: Provides the container IP address.
+* **taskname.marathon.autoip.dcos.thisdcos.directory: autoip**: Provides a best guess of a task's IP address.
 
 # Limitations
 * The DC/OS overlay network does not allow services to reserve IP addresses that result in ephemeral addresses for containers across multiple incarnations on the overlay network. This restriction ensures that a given client connects to the correct service.
