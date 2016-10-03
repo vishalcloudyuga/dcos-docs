@@ -39,7 +39,7 @@ After you have a valid TLS certificate, install the certificate on each master.
 Copy the certificate and private key to a well known location, such as under
 `/etc/ssl/certs`. 
 
-It's recommended that you run an nginx HAProxy in front of Admin Router. For more information, see the [documentation](/docs/1.8/usage/service-discovery/haproxy-adminrouter/).
+It's recommended that you run HAProxy in front of Admin Router. For more information, see the [documentation](/docs/1.8/usage/service-discovery/haproxy-adminrouter/).
 
 ### Private zone
 
