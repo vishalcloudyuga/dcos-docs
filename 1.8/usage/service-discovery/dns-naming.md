@@ -1,7 +1,7 @@
 ---
 post_title: Discovering Service DNS Names
 nav_tile: Discovering DNS Names
-menu_order: 1
+menu_order: 300
 ---
 You can get a comprehensive list of the apps being run on your DC/OS cluster nodes.
 

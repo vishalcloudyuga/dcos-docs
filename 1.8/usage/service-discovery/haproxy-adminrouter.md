@@ -1,10 +1,10 @@
 ---
 post_title: Configuring HAProxy in Front of Admin Router
-nav_title: Configure HAProxy
-menu_order: 61
+nav_title: HAProxy in Front of Admin Router
+menu_order: 400
 ---
 
-You can use HAProxy to set up an HTTP proxy in front of the DC/OS Admin Router.
+You can use HAProxy to set up an HTTP proxy in front of the DC/OS [Admin Router](/docs/1.8/overview/concepts/#adminrouter).
  
 The HTTP Proxy must perform on-the-fly HTTP request and response header modification because DC/OS is not aware of the custom hostname and port that is being used by user agents to address the HTTP proxy.
 
