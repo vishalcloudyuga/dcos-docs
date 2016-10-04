@@ -4,9 +4,9 @@ nav_title: Azure
 menu_order: 1
 ---
 
-This document explains how to install DC/OS by using the Azure Marketplace.
+This document explains how to install DC/OS 1.8 through the Azure Marketplace.
 
-You can alternatively skip the marketplace and install directly using the <a href="https://downloads.dcos.io/dcos/stable/azure.html" target="_blank">DC/OS templates for Azure Resource Manager</a>.
+You can alternatively skip the Azure Marketplace and install directly using the [Azure Resource Manager templates](https://downloads.dcos.io/dcos/stable/commit/e64024af95b62c632c90b9063ed06296fcf38ea5/azure.html) provided.
 
 TIP: To get support on Azure Marketplace-related questions, join the Azure Marketplace [Slack community](http://join.marketplace.azure.com).
 
