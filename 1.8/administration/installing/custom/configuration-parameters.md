@@ -159,7 +159,7 @@ This parameters specifies whether to enable the DC/OS proxy.
 
 For more information, see the [examples](#http-proxy).
 
-## <a name="performance-and-tuning"></a>Performance and Tuning
+## Performance and Tuning
 
 ### <a name="check-time"></a>check_time
 This parameter specifies whether to check if Network Time Protocol (NTP) is enabled during DC/OS startup. It recommended that NTP is enabled for a production environment.
