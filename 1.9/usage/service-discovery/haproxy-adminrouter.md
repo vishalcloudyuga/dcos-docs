@@ -4,7 +4,7 @@ nav_title: HAProxy in Front of Admin Router
 menu_order: 400
 ---
 
-You can use HAProxy to set up an HTTP proxy in front of the DC/OS [Admin Router](/docs/1.8/overview/concepts/#adminrouter).
+You can use HAProxy to set up an HTTP proxy in front of the DC/OS [Admin Router](/docs/1.9/overview/concepts/#adminrouter).
  
 The HTTP Proxy must perform on-the-fly HTTP request and response header modification because DC/OS is not aware of the custom hostname and port that is being used by user agents to address the HTTP proxy.
 
@@ -62,7 +62,7 @@ These instructions provide a tested [HAProxy](http://www.haproxy.org/) configura
       # perform server certificate verification (including hostname verification).
       # If you are using the community-supported version of DC/OS, you must 
       # configure Admin Router with a custom TLS server certificate, see 
-      # https://dcos.io/docs/1.8/administration/securing-your-cluster/. This step 
+      # https://dcos.io/docs/1.9/administration/securing-your-cluster/. This step 
       # is not required for Enterprise DC/OS.
       #
       # Explanation for the parameters in the following `server` definition line:
