@@ -36,9 +36,10 @@ These instructions provide a tested [HAProxy](http://www.haproxy.org/) configura
       # Bind on port 9090. HAProxy will listen on port 9090 on each 
       # available network for new HTTP connections.
       bind 0.0.0.0:9090
-      # Specify a different server certificate.
-      #
+      # Specify your own server certificate chain and associated private key.
+      # See https://cbonte.github.io/haproxy-dconv/configuration-1.6.html#5.1-crt
       # bind *:9091 ssl crt /path/to/browser-trusted.crt
+      #
       # Name of backend configuration for DC/OS.
       default_backend dcos
     
