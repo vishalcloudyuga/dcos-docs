@@ -12,7 +12,7 @@
 ## I have completed these items:
 - [ ] I have tested all commands and code snippets.
 - [ ] I have built locally and tested for broken links and formatting.
-- [ ] I have made this change for all affected versions (e.g. 1.7, 1.8, and 1.9)
+- [ ] I have made this change for all affected versions (e.g. 1.7, 1.8, and 1.9).
 - [ ] My doc follows the style guide: https://github.com/dcos/dcos-docs#contributing.
 
 Ping @emanic @sascala @joel-hamill for reviewing pull request changes.
