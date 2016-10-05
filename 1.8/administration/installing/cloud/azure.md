@@ -6,7 +6,7 @@ menu_order: 1
 
 This document explains how to install DC/OS 1.8 through the Azure Marketplace.
 
-You can alternatively skip the Azure Marketplace and install directly using the [Azure Resource Manager templates](https://downloads.dcos.io/dcos/stable/commit/e64024af95b62c632c90b9063ed06296fcf38ea5/azure.html) provided.
+You can alternatively skip the Azure Marketplace and install directly using the [Azure Resource Manager templates](https://downloads.dcos.io/dcos/stable/azure.html) provided.
 
 TIP: To get support on Azure Marketplace-related questions, join the Azure Marketplace [Slack community](http://join.marketplace.azure.com).
 
@@ -16,7 +16,7 @@ TIP: To get support on Azure Marketplace-related questions, join the Azure Marke
 
 To [use](/docs/1.8/usage/) all of the services offered in DC/OS, you should choose at least five Mesos Agents using `Standard_D2` [Virtual Machines](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/).
 
-Selecting smaller-sized VMs is not recommended and selecting fewer VMs will likely cause certain resource-intensive services such as distributed datastores not to work properly, ranging from installation issues to operational limitations.
+Note that selecting fewer VMs will likely cause certain resource-intensive services such as distributed datastores not to work properly, ranging from installation issues to operational limitations.
 
 ## Software
 
