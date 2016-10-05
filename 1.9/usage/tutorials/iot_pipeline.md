@@ -146,5 +146,4 @@ Next, you'll perform real-time analytics on the stream of tweets coming in from 
  [12]: /docs/1.9/usage/service-discovery/marathon-lb/
  [13]: https://github.com/mesosphere/tweeter
  [14]: ../img/tweeter.png
- [15]: ../img/network-tab.png
  [16]: ../img/top-tweeters.png
