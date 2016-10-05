@@ -29,12 +29,12 @@ This tutorial demonstrates how you can build a complete IoT pipeline on DC/OS in
 
 **Prerequisites:**
 
-*  [DC/OS](/docs/1.8/administration/installing/) installed with at least 5 [private agents][6] and 1 [public agent][6].
-*  [DC/OS CLI](/docs/1.8/usage/cli/install/) installed.
+*  [DC/OS](/docs/1.9/administration/installing/) installed with at least 5 [private agents][6] and 1 [public agent][6].
+*  [DC/OS CLI](/docs/1.9/usage/cli/install/) installed.
 *  The public IP address of your public agent node. After you have installed DC/OS with a public agent node declared, you can [navigate to the public IP address][9] of your public agent node.
 
 # Install the DC/OS services you'll need
-From the DC/OS web interface [**Universe**](/docs/1.8/usage/webinterface/#universe) tab, install Cassandra, Kafka, Marathon-LB, and Zeppelin.
+From the DC/OS web interface [**Universe**](/docs/1.9/usage/webinterface/#universe) tab, install Cassandra, Kafka, Marathon-LB, and Zeppelin.
 
 __Tip:__ You can also install DC/OS packages from the DC/OS CLI with the [`dcos package install`][11] command.
 
@@ -126,24 +126,24 @@ Next, you'll perform real-time analytics on the stream of tweets coming in from 
 
 3.  Run the Load Dependencies step to load the required libraries into Zeppelin.
 
-4.  Run the Spark Streaming step, which reads the tweet stream from ZooKeeper and puts them into a temporary table that can be queried using SparkSQL.
+4.  Run the Spark Streaming step, which reads the tweet stream from ZooKeeper and puts them into a temporary table that can be queried using SparkSQL. 
 
 5.  Run the Top Tweeters SQL query, which counts the number of tweets per user using the table created in the previous step. The table updates continuously as new tweets come in, so re-running the query will produce a different result every time.
 
 ![Top Tweeters][16]
 
- [1]: https://docs.mesosphere.com/1.8/usage/service-guides/cassandra/
- [2]: https://docs.mesosphere.com/1.8/usage/service-guides/kafka
- [3]: https://docs.mesosphere.com/1.8/usage/service-guides/spark/
- [4]: https://docs.mesosphere.com/1.8/usage/service-guides/zeppelin/
+ [1]: https://docs.mesosphere.com/1.9/usage/service-guides/cassandra/
+ [2]: https://docs.mesosphere.com/1.9/usage/service-guides/kafka
+ [3]: https://docs.mesosphere.com/1.9/usage/service-guides/spark/
+ [4]: https://docs.mesosphere.com/1.9/usage/service-guides/zeppelin/
  [5]: https://github.com/mesosphere/marathon-lb
- [6]: /docs/1.8/overview/concepts/
- [7]: /docs/1.8/administration/installing/cloud/
- [8]: /docs/1.8/administration/installing/custom/
- [9]: /docs/1.8/administration/locate-public-agent/
+ [6]: /docs/1.9/overview/concepts/
+ [7]: /docs/1.9/administration/installing/cloud/
+ [8]: /docs/1.9/administration/installing/custom/
+ [9]: /docs/1.9/administration/locate-public-agent/
  [10]: ../img/webui-universe-install.png
- [11]: /docs/1.8/usage/cli/command-reference/
- [12]: /docs/1.8/usage/service-discovery/marathon-lb/
+ [11]: /docs/1.9/usage/cli/command-reference/
+ [12]: /docs/1.9/usage/service-discovery/marathon-lb/
  [13]: https://github.com/mesosphere/tweeter
  [14]: ../img/tweeter.png
  [15]: ../img/network-tab.png
