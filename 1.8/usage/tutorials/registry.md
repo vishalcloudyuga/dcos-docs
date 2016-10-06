@@ -103,9 +103,7 @@ The Docker registry itself requires the certificate and the private key. You can
     $ for i in $MESOS_AGENTS; do ssh "$i" -oStrictHostKeyChecking=no "sudo mv ./domain.* /etc/privateregistry/certs/"; done
     ```
 
-1.  Configure the Docker daemon on all machines that require registry access to trust the self-signed certificate. 
-
-1.  Create a folder that matches the FQDN in the `certs.d` folder and copy the certificate to the folder using the name `ca.crt`. You can use the following script to create the folders and copy the files into the appropriate locations:
+1.  Configure the Docker daemon on all machines that require registry access to trust the self-signed certificate. Create a folder that matches the FQDN in the `certs.d` folder and copy the certificate to the folder using the name `ca.crt`. You can use the following script to create the folders and copy the files into the appropriate locations:
 
     ```bash
     $ MESOS_AGENTS=$(curl -sS master.mesos:5050/slaves | jq '.slaves[] | .hostname' | tr -d '"');
