@@ -167,7 +167,6 @@ $ ntptime
 $ adjtimex -p
 $ timedatectl
 ```
-Although it is not recommended, you can disable the startup check for NTP by setting the `check_time: 'false'` in the [configuration file](/docs/1.8/administration/installing/custom/configuration-parameters/#check-time).
 
 ## Bootstrap node
 
