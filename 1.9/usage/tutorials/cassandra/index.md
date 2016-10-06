@@ -35,7 +35,7 @@ In this tutorial you will learn how to:
 ## Prerequisites
 
 - A running DC/OS cluster with three nodes, each with 2 CPUs and 2 GB of RAM available.
-- [DC/OS CLI](/docs/1.9/usage/cli/install/) installed.
+- [DC/OS CLI](/docs/1.8/usage/cli/install/) installed.
 
 ## Installing Cassandra
 
@@ -144,13 +144,13 @@ core@ip-10-0-6-153 ~ $
 You are now inside your DC/OS cluster and can connect to the Cassandra cluster directly. Connect to the cluster using the cqlsh client:
 
 ```bash
-core@ip-10-0-6-153 ~ $ docker run cassandra:2.2.5 cqlsh <HOST>
+core@ip-10-0-6-153 ~ $ docker run -ti cassandra:3.0.7 cqlsh --cqlversion="3.4.0" <HOST>
 ```
 
-Replace `<HOST>` with the actual host, which that we retrieved by running `dcos cassandra connection`, above:
+Replace `<HOST>` with the actual host, which we retrieved by running `dcos cassandra connection`, above:
 
 ```bash
-core@ip-10-0-6-153 ~ $ docker run -ti cassandra:2.2.5 cqlsh 10.0.2.66
+core@ip-10-0-6-153 ~ $ docker run -ti cassandra:3.0.7 cqlsh --cqlversion="3.4.0" 10.0.2.66
 cqlsh>
 ```
 
@@ -200,7 +200,7 @@ cqlsh> SELECT * FROM demo.map;
 $ dcos package uninstall cassandra
 ```
 
-Use the [framework cleaner](/docs/1.9/usage/managing-services/uninstall/#framework-cleaner) script to remove your Cassandra instance from Zookeeper and to destroy all data associated with it. The script requires several arguments, the values for which are derived from your service name:
+Use the [framework cleaner](/docs/1.8/usage/managing-services/uninstall/#framework-cleaner) script to remove your Cassandra instance from Zookeeper and to destroy all data associated with it. The script requires several arguments, the values for which are derived from your service name:
 
 `framework-role` is `cassandra-role`
 `framework-principal` is `cassandra-principal`
