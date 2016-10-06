@@ -293,6 +293,43 @@ ssh_port: '<port-number>'
 ssh_user: <username>
 ```
 
+#### <a name="overlay"></a>DC/OS cluster with three masters, an Exhibitor/ZooKeeper managed internally, two DC/OS overlay networks, two private agents, and Google DNS
+
+```yaml
+    agent_list:
+    - <agent-private-ip-1>
+    - <agent-private-ip-2>
+    - <agent-private-ip-3>
+    # Use this bootstrap_url value unless you have moved the DC/OS installer assets.
+    bootstrap_url: file:///opt/dcos_install_tmp
+    cluster_name: <cluster-name>
+    master_discovery: static
+    master_list:
+    - <master-private-ip-1>
+    - <master-private-ip-2>
+    - <master-private-ip-3>
+    resolvers:
+    # You probably do not want to use these values since they point to public DNS servers.
+    # Instead use values that are more specific to your particular infrastructure.
+    - 8.8.4.4
+    - 8.8.8.8
+    ssh_port: 22
+    ssh_user: centos
+    dcos_overlay_enable: true
+    dcos_overlay_mtu: 9001
+    dcos_overlay_config_attempts: 6
+    dcos_overlay_network:
+      vtep_subnet: 44.128.0.0/20
+      vtep_mac_oui: 70:B3:D5:00:00:00
+      overlays:
+        - name: dcos
+          subnet: 9.0.0.0/8
+          prefix: 26
+        - name: dcos-1
+          subnet: 192.168.0.0/16
+          prefix: 24
+```
+
 #### <a name="http-proxy"></a>DC/OS cluster with three masters, an Exhibitor/ZooKeeper managed internally, a custom HTTP proxy, two private agents, and Google DNS
 
 ```yaml
