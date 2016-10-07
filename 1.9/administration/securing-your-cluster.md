@@ -39,7 +39,7 @@ After you have a valid TLS certificate, install the certificate on each master.
 Copy the certificate and private key to a well known location, such as under
 `/etc/ssl/certs`. 
 
-It's recommended that you run HAProxy in front of Admin Router. For more information, see the [documentation](/docs/1.8/administration/haproxy-adminrouter/).
+It's recommended that you run HAProxy in front of Admin Router. For more information, see the [documentation](/docs/1.9/administration/haproxy-adminrouter/).
 
 ### Private zone
 
@@ -64,7 +64,7 @@ CloudFormation templates, a large number of ports are exposed to the Internet
 for the public zone. In production systems, it is unlikely that you would
 expose all of these ports. It's recommended that you close all ports except
 80 and 443 (for HTTP/HTTPS traffic) and use
-[Marathon-LB](/docs/1.8/usage/service-discovery/marathon-lb/) with HTTPS for
+[Marathon-LB](/docs/1.9/usage/service-discovery/marathon-lb/) with HTTPS for
 managing ingress traffic.
 
 ### Typical AWS deployment
@@ -89,4 +89,4 @@ Authenticated users are authorized to perform arbitrary actions in their
 cluster. That is, there is currently no fine-grained access control in DC/OS
 besides having access or not having access to services.
 
-See the [Security Administrator's Guide](/docs/1.8/administration/id-and-access-mgt/) for more information.
+See the [Security Administrator's Guide](/docs/1.9/administration/id-and-access-mgt/) for more information.
