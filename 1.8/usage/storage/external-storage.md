@@ -12,7 +12,7 @@ Marathon applications normally lose their state when they terminate and are rela
 
 An external storage service enables your apps to be more fault-tolerant. If a host fails, Marathon reschedules your app on another host, along with its associated data, without user intervention.
 
-## Specifying an External Volume
+## Configuring External Volumes
 
 To use external volumes with DC/OS, you must enable them during installation.
 
