@@ -180,7 +180,7 @@ driver.
 
 ### Implicit Volumes
 
-The default implicit volume size is 16 GB. If you are using the Mesos containerizer, you can modify this default for a particular volume by setting `volumes[x].external.size`. You cannot modify this default for a particular volume if you are using the Docker containerizer. For both the Mesos and Docker containerizers, however, you can modify the default size for all implicit volumes by [modifying the REX-Ray configuration][12].
+The default implicit volume size is 16 GB. If you are using the Mesos containerizer, you can modify this default for a particular volume by setting `volumes[x].external.size`. You cannot modify this default for a particular volume if you are using the Docker containerizer. For both the Mesos and Docker containerizers, however, you can modify the default size for all implicit volumes by [modifying the REX-Ray configuration][4].
 
 ## Potential Pitfalls
 
@@ -209,4 +209,3 @@ The default implicit volume size is 16 GB. If you are using the Mesos containeri
  [9]: https://rexray.readthedocs.io/en/v0.3.3/user-guide/schedulers/
  [10]: https://github.com/emccode/dvdcli#extra-options
  [11]: https://rexray.readthedocs.io/en/v0.3.3/user-guide/schedulers/#docker-containerizer-with-marathon
- [12]: https://rexray.readthedocs.io/en/v0.3.3/user-guide/config/
