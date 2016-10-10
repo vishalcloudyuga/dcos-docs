@@ -11,7 +11,7 @@ In this tutorial you will learn how to deploy a WordPress and MySQL installation
 
 The goal of this tutorial is to deploy a simple WordPress website that consists of two distinct services: a WordPress installation (`/wordpress`) and a MySQL database (`/mysql`). The web server should be reachable outside of the cluster, but the database should only be accessible internally to the cluster.
 
-[Marathon LB](../marathon_lb/) can help you connect the outside world to your app, but how can you reliably enable WordPress to communicate with the MySQL instance?
+[Marathon-LB](/docs/1.7/usage/service-discovery/marathon-lb/) can help you connect the outside world to your app, but how can you reliably enable WordPress to communicate with the MySQL instance?
 
 Thanks to **VIPs** you are only required to specify a virtual address for the database service and then use it as a static configuration in your web app. The traffic is automatically load balanced from the app to the service. Also, when instances of the database service die (due to power failures or other issues), new connections will automatically be directed to healthy instances of the service with a very short reaction time.
 
