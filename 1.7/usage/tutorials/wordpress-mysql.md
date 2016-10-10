@@ -11,7 +11,7 @@ In this tutorial you will learn how to deploy a WordPress and MySQL installation
 
 The goal of this tutorial is to deploy a simple WordPress website that consists of two distinct services: a WordPress installation (`/wordpress`) and a MySQL database (`/mysql`). The web server should be reachable outside of the cluster, but the database should only be accessible internally to the cluster.
 
-[Marathon LB](../marathon_lb/) can help you connect the outside world to your app, but how can you reliably enable WordPress to communicate with the MySQL instance?
+[Marathon-LB](/docs/1.7/usage/service-discovery/marathon-lb/) can help you connect the outside world to your app, but how can you reliably enable WordPress to communicate with the MySQL instance?
 
 Thanks to **VIPs** you are only required to specify a virtual address for the database service and then use it as a static configuration in your web app. The traffic is automatically load balanced from the app to the service. Also, when instances of the database service die (due to power failures or other issues), new connections will automatically be directed to healthy instances of the service with a very short reaction time.
 
@@ -184,8 +184,6 @@ From the DC/OS web interface, click the **Services** tab and select **Marathon**
 
 You can also assign a VIP to your application via the DC/OS Marathon web interface without directly editing your JSON app definition. The values you enter in the field below are translated into the appropriate `portMapping` (for Docker containers in Bridge mode) or `portDefinitions` entry in your application definition. Toggle to `JSON mode` as you create your app to see and edit your application definition.
 
-![Marathon Ports](../img/ui-marathon-ports.gif)
-
 ## Deploying via the DC/OS CLI
 
 - Paste your application definition into a JSON file, such as `vip-tutorial.json`.
@@ -221,4 +219,4 @@ At this address, you will be greeted by the WordPress setup page. From there, yo
 
 ## Conclusions
 
-**Note:** For the purposes of this tutorial, we haven't touched on how to ensure that the MySQL data can be persisted. Head over to the [Cassandra](../tutorials/cassandra) tutorial to learn how to deploy stateful applications in DC/OS.
+**Note:** For the purposes of this tutorial, we haven't touched on how to ensure that the MySQL data can be persisted. Head over to the [Cassandra](/docs/1.7/usage/tutorials/cassandra) tutorial to learn how to deploy stateful applications in DC/OS.
