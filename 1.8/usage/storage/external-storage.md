@@ -202,7 +202,7 @@ The default implicit volume size is 16 GB. If you are using the Mesos containeri
 
  [1]: /docs/1.8/administration/installing/custom/cli/
  [2]: /docs/1.8/administration/installing/custom/advanced/
- [3]: http://rexray.readthedocs.io/en/v0.3.3-rc1/user-guide/storage-providers/
+ [3]: http://rexray.readthedocs.io/en/v0.3.3/user-guide/storage-providers/
  [4]: https://rexray.readthedocs.io/en/v0.3.3/user-guide/config/
  [5]: https://mesosphere.github.io/marathon/docs/application-basics.html
  [6]: https://rexray.readthedocs.io/en/v0.3.3/user-guide/config/#data-directories
@@ -210,4 +210,4 @@ The default implicit volume size is 16 GB. If you are using the Mesos containeri
  [8]: https://rexray.readthedocs.io/en/v0.3.3/user-guide/schedulers/
  [9]: https://github.com/emccode/dvdcli#extra-options
  [10]: https://rexray.readthedocs.io/en/v0.3.3/user-guide/schedulers/#docker-containerizer-with-marathon
- [11]: https://github.com/emccode/rexray/blob/master/.docs/user-guide/config.md
+ [11]: https://rexray.readthedocs.io/en/v0.3.3/user-guide/config/
