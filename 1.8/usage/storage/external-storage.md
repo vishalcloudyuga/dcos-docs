@@ -18,15 +18,25 @@ To use external volumes with DC/OS, you must enable them during installation.
 
 Install DC/OS using the [CLI][1] or [Advanced][2] installation method with these special configuration settings:
 
-1.  Specify the `rexray_config_method` parameter in your `genconf/config.yaml` file.
+1.  Specify your REX-Ray config in the `rexray_config` parameter in your `genconf/config.yaml` file. Consult the [REX-Ray documentation][3] for more information on how to create your configuration.
     
-        rexray_config_method: file
-        rexray_config_filename: path/to/rexray.yaml
-        
-    
-    **Note:** The path you give for `rexray_config_filename` must be relative to your `genconf` directory.
+        rexray_config:
+          rexray:
+            loglevel: info
+            modules:
+              default-admin:
+                host: tcp://127.0.0.1:61003
+            storageDrivers:
+            - ec2
+            volume:
+              unmount:
+                ignoreusedcount: true
 
-2.  If your cluster will be hosted on Amazon Web Services, assign an IAM role to your agent nodes with the following policy:
+    This example configures REX-Ray to use Amazon's EBS for storage and IAM for authorization.
+    
+    **Note:** Setting `rexray.modules.default-admin.host` to `tcp://127.0.0.1:61003` is recommended to avoid port conflicts with tasks running on agents.
+
+2.  If your cluster will be hosted on Amazon Web Services and REX-Ray is configured to use IAM, assign an IAM role to your agent nodes with the following policy:
     
         {
             "Version": "2012-10-17",
@@ -55,17 +65,7 @@ Install DC/OS using the [CLI][1] or [Advanced][2] installation method with these
         }
         
     
-    Consult the [REX-Ray documentation][3] for more information.
-
-3.  Create a `genconf/rexray.yaml` file with your REX-Ray configuration specified. The following `rexray.yaml` file is configured for Amazon's EBS. Consult the [REX-Ray documentation][4] for more information.
-    
-        rexray:
-          loglevel: info
-          storageDrivers:
-            - ec2
-          volume:
-            unmount:
-              ignoreusedcount: true
+    Consult the [REX-Ray documentation][4] for more information.
         
 
 ## Scaling your App
@@ -202,8 +202,8 @@ The default implicit volume size is 16 GB. If you are using the Mesos containeri
 
  [1]: /docs/1.8/administration/installing/custom/cli/
  [2]: /docs/1.8/administration/installing/custom/advanced/
- [3]: http://rexray.readthedocs.io/en/v0.3.3/user-guide/storage-providers/
- [4]: https://rexray.readthedocs.io/en/v0.3.3/user-guide/config/
+ [3]: https://rexray.readthedocs.io/en/v0.3.3/user-guide/config/
+ [4]: http://rexray.readthedocs.io/en/v0.3.3/user-guide/storage-providers/
  [5]: https://mesosphere.github.io/marathon/docs/application-basics.html
  [6]: https://rexray.readthedocs.io/en/v0.3.3/user-guide/config/#data-directories
  [7]: #implicit-vol
