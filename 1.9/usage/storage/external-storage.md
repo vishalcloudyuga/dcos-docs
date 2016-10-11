@@ -115,7 +115,7 @@ In the app definition above:
 
 *   `name` is the name that your volume driver uses to look up your volume. When your task is staged on an agent, the volume driver queries the storage service for a volume with this name. If one does not exist, it is [created implicitly][8]. Otherwise, the existing volume is reused.
 
-*   The `external.options["dvdi/driver"]` option specifies which Docker volume driver to use for storage. If you are running Marathon on DC/OS, this value is probably `rexray`. [Learn more about REX-Ray][9].
+*   The `external.options["dvdi/driver"]` option specifies which Docker volume driver to use for storage. The only Docker volume driver provided with DC/OS is `rexray`. [Learn more about REX-Ray][9].
 
 *   You can specify additional options with `container.volumes[x].external.options[optionName]`. The dvdi provider for Mesos containers uses `dvdcli`, which offers the options [documented here][10]. The availability of any option depends on your volume driver.
 
