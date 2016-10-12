@@ -82,6 +82,12 @@ You can install and run DC/OS services on a datacenter without internet access w
 
 # <a name="build"></a>Installing a selected set of Universe packages
 
+#### Prerequisites
+
+*   Git:
+    *   **OS X:** Get the installer from [Git downloads](http://git-scm.com/download/mac).
+    *   **Unix/Linux:** See these <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">installation instructions</a>.
+
 To install your own set of packages you must build a customized local Universe Docker image. 
 
 1.  Clone the Universe repository:
