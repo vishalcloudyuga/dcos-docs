@@ -11,7 +11,7 @@ You can install and run DC/OS services on a datacenter without internet access w
 
 #### Prerequisites
 
-*   DC/OS cluster
+*   DC/OS is [installed](/docs/1.9/administration/installing/)
 *   8.5 GB of disk space
 
 # <a name="default"></a>Installing the default Universe packages
