@@ -54,6 +54,8 @@ These instructions explain how to set up an SSH connection to your DC/OS cluster
             ```
             
             **Tip:** To find the agent ID, select the **Nodes** tab in the DC/OS [web interface](/docs/1.8/usage/webinterface) and click **Details**. 
+            
+            ![Web interface node ID](/docs/1.8/administration/access-node/img/ssh-node-id.png)
 
 
 ### <a name="windows"></a>SSH to your DC/OS cluster on Windows
