@@ -12,11 +12,12 @@ You can install and run DC/OS services on a datacenter without internet access w
 #### Prerequisites
 
 *   DC/OS is [installed](/docs/1.9/administration/installing/)
+*   Secure Shell (SSH) must be enabled on all nodes
 *   8.5 GB of disk space
 
 # <a name="default"></a>Installing the default Universe packages
 
-1.  Download the [local-universe][1] container to each of your masters.
+1.  [SSH](/docs/1.9/administration/access-node/sshcluster/) to the master nodes and download the [local-universe][1] container to each of your masters.
     
     **Tip:** The `local-universe.tar.gz` file size is 2 GB or more.
 
@@ -26,7 +27,9 @@ You can install and run DC/OS services on a datacenter without internet access w
     $ docker load < local-universe.tar.gz
     ```  
 
-3.  Add the [dcos-local-universe-http.service][2] definition to each of your masters at `/etc/systemd/system/dcos-local-universe-http.service` and then start it.
+1.  Download the [dcos-local-universe-http.service][2] definition. 
+
+3.  Add the `dcos-local-universe-http.service` definition to each of your masters at `/etc/systemd/system/dcos-local-universe-http.service` and then start it.
     
     ```bash
     $ cp dcos-local-universe-http.service /etc/systemd/system/dcos-local-universe-http.service
@@ -34,7 +37,9 @@ You can install and run DC/OS services on a datacenter without internet access w
     $ systemctl start dcos-local-universe-http
     ```
 
-4.  Add the [dcos-local-universe-registry.service][3] definition to each of your masters at `/etc/systemd/system/dcos-local-universe-registry.service` and then start it.
+1.  Download the [dcos-local-universe-registry.service][3] definition.
+
+4.  Add the `dcos-local-universe-registry.service` definition to each of your masters at `/etc/systemd/system/dcos-local-universe-registry.service` and then start it.
     
     ```bash
     $ cp dcos-local-universe-registry.service /etc/systemd/system/dcos-local-universe-registry.service
@@ -43,12 +48,12 @@ You can install and run DC/OS services on a datacenter without internet access w
     ``` 
 
 5.  Remove the DC/OS Universe repository from a host that has the DC/OS CLI installed. The Universe repository is installed by default with the CLI.
-
-    **Tip:**  You can also remove repositories by clicking **System** -> **Repositories** in the DC/OS UI.
     
     ```bash
     $ dcos package repo remove Universe
     ```
+    
+    **Tip:** You can also add or remove repositories by using the DC/OS web interface. Simply go to **System > Overview > Repositories**.
 
 6.  Add the local repository by using the DC/OS CLI.
     
@@ -56,13 +61,17 @@ You can install and run DC/OS services on a datacenter without internet access w
     $ dcos package repo add local-universe http://master.mesos:8082/repo
     ```    
 
-7.  To pull from this new repository, you must setup the Docker daemon on every agent to have a valid SSL certificate. To do this, on every agent in your cluster, run the following:
+7.  To pull from this new repository, you must setup the Docker daemon on every agent to have a valid SSL certificate. For each agent node:
+
+    1.  [SSH](/docs/1.9/administration/access-node/sshcluster/) to your agents node.
     
-    ```bash
-    $ mkdir -p /etc/docker/certs.d/master.mesos:5000
-    $ curl -o /etc/docker/certs.d/master.mesos:5000/ca.crt http://master.mesos:8082/certs/domain.crt
-    $ systemctl restart docker
-    ``` 
+    1.  Run the following commands:
+    
+        ```bash
+        $ mkdir -p /etc/docker/certs.d/master.mesos:5000
+        $ curl -o /etc/docker/certs.d/master.mesos:5000/ca.crt http://master.mesos:8082/certs/domain.crt
+        $ systemctl restart docker
+        ``` 
     
     **Tip:** You can use the instructions for insecure registries, instead of this step, however we don't recommend this.
     
