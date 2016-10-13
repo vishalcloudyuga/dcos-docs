@@ -22,7 +22,7 @@ A bootstrap node is required to run the scripts and to bootstrap the DC/OS clust
 
 1.  Create the bootstrap node using the Google Cloud Console. In these examples we used a [n1-standard-1](https://cloud.google.com/compute/docs/machine-types) instance running CentOS 7 with a 10 GB persistent disk in `zone europe-west1-c`. The bootstrap node must have "Allow full access to all Cloud APIs" in the Identity and API access section. Also enable Block project-wide SSH keys in the SSH Keys section. Create the instance.
 
-1.  After creating the boot instance, start the instance and run the following from the shell. These commands install prerequisite software on your bootstrap node.
+1.  After creating the bootstrap instance, start the instance and run the following from the shell. These commands install prerequisite software on your bootstrap node.
 
     ```bash
     $ sudo gcloud components update &&
@@ -30,8 +30,8 @@ A bootstrap node is required to run the scripts and to bootstrap the DC/OS clust
     sudo yum install epel-release &&
     sudo yum install python-pip &&
     sudo pip install -U pip &&
-    sudo pip install apache-libcloud &&
-    sudo pip install docker-py &&
+    sudo pip install 'apache-libcloud==1.2.1' &&
+    sudo pip install 'docker-py==1.9.0' &&
     sudo yum install git ansible
     ```
 
@@ -54,7 +54,7 @@ You must create the RSA public/private keypairs to allow passwordless logins via
 1.  Open RSA pub key:
 
     ```bash
-    $ sudo vi ~/.ssh/id_rsa.pub
+    $ vi ~/.ssh/id_rsa.pub
     ```
 
     You should see something like this:
@@ -104,13 +104,13 @@ You must create the RSA public/private keypairs to allow passwordless logins via
 1.  Install the Docker package.
 
     ```bash
-    $ sudo yum install docker-engine
+    $ sudo yum install docker-engine-1.11.2
     ```
 
 1.  Add following changes to `/usr/lib/systemd/system/docker.service`.
 
     ```bash
-    ExecStart=/usr/bin/docker daemon -H fd:// --graph="/mnt/docker-data" --storage-driver=overlay
+    ExecStart=/usr/bin/docker daemon --storage-driver=overlay
     ```
 
 1.  Reload systemd.
@@ -145,7 +145,7 @@ You must create the RSA public/private keypairs to allow passwordless logins via
     $ cd dcos-gce
     ```
 
-1.  Review and customize the `dcos_gce/group_vars/all`. You should review `project`, `subnet`, `login_name`, `bootstrap_public_ip`, and `zone`.
+1.  Review and customize the `dcos_gce/group_vars/all`. You should review `project`, `subnet`, `login_name`, `bootstrap_public_ip`, and `zone`. To install DC/OS v1.7 ensure dcos_installer_download_path = "https://downloads.dcos.io/dcos/EarlyAccess/commit/14509fe1e7899f439527fb39867194c7a425c771/{{ dcos_installer_filename }}?_ga=1.2991607.674486911.1475259096/"
 
 1.  Insert following into `~/.ansible.cfg` to stop host key checking.
 
@@ -159,7 +159,7 @@ You must create the RSA public/private keypairs to allow passwordless logins via
     [ssh_connection]
     ssh_args = -o ControlMaster=auto -o ControlPersist=60s -o UserKnownHostsFile=/dev/null
     ```
-Ensure The IP address for master0 in ./hosts is the next consecutive IP from bootstrap_public_ip.
+Ensure The IP address for master0 in dcos_gce/hosts is the next consecutive IP from bootstrap_public_ip, e.g. if bootstrap_public_ip = 1.2.3.4 then ensure master0 = 1.2.3.5
 
 1.  To create and configure the master nodes run this command:
 
@@ -182,7 +182,7 @@ Ensure The IP address for master0 in ./hosts is the next consecutive IP from boo
 
 ## <a name="configure"></a>Configurable parameters
 
-- File `./hosts` is an Ansible inventory file. Text wrapped by brackets `[]` represents a group name and individual entries after the group name represent hosts in that group.
+- File `dcos_gce/hosts` is an Ansible inventory file. Text wrapped by brackets `[]` represents a group name and individual entries after the group name represent hosts in that group.
 
 - The `[masters]` group contains node names and IP addresses for the master nodes. In the supplied file, the host name is `master0` and the IP address `10.132.0.3` is assigned to `master0`. **YOU MUST CHANGE** the IP address for `master0` for your network. You can create multiple entries, for example `master1`, `master2` etc. Each node must have a unique IP address.
 
@@ -202,7 +202,7 @@ You must customize these for your environment.
 Specify your project ID. Default: `trek-trackr`.
 
 ### subnet
-Specify your network. Default: `default-6f68d4d6fabcb680`.
+Specify your network. Default: `default`.
 
 ### login_name
 Specify the login name used for accessing each GCE instance. Default: `ajazam`.
@@ -221,7 +221,7 @@ You can optionally change these parameters to modify the behaviour of the instal
 Specify the size of the master node boot disk. Default 10 GB.
 
 ### master_machine_type
-Specify the GCE instance type used for the master nodes. Default: `n1-standard-1`.
+Specify the GCE instance type used for the master nodes. Default: `n1-standard-2`.
 
 ### master_boot_disk_type
 Specify the master boot disk type. Default: `pd-standard`.
@@ -230,7 +230,7 @@ Specify the master boot disk type. Default: `pd-standard`.
 Specify the size of the agent boot disk. Default 10 GB.
 
 ### agent_machine_type
-Specify the GCE instance type used for the agent nodes. Default: `n1-standard-1`.
+Specify the GCE instance type used for the agent nodes. Default: `n1-standard-2`.
 
 ### agent_boot_disk_type
 Specify the agent boot disk type. Default: `pd-standard`.
@@ -252,10 +252,10 @@ Specify the number appended to the text *agent* is used to define the hostname o
 Specify the location of the gcloudbin binary. Default: `/usr/local/bin/gcloud`.
 
 ### image
-Specify the disk image used on the master and agent. Default: `/centos-cloud/centos-7-v20160606`.
+Specify the disk image used on the master and agent. Default: `/centos-cloud/centos-7-v20160921`.
 
 ### bootstrap_public_port
-Specify the port on the bootstrap node which is used to fetch the dcos installer from each of the master and agent nodes. Default: `8080`.
+Specify the port on the bootstrap node which is used to fetch the DC/OS installer from each of the master and agent nodes. Default: `8080`.
 
 ### cluster_name
 Specify the name of the DC/OS cluster. Default: `cluster_name`.
@@ -267,7 +267,7 @@ Do not change this parameter. It is required by the Google Cloud SDK.
 Specify the filename for the DC/OS installer. Default `dcos_generate_config.sh`.
 
 ### dcos_installer_download_path
-Specify the location of where the dcos installer is available from [dcos.io](https://dcos.io). Default: `https://downloads.dcos.io/dcos/EarlyAccess/commit/14509fe1e7899f439527fb39867194c7a425c771/{{ dcos_installer_filename }}`. The value of `{{ dcos_installer_file }}` is described above.
+Specify the location of where the DC/OS installer is available from [dcos.io](https://dcos.io). Default: `https://downloads.dcos.io/dcos/stable/{{ dcos_installer_filename }}`. The value of `{{ dcos_installer_file }}` is described above.
 
 ### home_directory
 Specify the home directory for your logins. Default: `/home/{{ login_name }}`. The value of `{{ login_name }}` is described above.
