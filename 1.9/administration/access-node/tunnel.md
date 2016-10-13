@@ -114,7 +114,7 @@ DC/OS Tunnel provides you with full access to the DNS, masters, and agents from 
 * [SSH access](/docs/1.9/administration/access-node/sshcluster/) (key authentication only).
 * [The OpenVPN client](https://openvpn.net/index.php/open-source/downloads.html) for VPN functionality.
 
-**Note:** Only Linux and OS X are supported currently.
+**Note:** Only Linux and macOS are supported currently.
 
 ## Example Application
 
@@ -221,7 +221,7 @@ $ curl mygroupmyapp.marathon.l4lb.thisdcos.directory:555
 $ curl _myport._myapp.mygroup._tcp.marathon.mesos
 ```
 
-The VPN client attempts to auto-configure DNS, but this functionality does not work on Mac OSX. To use the VPN client on OSX, [add the DNS servers](https://support.apple.com/kb/PH18499?locale=en_US) that DC/OS Tunnel instructs you to use.
+The VPN client attempts to auto-configure DNS, but this functionality does not work on macOS. To use the VPN client on macOS, [add the DNS servers](https://support.apple.com/kb/PH18499?locale=en_US) that DC/OS Tunnel instructs you to use.
 
 When you use the VPN, you are virtually within your cluster. You can access
 your master and agent nodes directly:
