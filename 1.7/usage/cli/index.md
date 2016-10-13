@@ -1,8 +1,10 @@
 ---
 post_title: CLI
 nav_title: CLI
-menu_order: 2
+menu_order: 10
 ---
+
+**Important:** DC/OS 1.8 introduces binary CLIs for Linux, Windows, and Mac. The install script is replaced with a simple binary CLI. The 1.8 CLI is compatible with DC/OS 1.6.1 forward. For more information, see the [documentation](/docs/1.8/usage/cli/install/).
 
 You can use the DC/OS command-line interface (CLI) to manage your cluster nodes, install DC/OS packages, inspect the cluster state, and administer the DC/OS service subcommands. You can install the CLI from the DC/OS web interface.
 

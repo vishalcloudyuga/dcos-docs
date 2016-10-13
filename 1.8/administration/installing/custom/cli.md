@@ -47,7 +47,7 @@ The DC/OS installation creates these folders:
 
 # Configure your cluster
 
-1. Create a directory named `genconf` on your bootstrap node and navigate to it.
+1. Create a directory named `genconf` on your bootstrap node.
 
     ```bash
     $ mkdir -p genconf
@@ -148,6 +148,7 @@ The DC/OS installation creates these folders:
     # Use this bootstrap_url value unless you have moved the DC/OS installer assets.
     bootstrap_url: file:///opt/dcos_install_tmp
     cluster_name: <cluster-name>
+    exhibitor_storage_backend: <storage-backend>
     master_discovery: static
     master_list:
     - <master-private-ip-1>
@@ -306,7 +307,7 @@ To install DC/OS:
 
 6.  Monitor Exhibitor and wait for it to converge at `http://<master-public-ip>:8181/exhibitor/v1/ui/index.html`.
 
-    **Tip:** This process can take about 10 minutes. During this time you will see the Master nodes become visible on the Exhibitor consoles and come online, eventually showing a green light.
+    __Tip:__ If you encounter errors such as `Time is marked as bad`, `adjtimex`, or `Time not in sync` during Post-Flight, verify that Network Time Protocol (NTP) is enabled on all nodes. For more information, see the [system requirements](/docs/1.8/administration/installing/custom/system-requirements/#port-and-protocol).
 
     ![alt text](../img/chef-zk-status.png)
 

@@ -2,7 +2,7 @@
 post_title: System Requirements
 menu_order: 000
 ---
-<!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
+
 
 # Hardware Prerequisites
 
@@ -91,7 +91,7 @@ Here are the agent node hardware requirements.
     $ sudo yum upgrade -y
     ```
 
-*   On RHEL 7 and CentOS 7, firewalld must be stopped and disabled. It is a known <a href="https://github.com/docker/docker/issues/16137" target="_blank">Docker issue</a> that firewalld interacts poorly with Docker. For more information, see the <a href="https://docs.docker.com/v1.6/installation/centos/#firewalld" target="_blank">Docker CentOS firewalld</a> documentation.
+*   On RHEL 7 and CentOS 7, firewalld must be stopped and disabled. It is a known <a href="https://github.com/docker/docker/issues/16137" target="_blank">Docker issue</a> that firewalld interacts poorly with Docker. For more information, see the <a href="https://github.com/docker/docker/blob/v1.6.2/docs/sources/installation/centos.md#firewalld" target="_blank">Docker CentOS firewalld</a> documentation.
 
     ```bash
     $ sudo systemctl stop firewalld && sudo systemctl disable firewalld
@@ -160,9 +160,12 @@ Alternatively, you can SSH as the root user.
 
 ## Bootstrap node
 
-The bootstrap node is a permanent part of your cluster and is required for DC/OS recovery. The leader state and leader election of your Mesos masters is maintained in Exhibitor ZooKeeper. Before installing DC/OS, you must ensure that your bootstrap node has the following prerequisites.
+Before installing DC/OS, you must ensure that your bootstrap node has the following prerequisites.
 
-**Important:** The bootstrap node must be separate from your cluster nodes.
+**Important:** 
+
+* If you specify `exhibitor_storage_backend: zookeeper`, the bootstrap node is a permanent part of your cluster. With `exhibitor_storage_backend: zookeeper` the leader state and leader election of your Mesos masters is maintained in Exhibitor ZooKeeper on the bootstrap node. For more information, see the configuration parameter [documentation](/docs/1.7/administration/installing/custom/configuration-parameters/).
+* The bootstrap node must be separate from your cluster nodes.
 
 ### DC/OS setup file
 
