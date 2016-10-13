@@ -9,7 +9,7 @@ When developing services on DC/OS, you may find it helpful to access your cluste
 **Warning:** DC/OS Tunnel is appropriate for development, debugging, and testing only. Do not use DC/OS Tunnel in production.
 
 # SOCKS
-DC/OS Tunnel can run a SOCKS proxy over SSH to the cluster. SOCKS proxies work for any protocol, but your service must be configured to use the proxy, which runs on port 1080 by default.
+DC/OS Tunnel can run a SOCKS proxy over SSH to the cluster. SOCKS proxies work for any protocol, but your client must be configured to use the proxy, which runs on port 1080 by default.
 
 # HTTP
 
@@ -19,7 +19,7 @@ The HTTP proxy can run in two modes: transparent and standard.
 In transparent mode, the HTTP proxy runs as superuser on port 80 and does not require modification to your application. Access URLs by appending the `mydcos.directory` domain. You can also [use DNS SRV records as if they were URLs](#srv). The HTTP proxy cannot currently access HTTPS in transparent mode.
 
 ## Standard Mode
-Though you must configure your service to use the HTTP proxy in standard mode, it does not have any of the limitations of transparent mode. As in transparent mode, you can use [DNS SRV](#srv) records as URLs.
+Though you must configure your client to use the HTTP proxy in standard mode, it does not have any of the limitations of transparent mode. As in transparent mode, you can use [DNS SRV](#srv) records as URLs.
 
 <a name="srv"></a>
 ## SRV Records
