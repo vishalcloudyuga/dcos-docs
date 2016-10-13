@@ -5,18 +5,9 @@ menu_order: 100
 
 You can quickly get up and running with the advanced DC/OS templates.
 
-# System requirements
+# Prerequisites
 
-### Hardware
-
-An Amazon EC2 <a href="https://aws.amazon.com/ec2/pricing/" target="_blank">m3.xlarge</a> instance. Selecting smaller-sized VMs is not recommended, and selecting fewer VMs will likely cause certain resource-intensive services, such as distributed datastores, to not work properly.
-
-### Software
-
-- The DC/OS advanced AWS [templates](/docs/1.8/administration/installing/cloud/aws/advanced/template-reference/).
-- An Amazon Web Services account with root [IAM](https://aws.amazon.com/iam/) privileges. Advanced privileges are required to install the advanced templates. Contact your AWS admin for more information.
-- AWS [Command Line Interface](https://aws.amazon.com/cli/)
-- The CLI JSON processor [jq](https://github.com/stedolan/jq/wiki/Installation)
+See the AWS DC/OS advanced template [system requirements](/docs/1.8/administration/installing/cloud/aws/advanced/system-requirements/).
 
 # Quick Start
 You can quickly get up and running with the DC/OS advanced templates.
@@ -66,7 +57,7 @@ Use the `zen.sh` script to create the Zen template dependencies. These dependenc
     echo "Public SubnetId: $public_subnet"
     ```
 
-1.  Run the script from the AWS CLI with a single argument, `STACK_NAME`. This argument is used to tag the AWS resources created. For example, to add the `dcos`tag:
+1.  Run the script from the CLI with a single argument, `STACK_NAME`. This argument is used to tag the AWS resources created. For example, to add the `dcos` tag:
 
     ```bash
     $ bash ./zen.sh dcos
@@ -84,7 +75,7 @@ Use the `zen.sh` script to create the Zen template dependencies. These dependenc
 
     Use these dependency values as input to create your stack in CloudFormation in the next steps.
 
-## Launch the DC/OS advanced template on CloudFormation
+## <a name="launch"></a>Launch the DC/OS advanced template on CloudFormation
 
 1.  Go to [CloudFormation](https://console.aws.amazon.com/cloudformation/home) and click **Create Stack**.
 1.  On the **Select Template** page, upload the [Zen](/docs/1.8/administration/installing/cloud/aws/advanced/template-reference/#zen) template from your workstation and click **Next**.
@@ -93,6 +84,7 @@ Use the `zen.sh` script to create the Zen template dependencies. These dependenc
     ![AWS UI](../img/aws-advanced-1.png)
 
     *  **Stack name** Specify the cluster name.
+    *  **CustomAMI** Optional: Specify the AMI ID. For more information, see [Installing Using a Custom AMI](/docs/1.8/administration/installing/cloud/aws/advanced/aws-ami).
     *  **InternetGateway** Specify the `InternetGatewayID` output value from the `zen.sh` script. The Internet Gateway ID must be attached to the VPC. This Internet Gateway will be used by all nodes for outgoing internet access.
     *  **KeyName** Specify your AWS EC2 Key Pair.
     *  **MasterInstanceType** Specify the Amazon EC2 instance type. The <a href="https://aws.amazon.com/ec2/pricing/" target="_blank">m3.xlarge</a> instance type is recommended.
@@ -144,17 +136,17 @@ Launch the DC/OS web interface by entering the master hostname:
 
     ![DC/OS dashboard](../img/ui-dashboard.gif)
 
-1.  Click the dropup menu on the lower-left side to install the DC/OS [Command-Line Interface (CLI)][2]. You must install the CLI to administer your DCOS cluster.
+1.  Click the dropup menu on the lower-left side to install the DC/OS [Command-Line Interface (CLI)][2]. You must install the CLI to administer your DC/OS cluster.
 
     ![install CLI](../img/ui-dashboard-install-cli.gif)
 
 ## Next steps
 
-Now that your advanced template DC/OS installation is up and running you can
+Now that your advanced template DC/OS installation is up and running you can add more agent nodes.
 
 ### Add more agent nodes
 
-You can add more agent nodes by creating a new stack by using the [private agent](https://downloads.dcos.io/dcos/EarlyAccess/cloudformation/advanced-priv-agent.json) or [public agent](https://downloads.dcos.io/dcos/EarlyAccess/cloudformation/advanced-pub-agent.json) templates. These templates create agents which are then attached to the `PrivateAgentStack` or `PublicAgentStack` as a part of an AutoScalingGroup.
+You can add more agent nodes by creating a new stack by using the [private agent](/docs/1.8/administration/installing/cloud/aws/advanced/template-reference/#private-agent) or [public agent](/docs/1.8/administration/installing/cloud/aws/advanced/template-reference/#public-agent) templates. These templates create agents which are then attached to the `PrivateAgentStack` or `PublicAgentStack` as a part of an AutoScalingGroup.
 
 Use the output values from the `zen.sh` script and your Master and Infra stacks. These new agent nodes will automatically be added to your DC/OS cluster.
 
@@ -176,6 +168,7 @@ Public agents:
 *  **PublicAgentSecurityGroup** Specify the security group ID for public agents. This group should have limited external access. You can find this value in the **Outputs** tab of the Infrastructure stack (`<stack-name>-Infrastructure-<stack-id>`).
 *  **PublicSubnet** Specify the `Public SubnetId` output value from the `zen.sh` script. This subnet ID will be used by all public agents.
 
-For all of the advanced configuration options, see the template reference [documentation](/docs/1.8/administration/installing/cloud/aws/advanced/template-reference/).
+### Template reference
+For the complete advanced configuration options, see the template reference [documentation](/docs/1.8/administration/installing/cloud/aws/advanced/template-reference/).
 
  [2]: /docs/1.8/usage/cli/install/

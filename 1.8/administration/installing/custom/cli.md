@@ -1,7 +1,7 @@
 ---
 post_title: CLI DC/OS Installation Guide
 nav_title: CLI
-menu_order: 3
+menu_order: 200
 ---
 
 The automated CLI installer provides a guided installation of DC/OS from the command line. With this method you can choose from the complete set of DC/OS configuration options.
@@ -10,19 +10,44 @@ This installation method uses a bootstrap node to administer the DC/OS installat
 
 The DC/OS installation creates these folders:
 
-| Folder                                  | Description                                                                                                                                            |
-|-----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `/opt/mesosphere`                       | Contains all the DC/OS binaries, libraries, cluster configuration. Do not modify.                                                                      |
-| `/etc/systemd/system/dcos.target.wants` | Contains the systemd services which start the things that make up systemd. They must live outside of `/opt/mesosphere` because of systemd constraints. |
-| `/etc/systemd/system/dcos.<units>`      | Contains copies of the units in `/etc/systemd/system/dcos.target.wants`. They must be at the top folder as well as inside `dcos.target.wants`.         |
-| `/var/lib/zookeeper`                    | Contains the [ZooKeeper](/docs/1.8/overview/concepts/#zookeeper) data.                                                                                      |
-| `/var/lib/docker`                       | Contains the Docker data.                                                                                                                              |
-| `/var/lib/dcos`                         | Contains the DC/OS data.                                                                                                                               |
-| `/var/lib/mesos`                        | Contains the Mesos data.                                                                                                                               |
+<table class="table">
+  <tr>
+    <th>Folder</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>/opt/mesosphere</code></td>
+    <td>Contains all the DC/OS binaries, libraries, cluster configuration. Do not modify.</td>
+  </tr>
+  <tr>
+    <td><code>/etc/systemd/system/dcos.target.wants</code></td>
+    <td>Contains the systemd services which start the things that make up systemd. They must live outside of `/opt/mesosphere` because of systemd constraints.</td>
+  </tr>
+  <tr>
+    <td><code>/etc/systemd/system/dcos.&lt;units&gt;</code></td>
+    <td>Contains copies of the units in `/etc/systemd/system/dcos.target.wants`. They must be at the top folder as well as inside `dcos.target.wants`.</td>
+  </tr>
+  <tr>
+    <td><code>/var/lib/zookeeper</code></td>
+    <td>Contains the [ZooKeeper](/docs/1.8/overview/concepts/#zookeeper) data.</td>
+  </tr>
+  <tr>
+    <td><code>/var/lib/docker</code></td>
+    <td>Contains the Docker data. </td>
+  </tr>
+  <tr>
+    <td><code>/var/lib/dcos</code></td>
+    <td>Contains the DC/OS data.</td>
+  </tr>
+  <tr>
+    <td><code>/var/lib/mesos</code></td>
+    <td>Contains the Mesos data.</td>
+  </tr>
+</table>
 
 # Configure your cluster
 
-1. Create a directory named `genconf` on your bootstrap node and navigate to it.
+1. Create a directory named `genconf` on your bootstrap node.
 
     ```bash
     $ mkdir -p genconf
@@ -108,7 +133,7 @@ The DC/OS installation creates these folders:
 
     In this step you create a YAML configuration file that is customized for your environment. DC/OS uses this configuration file during installation to generate your cluster installation files.
 
-    You can use this template to get started. This template specifies 3 Mesos masters, 5 Mesos agents, and SSH configuration specified. If your servers are installed with a domain name in your `/etc/resolv.conf`, you should add `dns_search` to your `config.yaml` file. For parameters descriptions and configuration examples, see the [documentation][6].
+    You can use this template to get started. This template specifies 3 masters, 5 [private](/docs/1.8/overview/concepts/#private) agents, 1 [public](/docs/1.8/overview/concepts/#public) agent, and SSH configuration specified. If your servers are installed with a domain name in your `/etc/resolv.conf`, you should add `dns_search` to your `config.yaml` file. For parameters descriptions and configuration examples, see the [documentation][6].
 
     **Tip:** If Google DNS is not available in your country, you can replace the Google DNS servers `8.8.8.8` and `8.8.4.4` with your local DNS servers.
 
@@ -123,19 +148,20 @@ The DC/OS installation creates these folders:
     # Use this bootstrap_url value unless you have moved the DC/OS installer assets.
     bootstrap_url: file:///opt/dcos_install_tmp
     cluster_name: <cluster-name>
+    exhibitor_storage_backend: <storage-backend>
     master_discovery: static
     master_list:
     - <master-private-ip-1>
     - <master-private-ip-2>
     - <master-private-ip-3>
+    public_agent_list:
+    - <public-agent-private-ip>
     resolvers:
     - 8.8.4.4
     - 8.8.8.8
     ssh_port: 22
     ssh_user: <username>
     ```
-
-    **Important:** You cannot use an NFS mount for Exhibitor storage with the automated command line installation method. To use an NFS mount for Exhibitor storage (`exhibitor_storage_backend: shared_filesystem`), you must use the [advanced installation method][3].
 
 3.  Copy your private SSH key to `genconf/ssh_key`. For more information, see the [ssh_key_path][6] parameter.
 
@@ -148,48 +174,17 @@ The DC/OS installation creates these folders:
 
 In this step you create a custom DC/OS build file on your bootstrap node and then install DC/OS across your cluster nodes with SSH. With this installation method you create a bootstrap server that uses your SSH key and connects to every node to automate the deployment.
 
-You can view all of the automated command line installer options with the `--help` flag:
+**Tip:**
 
-```bash
-$ sudo bash dcos_generate_config.sh --help
-Running mesosphere/dcos-genconf docker with BUILD_DIR set to /home/centos/genconf
-usage:
-Install DC/OS
-
-dcos_installer [-h] [-f LOG_FILE] [--hash-password HASH_PASSWORD] [-v]
-[--web | --genconf | --preflight | --deploy | --postflight | --uninstall | --validate-config | --test]
-
-Environment Settings:
-
-  PORT                  Set the :port to run the web UI
-  CHANNEL_NAME          ADVANCED - Set build channel name
-  BOOTSTRAP_ID          ADVANCED - Set bootstrap ID for build
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -v, --verbose         Verbose log output (DEBUG).
-  --offline             Do not install preflight prerequisites on CentOS7,
-                        RHEL7 in web mode
-  --web                 Run the web interface.
-  --genconf             Execute the configuration generation (genconf).
-  --preflight           Execute the preflight checks on a series of nodes.
-  --install-prereqs     Install preflight prerequisites. Works only on CentOS7
-                        and RHEL7.
-  --deploy              Execute a deploy.
-  --postflight          Execute postflight checks on a series of nodes.
-  --uninstall           Execute uninstall on target hosts.
-  --validate-config     Validate the configuration in config.yaml
-  --test                Performs tests on the dcos_installer application
-```
-
-**Tip:** If something goes wrong and you want to rerun your setup, use these cluster [cleanup instructions][7].
+- You can view all of the automated command line installer options with the `dcos_generate_config.sh --help` flag.
+- If something goes wrong and you want to rerun your setup, use these cluster [cleanup instructions][7].
 
 To install DC/OS:
 
 1.  Download the [DC/OS installer][5] to your root directory.
 
     ```bash
-    $ curl -O https://downloads.dcos.io/dcos/EarlyAccess/dcos_generate_config.sh
+    $ curl -O https://downloads.dcos.io/dcos/stable/dcos_generate_config.sh
     ```
 
 1.  From your home directory, run the DC/OS installer shell script on your bootstrapping master nodes to generate a customized DC/OS build. The setup script extracts a Docker container that uses the generic DC/OS install files to create customized DC/OS build files for your cluster. The build files are output to `./genconf/serve/`.
@@ -312,7 +307,7 @@ To install DC/OS:
 
 6.  Monitor Exhibitor and wait for it to converge at `http://<master-public-ip>:8181/exhibitor/v1/ui/index.html`.
 
-    **Tip:** This process can take about 10 minutes. During this time you will see the Master nodes become visible on the Exhibitor consoles and come online, eventually showing a green light.
+    __Tip:__ If you encounter errors such as `Time is marked as bad`, `adjtimex`, or `Time not in sync` during Post-Flight, verify that Network Time Protocol (NTP) is enabled on all nodes. For more information, see the [system requirements](/docs/1.8/administration/installing/custom/system-requirements/#port-and-protocol).
 
     ![alt text](../img/chef-zk-status.png)
 
@@ -347,7 +342,7 @@ It is recommended that you save your DC/OS installer file immediately after inst
 # Next Steps
 
 - [Add users to your cluster][10]
-- [Add a public agent][11]
+- [Add a public agent post-installation][11]
 - [Install the DC/OS Command-Line Interface (CLI)][2]
 - [Troubleshooting DC/OS installation][9]
 - [Use your cluster][8]
@@ -380,12 +375,11 @@ After DC/OS is installed and deployed across your cluster, you can add more agen
     ```
 
  [2]: /docs/1.8/usage/cli/install/
- [3]: /docs/1.8/administration/installing/custom/advanced/
  [4]: /docs/1.8/administration/installing/custom/system-requirements/
- [5]: https://downloads.dcos.io/dcos/EarlyAccess/dcos_generate_config.sh
+ [5]: https://downloads.dcos.io/dcos/stable/dcos_generate_config.sh
  [6]: /docs/1.8/administration/installing/custom/configuration-parameters/
  [7]: /docs/1.8/administration/installing/custom/uninstall/
  [8]: /docs/1.8/usage/
  [9]: /docs/1.8/administration/installing/custom/troubleshooting/
  [10]: /docs/1.8/administration/user-management/
- [11]: /docs/1.8/administration/installing/custom/create-public-agent/
+ [11]: /docs/1.8/administration/installing/custom/convert-agent-type/

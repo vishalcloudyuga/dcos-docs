@@ -114,6 +114,8 @@ If you are doing a cloud installation on [AWS](/docs/1.8/administration/installi
 If you are doing a cloud installation on [Azure](/docs/1.8/administration/installing/cloud/azure/), you currently cannot disable authentication. This will be added in a future release along with other
 options to customize authentication.
 
+Note that if you’ve already installed your cluster and would like to disable this in-place, you can go through an upgrade with the same parameter set.
+
 ## Ad Blockers and the DC/OS UI
 
 During testing, we have observed issues with loading the DC/OS UI login page
@@ -122,7 +124,7 @@ Other ad blockers like uBlock Origin are known to work.
 
 ## Further reading
 
-- [Let’s encrypt DCOS!](https://mesosphere.com/blog/2016/04/06/lets-encrypt-dcos/):
+- [Let’s encrypt DC/OS!](https://mesosphere.com/blog/2016/04/06/lets-encrypt-dcos/):
   a blog post about using [Let's Encrypt](https://letsencrypt.org/) with
   services running on DC/OS.
 

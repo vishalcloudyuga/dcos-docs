@@ -3,7 +3,7 @@ post_title: CLI Command Reference
 nav_title: Reference
 menu_order: 5
 ---
-<!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
+
 
 ## <a name="dcos"></a>dcos
 
@@ -419,7 +419,7 @@ By default, `dcos node ssh` connects to the private IP of the node, which is onl
             https://universe.mesosphere.com/rep
     
 
-## <a name=dcosservice"></a>dcos service
+## <a name="dcosservice"></a>dcos service
 
     Description:
         Manage DC/OS services.

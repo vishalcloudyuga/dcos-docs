@@ -1,8 +1,7 @@
 ---
 post_title: System Requirements
-menu_order: 1
+menu_order: 000
 ---
-<!-- This source repo for this topic is https://github.com/dcos/dcos-docs -->
 
 # Hardware Prerequisites
 
@@ -12,7 +11,6 @@ You must have a single bootstrap node, Mesos master nodes, and Mesos agent nodes
 
 1 node with 2 Cores, 16 GB RAM, 60 GB HDD. This is the node where DC/OS installation is run. This bootstrap node must also have:
 
-*   Python, pip, and virtualenv must be installed for the DC/OS [CLI][1]. pip must be configured to pull packages from PyPI or your private PyPI, if applicable.
 *   A High-availability (HA) TCP/Layer 3 load balancer, such as HAProxy, to balance the following TCP ports to all master nodes: 80, 443, 8080, 8181, 2181, 5050.
 *  An unencrypted SSH key that can be used to authenticate with the cluster nodes over SSH. Encrypted SSH keys are not supported.
 
@@ -91,20 +89,23 @@ Here are the agent node hardware requirements.
     $ sudo yum upgrade -y
     ```
 
-*   On RHEL 7 and CentOS 7, firewalld must be stopped and disabled. It is a known <a href="https://github.com/docker/docker/issues/16137" target="_blank">Docker issue</a> that firewalld interacts poorly with Docker. For more information, see the <a href="https://docs.docker.com/v1.6/installation/centos/#firewalld" target="_blank">Docker CentOS firewalld</a> documentation.
+*   On RHEL 7 and CentOS 7, firewalld must be stopped and disabled. It is a known <a href="https://github.com/docker/docker/issues/16137" target="_blank">Docker issue</a> that firewalld interacts poorly with Docker. For more information, see the <a href="https://github.com/docker/docker/blob/v1.6.2/docs/sources/installation/centos.md#firewalld" target="_blank">Docker CentOS firewalld</a> documentation.
 
     ```bash
     $ sudo systemctl stop firewalld && sudo systemctl disable firewalld
     ```
 *   DC/OS is installed to `/opt/mesosphere`. Make sure that `/opt/mesosphere` exists on a partition that is not on an LVM Logical Volume or shared storage.
+*   The Mesos master and agent persistent information of the cluster is stored in the `var/lib/mesos` directory.
+    
+    **Important:** Do not remotely mount `/var/lib/mesos` or the Docker storage directory (by default `/var/lib/docker`).
 
 ### Port and Protocol Configuration
 
 *   Secure Shell (SSH) must be enabled on all nodes.
 *   Internet Control Message Protocol (ICMP) must be enabled on all nodes.
-*   Network Time Protocol (NTP) must be enabled on all nodes for clock synchronization.
 *   Each node is network accessible from the bootstrap node.
 *   Each node has unfettered IP-to-IP connectivity from itself to all nodes in the DC/OS cluster.
+*   UDP must be open for ingress to port 53 on the masters. To attach to a cluster, the Mesos agent node service (`dcos-mesos-slave`) uses this port to find `leader.mesos`.
 
 
 # Software Prerequisites
@@ -113,13 +114,19 @@ Here are the agent node hardware requirements.
 
 ### Docker
 
-**Requirements**
+Docker must be installed on all bootstrap and cluster nodes. The supported versions of Docker are:
 
-* Docker 1.7 or greater must be installed on all bootstrap and cluster nodes. However, Docker version 1.12.x is not supported.
+- 1.7.x
+- 1.8.x
+- 1.9.x
+- 1.10.x
+- 1.11.x
+
+**Important:** Version 1.12.x is not supported.
 
 **Recommendations**
 
-* Docker 1.9 or greater is recommended <a href="https://github.com/docker/docker/issues/9718" target="_blank">for stability reasons</a>.
+* Docker 1.9.x - 1.11.x is recommended <a href="https://github.com/docker/docker/issues/9718" target="_blank">for stability reasons</a>.
 
 * Do not use Docker `devicemapper` storage driver in `loop-lvm` mode. For more information, see [Docker and the Device Mapper storage driver](https://docs.docker.com/engine/userguide/storagedriver/device-mapper-driver/).
 
@@ -141,7 +148,7 @@ For more more information, see Docker's <a href="http://docs.docker.com/engine/i
 
 ### Disable sudo password prompts
 
-To use the [GUI][4] or [CLI][1] installation methods, you must disable password prompts for sudo. 
+To use the [GUI][4] or [CLI][1] installation methods, you must disable password prompts for sudo.
 
 Run this command to disable the sudo password prompt:
 
@@ -151,11 +158,24 @@ Run this command to disable the sudo password prompt:
 
 Alternatively, you can SSH as the root user.
 
+### Enable NTP
+
+Network Time Protocol (NTP) must be enabled on all nodes for clock synchronization. By default, during DC/OS startup you will receive an error if this is not enabled. You can check if NTP is enabled by running one of these commands, depending on your OS and configuration:
+
+```bash
+$ ntptime
+$ adjtimex -p
+$ timedatectl
+```
+
 ## Bootstrap node
 
-The bootstrap node is a permanent part of your cluster and is required for DC/OS recovery. The leader state and leader election of your Mesos masters is maintained in Exhibitor ZooKeeper. Before installing DC/OS, you must ensure that your bootstrap node has the following prerequisites.
+Before installing DC/OS, you must ensure that your bootstrap node has the following prerequisites.
 
-**Important:** The bootstrap node must be separate from your cluster nodes.
+**Important:** 
+
+* If you specify `exhibitor_storage_backend: zookeeper`, the bootstrap node is a permanent part of your cluster. With `exhibitor_storage_backend: zookeeper` the leader state and leader election of your Mesos masters is maintained in Exhibitor ZooKeeper on the bootstrap node. For more information, see the configuration parameter [documentation](/docs/1.8/administration/installing/custom/configuration-parameters/).
+* The bootstrap node must be separate from your cluster nodes.
 
 ### DC/OS setup file
 
@@ -208,6 +228,6 @@ On each of your cluster nodes, use the following command to:
 
 [1]: /docs/1.8/administration/installing/custom/cli/
 [2]: /docs/1.8/administration/installing/custom/system-requirements/install-docker-centos/
-[3]: https://downloads.dcos.io/dcos/EarlyAccess/dcos_generate_config.sh
+[3]: https://downloads.dcos.io/dcos/stable/dcos_generate_config.sh
 [4]: /docs/1.8/administration/installing/custom/gui/
 [5]: /docs/1.8/administration/installing/custom/advanced/

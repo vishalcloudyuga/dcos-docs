@@ -85,4 +85,4 @@ journalctl -u dcos-exhibitor -b
 [2]: /docs/1.8/usage/cli/install/
 [3]: /docs/1.8/administration/logging/elk/
 [4]: /docs/1.8/administration/logging/splunk/
-[5]: /docs/1.8/administration/sshcluster/
+[5]: /docs/1.8/administration/access-node/sshcluster/

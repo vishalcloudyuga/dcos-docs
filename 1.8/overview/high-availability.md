@@ -34,7 +34,7 @@ Fault domain isolation is an important part of building HA systems. In order to 
 
 With DC/OS, it's recommended that masters be distributed across racks for HA, but not across DCs or regions. Agents may be distributed across regions/DCs, and it's recommended that you tag agents with attributes to describe their location. Synchronous services like ZooKeeper should also remain within the same region/DC to reduce network latency.
 
-For applications which require HA, they should also be distributed across fault domains. With Marathon, this can be accomplished by using the [`UINQUE`  and `GROUP_BY` constraints operator](https://mesosphere.github.io/marathon/docs/constraints.html).
+For applications which require HA, they should also be distributed across fault domains. With Marathon, this can be accomplished by using the [`UNIQUE`  and `GROUP_BY` constraints operator](https://mesosphere.github.io/marathon/docs/constraints.html).
 
 ### Separation of concerns
 
@@ -58,7 +58,7 @@ Fast failure detection comes in many forms. Services like ZooKeeper can be used 
 
 When failures do occur, failover [should be as fast as possible](https://en.wikipedia.org/wiki/Fail-fast). Fast failover can be achieved by:
 
- * Using an HA load balancer like [marathon-lb](https://github.com/mesosphere/marathon-lb), or [Minuteman](https://github.com/dcos/minuteman) for internal layer 4    load balancing.
+ * Using an HA load balancer like [Marathon-LB](https://github.com/mesosphere/marathon-lb), or [Minuteman](https://github.com/dcos/minuteman) for internal layer 4    load balancing.
  * Building apps in accordance with the [12-factor app](http://12factor.net/)    manifesto.
  * Following REST best-practices when building services: in particular,    avoiding storing client state on the server between requests.
 

@@ -24,7 +24,11 @@ Services can be uninstalled from either the web interface or the CLI. If the ser
     $ dcos package uninstall chronos
     ```
 
-### Uninstalling a service using the web UI
+### Uninstalling a service using the UI
+
+From the DC/OS UI you can uninstall services from the **Services** or **Universe** tab. The Universe tab shows all of the available DC/OS services from package [repositories](/docs/1.8/usage/repo/). The Services tab provides a full featured interface to the native DC/OS Marathon instance.
+
+### Universe tab
 
 1.  Navigate to the **Universe** page in the DC/OS [UI](/docs/1.8/usage/webinterface/#universe).
 
@@ -32,9 +36,14 @@ Services can be uninstalled from either the web interface or the CLI. If the ser
 
 3.  Hover your cursor over the name of the package you wish to uninstall and you will see a red "Uninstall" link to the right. Click this link to uninstall the package.
 
+### Services tab
+
+1.  Navigate to the [**Services**](/docs/1.8/usage/webinterface/#services) tab in the DC/OS UI.
+1.  Select your application and click **Edit**, then select the **More -> Destroy**.
+
 ## <a name="framework-cleaner"></a>Cleaning up ZooKeeper
 
-### About cleaning up ZooKeeper
+### About Cleaning up ZooKeeper
 
 If your service has reserved resources, you can use the framework cleaner docker image, `mesosphere/janitor`, to simplify the process of removing your service instance from ZooKeeper and destroying all the data associated with it.
 
@@ -50,12 +59,10 @@ The script takes the following flags:
 
 These are some examples of default configurations (these will vary depending on selected task name, etc):
 
-* Cassandra:
-    * Default: `-r cassandra-role -p cassandra-principal -z cassandra`
-    * Custom name: `-r <name>-role -p <name>-principal -z <name>`
-* Kafka:
-    * Default: `-r kafka-role -p kafka-principal -z kafka`
-    * Custom name: `-r <name>-role -p <name>-principal -z <name>`
+* Cassandra default: docker run mesosphere/janitor /janitor.py -r cassandra-role -p cassandra-principal -z dcos-service-cassandra
+* HDFS default: docker run mesosphere/janitor /janitor.py -r hdfs-role -p hdfs-principal -z dcos-service-hdfs
+* Kafka default: docker run mesosphere/janitor /janitor.py -r kafka-role -p kafka-principal -z dcos-service-kafka
+* Custom values: docker run mesosphere/janitor /janitor.py -r <custom_role> -p <custom_principal> -z dcos-service-<custom_service_name>
 
 ### Running from the DC/OS CLI
 

@@ -1,7 +1,7 @@
 ---
 post_title: Managing Package Repositories
 nav_title: Package Repository
-menu_order: 4
+menu_order: 50 
 ---
 
 DC/OS comes pre-configured with the [Mesosphere Universe](https://github.com/mesosphere/universe) package repository as the provider of DC/OS packages, but other package repositories can also be added.
@@ -48,7 +48,7 @@ Add a repo with the name `your-repo` and the repo URL `https://universe.yourcomp
 $ dcos package repo add your-repo https://universe.yourcompany.com/repo
 ```
 
-For full instructions on how to build an run your own Universe repo see the [Universe Server Documentation](https://github.com/mesosphere/universe#universe-server)
+For full instructions on how to build an run your own Universe repo see the [Universe Server Documentation](https://github.com/mesosphere/universe#universe-server).
 
 ## <a name="removing"></a>Removing a Repository
 

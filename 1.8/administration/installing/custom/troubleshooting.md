@@ -1,7 +1,7 @@
 ---
 post_title: Troubleshooting your DC/OS installation
 nav_title: Troubleshooting
-menu_order: 5
+menu_order: 400
 ---
 
 During DC/OS installation, each of the components will converge from a failing state to a running state in the logs.
@@ -204,6 +204,6 @@ Publicly accessible applications are run in the public agent node. Public agent 
  [3]: /docs/1.8/administration/installing/custom/configuration-parameters/#scrollNav-7
  [4]: /docs/1.8/overview/architecture/#boot
  [5]: /docs/1.8/administration/installing/custom/configuration-parameters
- [6]: /docs/1.8/administration/sshcluster/
+ [6]: /docs/1.8/administration/access-node/sshcluster/
  [7]: /docs/1.8/usage/webinterface/
 

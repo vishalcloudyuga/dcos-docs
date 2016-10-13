@@ -61,7 +61,7 @@ The following instructions demonstrate how to use Docker with OverlayFS on CentO
     $ sudo tee /etc/yum.repos.d/docker.repo <<-'EOF'
     [dockerrepo]
     name=Docker Repository
-    baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/
+    baseurl=https://yum.dockerproject.org/repo/main/centos/7/
     enabled=1
     gpgcheck=1
     gpgkey=https://yum.dockerproject.org/gpg
@@ -71,17 +71,19 @@ The following instructions demonstrate how to use Docker with OverlayFS on CentO
 1.  Configure systemd to run the Docker Daemon with OverlayFS:
 
     ```bash
-    $ sudo mkdir -p /etc/systemd/system/docker.service.d && sudo tee /etc/systemd/system/docker.service.d/override.conf <<- EOF
+    $ sudo mkdir -p /etc/systemd/system/docker.service.d && sudo tee /etc/systemd/system/docker.service.d/override.conf <<- 'EOF'
     [Service]
     ExecStart=
     ExecStart=/usr/bin/docker daemon --storage-driver=overlay -H fd://
     EOF
     ```
 
-1.  Install the Docker engine, daemon, and service:
+1.  Install the Docker engine, daemon, and service. 
+    
+    **Important:** Docker version 1.12.x is not supported.
 
     ```bash
-    $ sudo yum install --assumeyes --tolerant docker-engine
+    $ sudo yum install -y docker-engine-1.11.2
     $ sudo systemctl start docker
     $ sudo systemctl enable docker
     ```

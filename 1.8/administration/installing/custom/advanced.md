@@ -1,7 +1,7 @@
 ---
 post_title: Advanced DC/OS Installation Guide
 nav_title: Advanced
-menu_order: 4
+menu_order: 300
 ---
 
 With this installation method, you package the DC/OS distribution yourself and connect to every node manually to run the DC/OS installation commands. This installation method is recommended if you want to integrate with an existing system or if you don’t have SSH access to your cluster.
@@ -13,15 +13,40 @@ The advanced installer requires:
 
 The DC/OS installation creates these folders:
 
-| Folder                                  | Description                                                                                                                                            |
-|-----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `/opt/mesosphere`                       | Contains all the DC/OS binaries, libraries, cluster configuration. Do not modify.                                                                      |
-| `/etc/systemd/system/dcos.target.wants` | Contains the systemd services which start the things that make up systemd. They must live outside of `/opt/mesosphere` because of systemd constraints. |
-| `/etc/systemd/system/dcos.<units>`      | Contains copies of the units in `/etc/systemd/system/dcos.target.wants`. They must be at the top folder as well as inside `dcos.target.wants`.         |
-| `/var/lib/zookeeper`                    | Contains the [ZooKeeper](/docs/1.8/overview/concepts/#zookeeper) data.                                                                                      |
-| `/var/lib/docker`                       | Contains the Docker data.                                                                                                                              |
-| `/var/lib/dcos`                         | Contains the DC/OS data.                                                                                                                               |
-| `/var/lib/mesos`                        | Contains the Mesos data.                                                                                                                               |
+<table class="table">
+  <tr>
+    <th>Folder</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>/opt/mesosphere</code></td>
+    <td>Contains all the DC/OS binaries, libraries, cluster configuration. Do not modify.</td>
+  </tr>
+  <tr>
+    <td><code>/etc/systemd/system/dcos.target.wants</code></td>
+    <td>Contains the systemd services which start the things that make up systemd. They must live outside of `/opt/mesosphere` because of systemd constraints.</td>
+  </tr>
+  <tr>
+    <td><code>/etc/systemd/system/dcos.&lt;units&gt;</code></td>
+    <td>Contains copies of the units in `/etc/systemd/system/dcos.target.wants`. They must be at the top folder as well as inside `dcos.target.wants`.</td>
+  </tr>
+  <tr>
+    <td><code>/var/lib/zookeeper</code></td>
+    <td>Contains the [ZooKeeper](/docs/1.8/overview/concepts/#zookeeper) data.</td>
+  </tr>
+  <tr>
+    <td><code>/var/lib/docker</code></td>
+    <td>Contains the Docker data. </td>
+  </tr>
+  <tr>
+    <td><code>/var/lib/dcos</code></td>
+    <td>Contains the DC/OS data.</td>
+  </tr>
+  <tr>
+    <td><code>/var/lib/mesos</code></td>
+    <td>Contains the Mesos data.</td>
+  </tr>
+</table>
 
 
 # Configure your cluster
@@ -36,7 +61,7 @@ The DC/OS installation creates these folders:
 
     In this step you create a YAML configuration file that is customized for your environment. DC/OS uses this configuration file during installation to generate your cluster installation files.
 
-    You can use this template to get started. This template specifies 3 Mesos masters, 3 ZooKeeper instances for Exhibitor storage, static master discovery list, and Google DNS resolvers. If your servers are installed with a domain name in your `/etc/resolv.conf`, you should add `dns_search` to your `config.yaml` file. For parameters descriptions and configuration examples, see the [documentation][1].
+    You can use this template to get started. This template specifies three Mesos masters, three ZooKeeper instances for Exhibitor storage, static master discovery list, internal storage backend for Exhibitor, a custom proxy, and Google DNS resolvers. If your servers are installed with a domain name in your `/etc/resolv.conf`, you should add `dns_search` to your `config.yaml` file. For parameters descriptions and configuration examples, see the [documentation][1].
 
     **Tip:** If Google DNS is not available in your country, you can replace the Google DNS servers `8.8.8.8` and `8.8.4.4` with your local DNS servers.
 
@@ -46,6 +71,7 @@ The DC/OS installation creates these folders:
     cluster_name: '<cluster-name>'
     exhibitor_storage_backend: static
     ip_detect_filename: /genconf/ip-detect
+    master_discovery: static
     master_list:
     - <master-private-ip-1>
     - <master-private-ip-2>
@@ -53,6 +79,11 @@ The DC/OS installation creates these folders:
     resolvers:
     - 8.8.4.4
     - 8.8.8.8
+    use_proxy: 'true'
+    http_proxy: http://<your_http_proxy>/
+    https_proxy: https://<your_https_proxy>/
+    no_proxy: 
+    - '*.int.example.com'    
     ```
 
 2. Create a `ip-detect` script
@@ -147,7 +178,7 @@ To install DC/OS:
 1.  Download the [DC/OS installer][4].
 
     ```bash
-    $ curl -O https://downloads.dcos.io/dcos/EarlyAccess/dcos_generate_config.sh
+    $ curl -O https://downloads.dcos.io/dcos/stable/dcos_generate_config.sh
     ```
 
 1.  From the bootstrap node, run the DC/OS installer shell script to generate a customized DC/OS build file. The setup script extracts a Docker container that uses the generic DC/OS install files to create customized DC/OS build files for your cluster. The build files are output to `./genconf/serve/`.
@@ -238,7 +269,7 @@ To install DC/OS:
 
 1.  Monitor Exhibitor and wait for it to converge at `http://<master-ip>:8181/exhibitor/v1/ui/index.html`.
 
-    **Tip:** This process can take about 10 minutes. During this time you will see the Master nodes become visible on the Exhibitor consoles and come online, eventually showing a green light.
+    __Tip:__ If you encounter errors such as `Time is marked as bad`, `adjtimex`, or `Time not in sync` in journald, verify that Network Time Protocol (NTP) is enabled on all nodes. For more information, see the [system requirements](/docs/1.8/administration/installing/custom/system-requirements/#port-and-protocol).
 
     ![alt text](../img/chef-zk-status.png)
 
@@ -257,7 +288,7 @@ To install DC/OS:
 [1]: /docs/1.8/administration/installing/custom/configuration-parameters/
 [2]: /docs/1.8/usage/cli/install/
 [3]: /docs/1.8/usage/
-[4]: https://downloads.dcos.io/dcos/EarlyAccess/dcos_generate_config.sh
+[4]: https://downloads.dcos.io/dcos/stable/dcos_generate_config.sh
 [6]: /docs/1.8/overview/concepts/#public
 [7]: /docs/1.8/overview/concepts/#private
 [8]: /docs/1.8/administration/installing/custom/uninstall/

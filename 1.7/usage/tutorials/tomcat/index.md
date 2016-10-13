@@ -10,7 +10,7 @@ menu_order: 12
 
 - A DC/OS cluster with at least 1 master and 1 [public agent](/docs/1.7/overview/concepts/#public) node
 - DC/OS [CLI](/docs/1.7/usage/cli/) 0.4.6 or later
-- [jQuery](https://github.com/stedolan/jq/wiki/Installation)
+- [jq](https://github.com/stedolan/jq/wiki/Installation)
 - [SSH](/docs/1.7/administration/sshcluster/) configured
 
 ## Run the container
@@ -92,7 +92,7 @@ ID       MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
 
 ## View Tomcat
 
-To view Apache Tomcat running, navigate to `http://<public_agent_public_ip>` and see the install success page. You can find your public agent IP by running this command from the DC/OS CLI. 
+To view Apache Tomcat running, navigate to `http://<public_agent_public_ip>` and see the install success page. You can find your public agent IP by running this command from your terminal. 
 
 ```
 $ dcos node ssh --option StrictHostKeyChecking=no --option LogLevel=quiet --master-proxy --mesos-id=$(dcos task --json | jq --raw-output '.[] | select(.name == "tomcat") | .slave_id') "curl -s ifconfig.co" 2>/dev/null
