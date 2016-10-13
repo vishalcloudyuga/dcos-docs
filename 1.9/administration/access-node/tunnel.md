@@ -223,15 +223,10 @@ $ curl _myport._myapp.mygroup._tcp.marathon.mesos
 
 The VPN client attempts to auto-configure DNS, but this functionality does not work on Mac OSX. To use the VPN client on OSX, [add the DNS servers](https://support.apple.com/kb/PH18499?locale=en_US) that DC/OS Tunnel instructs you to use.
 
-When you use the VPN, you are virtually within your cluster. To access your master node, just enter the following from your terminal:
+When you use the VPN, you are virtually within your cluster. You can access
+your master and agent nodes directly:
 
 ```
-$ ssh core@master.mesos
-```
-
-Similarly, you can interact with your agent nodes from virtually within the cluster. For instance:
-
-```
+$ ping master.mesos
 $ ping slave.mesos
-$ host slave.mesos
 ```
