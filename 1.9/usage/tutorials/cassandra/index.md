@@ -35,7 +35,7 @@ In this tutorial you will learn how to:
 ## Prerequisites
 
 - A running DC/OS cluster with three nodes, each with 2 CPUs and 2 GB of RAM available.
-- [DC/OS CLI](/docs/1.8/usage/cli/install/) installed.
+- [DC/OS CLI](/docs/1.9/usage/cli/install/) installed.
 
 ## Installing Cassandra
 
