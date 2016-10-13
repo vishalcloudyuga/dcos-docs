@@ -116,14 +116,31 @@ DC/OS Tunnel provides you with full access to the DNS, masters, and agents from 
 
 **Note:** Only Linux and OS X are supported currently.
 
+## Example Application
+
+All examples will refer to this sample application:
+* Service Name: `myapp`
+* Group: `mygroup`
+* Port: `555`
+ * Port Name: `myport`
+ * Load-balanced
+* Running on overlay network
+
+`myapp` is a web server listening on port `555`. We'll be using `curl` as
+our client application.
+
 ##  SOCKS
 Run the following command from the DC/OS CLI:
 
 ```
 $ dcos tunnel socks
+
+## Example
+$ curl --proxy socks5://127.0.0.1:1080 mygroupmyapp.marathon.l4lb.thisdcos.directory:555
+$ curl --proxy socks5://127.0.0.1:1080 _myport._myapp.mygroup._tcp.marathon.mesos
 ```
 
-Configure your application to use the proxy on port 1080: `127.0.0.1:1080`
+Configure your application to use the proxy on port 1080.
 
 ##  HTTP
 ### Transparent Mode
@@ -132,6 +149,13 @@ Run the following command from the DC/OS CLI:
 
 ```
 $ sudo dcos tunnel http
+
+## Example
+$ curl _myport._myapp.mygroup._tcp.marathon.mesos.mydcos.directory
+
+### Watch out!
+## This won't work because you can't specify a port in transparent mode
+$ curl mygroupmyapp.marathon.l4lb.thisdcos.directory.mydcos.directory:555
 ```
 
 #### Port Forwarding
@@ -142,6 +166,10 @@ To run the HTTP proxy in standard mode, without root privileges, use the `--port
 
 ```
 $ dcos tunnel http --port 8000
+
+## Example
+$ curl --proxy 127.0.0.1:8000 mygroupmyapp.marathon.l4lb.thisdcos.directory:555
+$ curl --proxy 127.0.0.1:8000 _myport._myapp.mygroup._tcp.marathon.mesos
 ```
 
 Then, configure your application to run HTTP on the port you specified above.
@@ -187,6 +215,10 @@ Run the following command from the DC/OS CLI
 
 ```
 $ sudo dcos tunnel vpn
+
+## Example
+$ curl mygroupmyapp.marathon.l4lb.thisdcos.directory:555
+$ curl _myport._myapp.mygroup._tcp.marathon.mesos
 ```
 
 The VPN client attempts to auto-configure DNS, but this functionality does not work on Mac OSX. To use the VPN client on OSX, [add the DNS servers](https://support.apple.com/kb/PH18499?locale=en_US) that DC/OS Tunnel instructs you to use.
