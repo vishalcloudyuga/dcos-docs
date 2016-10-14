@@ -24,6 +24,7 @@ This document provides instructions for upgrading a DC/OS cluster from version 1
 - In CentOS or RedHat, install IP sets with this command (used in some IP detect scripts): `$ sudo yum install -y ipset`
 - You must be familiar with using `systemctl` and `journalctl` command line tools to review and monitor service status. Troubleshooting notes can be found at the end of this [document](#troubleshooting).
 - You must be familiar with the [Advanced DC/OS Installation Guide][advanced-install].
+- You should take a snapshot of ZooKeeper prior to upgrading. Marathon supports rollbacks, but does not support downgrades.
 
 ## Instructions
 
