@@ -101,13 +101,9 @@ During DNS lookup for a task’s IP, there are situations when it is unknown to 
     
       server dcos-1 1.2.3.4:443 ssl verify required ca-file dcos-ca.crt verifyhost frontend-xxx.eu-central-1.elb.amazonaws.com
     
-      # Variant 2: use TLS-encrypted communication with DC/OS Admin Router, but do
+      # Option 2: use TLS-encrypted communication with DC/OS Admin Router, but do
       # not perform server certificate verification (warning: this is insecure, and
       # we hope that you know what you are doing).
-    
-      # server dcos-1 1.2.3.4:443 ssl verify none
-      server dcos-1 52.57.1.99:443 check-ssl ssl verify required ca-file dcos-ca.crt verifyhost frontend-ElasticL-JW6HOE0W6MAT-1017800469.eu-central-1.elb.amazonaws.com
-    
       # Rewrite response Location header if it contains an absolute URL
       # pointing to the 'dcoshost' host: replace 'dcoshost' with original
       # request Host header (containing hostname and port).
