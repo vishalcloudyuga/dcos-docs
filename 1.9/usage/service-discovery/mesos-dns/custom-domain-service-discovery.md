@@ -1,5 +1,6 @@
 ---
-post_title: Discovering DNS Names
+post_title: Using Custom Top-Level Domains
+nav_title: Custom Top-Level Domains
 menu_order: 200
 ---
 
