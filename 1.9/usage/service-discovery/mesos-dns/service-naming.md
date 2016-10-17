@@ -1,10 +1,16 @@
 ---
 post_title: Service Naming
+menu_order: 0
 ---
 
-Mesos-DNS defines the DNS top-level domain `.mesos` for Mesos tasks that are running on DC/OS. Tasks and services are discovered by looking up A and, optionally, SRV records within this Mesos domain.
+Mesos-DNS defines the DNS top-level domain `.mesos` for Mesos tasks that are running on DC/OS. Tasks and services are discovered by looking up A and, optionally, SRV records within this Mesos domain. 
 
-To enumerate all the DNS records that Mesos-DNS will respond to, take a look at the [DNS naming documentation][4].
+- [A Records](#a-records)
+- [SRV Records](#srv-records)
+- [Other Records](#other-records)
+- [Task and Service Naming Conventions](#naming-conventions)
+
+To enumerate all the DNS records that Mesos-DNS will respond to, take a look at this.
 
 # <a name="a-records"></a>A Records
 
@@ -79,7 +85,7 @@ On a DC/OS cluster, ports are offered by agent nodes in the same way as other re
 
 The following table shows the rules that govern SRV generation:
 
-<table class="table" style="width: 400px !important;">
+<table class="table">
   <thead>
     <tr>
       <th>
@@ -272,7 +278,8 @@ If a service launches multiple tasks with the same name, the DNS lookup will ret
 
 **Caution:** It is possible to have a name collision if *different* services launch tasks that have the same hostname. If different services launch tasks with identical Mesos-DNS hostnames, or if Mesos-DNS truncates app IDs to create identical Mesos-DNS hostnames, applications will communicate with the wrong agent nodes and fail unpredictably.
 
+
  [1]: /docs/1.9/overview/concepts/
  [2]: ../troubleshooting/#leader
  [3]: https://tools.ietf.org/html/rfc952
- [4]: /docs/1.9/usage/service-discovery/dns-naming/
+ [4]: /docs/1.9/usage/service-discovery/mesos-dns/service-naming/#dns-naming

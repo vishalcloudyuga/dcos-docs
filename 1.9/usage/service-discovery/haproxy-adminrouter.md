@@ -4,11 +4,17 @@ nav_title: HAProxy in Front of Admin Router
 menu_order: 400
 ---
 
-You can use HAProxy to set up an HTTP proxy in front of the DC/OS [Admin Router](/docs/1.9/overview/concepts/#adminrouter).
+You can use HAProxy to set up an HTTP proxy in front of the DC/OS [Admin Router](/docs/1.8/overview/concepts/#adminrouter).
  
 The HTTP Proxy must perform on-the-fly HTTP request and response header modification because DC/OS is not aware of the custom hostname and port that is being used by user agents to address the HTTP proxy.
 
 These instructions provide a tested [HAProxy](http://www.haproxy.org/) configuration example that handles the named request/response rewriting. This example ensures that the communication between HAProxy and DC/OS Admin Router is TLS-encrypted.
+
+**Tip:**
+
+During DNS lookup for a task’s IP, there are situations when it is unknown to the DNS server if the IP address stored in NetworkInfo is accessible or not. You can use these entries in Virtual Network Service DNS to find your task IP:
+
+* **Agent IP:** Provides the agent IP address: `<taskname>.<task-location>.<agentip>.dcos`
 
 
 1.  Install HAProxy [1.6.9](http://www.haproxy.org/#down).

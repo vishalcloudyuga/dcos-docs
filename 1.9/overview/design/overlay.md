@@ -92,9 +92,9 @@ The master module will be run as part of the Mesos master and will have the foll
 
 The agent overlay module will run as part of the Mesos agents and will have the following responsibilities:
 1. It is responsible for registering with the master overlay module. After registration it will retrieve the allocated agent subnet, the subnet allocated to its mesos and docker bridges and VTEP information (IP and MAC address of the VTEP) .
-2. Based on the allocated Agent subnet, it is responsible for generating a CNI network config to be used by the `network/cni` isolator for the `MesosContainerizer`.
+2. Based on the allocated agent subnet, it is responsible for generating a CNI network config to be used by the `network/cni` isolator for the `MesosContainerizer`.
 3. It is responsible for creating a _Docker network_ to be used by the _`DockerContainerizer`_.
-4. It exposes an HTTP endpoint “overlay-agent/overlays” used by the _navstar_ to retrieve information about the overlays on that particular agent.
+4. It exposes an HTTP endpoint `overlay-agent/overlays` that is used by the Virtual Network Service to retrieve information about the overlays on that particular agent.
 
 ### Using replicated log to coordinate subnet allocation in Master:
 
@@ -123,14 +123,14 @@ For _DockerContainerizer_ the DC/OS module, after retrieving the subnet, will cr
 **NOTE:** The assumption for _DockerContainerizer_ to work with the DC/OS overlay is that the host is running Docker v1.11 or greater.
 **NOTE:** The default <overlay MTU> = 1420 bytes.
 
-### NAVSTAR: the overlay orchestrator
+### Virtual Network Service: the overlay orchestrator
 
 **Code:**https://github.com/dcos/navstar.git
-Navstar is the overlay orchestrator service running on each agent which is responsible for the following functionality. It is a system which contains non-realtime components of the DC/OS overlay, as well as other networking-related chunks of DC/OS. 
+Virtual Network Service is the overlay orchestrator service running on each agent which is responsible for the following functionality. It is a system which contains non-realtime components of the DC/OS overlay, as well as other networking-related chunks of DC/OS. 
 - Talking to the agent overlay module and learning the subnet, VTEP IP and MAC address allocated to the agent.
 - Creating the VTEP on the agent.
 - Programming the routes to various subnets on various agents.
 - Programming the ARP cache with the VTEP IP and MAC addresses.
 - Programming the VxLAN FDB with the VTEP MAC address and tunnel endpoint information.
-- Using [Lashup](https://github.com/dcos/lashup/ "GitHub repository"), a distributed CRDT store, to reliably disseminate agent overlay information to all agents within the cluster. This is one of most important functions performed by Navstar, since only by having global knowledge of all the agents in the cluster can Navstar program the routes on each agent for all the overlay subnets on all the agents. 
+- Using [Lashup](https://github.com/dcos/lashup/ "GitHub repository"), a distributed CRDT store, to reliably disseminate agent overlay information to all agents within the cluster. This is one of most important functions performed by Virtual Network Service, since only by having global knowledge of all the agents in the cluster can Virtual Network Service program the routes on each agent for all the overlay subnets on all the agents. 
 
