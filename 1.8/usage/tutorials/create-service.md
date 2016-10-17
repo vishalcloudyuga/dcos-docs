@@ -75,20 +75,22 @@ In this tutorial, we'll go over creating a simple one-command service and a cont
 
 ## Create and Run a Containerized Service from the DC/OS Web Interface
 
+1. Go to the `hello-dcos` page of the [Mesosphere Docker Hub repository](https://hub.docker.com/r/mesosphere/hello-dcos/tags/) and note down the latest image tag.
 1. Click the **Services** tab of the DC/OS web interface, then click the **Deploy Service**.
 1. Enter a name for your service in the **ID** field.
-1. Click the **Container Settings** tab and enter the following in the **Container Image** field: `mesosphere/hello-dcos`.
+1. Click the **Container Settings** tab and enter the following in the **Container Image** field: `mesosphere/hello-dcos:<image-tag>`. Replace `<image-tag>` with the tag you copied in step 1.
 
-![Containerized service in the DC/OS UI](/docs/1.8/usage/tutorials/img/svc-running-ui.png)
+![Containerized service in the DC/OS UI](/docs/1.8/usage/tutorials/img/deploy-container-ui.png)
 
 1. Click **Deploy**.
-1. In the **Services** tab, click the name of your service, then choose on of the task instances. Click **Logs**, then toggle to the **Output (stdout)** view to see the output of service.
+1. In the **Services** tab, click the name of your service, then choose on of the task instances. Click **Logs**, then toggle to the **Output (stdout)** view to see the output of the service.
 
 ![Running containerized service in the DC/OS UI](/docs/1.8/usage/tutorials/img/container-running-ui.png)
 
 ## Create and Run a Containerized Service from the DC/OS CLI
 
-1. Create a JSON file called `hello-dcos-cli.json` with the following contents:
+1. Go to the `hello-dcos` page of the [Mesosphere Docker Hub repository](https://hub.docker.com/r/mesosphere/hello-dcos/tags/) and note down the latest image tag.
+1. Create a JSON file called `hello-dcos-cli.json` with the following contents. Replace `<image-tag>` in the `docker:image` field with the tag you copied in step 1.
     ```
     {
       "id": "/hello-dcos-cli",
@@ -102,7 +104,7 @@ In this tutorial, we'll go over creating a simple one-command service and a cont
       "maxLaunchDelaySeconds": 3600,
       "container": {
         "docker": {
-          "image": "mhausenblas/hello-dcos",
+          "image": "mesosphere/hello-dcos:<image-tag>",
           "forcePullImage": false,
           "privileged": false,
           "network": "HOST"
@@ -121,7 +123,7 @@ In this tutorial, we'll go over creating a simple one-command service and a cont
       "requirePorts": false
     }
     ```
-1. Run the service with the following commandt.
+1. Run the service with the following command.
     ```bash
     dcos marathon app hello-dcos-cli.json
     ```
@@ -129,7 +131,7 @@ In this tutorial, we'll go over creating a simple one-command service and a cont
     ```bash
     $ dcos marathon app list
     ```
-1. In the **Services** tab of the DC/OS web interface, click the name of your service, then choose on of the task instances. Click **Logs**, then toggle to the **Output (stdout)** view to see the output of service.
+1. In the **Services** tab of the DC/OS web interface, click the name of your service, then choose on of the task instances. Click **Logs**, then toggle to the **Output (stdout)** view to see the output of the service.
 
 # Scale Your Service
 
