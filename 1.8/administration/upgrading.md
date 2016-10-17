@@ -24,6 +24,7 @@ This document provides instructions for upgrading a DC/OS cluster from version 1
 - In CentOS or RedHat, install IP sets with this command (used in some IP detect scripts): `$ sudo yum install -y ipset`
 - You must be familiar with using `systemctl` and `journalctl` command line tools to review and monitor service status. Troubleshooting notes can be found at the end of this [document](#troubleshooting).
 - You must be familiar with the [Advanced DC/OS Installation Guide][advanced-install].
+- You should take a snapshot of ZooKeeper prior to upgrading. Marathon supports rollbacks, but does not support downgrades.
 
 ## Instructions
 
@@ -176,6 +177,6 @@ $ sudo journalctl -u dcos-mesos-slave
 
 ## Notes:
 
-- Packages available in the DC/OS 1.8 Universe are newer than those in the DC/OS 1.8 Universe. Services are not automatically upgraded when  DC/OS 1.8 is installed because not all DC/OS services have upgrade paths that will preserve existing state.
+- Packages available in the DC/OS 1.8 Universe are newer than those in the DC/OS 1.7 Universe. Services are not automatically upgraded when  DC/OS 1.8 is installed because not all DC/OS services have upgrade paths that will preserve existing state.
 
 [advanced-install]: /docs/1.8/administration/installing/custom/advanced/

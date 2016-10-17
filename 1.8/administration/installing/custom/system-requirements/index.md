@@ -89,7 +89,7 @@ Here are the agent node hardware requirements.
     $ sudo yum upgrade -y
     ```
 
-*   On RHEL 7 and CentOS 7, firewalld must be stopped and disabled. It is a known <a href="https://github.com/docker/docker/issues/16137" target="_blank">Docker issue</a> that firewalld interacts poorly with Docker. For more information, see the <a href="https://docs.docker.com/v1.6/installation/centos/#firewalld" target="_blank">Docker CentOS firewalld</a> documentation.
+*   On RHEL 7 and CentOS 7, firewalld must be stopped and disabled. It is a known <a href="https://github.com/docker/docker/issues/16137" target="_blank">Docker issue</a> that firewalld interacts poorly with Docker. For more information, see the <a href="https://github.com/docker/docker/blob/v1.6.2/docs/sources/installation/centos.md#firewalld" target="_blank">Docker CentOS firewalld</a> documentation.
 
     ```bash
     $ sudo systemctl stop firewalld && sudo systemctl disable firewalld
@@ -167,7 +167,6 @@ $ ntptime
 $ adjtimex -p
 $ timedatectl
 ```
-Although it is not recommended, you can disable the startup check for NTP by setting the `check_time: 'false'` in the [configuration file](/docs/1.8/administration/installing/custom/configuration-parameters/#check-time).
 
 ## Bootstrap node
 

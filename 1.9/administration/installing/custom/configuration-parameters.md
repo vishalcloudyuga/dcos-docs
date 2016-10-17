@@ -23,27 +23,26 @@ This required parameter specifies the URI path for the DC/OS installer to store 
 ### cluster_docker_credentials
 This parameter specifies a dictionary of Docker credentials to pass. 
 
-- If unset, the default is an empty credentials file is placed in the
-`/etc/mesosphere/docker_credentials` during DC/OS install. You can then use sysadmin scripts to edit the file and do a `systemctl restart dcos-mesos-slave` or `systemctl restart dcos-mesos-slave-public`.
-- You can also set as the `--docker_config` JSON [format](http://mesos.apache.org/documentation/latest/configuration/). In the `config.yaml` file you can write YAML and it will automatically be mapped to the JSON format for you. This will store the Docker credentials in the same location as the DC/OS internal configuration (`/opt/mesosphere`). If you need to update or change the configuration, you will have to create a new DC/OS internal configuration.
+- If unset, a default empty credentials file is created at `/etc/mesosphere/docker_credentials` during DC/OS install. A sysadmin can change credentials as needed. A `systemctl restart dcos-mesos-slave` or `systemctl restart dcos-mesos-slave-public` is required for changes to take effect.
+- You can also specify by using the `--docker_config` JSON [format](http://mesos.apache.org/documentation/latest/configuration/). You can write as YAML in the `config.yaml` file and it will automatically be mapped to the JSON format for you. This will store the Docker credentials in the same location as the DC/OS internal configuration (`/opt/mesosphere`). If you need to update or change the configuration, you will have to create a new DC/OS internal configuration.
 
 You can use the following options to further configure the Docker credentials:
 
-*  **cluster_docker_credentials_dcos_owned** This parameter specifies whether to store the credentials file in `/opt/mesosphere` or `/etc/mesosphere/docker_credentials`.
+*  **cluster_docker_credentials_dcos_owned** This parameter specifies whether to store the credentials file in `/opt/mesosphere` or `/etc/mesosphere/docker_credentials`. A sysadmin cannot edit `/opt/mesosphere` directly.
 
     *  `cluster_docker_credentials_dcos_owned: 'true'` The credentials file is stored in `/opt/mesosphere`.
     
         *  **cluster_docker_credentials_write_to_etc** This parameter specifies whether to write a cluster credentials file.
         
-            *  `cluster_docker_credentials_write_to_etc: 'true'` Do not write a credentials file. This can be useful if overwriting your credentials file will cause problems (e.g. if it is part of a machine image or AMI). This is the default value.
-            *  `cluster_docker_credentials_write_to_etc: 'false'` Write a credentials file.
+            *  `cluster_docker_credentials_write_to_etc: 'true'` Write a credentials file. This can be useful if overwriting your credentials file will cause problems (e.g. if it is part of a machine image or AMI). This is the default value.
+            *  `cluster_docker_credentials_write_to_etc: 'false'` Do not write a credentials file.
             
     *  `cluster_docker_credentials_dcos_owned: 'false'` The credentials file is stored in `/etc/mesosphere/docker_credentials`.
 
-*  **cluster_docker_credentials_enabled** This parameter specifies whether to pass the Mesos `--docker_config` option to Mesos.
+*  **cluster_docker_credentials_enabled** This parameter specifies whether to pass the Mesos `--docker_config` option to Mesos. 
 
-    *  `cluster_docker_credentials_enabled: 'true'` Pass the Mesos `--docker_config` option to Mesos.
-    *  `cluster_docker_credentials_enabled: 'false'` Do not pass the Mesos `--docker_config` option to Mesos.
+    *  `cluster_docker_credentials_enabled: 'true'` Pass the Mesos `--docker_config` option to Mesos. It will point to a file that contains the provided `cluster_docker_credentials` data.
+    *  `cluster_docker_credentials_enabled: 'false'` Do not pass the Mesos `--docker_config` option to Mesos. 
     
 For more information, see the [examples](#docker-credentials).
 
@@ -321,6 +320,43 @@ resolvers:
 ssh_key_path: /genconf/ssh-key
 ssh_port: '<port-number>'
 ssh_user: <username>
+```
+
+#### <a name="overlay"></a>DC/OS cluster with three masters, an Exhibitor/ZooKeeper managed internally, two DC/OS overlay networks, two private agents, and Google DNS
+
+```yaml
+    agent_list:
+    - <agent-private-ip-1>
+    - <agent-private-ip-2>
+    - <agent-private-ip-3>
+    # Use this bootstrap_url value unless you have moved the DC/OS installer assets.
+    bootstrap_url: file:///opt/dcos_install_tmp
+    cluster_name: <cluster-name>
+    master_discovery: static
+    master_list:
+    - <master-private-ip-1>
+    - <master-private-ip-2>
+    - <master-private-ip-3>
+    resolvers:
+    # You probably do not want to use these values since they point to public DNS servers.
+    # Instead use values that are more specific to your particular infrastructure.
+    - 8.8.4.4
+    - 8.8.8.8
+    ssh_port: 22
+    ssh_user: centos
+    dcos_overlay_enable: true
+    dcos_overlay_mtu: 9001
+    dcos_overlay_config_attempts: 6
+    dcos_overlay_network:
+      vtep_subnet: 44.128.0.0/20
+      vtep_mac_oui: 70:B3:D5:00:00:00
+      overlays:
+        - name: dcos
+          subnet: 9.0.0.0/8
+          prefix: 26
+        - name: dcos-1
+          subnet: 192.168.0.0/16
+          prefix: 24
 ```
 
 #### <a name="http-proxy"></a>DC/OS cluster with three masters, an Exhibitor/ZooKeeper managed internally, a custom HTTP proxy, two private agents, and Google DNS
