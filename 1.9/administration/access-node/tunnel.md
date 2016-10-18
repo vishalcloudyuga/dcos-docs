@@ -109,9 +109,9 @@ DC/OS Tunnel provides you with full access to the DNS, masters, and agents from 
 # Using DC/OS Tunnel
 
 ## Prerequisites
-* The [DC/OS CLI](/docs/1.9/usage/cli/install/).
-* The DC/OS Tunnel package. Run `dcos package install tunnel-cli --cli` from the DC/OS CLI.
-* [SSH access](/docs/1.9/administration/access-node/sshcluster/) (key authentication only).
+* The [DC/OS CLI](/docs/1.8/usage/cli/install/).
+* The DC/OS Tunnel package. Run `dcos package install tunnel-cli --cli`.
+* [SSH access](/docs/1.8/administration/access-node/sshcluster/) (key authentication only).
 * [The OpenVPN client](https://openvpn.net/index.php/open-source/downloads.html) for VPN functionality.
 
 **Note:** Only Linux and macOS are supported currently.
@@ -126,8 +126,9 @@ All examples will refer to this sample application:
  * Load-balanced
 * Running on overlay network
 
-`myapp` is a web server listening on port `555`. We'll be using `curl` as
-our client application.
+`myapp` is a web server listening on port `555`. We'll be using `curl`
+as our client application. Each successful example will result in the HTML
+served by `myapp` to be output output as text.
 
 ##  SOCKS
 Run the following command from the DC/OS CLI:
