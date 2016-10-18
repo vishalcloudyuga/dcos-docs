@@ -99,6 +99,7 @@ These instructions provide a tested [HAProxy](http://www.haproxy.org/) configura
       # not perform server certificate verification (warning: this is insecure, and
       # we hope that you know what you are doing).
       # server dcos-1 1.2.3.4:443 ssl verify none
+      #
       # Rewrite response Location header if it contains an absolute URL
       # pointing to the 'dcoshost' host: replace 'dcoshost' with original
       # request Host header (containing hostname and port).

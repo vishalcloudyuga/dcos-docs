@@ -45,6 +45,8 @@ The DC/OS installation creates these folders:
   </tr>
 </table>
 
+**Important:** Changes to `/opt/mesosphere` may lead to unpredictable behavior in DC/OS, broken upgrades, and are unsupported.
+
 # Configure your cluster
 
 1. Create a directory named `genconf` on your bootstrap node and navigate to it.

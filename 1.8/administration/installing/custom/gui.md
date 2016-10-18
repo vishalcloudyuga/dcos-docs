@@ -45,6 +45,8 @@ The DC/OS installation creates these folders:
   </tr>
 </table>
 
+**Important:** Changes to `/opt/mesosphere` may lead to unpredictable behavior in DC/OS, broken upgrades, and are unsupported.
+
 # Install DC/OS
 
 1.  Download the [DC/OS installer][1] to your bootstrap node.
