@@ -21,7 +21,7 @@ This tutorial outlines the steps for configuring and starting Mesos-DNS on DC/OS
     $ dcos node ssh --leader --master-proxy
     ``` 
     
-    For more information, the SSH [documentation][2].
+    For more information, see the SSH [documentation][2].
 
 1.  Create a configuration directory for the new Mesos-DNS instance:
 

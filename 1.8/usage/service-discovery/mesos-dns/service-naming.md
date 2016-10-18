@@ -11,8 +11,6 @@ Mesos-DNS defines the DNS top-level domain `.mesos` for Mesos tasks that are run
 - [Task and Service Naming Conventions](#naming-conventions)
 - [Discovering Service DNS Names](#dns-naming)
 
-To enumerate all the DNS records that Mesos-DNS will respond to, take a look at this.
-
 # <a name="a-records"></a>A Records
 
 An A record associates a hostname to an IP address.
@@ -291,7 +289,7 @@ You can get a comprehensive list of the apps running on your DC/OS cluster nodes
     $ dcos node ssh --leader --master-proxy
     ``` 
     
-    For more information, the SSH [documentation]/docs/1.8/administration/access-node/sshcluster/.
+    For more information, see the SSH [documentation]/docs/1.8/administration/access-node/sshcluster/.
 
 2.  Run this command from your master node to view the node details:
     
@@ -299,7 +297,7 @@ You can get a comprehensive list of the apps running on your DC/OS cluster nodes
     $ curl http://master.mesos:8123/v1/enumerate
     ``` 
     
-    In this example Kafka and Chronos are installed:
+    In this example, Kafka and Chronos are installed:
     
     ```bash
        $ curl http://master.mesos:8123/v1/enumerate

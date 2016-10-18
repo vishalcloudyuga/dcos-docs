@@ -90,9 +90,9 @@ The master module will be run as part of the Mesos master and will have the foll
 
 #### Agent mesos overlay module:
 
-The agent overlay module will run as part of the Mesos agents and will have the following responsibilities:
-1. It is responsible for registering with the master overlay module. After registration it will retrieve the allocated agent subnet, the subnet allocated to its mesos and docker bridges and VTEP information (IP and MAC address of the VTEP) .
-2. Based on the allocated agent subnet, it is responsible for generating a CNI network config to be used by the `network/cni` isolator for the `MesosContainerizer`.
+The agent overlay module runs as part of the Mesos agents and has the following responsibilities:
+1. It is responsible for registering with the master overlay module. After registration it retrieves the allocated agent subnet, the subnet allocated to its Mesos and Docker bridges and VTEP information (IP and MAC address of the VTEP).
+2. Based on the allocated agent subnet, it is responsible for generating a CNI (Container Network Interface) network config to be used by the `network/cni` isolator for the `MesosContainerizer`.
 3. It is responsible for creating a _Docker network_ to be used by the _`DockerContainerizer`_.
 4. It exposes an HTTP endpoint `overlay-agent/overlays` that is used by the Virtual Network Service to retrieve information about the overlays on that particular agent.
 
