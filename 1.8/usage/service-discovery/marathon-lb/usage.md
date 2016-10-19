@@ -1,10 +1,10 @@
 ---
-post_title: Quickstart
+post_title: Using Marathon-LB 
 menu_order: 10
 ---
 To demonstrate Marathon-LB, you can boot a DC/OS cluster on AWS to run an internal and external load balancer. The external load balancer will be used for routing external HTTP traffic into the cluster, and the internal load balancer will be used for internal service discovery and load balancing. Since we’ll be doing this on AWS, external traffic will first hit an external load balancer configured to expose our "public" agent nodes.
 
-## Prequisistes
+## Prequisites
 
 *   [A DC/OS cluster][1].
 *   [DC/OS and DC/OS CLI][2] are installed.
