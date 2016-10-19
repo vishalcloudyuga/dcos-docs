@@ -59,7 +59,7 @@ Clicking the service name opens the Services side panel, which provides CPU, mem
 
 # <a name="jobs"></a>Jobs
 
-The Jobs tab provides native support for creating and administering scheduled jobs. You can set up jobs with a scheduler by using the cron format. For more information, see the [documentation](docs/1.8/usage/jobs/).
+The Jobs tab provides native support for creating and administering scheduled jobs. You can set up jobs with a schedule in cron format. For more information, see the [documentation](/docs/1.8/usage/jobs/).
 
 ![Jobs](../img/dcos-jobs.png)
 
