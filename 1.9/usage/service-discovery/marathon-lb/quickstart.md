@@ -1,5 +1,5 @@
 ---
-post_title: Marathon-LB Quick Start: Running a Containerized Service on a Public Node
+post_title: Marathon-LB Quick Start
 nav_title: Quick Start
 menu_order: 0 
 ---
