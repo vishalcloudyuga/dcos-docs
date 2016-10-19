@@ -45,7 +45,7 @@ The DC/OS installation creates these folders:
   </tr>
 </table>
 
-**Important:** Changes to `/opt/mesosphere` may lead to unpredictable behavior in DC/OS, broken upgrades, and are unsupported.
+**Important:** Changes to `/opt/mesosphere` are unsupported. They can lead to unpredictable behavior in DC/OS and prevent upgrades.
 
 # Install DC/OS
 
