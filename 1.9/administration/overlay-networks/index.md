@@ -37,12 +37,12 @@ The components of the overlay network interact in the following ways:
 
 **Note:** Your network must adhere to the [DC/OS system requirements](https://dcos.io/docs/1.9/administration/installing/custom/system-requirements/) to use DC/OS overlay networks.
 
-# Virtual Network Service DNS
+# Virtual Network Service: DNS
 
 The [Virtual Network Service](/docs/1.9/overview/components/) maps IPs to names on your overlay network. During DNS lookup for a task’s IP, there are situations when it is unknown to the DNS server if the IP address stored in NetworkInfo is accessible or not. You can use these entries in Virtual Network Service DNS to find your task IP:
 
 * **Container IP:** Provides the container IP address: `<taskname>.<task-location>.<containerip>.dcos`
-* **Auto IP:** Provides a best guess of a task's IP address: `<taskname>.<task-location>.<autoip>.dcos`. This is used during migrations to overlay.
+* **Auto IP:** Provides a best guess of a task's IP address: `<taskname>.<task-location>.<autoip>.dcos`. This is used during migrations to the overlay.
 
 # Limitations
 * The DC/OS overlay network does not allow services to reserve IP addresses that result in ephemeral addresses for containers across multiple incarnations on the overlay network. This restriction ensures that a given client connects to the correct service.

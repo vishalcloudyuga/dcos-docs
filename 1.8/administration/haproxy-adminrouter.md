@@ -12,7 +12,7 @@ These instructions provide a tested [HAProxy](http://www.haproxy.org/) configura
 
 **Tip:**
 
-During DNS lookup for a task’s IP, there are situations when it is unknown to the DNS server if the IP address stored in NetworkInfo is accessible or not. You can use these entries in Virtual Network Service DNS to find your task IP:
+To avoid having to reconfigure DC/OS, you can use this DNS entry to find your task IP.
 
 * **Agent IP:** Provides the agent IP address: `<taskname>.<task-location>.<agentip>.dcos`
 

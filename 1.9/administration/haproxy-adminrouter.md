@@ -12,7 +12,7 @@ These instructions provide a tested [HAProxy](http://www.haproxy.org/) configura
 
 **Tip:**
 
-During DNS lookup for a task’s IP, there are situations when it is unknown to the DNS server if the IP address stored in NetworkInfo is accessible or not. You can use these entries in Virtual Network Service DNS to find your task IP:
+To avoid having to reconfigure DC/OS, you can use this DNS entry to find your task IP.
 
 * **Agent IP:** Provides the agent IP address: `<taskname>.<task-location>.<agentip>.dcos`
 
@@ -104,6 +104,7 @@ During DNS lookup for a task’s IP, there are situations when it is unknown to 
       # Option 2: use TLS-encrypted communication with DC/OS Admin Router, but do
       # not perform server certificate verification (warning: this is insecure, and
       # we hope that you know what you are doing).
+      # server dcos-1 1.2.3.4:443 ssl verify none
       # Rewrite response Location header if it contains an absolute URL
       # pointing to the 'dcoshost' host: replace 'dcoshost' with original
       # request Host header (containing hostname and port).

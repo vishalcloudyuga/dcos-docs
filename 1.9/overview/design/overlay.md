@@ -123,10 +123,11 @@ For _DockerContainerizer_ the DC/OS module, after retrieving the subnet, will cr
 **NOTE:** The assumption for _DockerContainerizer_ to work with the DC/OS overlay is that the host is running Docker v1.11 or greater.
 **NOTE:** The default <overlay MTU> = 1420 bytes.
 
-### Virtual Network Service: the overlay orchestrator
+### Virtual Network Service: Overlay Orchestration
 
 **Code:**https://github.com/dcos/navstar.git
-Virtual Network Service is the overlay orchestrator service running on each agent which is responsible for the following functionality. It is a system which contains non-realtime components of the DC/OS overlay, as well as other networking-related chunks of DC/OS. 
+Virtual Network Service is the overlay orchestrator service running on each agent which is responsible for the following functionality. It is a system which contains non-realtime components of the DC/OS overlay, as well as other networking-related chunks of DC/OS. The Virtual Network Service running on each agent is responsible for the following functionality:
+
 - Talking to the agent overlay module and learning the subnet, VTEP IP and MAC address allocated to the agent.
 - Creating the VTEP on the agent.
 - Programming the routes to various subnets on various agents.
