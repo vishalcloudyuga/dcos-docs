@@ -56,10 +56,17 @@ Now, you can create the zone that you'd like to alias to this. You can also skip
     ```
 
 ## <a name="existing"></a>Using an existing zone
-To use an existing zone, add a DNAME record:
 
-```
-@       IN      DNAME   mesos.yor6tqhiag39y6cjkdd4w9uzo45qhku6ra8hl7hpr6d9ukjaz3jo.dcos.directory.
-```
+-   To use an existing zone, add a DNAME record:
 
-The `@` aliases the top level of the zone. If you want to alias a high level domain, just use reference that value instead of `@`.
+    ```
+    @       IN      DNAME   mesos.yor6tqhiag39y6cjkdd4w9uzo45qhku6ra8hl7hpr6d9ukjaz3jo.dcos.directory.
+    ```
+    
+    The `@` aliases the top level of the zone, for example `contoso.com`. 
+
+-   To alias a high level domain, specify that value in the DNAME record. In this example, `foo` aliases `foo.contoso.com`:
+
+    ```
+    foo       IN      DNAME   mesos.yor6tqhiag39y6cjkdd4w9uzo45qhku6ra8hl7hpr6d9ukjaz3jo.dcos.directory.
+    ```
