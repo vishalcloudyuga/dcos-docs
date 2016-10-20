@@ -1,230 +1,65 @@
 ---
-post_title: Using Custom Top-Level Domains for Mesos-DNS
-nav_title: Custom TLDs
+post_title: Exposing Mesos Zones Outside
 menu_order: 300
 ---
 
-DC/OS uses Mesos-DNS for internal service discovery. While the `.mesos` domain can be used to reach services in DC/OS, an additional instance of Mesos-DNS must be running to support the use of custom suffixes. This tutorial outlines the steps for configuring and starting Mesos-DNS on DC/OS and configuring your authoritative DNS appropriately. This tutorial is also useful when configuring DNS for DC/OS clusters in multiple datacenters and environments.
+There are cases where you may want to have services outside of DC/OS that use DNS records inside of the DC/OS cluster.  However, the `.mesos` domain name that DC/OS uses to expose records does not support this. To enable this capability, you can put a BIND server in front of your cluster. 
 
-**Prerequisites**
+Each DC/OS cluster has a unique cryptographic identifier. The zbase32 encoded version of the identifier can be found under system. 
 
-*   A functioning DC/OS cluster.
-*   A configurable authoritative DNS server.
+In the example, the cryptographic cluster ID `yor6tqhiag39y6cjkdd4w9uzo45qhku6ra8hl7hpr6d9ukjaz3jo` is used.
 
-## DC/OS Configuration
 
-1.  Create a configuration directory for the new Mesos-DNS instance:
+1.  Install a BIND server in front of your cluster.
 
-        mkdir /opt/mesos-dns-ext && cd /opt/mesos-dns-ext
+1.  Create a forwarding entry for your DC/OS master that resembles this.
 
-2.  Create and edit `/opt/mesos-dns-ext/config.json`:
+    ```
+    zone "yor6tqhiag39y6cjkdd4w9uzo45qhku6ra8hl7hpr6d9ukjaz3jo.dcos.directory" {
+            type forward;
+            forward only;
+            forwarders { 10.0.4.173; };  // <Master-IP-1;Master-IP-2;Master-IP-3>
+    };
+    ```
 
-        {
-          "domain": "<domain>",
-          "externalon": false,
-          "listener": "<listen_ip>",
-          "masters": ["<dcos_master1>/mesos","<dcos_master2>/mesos","<dcos_master3>/mesos"],
-          "port": 53,
-          "recurseon": false,
-          "refreshSeconds": 60,
-          "resolvers": ["<resolver1>","<resolver2>","<resolver3>"],
-          "SOAExpire": 86400,
-          "SOAMinttl": 60,
-          "SOAMname": "ns1.<domain>",
-          "SOARefresh": 60,
-          "SOARetry": 600,
-          "SOARname": "root.ns1.<domain>",
-          "ttl": 60,
-          "zk": "zk://zk-1.zk,zk-2.zk,zk-3.zk:2181/mesos"
-        }
+    1.  Replace the master IP (`<Master-IP>`) with a semicolon separated list of your own master IPs. 
+    
+    1.  Replace the example cryptographic cluster ID with your own.
 
-    <table class="table">
-      <tbody>
-        <tr>
-          <th class="confluenceTh">
-            Parameter
-          </th>
 
-          <th class="confluenceTh">
-            Description
-          </th>
-        </tr>
 
-        <tr>
-          <td>
-            domain
-          </td>
+## Making a zone
+Now, you can create the zone that you'd like to alias to this. You can also skip this step and [use an existing zone](#existing).
 
-          <td class="confluenceTd">
-            Your custom DNS suffix
-          </td>
-        </tr>
+1.  Create a zone entry in the `named.conf` file. For this example, `contoso.com` is used:
 
-        <tr>
-          <td class="confluenceTd">
-            listen_ip
-          </td>
+    ```
+    zone "contoso.com" {
+            type master;
+            file "/etc/bind/db.contoso.com";
+    };
+    ```
 
-          <td class="confluenceTd">
-            IP to listen on (default 0.0.0.0)
-          </td>
-        </tr>
+1.  Populate the zone file:
 
-        <tr>
-          <td class="confluenceTd">
-            dcos_master{1..3}
-          </td>
+    ```
+    $TTL    604800
+    @       IN      SOA     localhost. root.localhost. (
+                                  1         ; Serial
+                                  1         ; Refresh
+                                  1         ; Retry
+                                  1         ; Expire
+                                  1 )       ; Negative Cache TTL
+    ;
+    @       IN      NS      localhost.
+    @       IN      DNAME   mesos.yor6tqhiag39y6cjkdd4w9uzo45qhku6ra8hl7hpr6d9ukjaz3jo.dcos.directory.
+    ```
 
-          <td class="confluenceTd">
-            IP addresses of DC/OS masters
-          </td>
-        </tr>
+## <a name="existing"></a>Using an existing zone
+To use an existing zone, add a DNAME record:
 
-        <tr>
-          <td class="confluenceTd">
-            resolver{1..3}
-          </td>
+```
+@       IN      DNAME   mesos.yor6tqhiag39y6cjkdd4w9uzo45qhku6ra8hl7hpr6d9ukjaz3jo.dcos.directory.
+```
 
-          <td class="confluenceTd">
-            Additional resolvers (at least one required)
-          </td>
-        </tr>
-
-        <tr>
-          <td class="confluenceTd">
-            dcos_zookeeper{1..3}
-          </td>
-
-          <td class="confluenceTd">
-            IP Addresses of ZooKeeper servers
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-3.  Download the latest Mesos-DNS binary and copy it to `/opt/mesos-dns-ext/mesos-dns`: <https://github.com/mesosphere/mesos-dns/releases>.
-
-4.  <a name="four"></a>Create an application definition for Mesos-DNS, `/opt/mesos-dns-ext/mesos-dns-ext.json`:
-
-        {
-          "id": "/mesos-dns-ext",
-          "cmd": "/opt/mesos-dns-ext/mesos-dns --config=/opt/mesos-dns-ext/config.json",
-          "instances": 1,
-          "cpus": 1,
-          "mem": 1024,
-          "disk": 0,
-          "executor": "",
-          "constraints": [
-            [
-              "hostname",
-              "CLUSTER",
-              "<mesos_agent>"
-            ]
-          ],
-          "uris": [],
-          "storeUrls": [],
-          "ports": [
-            53,
-            8123
-          ]
-        }
-
-    <table class="table">
-      <tbody>
-        <tr>
-          <th class="confluenceTh">
-            Parameter
-          </th>
-
-          <th class="confluenceTh">
-            Definition
-          </th>
-        </tr>
-        <tr>
-          <td class="confluenceTd">
-            mesos_agent
-          </td>
-
-          <td class="confluenceTd">
-            A specific agent to pin Mesos-DNS to. Since Mesos-DNS will be acting as a delegate, its IP must remain static. For multiple Mesos-DNS instances (and redundancy), the LIKE constraint operator can be used to define hosts using regex. See <a href="https://mesosphere.github.io/marathon/docs/constraints.html" class="external-link" rel="nofollow">https://mesosphere.github.io/marathon/docs/constraints.html</a> for more information. As a best-practice, we also recommend using healthchecks to ensure that Mesos-DNS remains running.
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-5.  Create a new application for Mesos-DNS in Marathon:
-
-        $ curl -X POST -H 'Content-Type: application/json' -d @mesos-dns-ext.json http://<marathon>:8080/v2/apps
-
-    <table class="table">
-      <tbody>
-        <tr>
-          <th class="confluenceTh">
-            Parameter
-          </th>
-
-          <th class="confluenceTh">
-            Definition
-          </th>
-        </tr>
-
-        <tr>
-          <td class="confluenceTd">
-            marathon
-          </td>
-
-          <td class="confluenceTd">
-            IP/hostname of Marathon leader
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-## DNS Configuration
-
-**Important:** DNS configuration varies from environment-to-environment. These instructions are a guide of how your DNS should be modified.
-
-1.  Add the following A and NS records to your DNS (glue record):
-
-        ns.<domain> IN A <mesos_dns_ext>
-        <domain> IN NS ns1.<domain>
-
-    <table class="table">
-      <tbody>
-        <tr>
-          <th class="confluenceTh">
-            Parameter
-          </th>
-
-          <th class="confluenceTh">
-            Definition
-          </th>
-        </tr>
-
-        <tr>
-          <td class="confluenceTd">
-            domain
-          </td>
-
-          <td class="confluenceTd">
-            <span>Your custom DNS suffix</span>
-          </td>
-        </tr>
-
-        <tr>
-          <td class="confluenceTd">
-            mesos_dns_ext
-          </td>
-
-          <td class="confluenceTd">
-            IP Address of the Mesos Agent that Mesos-DNS is running on (<em>see DC/OS Configuration, <a href="#four">Step 4</a>, <mesos_agent></em>).
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-## Example
-
-Here is a datacenter with DC/OS clusters in development and production environments:
-
-![Custom TLD example](../img/cust-domain.png)
+The `@` aliases the top level of the zone. If you want to alias a high level domain, just use reference that value instead of `@`.
