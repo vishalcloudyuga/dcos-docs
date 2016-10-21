@@ -98,6 +98,8 @@ Here are the agent node hardware requirements.
 *   The Mesos master and agent persistent information of the cluster is stored in the `var/lib/mesos` directory.
     
     **Important:** Do not remotely mount `/var/lib/mesos` or the Docker storage directory (by default `/var/lib/docker`).
+    
+*   Do not mount `/tmp` with `noexec`. This will Exhibitor and ZooKeeper from running.    
 
 ### Port and Protocol Configuration
 
