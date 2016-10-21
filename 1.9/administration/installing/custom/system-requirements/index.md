@@ -99,7 +99,7 @@ Here are the agent node hardware requirements.
     
     **Important:** Do not remotely mount `/var/lib/mesos` or the Docker storage directory (by default `/var/lib/docker`).
     
-*   Do not mount `/tmp` with `noexec`. This will Exhibitor and ZooKeeper from running.    
+*   Do not mount `/tmp` with `noexec`. This will prevent Exhibitor and ZooKeeper from running.    
 
 ### Port and Protocol Configuration
 
