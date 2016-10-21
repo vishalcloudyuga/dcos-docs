@@ -22,7 +22,7 @@ In transparent mode, the HTTP proxy runs as superuser on port 80 and does not re
 Though you must configure your client to use the HTTP proxy in standard mode, it does not have any of the limitations of transparent mode. As in transparent mode, you can use [DNS SRV](#srv) records as URLs.
 
 <a name="srv"></a>
-## SRV Records
+### SRV Records
 A SRV DNS record is a mapping from a name to a IP/port pair. DC/OS creates SRV records in the form `_<port-name>._<service-name>._tcp.marathon.mesos`. The HTTP proxy exposes these as URLs. This feature can be useful for communicating with DC/OS services.
 
 # VPN
@@ -109,12 +109,11 @@ DC/OS Tunnel provides you with full access to the DNS, masters, and agents from 
 # Using DC/OS Tunnel
 
 ## Prerequisites
+* Only Linux and macOS are currently supported.
 * The [DC/OS CLI](/docs/1.8/usage/cli/install/).
 * The DC/OS Tunnel package. Run `dcos package install tunnel-cli --cli`.
 * [SSH access](/docs/1.8/administration/access-node/sshcluster/) (key authentication only).
 * [The OpenVPN client](https://openvpn.net/index.php/open-source/downloads.html) for VPN functionality.
-
-**Note:** Only Linux and macOS are supported currently.
 
 ## Example Application
 
@@ -130,50 +129,49 @@ All examples will refer to this sample application:
 as our client application. Each successful example will result in the HTML
 served by `myapp` to be output output as text.
 
-##  SOCKS
-Run the following command from the DC/OS CLI:
+##  Using DC/OS Tunnel to run a SOCKS Proxy
+1. Run the following command from the DC/OS CLI:
 
-```
-$ dcos tunnel socks
+    ```
+    $ dcos tunnel socks
 
-## Example
-$ curl --proxy socks5://127.0.0.1:1080 mygroupmyapp.marathon.l4lb.thisdcos.directory:555
-$ curl --proxy socks5://127.0.0.1:1080 _myport._myapp.mygroup._tcp.marathon.mesos
-```
+    ## Example
+    $ curl --proxy socks5://127.0.0.1:1080 mygroupmyapp.marathon.l4lb.thisdcos.directory:555
+    $ curl --proxy socks5://127.0.0.1:1080 _myport._myapp.mygroup._tcp.marathon.mesos
+    ```
 
-Configure your application to use the proxy on port 1080.
+1. Configure your application to use the proxy on port 1080.
 
-##  HTTP
+##  Using DC/OS Tunnel to run a HTTP Proxy
 ### Transparent Mode
 
-Run the following command from the DC/OS CLI:
+1. Run the following command from the DC/OS CLI:
 
-```
-$ sudo dcos tunnel http
+    ```
+    $ sudo dcos tunnel http
 
-## Example
-$ curl _myport._myapp.mygroup._tcp.marathon.mesos.mydcos.directory
+    ## Example
+    $ curl _myport._myapp.mygroup._tcp.marathon.mesos.mydcos.directory
 
-### Watch out!
-## This won't work because you can't specify a port in transparent mode
-$ curl mygroupmyapp.marathon.l4lb.thisdcos.directory.mydcos.directory:555
-```
+    ### Watch out!
+    ## This won't work because you can't specify a port in transparent mode
+    $ curl mygroupmyapp.marathon.l4lb.thisdcos.directory.mydcos.directory:555
+    ```
 
-#### Port Forwarding
-In transparent mode, the HTTP proxy works by port forwarding. Append `.mydcos.directory` to the end of your domain when you enter commands. For instance, `http://example.com/?query=hello` becomes `http://example.com.mydcos.directory/?query=hello`. **Note:** In transparent mode, you cannot specify a port in a URL.
+1. In transparent mode, the HTTP proxy works by port forwarding. Append `.mydcos.directory` to the end of your domain when you enter commands. For instance, `http://example.com/?query=hello` becomes `http://example.com.mydcos.directory/?query=hello`. **Note:** In transparent mode, you cannot specify a port in a URL.
 
 ### Standard mode
-To run the HTTP proxy in standard mode, without root privileges, use the `--port` flag to configure it to use another port:
+1. To run the HTTP proxy in standard mode, without root privileges, use the `--port` flag to configure it to use another port:
 
-```
-$ dcos tunnel http --port 8000
+    ```
+    $ dcos tunnel http --port 8000
 
-## Example
-$ curl --proxy 127.0.0.1:8000 mygroupmyapp.marathon.l4lb.thisdcos.directory:555
-$ curl --proxy 127.0.0.1:8000 _myport._myapp.mygroup._tcp.marathon.mesos
-```
+    ## Example
+    $ curl --proxy 127.0.0.1:8000 mygroupmyapp.marathon.l4lb.thisdcos.directory:555
+    $ curl --proxy 127.0.0.1:8000 _myport._myapp.mygroup._tcp.marathon.mesos
+    ```
 
-Then, configure your application to run HTTP on the port you specified above.
+1. Configure your application to use the proxy on the port you specified above.
 
 ### SRV Records
 The HTTP proxy exposes DC/OS SRV records as URLs in the form `_<port-name>._<service-name>._tcp.marathon.mesos.mydcos.directory` (transparent mode) or `_<port-name>._<service-name>._tcp.marathon.mesos` (standard mode).
@@ -211,7 +209,7 @@ Alternatively, you can add `name` to the `portMappings` or `portDefinitions` fie
   ]
 ```
 
-## VPN
+##  Using DC/OS Tunnel to run a VPN
 Run the following command from the DC/OS CLI
 
 ```
