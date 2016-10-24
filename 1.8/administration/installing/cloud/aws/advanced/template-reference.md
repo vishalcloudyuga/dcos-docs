@@ -208,10 +208,6 @@ The master templates create masters, on top of the infrastructure stack already 
     <th>Description</th>
   </tr>
   <tr>
-    <td>AcceptEULA</td>
-    <td>Read the Mesosphere EULA and indicate agreement: https://docs.mesosphere.com/community-edition-eula/.</td>
-  </tr>
-  <tr>
     <td>AdminSecurityGroup</td>
     <td>Admin URL Security Group. Controls Access to the Admin page</td>
   </tr>
