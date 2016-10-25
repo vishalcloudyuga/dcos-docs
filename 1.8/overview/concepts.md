@@ -3,13 +3,9 @@ post_title: DC/OS Architecture Concepts
 nav_title: Concepts
 menu_order: 5
 ---
-This page contains terms and definitions for DC/OS.
-
-Because several of the core DC/OS components predate and continue to be developed independently of DC/OS itself, the pursuit of consistent terminology is an ongoing process. Concepts in DC/OS sometimes match the underlying component terminology directly and sometimes require mapping to alternate terms. Some terms are mature and well entrenched while others are newer and may not be thoroughly adopted and integrated. This document is designed both to help educate and to document intended direction for the near future.
-
 ## <a name="dcos-concepts"></a>DC/OS Concepts
 
-DC/OS is an abstraction around pre-existing components. These terms are sometimes similar to component terms and sometimes they’re new terms meant to hide organically grown component terms.
+DC/OS is an abstraction around pre-existing components. These terms are sometimes similar to component terms and sometimes they’re new terms meant to abstract organically grown component terms.
 
 ### <a name="cluster"></a>Cluster
 
