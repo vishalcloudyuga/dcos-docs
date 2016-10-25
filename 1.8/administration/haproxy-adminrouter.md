@@ -10,6 +10,12 @@ The HTTP Proxy must perform on-the-fly HTTP request and response header modifica
 
 These instructions provide a tested [HAProxy](http://www.haproxy.org/) configuration example that handles the named request/response rewriting. This example ensures that the communication between HAProxy and DC/OS Admin Router is TLS-encrypted.
 
+**Tip:**
+
+To avoid having to reconfigure DC/OS, you can use this DNS entry to find your task IP.
+
+* **Agent IP:** Provides the agent IP address: `<taskname>.<task-location>.<agentip>.dcos`
+
 
 1.  Install HAProxy [1.6.9](http://www.haproxy.org/#down).
 

@@ -4,24 +4,14 @@ nav_title: Custom Top-Level Domains
 menu_order: 200
 ---
 
-DC/OS uses Mesos-DNS for internal service discovery. While the `.mesos` domain can be used to reach services in DC/OS, an additional instance of Mesos-DNS must be running to support the use of custom suffixes. 
-
-This tutorial outlines the steps for configuring and starting Mesos-DNS on DC/OS and configuring your authoritative DNS appropriately. These steps are also useful when configuring DNS for DC/OS clusters in multiple datacenters and environments.
+DC/OS uses Mesos-DNS for internal service discovery. While the `.mesos` domain can be used to reach services in DC/OS, an additional instance of Mesos-DNS must be running to support the use of custom suffixes. This tutorial outlines the steps for configuring and starting Mesos-DNS on DC/OS and configuring your authoritative DNS appropriately. This tutorial is also useful when configuring DNS for DC/OS clusters in multiple datacenters and environments.
 
 **Prerequisites**
 
-*   [DC/OS is installed](/docs/1.8/administration/installing/).
+*   A functioning DC/OS cluster.
 *   A configurable authoritative DNS server.
 
 ## DC/OS Configuration
-
-1.  SSH to your leading master. For example, use this CLI command to SSH to your master:
-    
-    ```bash
-    $ dcos node ssh --leader --master-proxy
-    ``` 
-    
-    For more information, see the SSH [documentation][2].
 
 1.  Create a configuration directory for the new Mesos-DNS instance:
 
