@@ -154,7 +154,7 @@ For more more information, see Docker's <a href="http://docs.docker.com/engine/i
 
 To use the [GUI][4] or [CLI][1] installation methods, you must disable password prompts for sudo.
 
-Run this command to disable the sudo password prompt:
+Add the following line to your `/etc/sudoers` file. This disables the sudo password prompt.
 
 ```bash
 %wheel ALL=(ALL) NOPASSWD: ALL
