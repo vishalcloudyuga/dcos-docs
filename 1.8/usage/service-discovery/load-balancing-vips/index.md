@@ -4,7 +4,7 @@ nav_title: Load Balancing and VIPs
 menu_order: 0
 ---
 
-DC/OS comes with an east-west load balancer that's meant to be used to enable multi-tier microservices architectures. It acts as a TCP Layer 4 load balancer, and it's tightly integrated with the kernel.
+DC/OS comes with an east-west load balancer that's meant to be used to enable multi-tier microservices architectures. It acts as a TCP Layer 4 load balancer, and it's tightly integrated with the kernel. The internal Layer 4 load balancer component (`dcos-minuteman.service`) is also known as [Minuteman](https://github.com/dcos/minuteman). 
 
 ## Usage
 You can use the layer 4 load balancer by assigning a [VIP from the DC/OS web interface](/docs/1.8/usage/service-discovery/load-balancing-vips/virtual-ip-addresses/). Alternatively, if you're using something other than Marathon, you can create a label on the [port](https://github.com/apache/mesos/blob/b18f5bf48fda12bce9c2ac8e762a08f537ffb41d/include/mesos/mesos.proto#L1813) protocol buffer while launching a task on Mesos. This label's key must be in the format `VIP_$IDX`, where `$IDX` is replaced by a number, starting from 0. Once you create a task, or a set of tasks with a VIP, they will automatically become available to all nodes in the cluster, including the masters.
@@ -128,3 +128,8 @@ The load balancer includes a state of the art failure detection scheme. This fai
 Every node maintains an adjacency table. These adjacency tables are gossiped to every other node in the cluster. These adjacency tables are then used to build an application-level multicast overlay.
 
 These connections are monitored via an adaptive ping algorithm. The adaptive ping algorithm maintains a window of pings between neighbors, and if the ping times out, they sever the connections. Once this connection is severed the new adjacencies are gossiped to all other nodes, therefore potentially triggering cascading healthchecks. This allows the system to detect failures in less than a second. Although, the system has backpressure when there are lots of failures, and fault detection can rise to 30 seconds.
+
+## Next steps
+
+- [Assign a VIP to your application](/docs/1.8/usage/service-discovery/load-balancing-vips/virtual-ip-addresses/)
+- [Minuteman repo and documentation](https://github.com/dcos/minuteman)

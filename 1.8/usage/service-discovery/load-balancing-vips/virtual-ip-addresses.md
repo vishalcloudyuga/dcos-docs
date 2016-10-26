@@ -10,7 +10,9 @@ A named VIP contains 3 components:
  * Port (a port which the service is available on)
  * Service name
 
-You can assign a VIP to your application from the DC/OS web interface. The values you enter when you deploy a new service are translated into the appropriate `portDefininitions` or `portMappings` entry in your Marathon application definition.* VIPs follow the naming convention `<service-name>.marathon.l4lb.thisdcos.directory:<port>`.
+You can assign a VIP to your application from the DC/OS web interface. The values you enter when you deploy a new service are translated into the appropriate `portDefininitions` or `portMappings` entry in your Marathon application definition.
+
+* VIPs follow the naming convention `<service-name>.marathon.l4lb.thisdcos.directory:<port>`.
 
 ## Prerequisite:
 
@@ -18,7 +20,7 @@ You can assign a VIP to your application from the DC/OS web interface. The value
 
 ## Create a VIP:
 
-1.  From the DC/OS web interface, click on the **Services** tab and either click your service name or click "Deploy Service" to create a new service.
+1.  From the DC/OS [web interface](/docs/1.8/usage/webinterface/), click on the **Services** tab and either click your service name or click **Deploy Service** to create a new service.
 
     *   Select the **Network** tab.
     *   To edit an existing application, click **Edit**. You can then select the **Network** menu option.
@@ -51,19 +53,22 @@ You can assign a VIP to your application from the DC/OS web interface. The value
     
     Alternatively, you can create a service with a VIP from the DC/OS CLI. Create a file with your application definition JSON, then launch the service on DC/OS:
     
-    ```
-    dcos marathon app add <service-name>.json
+    ```bash
+    $ dcos marathon app add <service-name>.json
     ```
     
-\* Whether your application definition requires `portMappings` or `portDefinitions` depends on whether you are using BRIDGE or HOST networking. If you create your service in the DC/OS web interface, the appropriate field is selected for you. For more information on port configuration, see the [Marathon ports documentation][1].
+* Whether your application definition requires `portMappings` or `portDefinitions` depends on whether you are using BRIDGE or HOST networking. If you create your service in the DC/OS web interface, the appropriate field is selected for you. For more information on port configuration, see the [Marathon ports documentation][1].
 
 ## Using VIPs with DC/OS Services
 
-Some DC/OS Services, such as Kafka, automatically create VIPs when you install them. The naming convention is: `broker.<service.name>.l4lb.thisdcos.directory:9092`.
+Certain DC/OS services, such as Kafka, automatically create VIPs when you install them. The naming convention is: `broker.<service.name>.l4lb.thisdcos.directory:9092`.
 
-To see the VIP for Kafka, run `dcos kafka connection` from the DC/OS CLI. The following is a sample response:
+To view the VIP for Kafka, run `dcos kafka connection` from the DC/OS CLI. 
 
+```bash
 $ dcos kafka connection
+```
+Here is a sample response:
 
 ```json
 {

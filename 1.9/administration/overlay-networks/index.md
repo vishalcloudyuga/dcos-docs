@@ -9,8 +9,8 @@ The DC/OS overlay network feature is an out-of-the-box virtual networking soluti
 DC/OS overlay networks allow containers launched through the Mesos Containerizer or Docker Containerizer to co-exist on the same IP network, allocating each container its own unique IP address. DC/OS overlay networks offer the following advantages:
 
 * Both Mesos and Docker containers can communicate from within a single node and between nodes on a cluster.
-* Services can be created such that their traffic is isolated from other traffic coming from any other overlay network or host in the cluster.
-* They remove the need to worry about potentially overlapping ports in applications, or the need to use nonstandard ports for services to avoid overlapping.
+* Services can run in isolation from other traffic coming from any other overlay network or host in the cluster.
+* You don't have to worry about potentially overlapping ports in applications, or using workarounds to avoid overlapping (e.g. using nonstandard ports for services).
 * You can generate any number of instances of a class of tasks and have them all listen on the same port so that clients don’t have to do port discovery.
 * You can run applications that require intra-cluster connectivity, like Cassandra, HDFS, and Riak.
 * You can create multiple overlay networks to isolate different portions of your organization, for instance, development, marketing, and production.
@@ -37,13 +37,12 @@ The components of the overlay network interact in the following ways:
 
 **Note:** Your network must adhere to the [DC/OS system requirements](https://dcos.io/docs/1.9/administration/installing/custom/system-requirements/) to use DC/OS overlay networks.
 
-# Navstar DNS
+# Virtual Network Service: DNS
 
-Navstar maps IPs to names on your overlay network. During DNS lookup for a task’s IP, there are situations when it is unknown to the DNS server if the IP address stored in NetworkInfo is accessible or not. Three entries in Navstar DNS help to remedy this situation:
+The [Virtual Network Service](/docs/1.9/overview/components/) maps IPs to names on your overlay network. During DNS lookup for a task’s IP, there are situations when it is unknown to the DNS server if the IP address stored in NetworkInfo is accessible or not. You can use these entries in Virtual Network Service DNS to find your task IP:
 
-* **taskname.marathon.agentip.dcos: agentip**: Provides the agent IP address.
-* **taskname.marathon.containerip.dcos: containerip**: Provides the container IP address.
-* **taskname.marathon.autoip.dcos: autoip**: Provides a best guess of a task's IP address.
+* **Container IP:** Provides the container IP address: `<taskname>.<task-location>.<containerip>.dcos`
+* **Auto IP:** Provides a best guess of a task's IP address: `<taskname>.<task-location>.<autoip>.dcos`. This is used during migrations to the overlay.
 
 # Limitations
 * The DC/OS overlay network does not allow services to reserve IP addresses that result in ephemeral addresses for containers across multiple incarnations on the overlay network. This restriction ensures that a given client connects to the correct service.
