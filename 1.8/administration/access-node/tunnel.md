@@ -229,3 +229,32 @@ your master and agent nodes directly:
 $ ping master.mesos
 $ ping slave.mesos
 ```
+
+### macOS OpenVPN Client Installation
+* If using [homebrew](http://brew.sh/) then install with:
+    ```
+    $ brew install openvpn
+    ```
+    Then to use it:
+
+    Either add `/usr/local/sbin` to your `$PATH`,
+
+    or add the flag `--client=/usr/local/sbin/openvpn` like so:
+    ```
+    $ sudo dcos tunnel vpn --client=/usr/local/sbin/openvpn
+    ```
+
+* Another option is to install [TunnelBlick](https://tunnelblick.net/)
+    (_don't run it_, we are only installing it for the `openvpn` executable)
+    and add the flag `--client=/Applications/Tunnelblick.app/Contents/Resources/openvpn/openvpn-*/openvpn` like so:
+    ```
+    $ sudo dcos tunnel vpn --client=/Applications/Tunnelblick.app/Contents/Resources/openvpn/openvpn-*/openvpn
+    ```
+
+
+### Linux OpenVPN Client Installation
+`openvpn` should be available via your distribution's package manager.
+
+For example:
+* Ubuntu: `apt-get update && apt-get install openvpn`
+* ArchLinux: `pacman -S openvpn`
