@@ -144,6 +144,8 @@ This parameter specifies whether to enable DC/OS overlay networks.
 
         *  `vtep_subnet` This parameter specifies a dedicated address space that is used for the VxLAN backend for the overlay network. This address space should not be routeable from outside the agents or master.
         *  `vtep_mac_oui` This parameter specifies the MAC address of the interface connecting to it in the public node.
+            
+            **Important:** The last 3 bytes must be `00`.
         *  __overlays__
             *  `name` This parameter specifies the canonical name (see [limitations](/docs/1.9/administration/overlay-networks/) for constraints on naming overlay networks).
             *  `subnet` This parameter specifies the subnet that is allocated to the overlay network.
