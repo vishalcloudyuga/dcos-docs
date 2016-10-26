@@ -90,6 +90,8 @@ This parameter specifies a YAML nested list (`-`) of IPv4 addresses to your [pub
 
 This parameter specifies whether to enable DC/OS overlay networks.
 
+**Important:** Overlay networks require Docker 1.11. If you are using Docker 1.10 or earlier, you must specify `dcos_overlay_enable: 'false'`. For more information, see the [system requirements](/docs/1.8/administration/installing/custom/system-requirements/).
+
 *  `dcos_overlay_enable: 'false'` Do not enable the DC/OS overlay network.
 *  `dcos_overlay_enable: 'true'` Enable the DC/OS overlay network. This is the default value. When the overlay network is enabled you can also specify the following parameters:
 

@@ -138,6 +138,8 @@ Docker must be installed on all bootstrap and cluster nodes. The supported versi
 
 * Run Docker commands as the root user (with `sudo`) or as a user in the <a href="https://docs.docker.com/engine/installation/linux/centos/#create-a-docker-group" target="_blank">docker user group</a>.
 
+* [Overlay networks](/docs/1.8/administration/overlay-networks/) require Docker 1.11.
+
 **Distribution-Specific Installation**
 
 Each Linux distribution requires Docker to be installed in a specific way:
