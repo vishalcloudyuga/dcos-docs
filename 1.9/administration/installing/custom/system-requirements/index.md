@@ -224,6 +224,9 @@ On each of your cluster nodes, use the following command to:
 
     **Tip:** It may take a few minutes for your node to come back online after reboot.
 
+### Locale requirements
+You must set the `LC_ALL` and `LANG` environment variables to `en_US.utf-8`.  
+
 # Next steps
 
 - [GUI DC/OS Installation Guide][4]
