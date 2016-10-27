@@ -1,14 +1,14 @@
 ---
-post_title: Getting Started with Marathon-LB
-nav_title: Getting Started
+post_title: Tutorial - Load Balancing with Marathon-LB 
+nav_title:  Load Balancing with Marathon-LB
 menu_order: 10
 ---
-To demonstrate Marathon-LB, you can boot a DC/OS cluster on AWS to run an internal and external load balancer. The external load balancer will be used for routing external HTTP traffic into the cluster, and the internal load balancer will be used for internal service discovery and load balancing. Since we’ll be doing this on AWS, external traffic will first hit an external load balancer configured to expose our "public" agent nodes.
+To demonstrate Marathon-LB, you can boot a DC/OS cluster on AWS to run an internal and external load balancer. The external load balancer will be used for routing external HTTP traffic into the cluster, and the internal load balancer will be used for internal service discovery and load balancing. Since we’ll be doing this on AWS, external traffic will first hit an external load balancer configured to expose our [public](/docs/1.7/overview/concepts/#public) agent node.
 
 ## Prerequisites
 
-*   [A DC/OS cluster][1]
-*   [DC/OS and DC/OS CLI][2] are installed.
+*   [A DC/OS cluster][1] with at least 1 public agent node.
+*   [DC/OS CLI][2] is installed.
 
 ## Steps
 
@@ -215,5 +215,5 @@ Now, if you navigate to the ELB public DNS address in your browser, you should s
 
  [1]: /docs/1.7/administration/installing/
  [2]: /docs/1.7/usage/cli/install/
- [3]: /docs/1.7/administration/managing-aws/
+ [3]: /docs/1.7/administration/locate-public-agent/
  [4]: /docs/1.7/administration/sshcluster/
