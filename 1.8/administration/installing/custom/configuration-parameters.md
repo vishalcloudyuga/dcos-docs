@@ -163,6 +163,8 @@ This parameters specifies whether to enable the DC/OS proxy.
 
 For more information, see the [examples](#http-proxy).
 
+**Important:** You should also configure an HTTP proxy for [Docker](https://docs.docker.com/engine/admin/systemd/#/http-proxy). 
+
 ## Performance and Tuning
 
 ### <a name="check-time"></a>check_time
