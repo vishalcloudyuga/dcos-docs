@@ -22,7 +22,9 @@ Here, we discuss the fourth option above in order to highlight the features of M
 
 # Next Steps
 
-- [Getting Started][3]
+Try out a tutorial!
+- [Deploying a Load Balanced Public App]()
+- [Load Balancing with Marathon-LB][3]
 
 [1]: https://github.com/mesosphere/marathon-lb
 [2]: https://github.com/mesosphere/marathon-lb/blob/master/Longhelp.md#templates

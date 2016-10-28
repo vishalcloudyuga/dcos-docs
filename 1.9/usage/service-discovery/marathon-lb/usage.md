@@ -1,14 +1,14 @@
 ---
-post_title: Tutorial - Load Balancing with Marathon-LB 
+post_title: Tutorial - Load Balancing with Marathon-LB
 nav_title:  Load Balancing with Marathon-LB
 menu_order: 10
 ---
-To demonstrate Marathon-LB, you can boot a DC/OS cluster on AWS to run an internal and external load balancer. The external load balancer will be used for routing external HTTP traffic into the cluster, and the internal load balancer will be used for internal service discovery and load balancing. Since we’ll be doing this on AWS, external traffic will first hit an external load balancer configured to expose our [public](/docs/1.7/overview/concepts/#public) agent node.
+To demonstrate Marathon-LB, you can boot a DC/OS cluster on AWS to run an internal and external load balancer. The external load balancer will be used for routing external HTTP traffic into the cluster, and the internal load balancer will be used for internal service discovery and load balancing. Since we’ll be doing this on AWS, external traffic will first hit an external load balancer configured to expose our "public" agent nodes.
 
 ## Prerequisites
 
-*   [A DC/OS cluster][1] with at least 1 public agent node.
-*   [DC/OS CLI][2] is installed.
+*   [A DC/OS cluster][1].
+*   [DC/OS and DC/OS CLI][2] are installed.
 
 ## Steps
 
@@ -16,7 +16,7 @@ To demonstrate Marathon-LB, you can boot a DC/OS cluster on AWS to run an intern
 
         $ dcos package install marathon-lb
 
-    To check that Marathon-LB is working, [find the IP][3]  for your public node and navigate to `http://<public agent ip>:9090/haproxy?stats`. You will see a statistics report page like this:
+    To check that Marathon-LB is working, [find the IP](/docs/1.9/administration/locate-public-agent/) for your public node and navigate to `http://<public agent ip>:9090/haproxy?stats`. You will see a statistics report page like this:
 
     ![lb2](../img/lb2.jpg)
 
@@ -172,7 +172,9 @@ To test the vhost feature, navigate to the AWS console and look for your public 
 
 ![lb5](../img/lb5.jpg)
 
-Our ELB is able to route traffic to HAProxy. Next, let’s modify our nginx app to expose our service. To do this, you’ll need to get the public DNS name for the ELB from the `Description` tab. In this example, my public DNS name is `brenden-j-PublicSl-1LTLKZEH6B2G6-1145355943.us-west-2.elb.amazonaws.com`.
+Our ELB is able to route traffic to HAProxy. Next, let’s modify our nginx app to expose our service. To do this, you’ll need to get the public DNS name for the ELB from the `Description` tab. In this example, my public DNS name is `brenden-j-publicsl-1ltlkzeh6b2g6-1145355943.us-west-2.elb.amazonaws.com`.
+
+**Warning:** Your public DNS name must be entered entirely in lower case.
 
 Modify the external nginx app to look like this:
 
@@ -213,7 +215,7 @@ Now, if you navigate to the ELB public DNS address in your browser, you should s
 
 ![lb6](../img/lb6.jpg)
 
- [1]: /docs/1.7/administration/installing/
- [2]: /docs/1.7/usage/cli/install/
- [3]: /docs/1.7/administration/locate-public-agent/
- [4]: /docs/1.7/administration/sshcluster/
+ [1]: /docs/1.9/administration/installing/
+ [2]: /docs/1.9/usage/cli/install/
+ [3]: /docs/1.9/administration/locate-public-agent/
+ [4]: /docs/1.9/administration/access-node/sshcluster/
