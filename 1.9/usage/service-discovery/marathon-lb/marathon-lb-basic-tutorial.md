@@ -1,7 +1,7 @@
 ---
-post_title: Tutorial - Running a Load Balanced Public App
-nav_title:  Running a Load Balanced Public App
-menu_order: 0 
+post_title: Deploying an Externally Load Balanced App with Marathon-LB
+nav_title:  Marthon-LB for Externally Load Balanced App
+menu_order: 100 
 ---
 
 This tutorial shows you how to use Marathon-LB to run a containerized DC/OS service that serves a web site. Specifically, you will use Docker image that contains NGINX, which serves the dcos.io site.
@@ -12,15 +12,9 @@ In this tutorial, Marathon-LB is used as the edge load balancer and service disc
 - [A DC/OS cluster](/docs/1.8/administration/installing/) with at least one public agent.
 - [DC/OS CLI](/docs/1.8/usage/cli/install/) is installed.
 
-# Configure Your Cluster to Use a Virtual Host
+# Install Marathon-LB
 
-1. Install the [Marathon-LB](/docs/1.8/usage/service-discovery/marathon-lb/) service from Universe. Marathon-LB allows DC/OS services to appear on public-facing nodes.
-
-    ```bash
-    $ dcos package add marathon-lb
-    ```
-
-**Note:** You can also install Marathon-LB from the DC/OS web interface. Go to the **Universe** tab and navigate to **marathon-lb**. Click **Install** > **Install Package**.
+1.  [Install Marathon-LB](/docs/1.8/usage/service-discovery/marathon-lb/install-and-customize/).
 
 # Configure and Run a Containerized Service on a Public Node
 
