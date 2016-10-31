@@ -160,7 +160,7 @@ The master templates ([advanced-master-1.json](https://s3.amazonaws.com/download
   </tr>
   <tr>
     <td>AcceptEULA</td>
-    <td>Read the Mesosphere EULA and indicate agreement: https://docs.mesosphere.com/community-edition-eula/.</td>
+    <td>Read the Mesosphere EULA and indicate agreement: <a href="https://docs.mesosphere.com/open-source-attribution/">https://docs.mesosphere.com/open-source-attribution/</a>.</td>
   </tr>
   <tr>
     <td>AdminSecurityGroup</td>
