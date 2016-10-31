@@ -8,13 +8,13 @@ In this tutorial, Marathon-LB is used as an internal and external load balancer.
 
 ## Prerequisites
 
-*   DC/OS installed by using the AWS [cloud templates](/docs/1.9/administration/installing/cloud/aws/) with at least 1 [private](https://dcos.io/docs/1.9/overview/concepts/#private) agent and 1 [public](/docs/1.9/overview/concepts/#public) agent.
+*   DC/OS installed by using the AWS [cloud templates](/docs/1.8/administration/installing/cloud/aws/) with at least 1 [private](https://dcos.io/docs/1.8/overview/concepts/#private) agent and 1 [public](/docs/1.8/overview/concepts/#public) agent.
 *   DC/OS CLI [installed][2].
-*   Marathon-LB [installed](/docs/1.9/usage/service-discovery/marathon-lb/install-and-customize/).
+*   Marathon-LB [installed](/docs/1.8/usage/service-discovery/marathon-lb/install-and-customize/).
 
 ## Deploy an external load balancer with Marathon-LB
 
-1.  Verify that Marathon-LB is working. Find the public IP for your [public node](/docs/1.9/administration/locate-public-agent/) and navigate to `<public-agent-IP>:9090/haproxy?stats`. You will see a statistics report page like this:
+1.  Verify that Marathon-LB is working. Find the public IP for your [public node](/docs/1.8/administration/locate-public-agent/) and navigate to `<public-agent-IP>:9090/haproxy?stats`. You will see a statistics report page like this:
 
     ![lb2](../img/lb2.jpg)
 
@@ -258,7 +258,7 @@ To demonstrate the vhost feature navigate to the AWS console and find for your p
      
         1.  Select **Edit** > **Labels** > **Add Label**.
         
-            ![Update app](/docs/1.9/usage/service-discovery/marathon-lb/img/nginx-external-gui.png)
+            ![Update app](/docs/1.8/usage/service-discovery/marathon-lb/img/nginx-external-gui.png)
     
         
 
@@ -278,7 +278,7 @@ To demonstrate the vhost feature navigate to the AWS console and find for your p
 
     ![lb6](../img/lb6.jpg)
 
- [1]: /docs/1.9/administration/installing/
- [2]: /docs/1.9/usage/cli/install/
- [3]: /docs/1.9/administration/locate-public-agent/
- [4]: /docs/1.9/administration/access-node/sshcluster/
+ [1]: /docs/1.8/administration/installing/
+ [2]: /docs/1.8/usage/cli/install/
+ [3]: /docs/1.8/administration/locate-public-agent/
+ [4]: /docs/1.8/administration/access-node/sshcluster/
