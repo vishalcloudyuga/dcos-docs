@@ -39,7 +39,7 @@ In this tutorial you will learn how to:
 
 ## Installing Cassandra
 
-Assuming you have a DC/OS cluster up and running, the first step is to [install Cassandra](https://docs.mesosphere.com/manage-service/cassandra/)
+Assuming you have a DC/OS cluster up and running, the first step is to [install Cassandra](/docs/1.8/usage/managing-services/install/)
 
 ### Typical installation
 
