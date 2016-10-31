@@ -23,9 +23,9 @@ Here, we discuss the fourth option above in order to highlight the features of M
 
 # Next Steps
 
-- [Install](/docs/1.8/usage/service-discovery/marathon-lb/install-and-customize/)
-- [Tutorial: Deploying an Externally Load Balanced App with Marathon-LB](/docs/1.8/usage/service-discovery/marathon-lb/install-and-customize/)
+- [Install](/docs/1.9/usage/service-discovery/marathon-lb/install-and-customize/)
+- [Tutorial: Deploying an Externally Load Balanced App with Marathon-LB](/docs/1.9/usage/service-discovery/marathon-lb/install-and-customize/)
 
 [1]: https://github.com/mesosphere/marathon-lb
 [2]: https://github.com/mesosphere/marathon-lb/blob/master/Longhelp.md#templates
-[3]: /docs/1.8/usage/service-discovery/marathon-lb/marathon-lb-advanced-tutorial/
+[3]: /docs/1.9/usage/service-discovery/marathon-lb/marathon-lb-advanced-tutorial/
