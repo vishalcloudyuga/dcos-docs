@@ -208,5 +208,5 @@ Use the [framework cleaner](/docs/1.8/usage/managing-services/uninstall/#framewo
 
 **Further resources**
 
-1. [DC/OS Cassandra Official Documentation](https://docs.mesosphere.com/usage/services/cassandra/)
+1. [DC/OS Cassandra Official Documentation](https://docs.mesosphere.com/1.8/usage/services/cassandra/)
 1. [DataStax Cassandra Documentation](http://docs.datastax.com)

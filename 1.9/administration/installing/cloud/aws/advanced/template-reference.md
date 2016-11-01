@@ -209,7 +209,7 @@ The master templates create masters, on top of the infrastructure stack already 
   </tr>
   <tr>
     <td>AcceptEULA</td>
-    <td>Read the Mesosphere EULA and indicate agreement: <a href="https://docs.mesosphere.com/open-source-attribution/">https://docs.mesosphere.com/open-source-attribution/</a>.</td>
+    <td>Read the Mesosphere EULA and indicate agreement: <a href="https://docs.mesosphere.com/1.9/open-source-attribution/">https://docs.mesosphere.com/open-source-attribution/</a>.</td>
   </tr>
   <tr>
     <td>AdminSecurityGroup</td>
