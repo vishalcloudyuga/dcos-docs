@@ -35,10 +35,6 @@ The Zen templates ([zen-1.json](https://s3.amazonaws.com/downloads.mesosphere.io
     <td>AWS EC2 Key Pair to SSH into instances</td>
   </tr>
   <tr>
-    <td>AcceptEULA</td>
-    <td>Read the Mesosphere EULA and indicate agreement.</td>
-  </tr>
-  <tr>
     <td>Vpc</td>
     <td>Existing VPC to use. Nodes will be launched using subnets and Internet Gateway under this VPC</td>
   </tr>
@@ -157,10 +153,6 @@ The master templates ([advanced-master-1.json](https://s3.amazonaws.com/download
   <tr>
     <th>Parameter Name</th>
     <th>Description</th>
-  </tr>
-  <tr>
-    <td>AcceptEULA</td>
-    <td>Read the Mesosphere EULA and indicate agreement: <a href="https://docs.mesosphere.com/open-source-attribution/">https://docs.mesosphere.com/open-source-attribution/</a>.</td>
   </tr>
   <tr>
     <td>AdminSecurityGroup</td>
