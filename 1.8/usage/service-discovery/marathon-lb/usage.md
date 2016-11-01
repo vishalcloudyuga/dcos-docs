@@ -1,13 +1,13 @@
 ---
-post_title: Install and Customize
+post_title: Installing and Customizing
 menu_order: 000
 ---
 
 
 **Prerequisites:**
 
-- DC/OS [installed](/docs/1.9/administration/installing/).
-- DC/OS [installed](/docs/1.9/usage/cli/install/).
+- DC/OS [installed](/docs/1.8/administration/installing/)
+- DC/OS [installed](/docs/1.8/usage/cli/install/)
 
 # Default installation
 
@@ -17,7 +17,7 @@ menu_order: 000
     $ dcos package install marathon-lb
     ```
     
-    **Tip:** You can also install from the DC/OS [GUI](/docs/1.9/usage/webinterface/). 
+    **Tip:** You can also install from the DC/OS [GUI](/docs/1.8/usage/webinterface/). 
 
 
 # Custom installation
@@ -69,6 +69,6 @@ menu_order: 000
 
 ## Next steps
 
-- [Tutorial - Deploying a Load Balanced App with Marathon-LB](/docs/1.9/usage/service-discovery/marathon-lb/marathon-lb-basic-tutorial/)
-- [Tutorial - Using Marathon-LB for Internal and External Load Balancing](/docs/1.9/usage/service-discovery/marathon-lb/marathon-lb-advanced-tutorial/)
-- See the advanced Marathon-LB [documentation](/docs/1.9/usage/service-discovery/marathon-lb/advanced/).
+- [Tutorial - Deploying a Load Balanced App with Marathon-LB](/docs/1.8/usage/service-discovery/marathon-lb/marathon-lb-basic-tutorial/)
+- [Tutorial - Using Marathon-LB for Internal and External Load Balancing](/docs/1.8/usage/service-discovery/marathon-lb/marathon-lb-advanced-tutorial/)
+- See the advanced Marathon-LB [documentation](/docs/1.8/usage/service-discovery/marathon-lb/advanced/).
