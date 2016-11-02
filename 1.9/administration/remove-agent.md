@@ -5,7 +5,7 @@ menu_order: 3.2
 
 To shut down and safely remove an agent node follow these steps.
 
-1.  [SSH](/docs/1.9/administration/access-node/sshcluster/) to the master node.
+1.  [SSH](/docs/1.9/administration/access-node/sshcluster/) to the agent node that you want to remove.
 1.  Run this command to explicitly de-register and cleanly shut down tasks:
 
     ```bash
