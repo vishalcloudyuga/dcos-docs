@@ -146,7 +146,7 @@ DC/OS uses Mesos-DNS for internal service discovery. While the `.mesos` domain c
           </td>
 
           <td class="confluenceTd">
-            A specific agent to pin Mesos-DNS to. Since Mesos-DNS will be acting as a delegate, its IP must remain static. For multiple Mesos-DNS instances (and redundancy), the LIKE constraint operator can be used to define hosts using regex. See <a href="https://mesosphere.github.io/marathon/docs/constraints.html" class="external-link" rel="nofollow">https://mesosphere.github.io/marathon/docs/constraints.html</a> for more information. As a best-practice, we also recommend using healthchecks to ensure that Mesos-DNS remains running.
+            A specific agent to pin Mesos-DNS to. Since Mesos-DNS will be acting as a delegate, its IP must remain static. For multiple Mesos-DNS instances (and redundancy), the LIKE constraint operator can be used to define hosts using regex. See <a href="https://mesosphere.github.io/marathon/docs/constraints.html" class="external-link" rel="nofollow">https://mesosphere.github.io/marathon/docs/constraints.html</a> for more information. As a best-practice, we also recommend using health checks to ensure that Mesos-DNS remains running.
           </td>
         </tr>
       </tbody>
