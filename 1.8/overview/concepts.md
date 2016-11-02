@@ -48,14 +48,14 @@ DC/OS is made up of many open source components, several of which existed before
 DC/OS is a [distributed operating system](https://en.wikipedia.org/wiki/Distributed_operating_system) for the datacenter.
 
 - Unlike traditional distributed operating systems, DC/OS is also a container platform that manages containerized tasks based on native executables or container images, like [Docker images](https://docs.docker.com/engine/tutorials/dockerimages/).
-- Unlike traditional [operating systems](https://en.wikipedia.org/wiki/Operating_system), DC/OS runs on a [cluster of nodes](#cluster), instead of a single machine. Each DC/OS node also has a [host operating system](host-operating-system) that manages the underlying machine.
+- Unlike traditional [operating systems](https://en.wikipedia.org/wiki/Operating_system), DC/OS runs on a [cluster of nodes](#cluster), instead of a single machine. Each DC/OS node also has a [host operating system](#host-operating-system) that manages the underlying machine.
 - DC/OS is made up of many components, most notably a distributed systems kernel ([Mesos](#mesos)) and a container orchestration engine ([Marathon](#marathon)).
 - Prior to version 1.6, DC/OS was known as The Datacenter Operating System (DCOS). With version 1.6 the platform was renamed to DC/OS and open sourced.
 - While DC/OS itself is open source, premium distributions like [Mesosphere Enterprise DC/OS](https://mesosphere.com/product/) may include additional closed-source components and features (e.g. multitenancy, fine-grained permissions, secrets management, and end-to-end encryption).
 
 ### <a name="dcos-gui"></a>DC/OS GUI
 
-The [DC/OS graphical user interface (GUI)](/1.8/usage/webinterface/) is an interface for remotely controlling and managing a DC/OS cluster from a web browser. The GUI is also sometimes called the DC/OS UI or DC/OS web interface.
+The [DC/OS graphical user interface (GUI)](/docs/1.8/usage/webinterface/) is an interface for remotely controlling and managing a DC/OS cluster from a web browser. The GUI is also sometimes called the DC/OS UI or DC/OS web interface.
 
 ### <a name="dcos-cli"></a>DC/OS CLI
 
@@ -92,7 +92,7 @@ A DC/OS node is a virtual or physical machine on which a Mesos agent and/or Meso
 A DC/OS master node is a virtual or physical machine that runs a collection of DC/OS components that work together to manage the rest of the cluster.
 
 - Each master node contains multiple DC/OS components, including most notably a [Mesos master](#mesos-master) process.
-- Master nodes work in a [quorum](https://en.wikipedia.org/wiki/Quorum_(distributed_computing)) to provide consistency of cluster coordination. To avoid [split brain](https://en.wikipedia.org/wiki/Split-brain_(computing)) cluster partitioning, clusters should always have an odd number of master nodes. For example, having three master nodes allows one to be down; having five master nodes allows two to be down, allowing for failure during a rolling update. Additional master nodes can be added for additional risk tolerance.
+- Master nodes work in a [quorum](https://en.wikipedia.org/wiki/Quorum_%28distributed_computing%29) to provide consistency of cluster coordination. To avoid [split brain](https://en.wikipedia.org/wiki/Split-brain_%28computing%29) cluster partitioning, clusters should always have an odd number of master nodes. For example, having three master nodes allows one to be down; having five master nodes allows two to be down, allowing for failure during a rolling update. Additional master nodes can be added for additional risk tolerance.
 - A cluster with only one master node is usable for development, but is not highly available and may not be able to recover from failure.
 
 #### <a name="dcos-agent-node"></a>Agent Node
@@ -399,4 +399,4 @@ A Marathon pod is a long-running service that may have one or more instances tha
 
 ### <a name="marathon-group"></a>Group
 
-A Marathon group is a set of services (applications and/or pods) within a hierarchical directory [path](https://en.wikipedia.org/wiki/Path_(computing)) structure for namespacing and organization.
+A Marathon group is a set of services (applications and/or pods) within a hierarchical directory [path](https://en.wikipedia.org/wiki/Path_%28computing%29) structure for namespacing and organization.
