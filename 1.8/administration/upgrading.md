@@ -1,6 +1,6 @@
 ---
 post_title: Upgrading
-menu_order: 11
+menu_order: 2.5
 ---
 
 ## Summary
