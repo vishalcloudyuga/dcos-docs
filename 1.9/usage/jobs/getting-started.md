@@ -1,6 +1,7 @@
 ---
 post_title: Getting Started
 nav_title: Getting Started
+feature_maturity: preview
 menu_order: 10
 ---
 
