@@ -1,5 +1,6 @@
 ---
 post_title: Pods CLI
+feature_maturity: experimental
 menu_order: 20
 ---
 
