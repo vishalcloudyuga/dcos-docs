@@ -154,4 +154,4 @@ If you have deployed the cluster into an existing resource group, you'll need to
 [1]: /docs/1.8/usage/cli/install/
 [3]: https://azure.microsoft.com/en-us/documentation/articles/best-practices-auto-scaling/
 [4]: /docs/1.8/usage/
-[10]: /docs/1.8/administration/user-management/
+[10]: /docs/1.8/administration/id-and-access-mgt/user-management/

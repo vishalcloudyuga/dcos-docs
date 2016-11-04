@@ -43,6 +43,3 @@ To manage users:
 
         You can now log in as another user.
 
-## Next Steps
-
-For more information on security, check out [Security and Authentication](../id-and-access-mgt/)

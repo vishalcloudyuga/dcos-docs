@@ -294,4 +294,4 @@ To install DC/OS:
 [7]: /docs/1.9/overview/concepts/#private
 [8]: /docs/1.9/administration/installing/custom/uninstall/
 [9]: /docs/1.9/administration/installing/custom/troubleshooting/
-[10]: /docs/1.9/administration/user-management/
+[10]: /docs/1.9/administration/id-and-access-mgt/user-management/

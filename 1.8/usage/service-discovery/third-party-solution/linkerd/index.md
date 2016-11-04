@@ -7,7 +7,7 @@ linkerd is a service mesh for DC/OS. It is installed on every agent, and acts as
 
 The linkerd Universe package is configured to use Marathon for service discovery. This means that applications and services can refer to each other by their Marathon task name. For example, a connection to `http://myservice` made through linkerd will be load-balanced over instances of the Marathon application `myservice`, without using DNS. You can also configure linkerd to use dedicated service discovery systems such as ZooKeeper, Consul or etcd (as well as DNS itself) and to failover between these systems and Marathon.
 
-![diagram](img/diagram.png)
+![diagram](/docs/1.8/usage/service-discovery/third-party-solution/linkerd/img/diagram.png)
 
 In addition to service discovery and resilient communication, linkerd provides a uniform layer of visibility across all services and a convenient service metrics dashboards.
 
