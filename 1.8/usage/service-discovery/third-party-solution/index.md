@@ -16,4 +16,4 @@ You can use linkerd to route HTTP, Thrift, and gRPC traffic through a service me
  [3]: /docs/1.8/usage/service-discovery/marathon-lb/
  [4]: /docs/1.8/usage/service-discovery/mesos-dns/
  [5]: /docs/1.8/usage/service-discovery/third-party-solution/linkerd/
- [6]: /docs/1.8/usage/tutorials/linkerd/
+ [6]: https://github.com/dcos/examples/tree/master/1.8/linkerd
