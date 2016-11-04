@@ -127,7 +127,7 @@ The Admin Router is started on the master nodes. The Admin Router provides centr
 *   SSH to your master node and enter this command to view the logs from boot time:
 
     ```bash
-    $ journalctl -u dcos-nginx -b
+    $ journalctl -u dcos-adminrouter -b
     ```
 
     For example, here is a snippet of the Admin Router log as it converges to a successful state:
