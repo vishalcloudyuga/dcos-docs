@@ -183,12 +183,17 @@ This required parameter specifies a YAML nested list (`-`) of DNS resolvers for 
 
 This parameters specifies whether to enable the DC/OS proxy.
 
-*  `use_proxy: 'false'` Do not configure DC/OS [components](/docs/1.9/overview/components/) to use a custom proxy. This is the default value.
-*  `use_proxy: 'true'` Configure DC/OS [components](/docs/1.9/overview/components/) to use a custom proxy. If you specify `use_proxy: 'true'`, you can also specify these parameters:
-    **Important:** The specified proxies must be resolvable from the provided list of [resolvers](#resolvers).
+*  `use_proxy: 'false'` Do not configure DC/OS [components](/docs/1.8/overview/components/) to use a custom proxy. This is the default value.
+*  `use_proxy: 'true'` Configure DC/OS [components](/docs/1.8/overview/components/) to use a custom proxy. If you specify `use_proxy: 'true'`, you can also specify these parameters:
+    
     *  `http_proxy: <your_http_proxy>` This parameter specifies the HTTP proxy.
     *  `https_proxy: <your_https_proxy>` This parameter specifies the HTTPS proxy.
     *  `no_proxy: - <ip-address>` This parameter specifies YAML nested list (-) of addresses to exclude from the proxy.
+    
+    **Important:** 
+    
+    - The specified proxies must be resolvable from the provided list of [resolvers](#resolvers).
+    - If an HTTP proxy is configured for your operating system, the IP addresses of all DC/OS nodes must be included in the `no_proxy` list. 
 
 For more information, see the [examples](#http-proxy).
 
