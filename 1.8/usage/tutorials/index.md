@@ -14,6 +14,7 @@ Stream data processing:
 
 Data analytics:
 
+- Apache [Spark](https://github.com/dcos/examples/tree/master/1.8/spark/)
 - [Elasticsearch](https://github.com/dcos/examples/tree/master/1.8/elasticsearch)
 - Apache [Zeppelin](https://github.com/dcos/examples/tree/master/1.8/zeppelin/)
 
