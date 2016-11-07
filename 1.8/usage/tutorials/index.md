@@ -10,6 +10,7 @@ The tutorials that are located in [dcos/examples](https://github.com/dcos/exampl
 Stream data processing:
 
 - Apache [Spark](https://github.com/dcos/examples/tree/master/1.8/spark/)
+- Apache [Storm](https://github.com/dcos/examples/tree/master/1.8/storm/)
 - Apache [Kafka](https://github.com/dcos/examples/tree/master/1.8/kafka/)
 
 Data analytics:
