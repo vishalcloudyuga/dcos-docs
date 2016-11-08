@@ -25,7 +25,7 @@ curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.0.0-
 sudo rpm -vi filebeat-5.0.0-x86_64.rpm
 ```
 
-2. Create a filebeat configuration file to monitor all Mesos log files. Also create the `/var/log/dcos` directory, and add another input entry for the file `/var/log/dcos/dcos.log` that we will funnel the DC/OS logs into in a later step.
+2. Create a filebeat configuration file to monitor all Mesos log files. Also create the `/var/log/dcos` directory, and add another input entry for the file `/var/log/dcos/dcos.log` that we will funnel the DC/OS logs into in a later step. Please make sure to substitute the variables $ELK_HOSTNAME and $ELK_PORT below for the values of the host/port where your ElasticSearch is listening on.
 
 ```bash
 sudo mkdir -p /var/log/dcos
