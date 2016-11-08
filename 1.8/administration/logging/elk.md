@@ -41,11 +41,6 @@ filebeat.prospectors:
 tail_files: true
 output.elasticsearch:
   hosts: ["$ELK_HOSTNAME:$ELK_PORT"]
-#output.logstash:
-#  hosts: ["$LOGSTASH_HOSTNAME:$LOGSTASH_PORT"]
-#  ssl.certificate_authorities: ["/etc/pki/tls/certs/$ELK_CA_NAME"]
-#  ssl.certificate: "/etc/pki/tls/certs/$ELK_CERT_NAME"
-#  ssl.key: "/etc/pki/tls/private/$ELK_KEY_NAME"
 EOF
 
 ```
