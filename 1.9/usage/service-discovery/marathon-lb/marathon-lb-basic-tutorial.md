@@ -4,7 +4,7 @@ nav_title:  Marathon-LB for Externally Load Balanced App
 menu_order: 100 
 ---
 
-This tutorial shows you how to use Marathon-LB to run a containerized DC/OS service that serves a web site. Specifically, you will use Docker image that contains NGINX, which serves the dcos.io site.
+This tutorial shows you how to use Marathon-LB to run a containerized DC/OS service that serves a website. Specifically, you will use Docker image that contains NGINX, which serves the dcos.io site.
 
 In this tutorial, Marathon-LB is used as the edge load balancer and service discovery mechanism. Marathon-LB is run on a public-facing node to route ingress traffic. 
 
