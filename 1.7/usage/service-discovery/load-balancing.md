@@ -99,8 +99,6 @@ More information about these sysctls can be found here: [https://www.kernel.org/
 ## Debugging
 The load balancer exposes a few endpoints on every node in the DC/OS cluster that can be used for gathering statistics. The URI for these metrics are: `http://localhost:61421/metrics`. This includes data about the backends, and the dataplane runtime.
 
-You can find out data about just the VIPs at the endpoint `http://localhost:61421/vips`. If you want to find information about just one VIP you can go to the endpoint `http://localhost:61421/vips/${IP}`.
-
 ## Implementation
 The local process polls the master node roughly every 5 seconds. The master node caches this for 5 seconds as well, bounding the propagation time for an update to roughly 11 seconds. Although this is the case for new VIPs, it is not the case for failed nodes.
 
