@@ -22,9 +22,9 @@ These instructions provide a tested [HAProxy](http://www.haproxy.org/) configura
     
     Where:
     
-    * `taskname`: The name of the task
-    * `framework_name`: The name of the framework, if you are unsure, it is likely `marathon`
-    * `dcos_name`: The name of your DC/OS, which defaults to `thisdcos`
+    * `taskname`: The name of the task.
+    * `framework_name`: The name of the framework, if you are unsure, it is likely `marathon`.
+    * `dcos_name`: The name of your DC/OS, which defaults to `thisdcos`.
 
     ```
     global
