@@ -19,53 +19,60 @@ This document provides instructions for upgrading a DC/OS cluster from version 1
 
 1. Login to the current leader master of the cluster.
    1. Using DC/OS CLI: 
+      
+      ```bash
+      $ dcos node ssh --master-proxy --leader
       ```
-      $dcos node ssh --master-proxy --leader
-      ```
-   1. After you are logged in, run the following command. This command creates a new 1.8 directory (/var/lib/dcos/exhibitor/zookeeper) as a symlink to the old (/var/lib/zookeeper): 
-      ```
-      $for node in $(dig +short master.mesos); do ssh -o StrictHostKeyChecking=no $node "sudo mkdir -p /var/lib/dcos/exhibitor && sudo ln -s /var/lib/zookeeper /var/lib/dcos/exhibitor/zookeeper"; done
+   1. After you are logged in, run the following command. This command creates a new 1.8 directory (`/var/lib/dcos/exhibitor/zookeeper`) as a symlink to the old (`/var/lib/zookeeper`): 
+   
+      ```bash
+      $ for node in $(dig +short master.mesos); do ssh -o StrictHostKeyChecking=no $node "sudo mkdir -p /var/lib/dcos/exhibitor && sudo ln -s /var/lib/zookeeper /var/lib/dcos/exhibitor/zookeeper"; done
       ```
 
-   1. Go to (http://master-node/exhibitor).
-      * Go to config tab , it should have three fields which have (/var/lib/zookeeper). 
+   1. Go to `http://master-node/exhibitor`.
+   
+      1. Go to config tab , it should have three fields which have (`/var/lib/zookeeper`). 
         ![Exhibitor UI](../img/dcos-exhibitor-fields-before.png)
         ![Exhibitor UI](../img/dcos-exhibitor-fields-before-2.png)
-      * Edit the config and change all three fields that contain (/var/lib/zookeeper/) to (/var/lib/dcos/exhibitor/zookeeper/).
+      1. Edit the config and change all three fields that contain (`/var/lib/zookeeper/`) to (`/var/lib/dcos/exhibitor/zookeeper/`).
         ![Exhibitor UI](../img/dcos-exhibitor-fields-after.png)
         ![Exhibitor UI](../img/dcos-exhibitor-fields-after-2.png)
-      * Commit and perform a rolling restart.
-      * This will take a couple of minutes and during that time the Exhibitor UI will flash, wait for the commit to be performed fully.
+      1. Commit and perform a rolling restart. This will take a couple of minutes and during that time the Exhibitor UI will flash, wait for the commit to be performed fully.
+   
    1. Make sure the cluster is healthy at this point.
-      * Verify you can access the dashboard.
-      * Verify all components are healthy.
+   
+      1. Verify you can access the dashboard.
+      1. Verify all components are healthy.
    
 1. Update Cloudformation stacks.
    1. Generate the new templates following instructions at [Advanced DC/OS Installation Guide][advanced-aws-custom]. 
-   1. See the AWS documentation on updating CloudFormation stacks: [http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-direct.html](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-direct.html). 
+   1. See the AWS [documentation](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-direct.html) on updating CloudFormation stacks. 
    1.  Update the Cloudformation stacks associated with the cluster in the same manner in which they were deployed. For example, if the zen template was used to deploy the cluster then it is only necessary to update the zen stack, since this will cause all of the dependent templates to update as well.
    
 1. Deleting instances
    1. Deleting master nodes.
+   
       * Identify the ZooKeeper leader among the masters. This node should be the last master node that you delete. You can determine whether a master node is a ZooKeeper leader by sending the `stat` command to the ZooKeeper client port.
         
-        ```
+        ```bash
         $ echo stat | /opt/mesosphere/bin/toybox nc localhost 2181 | grep "Mode:"
         ```
         
         When you complete deleting each node, monitor the Mesos master metrics to ensure the node has rejoined the cluster and completed reconciliation.
   
-   1.  Validate the master deletion
-      * Monitor the Exhibitor UI to confirm that the Master rejoins the ZooKeeper quorum successfully (the status indicator will turn green).  The Exhibitor UI is available at `http://<dcos_master>:8181/`.
-      * Verify that `curl http://<dcos_master_private_ip>:5050/metrics/snapshot` has the metric `registrar/log/recovered` with a value of `1`.
-      * Verify that `http://<dcos_master>/mesos` indicates that the upgraded master is running Mesos 1.0.1.
+   1. Validate the master deletion.
+   
+      1. Monitor the Exhibitor UI to confirm that the Master rejoins the ZooKeeper quorum successfully (the status indicator will turn green).  The Exhibitor UI is available at `http://<dcos_master>:8181/`.
+      1. Verify that `curl http://<dcos_master_private_ip>:5050/metrics/snapshot` has the metric `registrar/log/recovered` with a value of `1`.
+      1. Verify that `http://<dcos_master>/mesos` indicates that the upgraded master is running Mesos 1.0.1.
 
     
    1. Deleting agent nodes.
-      * Choose an agent node for replacement and shutdown the Mesos agent with the command `systemctl kill -s SIGUSR1 dcos-mesos-slave` or `systemctl kill -s SIGUSR1 dcos-mesos-slave-public` depending on agent type. 
+   
+      1. Choose an agent node for replacement and shutdown the Mesos agent with the command `systemctl kill -s SIGUSR1 dcos-mesos-slave` or `systemctl kill -s SIGUSR1 dcos-mesos-slave-public` depending on agent type. 
         This ensures that tasks are quickly rescheduled and the agent is cleanly removed from the cluster.
-      * Terminate the agent using AWS web UI or CLI tools.
-      * Verify a replacement agent node joins and is healthy. Watch the agent node count in the DC/OS UI to confirm the replacement agent joins the cluster.
-      * Repeat the above steps for all the old agent nodes.
+      1. Terminate the agent using AWS web UI or CLI tools.
+      1. Verify a replacement agent node joins and is healthy. Watch the agent node count in the DC/OS UI to confirm the replacement agent joins the cluster.
+      1. Repeat the above steps for all the old agent nodes.
       
 [advanced-aws-custom]: /docs/1.8/administration/installing/cloud/aws/advanced/aws-custom/
