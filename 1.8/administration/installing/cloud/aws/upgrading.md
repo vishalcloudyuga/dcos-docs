@@ -68,4 +68,4 @@ This document provides instructions for upgrading a DC/OS cluster from version 1
       * Verify a replacement agent node joins and is healthy. Watch the agent node count in the DC/OS UI to confirm the replacement agent joins the cluster.
       * Repeat the above steps for all the old agent nodes.
       
-[advanced-aws-custom]: 1.8/administration/installing/cloud/aws/advanced/aws-custom/
+[advanced-aws-custom]: /docs/1.8/administration/installing/cloud/aws/advanced/aws-custom/
