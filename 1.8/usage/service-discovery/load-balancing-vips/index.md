@@ -1,7 +1,7 @@
 ---
 post_title: Load Balancing and VIPs
 nav_title: Load Balancing and VIPs
-menu_order: 0
+menu_order: 50
 ---
 
 DC/OS comes with an east-west load balancer that's meant to be used to enable multi-tier microservices architectures. It acts as a TCP Layer 4 load balancer, and it's tightly integrated with the kernel. The internal Layer 4 load balancer component (`dcos-minuteman.service`) is also known as [Minuteman](https://github.com/dcos/minuteman). 
