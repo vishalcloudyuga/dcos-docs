@@ -36,8 +36,8 @@ Support running DC/OS nodes on Windows machines, and support for scheduling work
 
 ## Long Term
 
-## Debugging
+### Debugging
 Tools for debugging applications at runtime, and integrating with existing debugging tools such as gdb and IDEs.
 
-## Autoscaling
+### Autoscaling
 Automatic scale-out of container-based applications based on configurable metrics such as response time and throughput.
