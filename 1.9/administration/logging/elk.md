@@ -30,13 +30,13 @@ For all nodes in your DC/OS cluster:
     ```bash
     $ sudo mkdir -p /var/log/dcos
     ```
-1.  Create the Filebeat configuration file:
+1.  Move the default Filebeat configuration file to a backup copy:
 
     ```bash
     $ sudo mv /etc/filebeat/filebeat.yml /etc/filebeat/filebeat.yml.BAK
     ```
     
-1.  Populate the `filebeat.yml` file, including an additional input entry for the file `/var/log/dcos/dcos.log`. This additional log file be used to capture the DC/OS logs in a later step. Remember to substitute the variables `$ELK_HOSTNAME` and `$ELK_PORT` below for the actual values of the host and port where your ElasticSearch is listening on.
+1.  Populate a new `filebeat.yml` configuration file, including an additional input entry for the file `/var/log/dcos/dcos.log`. This additional log file be used to capture the DC/OS logs in a later step. Remember to substitute the variables `$ELK_HOSTNAME` and `$ELK_PORT` below for the actual values of the host and port where your ElasticSearch is listening on.
 
     ```bash
     $ sudo tee /etc/filebeat/filebeat.yml <<-EOF 
