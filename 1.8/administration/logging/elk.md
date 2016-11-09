@@ -36,7 +36,7 @@ For all nodes in your DC/OS cluster:
     $ sudo mv /etc/filebeat/filebeat.yml /etc/filebeat/filebeat.yml.BAK
     ```
     
-1.  Populate a new `filebeat.yml` configuration file, including an additional input entry for the file `/var/log/dcos/dcos.log`. This additional log file be used to capture the DC/OS logs in a later step. Remember to substitute the variables `$ELK_HOSTNAME` and `$ELK_PORT` below for the actual values of the host and port where your ElasticSearch is listening on.
+1.  Populate a new `filebeat.yml` configuration file, including an additional input entry for the file `/var/log/dcos/dcos.log`. The additional log file will be used to capture the DC/OS logs in a later step. Remember to substitute the variables `$ELK_HOSTNAME` and `$ELK_PORT` below for the actual values of the host and port where your ElasticSearch is listening on.
 
     ```bash
     $ sudo tee /etc/filebeat/filebeat.yml <<-EOF 
@@ -57,7 +57,7 @@ For all nodes in your DC/OS cluster:
 
 For each Master node in your DC/OS cluster:
 
-1.  Create a script that will parse the output of the DC/OS Master `journalctl` logs and funnel them all to `/var/log/dcos/dcos/dcos.log`.
+1.  Create a script that will parse the output of the DC/OS master `journalctl` logs and funnel them all to `/var/log/dcos/dcos/dcos.log`.
 
     **Tip:** This script can be used with DC/OS and Enterprise DC/OS. Log entries that do not apply are ignored.
 
@@ -117,7 +117,7 @@ For each Master node in your DC/OS cluster:
 
 For each Agent node in your DC/OS cluster:
 
-1.  Create a script that will parse the output of the DC/OS Agent `journalctl` logs and funnel them all to `/var/log/dcos/dcos/dcos.log`.
+1.  Create a script that will parse the output of the DC/OS agent `journalctl` logs and funnel them all to `/var/log/dcos/dcos/dcos.log`.
 
     **Tip:** This script can be used with DC/OS and Enterprise DC/OS. Log entries that do not apply are ignored.
 
