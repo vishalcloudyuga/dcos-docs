@@ -1,7 +1,7 @@
 ---
 post_title: Log Management in DC/OS with ELK
 menu_order: 1
-enterprise: 'yes'
+enterprise: 'no'
 ---
 
 You can pipe system and application logs from the nodes in a DC/OS cluster to your existing ElasticSearch, Logstash, and Kibana (ELK) server. This document describes how to store all unfiltered logs directly on ElasticSearch, and then perform filtering and specialized querying on ElasticSearch directly. The Filebeat output from each node is sent directly to a centralized ElasticSearch instance, without using Logstash. If you're interested in using Logstash for log processing or parsing, consult the [Filebeat][2] and [Logstash][8] documentation.
