@@ -157,6 +157,11 @@ Now that the registry is deployed you can push an image and deploy a new Maratho
 curl --insecure https://registry.marathon.l4lb.thisdcos.directory:5000/v2/_catalog
 ```
 
+## Pull image from local registry
+
+The Docker registry at registry.marathon.l4lb.thisdcos.directory:5000 is now available for use in your Marathon applications. It can be used to launch applications from the GUI or the CLI interfaces. Simply use registry.marathon.l4lb.thisdcos.directory:5000 as a prefix for image location.
+
+
 ## More information
 
 Find out how to [use a private Docker registry](https://mesosphere.github.io/marathon/docs/native-docker-private-registry.html) with Marathon. 
