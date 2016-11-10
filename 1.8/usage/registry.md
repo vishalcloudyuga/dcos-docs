@@ -159,7 +159,7 @@ curl --insecure https://registry.marathon.l4lb.thisdcos.directory:5000/v2/_catal
 
 ## Pull image from local registry
 
-The Docker registry at registry.marathon.l4lb.thisdcos.directory:5000 is now available for use in your Marathon applications. It can be used to launch applications from the GUI or the CLI interfaces. Simply use registry.marathon.l4lb.thisdcos.directory:5000 as a prefix for image location.
+The Docker registry at `registry.marathon.l4lb.thisdcos.directory:5000` is now available for use in your Marathon applications. It can be used to launch applications from the GUI or the CLI interface. Simply use `registry.marathon.l4lb.thisdcos.directory:5000` as a prefix for image location.
 
 
 ## More information
