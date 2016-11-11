@@ -44,4 +44,5 @@ Combined services and miscellaneous:
 - [WordPress](https://github.com/dcos/examples/tree/master/1.8/wordpress/)
 - [Building an IoT Pipeline](/docs/1.8/usage/tutorials/iot_pipeline/)
 
- 
+Canary releasing:
+- [Vamp] (https://github.com/dcos/examples/tree/master/1.8/vamp)
