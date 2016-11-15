@@ -1,6 +1,6 @@
 ---
-post_title: Frequently Asked Questions for Administrators
-nav_title: Admin FAQ
+post_title: Frequently Asked Questions
+nav_title: FAQ
 menu_order: 10
 ---
 
