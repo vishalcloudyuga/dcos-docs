@@ -43,13 +43,12 @@ The components of the overlay network interact in the following ways:
 The [Virtual Network Service](/docs/1.9/overview/components/)
 maps names to IPs on your overlay network. You can use these DNS addresses to access your task:
 
-* **Container IP:** Provides the container IP address: `<taskname>.<framework_name>.containerip.dcos.<dcos_name>.directory`
-* **Auto IP:** Provides a best guess of a task's IP address: `<taskname>.<framework_name>.autoip.dcos.<dcos_name>.directory`. This is used during migrations to the overlay.
+* **Container IP:** Provides the container IP address: `<taskname>.<framework_name>.containerip.dcos.thisdcos.directory`
+* **Auto IP:** Provides a best guess of a task's IP address: `<taskname>.<framework_name>.autoip.dcos.thisdcos.directory`. This is used during migrations to the overlay.
 
 Terminology:
 * `taskname`: The name of the task
 * `framework_name`: The name of the framework, if you are unsure, it is likely `marathon`
-* `dcos_name`: The name of your DC/OS, which defaults to `thisdcos`
 
 # Limitations
 * The DC/OS overlay network does not allow services to reserve IP addresses that result in ephemeral addresses for containers across multiple incarnations on the overlay network. This restriction ensures that a given client connects to the correct service.
