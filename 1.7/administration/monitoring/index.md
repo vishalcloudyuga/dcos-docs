@@ -103,7 +103,7 @@ This daemon acts as a name server on all hosts involved in distributed Erlang co
 
 ### Exhibitor
 
-The Exhibitor supervisor for Zookeeper. <!-- dcos-exhibitor.service/ -->
+The Exhibitor supervisor for ZooKeeper. <!-- dcos-exhibitor.service/ -->
 
 ### Generate resolv.conf
 
