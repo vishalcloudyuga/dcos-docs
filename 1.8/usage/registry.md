@@ -8,10 +8,10 @@ You can use a number of (hosted) [options](https://mesosphere.com/blog/2015/10/1
 
 The advantages of a private Docker registry are:
 
-- They can be securely deployed in your local environment (DC/OS cluster).
+- They can be securely deployed in your DC/OS cluster.
 - Reduced latency for pushing and pulling images, leading to faster deployments.
 
-This article describes how to set up a private Docker registry in a DC/OS cluster and make it accessible through a [VIP](docs/1.8/usage/service-discovery/load-balancing-vips/virtual-ip-addresses/). 
+This tutorial describes how to set up a private Docker registry in a DC/OS cluster and make it accessible through a [VIP](/docs/1.8/usage/service-discovery/load-balancing-vips/virtual-ip-addresses/). 
 
 ## Security options
 
@@ -28,7 +28,7 @@ For more information on setting up a Docker Trusted registry see [deploying a re
 After the registry is deployed clients will need to access it. When you create the certificate, you should consider the naming and discovery approach used to access the service.  You can use any of the [service discovery](/docs/1.8/usage/service-discovery/) options available in DC/OS:
 
 - __Mesos-DNS__ with host port mapping is an easy option, but requires that ports are managed as resources in the cluster.
-- __Minuteman__ provides a stable endpoint and you can use either the VIP or a DNS entry that references the VIP. A DNS entry can add a bit more complexity but improves consumption of the service.
+- __Virtual IP__ provides a stable endpoint and you can use either the VIP or a DNS entry that references the VIP. A DNS entry can add a bit more complexity but improves consumption of the service.
 - __Marathon-LB__ is another alternative that will work, but is better suited for north-south ingress traffic.
 
 Note: if you are using a port other than `443`, the port will have to be specified when the service is accessed.
@@ -43,9 +43,9 @@ At a high level, here are the three steps required to set up a private Docker re
 1. Configure the Docker Registry service with the public and private key for the certificate.
 1. Configure Docker daemons to trust the self-signed certificates.
 
-Open an SSH connection to a master node in the cluster with credentials forwarding enabled (option `-A`), so that an SSH connection can be made to other nodes in the cluster. Note: this tutorial uses [jq](https://stedolan.github.io/jq/), but you can also carry out the steps using, for example, `grep`.
+Open an [SSH connection](/docs/1.8/administration/access-node/sshcluster/) to a master node in the cluster with credentials forwarding enabled (option `-A`), so that an SSH connection can be made to other nodes in the cluster. `Note: this tutorial uses [jq](https://stedolan.github.io/jq/), but you can also carry out the steps using, for example, grep`.
 
-Apply this workaround for minuteman to all of your agents so that you can push and pull images to and from the registry.
+Apply this workaround to all of your agents so that you can push and pull images to and from the registry.
 
 ```bash
 $ for i in $(curl -sS master.mesos:5050/slaves | jq '.slaves[] | .hostname' | tr -d '"'); do ssh "$i" -oStrictHostKeyChecking=no "sudo sysctl -w net.netfilter.nf_conntrack_tcp_be_liberal=1"; done
@@ -55,7 +55,7 @@ $ for i in $(curl -sS master.mesos:5050/slaves | jq '.slaves[] | .hostname' | tr
 
 The first step is to create a self-signed certificate to secure a Docker registry. It’s important that the common name used in the certificate matches the domain name that is used to access the registry.
 
-You can create a self-signed certificate to secure a registry by using OpenSSL. This command creates a certificate that uses a minuteman VIP to access the registry. 
+You can create a self-signed certificate to secure a registry by using OpenSSL. This command creates a certificate that uses a VIP to access the registry. 
 
 ```bash
 $ openssl req -newkey rsa:2048 -nodes -keyout domain.key -x509 -days 365 -out domain.crt -subj "/C=US/ST=NY/L=NYC/O=Mesosphere/CN=registry.marathon.l4lb.thisdcos.directory"
@@ -75,7 +75,7 @@ $ for i in $MESOS_AGENTS; do scp -o StrictHostKeyChecking=no ./domain.* "$i":~/;
 $ for i in $MESOS_AGENTS; do ssh "$i" -oStrictHostKeyChecking=no "sudo mv ./domain.* /etc/privateregistry/certs/"; done
 ```
 
-You must configure the Docker daemon on all machines that require registry access to trust the self-signed certificate. You must  create a folder that matches the FQDN in the `certs.d` folder and copy the certificate to the folder using the name `ca.crt`. You can use the following script to create the folders and copy the files into the appropriate locations:
+Configure the Docker daemon on all machines that require registry access to trust the self-signed certificate and  create a folder that matches the FQDN in the `certs.d` folder. Copy the certificate to the folder using the name `ca.crt`. You can use the following script to create the folders and copy the files into the appropriate locations:
 
 ```bash
 $ MESOS_AGENTS=$(curl -sS master.mesos:5050/slaves | jq '.slaves[] | .hostname' | tr -d '"');
@@ -146,15 +146,24 @@ $ dcos marathon app add registry.json
 
 Now that the registry is deployed you can push an image and deploy a new Marathon application by using it as follows:
 
-1. Connect to one of the nodes that has the Docker daemon configured to trust the self-signed certificate.
-1. Pull the `flakio httpenv` image from docker hub using the following command: `sudo docker pull flakio/httpenv:1`
-1. Add a new tag to the image allowing us to push it to our private registry: `sudo docker tag flakio/httpenv:1 registry.marathon.l4lb.thisdcos.directory:5000/httpenv:1`
-1. Push the image to the registry we just deployed: `sudo docker push registry.marathon.l4lb.thisdcos.directory:5000/httpenv:1`
-1. Create a new Marathon app with the image from the private registry, using `registry.marathon.l4lb.thisdcos.directory:5000/httpenv:1` for the `"image"` field.
+Connect to one of the nodes that has the Docker daemon configured to trust the self-signed certificate.
+Pull the `flakio httpenv` image from docker hub using the following command: 
+```bash
+$ sudo docker pull flakio/httpenv:1
+```
+Add a new tag to the image allowing us to push it to our private registry: 
+```bash
+$ sudo docker tag flakio/httpenv:1 registry.marathon.l4lb.thisdcos.directory:5000/httpenv:1
+```
+Push the image to the registry we just deployed: 
+```bash
+$ sudo docker push registry.marathon.l4lb.thisdcos.directory:5000/httpenv:1
+```
+Create a new Marathon app with the image from the private registry, using `registry.marathon.l4lb.thisdcos.directory:5000/httpenv:1` for the `"image"` field.
 
 ## Check the contents of the local registry
 ```bash
-curl --insecure https://registry.marathon.l4lb.thisdcos.directory:5000/v2/_catalog
+$ curl --insecure https://registry.marathon.l4lb.thisdcos.directory:5000/v2/_catalog
 ```
 
 ## Pull image from local registry
