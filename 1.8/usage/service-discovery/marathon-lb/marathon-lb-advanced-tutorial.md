@@ -19,7 +19,7 @@ In this tutorial, Marathon-LB is used as an internal and external load balancer.
     ![lb2](../img/lb2.jpg)
 
 
-## Deploy an internal load balancer with Marthon-LB
+## Deploy an internal load balancer with Marathon-LB
 Set up your internal load balancer. To do this, we must first specify some configuration options for the Marathon-LB package. 
 
 1.  Create a file called `marathon-lb-internal.json` with the following contents:
