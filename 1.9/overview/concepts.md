@@ -273,7 +273,7 @@ The following terms are contextually correct when talking about Apache Mesos, bu
 - [Containerizer](#mesos-containerizer)
   - [Mesos Universal Container Runtime](#mesos-universal-container-runtime)
   - [Docker Runtime](#mesos-docker-runtime)
-- [Exhibitor &amp; Zookeeper](#mesos-exhibitor-zookeeper)
+- [Exhibitor &amp; ZooKeeper](#mesos-exhibitor-zookeeper)
 - [Mesos\-DNS](#mesos-dns)
 
 ### <a name="apache-mesos"></a>Apache Mesos
@@ -355,7 +355,7 @@ The Mesos Universal Container Runtime is a containerizer that supports tradition
 
 The Docker Runtime is a containerizer that supports launching Docker containers from Docker images with [Docker-Engine](https://www.docker.com/products/docker-engine).
 
-### <a name="mesos-exhibitor-zookeeper"></a>Exhibitor &amp; Zookeeper
+### <a name="mesos-exhibitor-zookeeper"></a>Exhibitor &amp; ZooKeeper
 
 Mesos depends on ZooKeeper, a high-performance coordination service to manage the cluster state. Exhibitor automatically configures and manages ZooKeeper on the [master nodes](#master-node).
 
