@@ -160,7 +160,7 @@ The master templates ([advanced-master-1.json](https://s3.amazonaws.com/download
   </tr>
   <tr>
     <td>ExhibitorS3Bucket</td>
-    <td>S3 Bucket resource name. Used by Exhibitor for Zookeeper discovery and coordination. See Exhibitor documentation on 'shared configuration': https://github.com/Netflix/exhibitor/wiki/Shared-Configuration for more information</td>
+    <td>S3 Bucket resource name. Used by Exhibitor for ZooKeeper discovery and coordination. See Exhibitor documentation on 'shared configuration': https://github.com/Netflix/exhibitor/wiki/Shared-Configuration for more information</td>
   </tr>
   <tr>
     <td>KeyName</td>

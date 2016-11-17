@@ -1,5 +1,5 @@
 ---
-post_title: Usage Frequently Asked Questions
+post_title: Frequently Asked Questions
 nav_title: FAQ
 menu_order: 110 
 ---
