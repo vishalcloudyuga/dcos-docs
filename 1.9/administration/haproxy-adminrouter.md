@@ -17,14 +17,13 @@ These instructions provide a tested [HAProxy](http://www.haproxy.org/) configura
     **Tip:** You can find your task IP by using the agent IP address DNS entry.
     
     ```
-    <taskname>.<framework_name>.agentip.dcos.<dcos_name>.directory
+    <taskname>.<framework_name>.agentip.dcos.thisdcos.directory
     ```
     
     Where:
     
     * `taskname`: The name of the task.
     * `framework_name`: The name of the framework, if you are unsure, it is likely `marathon`.
-    * `dcos_name`: The name of your DC/OS, which defaults to `thisdcos`.
 
     ```
     global
