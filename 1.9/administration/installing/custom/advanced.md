@@ -48,6 +48,8 @@ The DC/OS installation creates these folders:
   </tr>
 </table>
 
+**Important:** Changes to `/opt/mesosphere` are unsupported. They can lead to unpredictable behavior in DC/OS and prevent upgrades.
+
 
 # Configure your cluster
 
@@ -67,7 +69,7 @@ The DC/OS installation creates these folders:
 
     ```yaml
     ---
-    bootstrap_url: http://<bootstrap_public_ip>:<your_port>
+    bootstrap_url: http://<bootstrap_ip>:<your_port>
     cluster_name: '<cluster-name>'
     exhibitor_storage_backend: static
     ip_detect_filename: /genconf/ip-detect
@@ -183,6 +185,10 @@ To install DC/OS:
 
 1.  From the bootstrap node, run the DC/OS installer shell script to generate a customized DC/OS build file. The setup script extracts a Docker container that uses the generic DC/OS install files to create customized DC/OS build files for your cluster. The build files are output to `./genconf/serve/`.
 
+    ```bash
+    $ sudo bash dcos_generate_config.sh
+    ```
+
     At this point your directory structure should resemble:
 
         ├── dcos-genconf.<HASH>.tar
@@ -191,11 +197,6 @@ To install DC/OS:
         │   ├── config.yaml
         │   ├── ip-detect
 
-1.  Run this command to generate your customized DC/OS build file:
-
-    ```bash
-    $ sudo bash dcos_generate_config.sh
-    ```
 
     **Tip:** For the install script to work, you must have created `genconf/config.yaml` and `genconf/ip-detect`.
 
@@ -293,4 +294,4 @@ To install DC/OS:
 [7]: /docs/1.9/overview/concepts/#private
 [8]: /docs/1.9/administration/installing/custom/uninstall/
 [9]: /docs/1.9/administration/installing/custom/troubleshooting/
-[10]: /docs/1.9/administration/user-management/
+[10]: /docs/1.9/administration/id-and-access-mgt/user-management/

@@ -5,15 +5,14 @@ feature_maturity: preview
 ---
 
 
-You can install and run DC/OS services on a datacenter without internet access with a local [Universe](). You can install a local Universe that includes the default packages (easiest), or select your own set of local Universe packages (advanced).
+You can install and run DC/OS services on a datacenter without internet access with a local [Universe](https://github.com/mesosphere/universe). You can install a local Universe that includes the default packages (easiest), or select your own set of local Universe packages (advanced).
 
-**Important:** This feature is considered [preview](/docs/1.8/overview/feature-maturity/#preview): We might add, change, or delete any functionality as described in this document.
+**Important:** macOS is not supported.
 
-#### Prerequisites
+**Prerequisites:**
 
-*   DC/OS is [installed](/docs/1.8/administration/installing/)
-*   Secure Shell (SSH) must be enabled on all nodes
 *   8.5 GB of disk space
+*   System must meet bootstrap node hardware [prerequisites](/docs/1.8/administration/installing/custom/system-requirements/)    
 
 # <a name="default"></a>Installing the default Universe packages
 
@@ -94,7 +93,6 @@ You can install and run DC/OS services on a datacenter without internet access w
 #### Prerequisites
 
 *   Git:
-    *   **OS X:** Get the installer from [Git downloads](http://git-scm.com/download/mac).
     *   **Unix/Linux:** See these <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">installation instructions</a>.
 
 To install your own set of packages you must build a customized local Universe Docker image. 

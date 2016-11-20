@@ -66,7 +66,7 @@ DC/OS now includes a built-in job scheduler. Chronos is the original way to run 
     $ dcos package uninstall chronos
     ```
 
-2.  Open the Zookeeper Exhibitor web interface at `<hostname>/exhibitor`, where `<hostname>` is the [Mesos Master hostname][5].
+2.  Open the ZooKeeper Exhibitor web interface at `<hostname>/exhibitor`, where `<hostname>` is the [Mesos Master hostname][5].
 
     1.  Click on the **Explorer** tab and navigate to the `chronos` folder.
 
@@ -74,7 +74,7 @@ DC/OS now includes a built-in job scheduler. Chronos is the original way to run 
 
     2.  Choose Type **Delete**, enter the required **Username**, **Ticket/Code**, and **Reason** fields, and click **Next**.
 
-        ![Delete the Chronos path from Zookeeper](img/zkchronosdelete.png)
+        ![Delete the Chronos path from ZooKeeper](img/zkchronosdelete.png)
 
     3.  Click **OK** to confirm your deletion.
 

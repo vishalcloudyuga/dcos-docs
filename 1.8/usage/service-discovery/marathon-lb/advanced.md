@@ -1,6 +1,6 @@
 ---
 post_title: Advanced Features
-menu_order: 20
+menu_order: 300
 ---
 ## HAProxy configuration
 

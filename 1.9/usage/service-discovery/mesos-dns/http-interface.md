@@ -2,6 +2,7 @@
 post_title: HTTP Interface
 post_excerpt: ""
 layout: docs.jade
+menu_order: 201
 ---
 Mesos-DNS implements a simple REST API for service discovery over HTTP:
 

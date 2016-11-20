@@ -84,7 +84,7 @@ In this example, a disk resource is added to a DC/OS agent post-install on a run
 
 8.  SSH to the agent and verify a new resource state.
 
-    Review the journald logs for references to the new volume `/dcos/volume0`. In particular, there should be an entry for the a gent starting up and the new volume0 Disk Mount resource.
+    Review the journald logs for references to the new volume `/dcos/volume0`. In particular, there should be an entry for the agent starting up and the new volume0 Disk Mount resource.
     
     ```bash
     $ journalctl -b | grep '/dcos/volume0'

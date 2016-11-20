@@ -1,7 +1,7 @@
 # DC/OS Documentation [![Build Status](https://jenkins.mesosphere.com/service/jenkins/buildStatus/icon?job=public-dcos-docs-master)](https://jenkins.mesosphere.com/service/jenkins/job/public-dcos-docs-master)
 Documentation for the Datacenter Operating System (DC/OS)
 
-These documents are used as source to generate [dev.dcos.io/docs](https://dev.dcos.io/docs) (staging) and [dcos.io/docs](https://dcos.io/docs) (production). They are submoduled into [dcos-website](https://github.com/dcos/dcos-website) for deployment.
+These documents are used as source to generate [dev.dcos.io/docs](https://dev.dcos.io/docs) (staging) and [dcos.io/docs](/docs) (production). They are submoduled into [dcos-website](https://github.com/dcos/dcos-website) for deployment.
 
 
 **Issue tracking is moving to the [DCOS JIRA](https://dcosjira.atlassian.net/) ([docs component](https://dcosjira.atlassian.net/issues/?jql=project%20%3D%20DCOS%20AND%20component%20%3D%20docs)).
@@ -67,11 +67,12 @@ Issues on Github will be disabled soon.**
                ```
     - To create a page with hierarchy:
         1. Create a new directory in the appropriate location of the correctly versioned release (e.g., `/1.8/foo`) and a child page within this folder named `index.md` (e.g. `/1.8/foo/index.md`). The actual URI of your page will be `/1.8/foo/`, not `/1.8/foo/index`. For example, if it's a tutorial for 1.7, create a new directory here `/1.8/usage/tutorials/foo/`.
-        1. Add your page content, including the required metadata `post_title` and optional `nav_title` and `menu_order`. Do not include any other metadata.
+        1. Add your page content, including the required metadata `post_title` and optional `nav_title` and `menu_order`. Where applicable, add the`feature_maturity` label. Description of various feature maturity phases can be found here: https://dcos.io/docs/1.8/overview/feature-maturity/. Do not include any other metadata.
                 
                ```bash
                ---
                post_title: The Title
+               feature_maturity: preview
                ---
                Post markdown goes here.
                ```

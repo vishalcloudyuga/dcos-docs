@@ -1,6 +1,6 @@
 ---
 post_title: Upgrading
-menu_order: 11
+menu_order: 2.5
 ---
 
 ## Summary
@@ -11,6 +11,7 @@ This document provides instructions for upgrading a DC/OS cluster from version 1
 
 - The Advanced Installation method is the _only_ recommended upgrade path for DC/OS. It is recommended that you familiarize yourself with the [Advanced DC/OS Installation Guide][advanced-install] before proceeding.
 - The [VIP features](/docs/1.9/usage/service-discovery/load-balancing-vips/virtual-ip-addresses/), added in DC/OS 1.8, require that ports 32768 - 65535 are open between all agent and master nodes for both TCP and UDP.
+- Virtual networks require Docker 1.11. For more information, see the [documentation](/docs/1.9/administration/overlay-networks/).
 - The DC/OS UI and APIs may be inconsistent or unavailable while masters are being upgraded. Avoid using them until all masters have been upgraded and have rejoined the cluster. You can monitor the health of a master during an upgrade by watching Exhibitor on port 8181.
 - Task history in the Mesos UI will not persist through the upgrade.
 
@@ -24,6 +25,7 @@ This document provides instructions for upgrading a DC/OS cluster from version 1
 - In CentOS or RedHat, install IP sets with this command (used in some IP detect scripts): `$ sudo yum install -y ipset`
 - You must be familiar with using `systemctl` and `journalctl` command line tools to review and monitor service status. Troubleshooting notes can be found at the end of this [document](#troubleshooting).
 - You must be familiar with the [Advanced DC/OS Installation Guide][advanced-install].
+- You should take a snapshot of ZooKeeper prior to upgrading. Marathon supports rollbacks, but does not support downgrades.
 
 ## Instructions
 
@@ -176,6 +178,6 @@ $ sudo journalctl -u dcos-mesos-slave
 
 ## Notes:
 
-- Packages available in the DC/OS 1.8 Universe are newer than those in the DC/OS 1.8 Universe. Services are not automatically upgraded when  DC/OS 1.8 is installed because not all DC/OS services have upgrade paths that will preserve existing state.
+- Packages available in the DC/OS 1.8 Universe are newer than those in the DC/OS 1.7 Universe. Services are not automatically upgraded when  DC/OS 1.8 is installed because not all DC/OS services have upgrade paths that will preserve existing state.
 
 [advanced-install]: /docs/1.9/administration/installing/custom/advanced/
