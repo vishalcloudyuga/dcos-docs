@@ -25,7 +25,7 @@ A bootstrap node is required to run the scripts and to bootstrap the DC/OS clust
 1.  After creating the bootstrap instance, start the instance and run the following from the shell. These commands install prerequisite software on your bootstrap node.
 
     ```bash
-    $ sudo gcloud components update &&
+    $ sudo yum update google-cloud-sdk &&
     sudo yum update &&
     sudo yum install epel-release &&
     sudo yum install python-pip &&
