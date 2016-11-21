@@ -23,7 +23,7 @@ From the DC/OS web interface, click the **Jobs** tab, then the **New Job** butto
 * **Command** - The command your job will execute. Leave this blank if you will use a Docker image.
 * **Schedule** - Specify the schedule in cron format, as well as the time zone and starting deadline. Use [this crontab generator](http://crontab.guru) for help.
 * **Docker Container** - Fill in this field if you will use a Docker image to specify the action of your job.
-* **Labels** - Attach metadata to your job.
+* **Labels** - Attach metadata to your job so you can filter them.
 
 ## Modify, View, or Remove a Job
 
@@ -35,7 +35,7 @@ You can create and manage jobs from the DC/OS CLI using `dcos job` commands. To 
  
 ## Add a Job
  
-1. Create a job file in JSON format:
+1. Create a job file in JSON format. The `id` parameter is the job ID. You will use this ID later to manage your job.
  
     ```json
     {
@@ -131,11 +131,11 @@ To view details about your job's schedule, run:
 dcos job schedule show <job-id>
 ```
 
-# Metronome API
+# Jobs API
 
 You can also create and administer jobs via the API. [View the full API here](http://dcos.github.io/metronome/docs/generated/api.html).
 
-**Note:** The DC/OS CLI and web interface support a combined JSON format (accessed via the `/v0` endpoint) that allows you to specify a schedule in the job descriptor. To schedule a job via the API, use two calls: one to add a schedule-only JSON and another that adds the job and references the schedule in the `schedules:id` parameter.
+**Note:** The DC/OS CLI and web interface support a combined JSON format (accessed via the `/v0` endpoint) that allows you to specify a schedule in the job descriptor. To [schedule a job via the API](#add-sched), use two calls: one to add an unscheduled job and another to add a schedule to the job.
 
 ## Add a Job
 
@@ -174,6 +174,7 @@ Stop a run with the following command:
 curl -X POST -H "Authorization: token=$(dcos config show core.dcos_acs_token)" “$(dcos config show core.dcos_url)/service/metronome/v1/jobs/<myjob>/runs/20160725212507ghwfZ/actions/stop”
 ```
 
+<a name="add-sched"></a>
 ## Add a Schedule to a Job
 
 The following command adds a schedule to a job:
