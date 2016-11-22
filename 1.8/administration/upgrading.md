@@ -65,7 +65,7 @@ Proceed with upgrading every master node using the following procedure. When you
 1.  Download the `dcos_install.sh` script:
 
     ```
-    $ curl -O <bootstrap_url>/dcos_install.sh
+    $ curl -O http://<bootstrap_url>:<your_port>/dcos_install.sh
     ```
 
 1.  Uninstall pkgpanda:
@@ -108,7 +108,7 @@ Proceed with upgrading every master node using the following procedure. When you
 1.  Download The dcos_install.sh Script
 
     ```
-    $ curl -O <bootstrap_url>/dcos_install.sh
+    $ curl -O http://<bootstrap_url>:<your_port>/dcos_install.sh
     ```
 
 1.  Uninstall pkgpanda
