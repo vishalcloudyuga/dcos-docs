@@ -31,10 +31,10 @@ The system health API has four possible states: 0 - 3, OK; CRITICAL; WARNING; UN
 
 ## System health HTTP API endpoint
 
-The system health endpoint is exposed at port 1050:
+The system health endpoint is exposed on port `1050` for masters, and on port `61001` for the agents:
 
 ```bash
-$ curl <host_ip>:1050/system/health/v1
+$ curl <host_ip>:<port>/system/health/v1
 ```
 
 ## Aggregation
@@ -53,10 +53,10 @@ The DC/OS user interface uses these aggregation endpoints to generate the data y
 
 DC/OS components are the [systemd units](https://www.freedesktop.org/wiki/Software/systemd/) that make up the core of DC/OS. These components are monitored by our internal diagnostics utility (`dcos-diagnostics.service`). This utility scans all the DC/OS units, and then exposes an HTTP API on each host.
 
-You can query this HTTP API for any host in the cluster:
+You can query this HTTP API for any host in the cluster, for master nodes on port `1050` and for agents on port `61001`:
 
 ```bash
-curl <host_ip>:1050/system/health/v1
+curl <host_ip>:<port>/system/health/v1
 ```
 
 For a complete description of the DC/OS components, see the [documentation](/docs/1.8/overview/components/).
@@ -77,4 +77,4 @@ If you experience this behavior it's most likely your Mesos agent service on the
 
 ## Troubleshooting
 
-If you have any problems, you can check if the diagnostics service is running by SSH’ing to the Mesos leading master and checking the systemd status of the `dcos-ddt.service`.
+If you have any problems, you can check if the diagnostics service is running by SSH’ing to the Mesos leading master and checking the systemd status of the `dcos-d3t.service`.
