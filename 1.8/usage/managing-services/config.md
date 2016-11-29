@@ -4,7 +4,7 @@ nav_title: Configuring
 menu_order: 001
 ---
 
-Each service installs with a set of default parameters. You can discover the default parameters and change them as desired.
+Each Universe service installs with a set of default parameters. You can discover the default parameters and change them as desired.
 
 This topic describes how to use the DC/OS CLI to configure services. You can also customize services by using the [**Services**](/docs/1.8/usage/webinterface/#services) tab in the DC/OS UI. 
 
