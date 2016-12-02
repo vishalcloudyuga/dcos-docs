@@ -6,7 +6,7 @@ menu_order: 400
 
 # <a name="general"></a>General troubleshooting approach
 
-1.  Verify that you have a valid IP detect﻿⁠⁠⁠⁠script and functioning DNS resolvers to bind the DC/OS services to.
+1.  Verify that you have a valid IP detect﻿⁠⁠⁠⁠script, functioning DNS resolvers to bind the DC/OS services to, and that all nodes are synchronized with NTP.
     
     ## <a name="ip-detect-script"></a>IP detect script
     
@@ -38,6 +38,16 @@ menu_order: 400
     1. Admin Router
 
     Be sure to check that all services are up and healthy on the masters before checking the agents.
+    
+    ### NTP
+    
+    Network Time Protocol (NTP) must be enabled on all nodes for clock synchronization. By default, during DC/OS startup you will receive an error if this is not enabled. You can check if NTP is enabled by running one of these commands, depending on your OS and configuration:
+    
+    ```bash
+    $ ntptime
+    $ adjtimex -p
+    $ timedatectl
+    ```
 
 1. Ensure that firewalls and any other connection-filtering mechanisms are not interfering with cluster component communications. TCP, UDP, and ICMP must be permitted.
     
