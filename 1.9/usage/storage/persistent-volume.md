@@ -1,6 +1,5 @@
 ---
 post_title: Local Persistent Volumes
-feature_maturity: experimental
 menu_order: 10
 ---
 
