@@ -582,49 +582,62 @@ By default, `dcos node ssh` connects to the private IP of the node, which is onl
 
 ## dcos task
 
-    Description:
-        Manage DC/OS tasks.
-    
-    Usage:
-        dcos task --info
-        dcos task [--completed --json <task>]
-        dcos task log [--completed --follow --lines=N] <task> [<file>]
-        dcos task ls [--long] <task> [<path>]
-    
-    Command:
-        log
-            Print the task log. By default, the 10 most recent task logs from stdout
-            are printed.
-        ls
-            Print the list of files in the Mesos task sandbox.
-    
-    
-    Options:
-        --completed
-            Print completed and in-progress tasks.
-        -h, --help
-            Print usage.
-        --info
-            Print a short description of this subcommand.
-        --follow
-            Dynamically update the log.
-        --json
-            Print JSON-formatted list of tasks.
-        --lines=N
-            Print the last N lines. The default is 10 lines.
-        --long
-            Print full Mesos sandbox file attributes.
-        --version
-            Print version information.
-    
-    Positional Arguments:
-        <file>
-            Specify the sandbox file to print. The default is stdout.
-        <path>
-            The Mesos sandbox directory path. The default is '.'.
-        <task>
-            A full task ID, a partial task ID, or a regular expression.
-    
+```
+Description:
+    Manage DC/OS tasks.
+
+Usage:
+    dcos task --help
+    dcos task --info
+    dcos task exec [--interactive --tty] <task> <cmd> [<args>...]
+    dcos task log [--completed --follow --lines=N] [<task>] [<file>]
+    dcos task ls [--long --completed] [<task>] [<path>]
+    dcos task [--completed --json <task>]
+
+Command:
+    exec
+        Launch a process (<cmd>) inside of a container for a task (<task_id>).
+
+    log
+        Print the task log. By default, the 10 most recent task logs from stdout
+        are printed.
+    ls
+        Print the list of files in the Mesos task sandbox.
+
+Options:
+    --completed
+        Print completed and in-progress tasks.
+    -h, --help
+        Print usage.
+    --info
+        Print a short description of this subcommand.
+    --interactive
+        Attach a STDIN stream to the remote command for interactive session.
+    --tty
+        Attach a TTY to the remote stream.
+    --follow
+        Dynamically update the log.
+    --json
+        Print JSON-formatted list of tasks.
+    --lines=N
+        Print the last N lines. The default is 10 lines.
+    --long
+        Print full Mesos sandbox file attributes.
+    --version
+        Print version information.
+
+Positional Arguments:
+    <cmd>
+        The command to execute inside of the remote container. For example: `/bin/bash`.
+    <args>
+        Additional arguments to pass to the command (`<cmd>`).
+    <file>
+        Specify the sandbox file to print. The default is stdout.
+    <path>
+        The Mesos sandbox directory path. The default is '.'.
+    <task>
+        A full task ID, a partial task ID, or a regular expression.
+``` 
 
 If you specify a partial task ID, logs for all task names that contain the partial task ID are displayed. For example, if you have tasks named `spark1`, `spark2`, and `spark3`, then the command `dcos task log spark` will display task logs for all three of these tasks; you do not need to use wildcards.
 
