@@ -48,14 +48,12 @@ This JSON creates a simple job with no schedule.
         "mem": 32,
         "disk": 0
       },
-      "schedules": [
-        {
+      "schedules": {
           "id": "sleep-nightly",
           "enabled": true,
           "cron": "20 0 * * *",
           "concurrencyPolicy": "ALLOW"
-        }
-      ]
+      }
     }
     ```
 
