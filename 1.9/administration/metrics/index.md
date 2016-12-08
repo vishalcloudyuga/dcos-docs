@@ -6,20 +6,19 @@ menu_order: 3.5
 This section provides information on metrics supported by DC/OS.
 
 
-# Gathering metrics from Mesos tasks
+# Metrics from Mesos tasks
 <!-- Enable Metrics Gathering from Mesos Tasks (App Level) (OSS) -->
 You can configure DC/OS to automatically send metrics from your Mesos tasks by using the `/v0/node` endpoint.  
 
-# Gathering metrics from cgroup allocations
+# Metrics from cgroup allocations
 <!-- Enable Metrics Gathering from CGroup Allocations (Container Level) (OSS) -->
 You can get individual container resource metrics for each container deployed by DC/OS by using the `/v0/containers/{id}` endpoint.
 
-# Gathering metrics from DC/OS host
+# Metrics from DC/OS host
 <!-- Enable Metrics Gathering from DC/OS Host (Host Level) (OSS) -->
 You can get per-host data regarding host-level resources in your DC/OS cluster by using the `/v0/containers/{id}/app/{metric-id}` endpoint.
 
-
-# Using the metrics HTTP API
+# Metrics HTTP API
 <!-- Expose All Metrics with a HTTP API (OSS) -->
 You can use your custom built tools to get any metric, either from running Mesos tasks or the hosts which run my DC/OS cluster. 
 
