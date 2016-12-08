@@ -5,11 +5,12 @@ menu_order: 85
 ---
 
 # Overview
-Pods enable you to share storage, networking, and other resources among a group of services on a single agent and address them as one group rather than as separate services, similar to a virtual machine. Pods allow quick, convenient coordination between services that need to work together, for instance a database and web server that make up a content management system. Scaling your pod is also straightforward.
+Pods enable you to share storage, networking, and other resources among a group of applications on a single agent, address them as one group rather than as separate applications, and manage health as a unit.
+
+Pods allow quick, convenient coordination between applications that need to work together, for instance a primary service and a related analytics service or log scraper. Pods are particularly useful for transitioning legacy applications to a microservices-based architecture.
 		
 # Features
-* Co-located containers.
-* Pod-level resource isolation.
-* Sandbox and ephemeral volumes that are shared among pod containers.
-* Configurable sandbox mount point for each container.
-* Pod-level health checks.
+- Co-located containers.
+- Pod-level resource isolation.
+- Pod-level sandbox and ephemeral volumes.
+- Pod-level health checks.
