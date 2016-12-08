@@ -92,7 +92,7 @@ A DC/OS node is a virtual or physical machine on which a Mesos agent and/or Meso
 A DC/OS master node is a virtual or physical machine that runs a collection of DC/OS components that work together to manage the rest of the cluster.
 
 - Each master node contains multiple DC/OS components, including most notably a [Mesos master](#mesos-master) process.
-- Master nodes work in a [quorum](https://en.wikipedia.org/wiki/Quorum_(distributed_computing)) to provide consistency of cluster coordination. To avoid [split brain](https://en.wikipedia.org/wiki/Split-brain_(computing)) cluster partitioning, clusters should always have an odd number of master nodes. For example, having three master nodes allows one to be down; having five master nodes allows two to be down, allowing for failure during a rolling update. Additional master nodes can be added for additional risk tolerance.
+- Master nodes work in a [quorum](https://en.wikipedia.org/wiki/Quorum_(distributed_computing&#41;) to provide consistency of cluster coordination. To avoid [split brain](https://en.wikipedia.org/wiki/Split-brain_(computing&#41;) cluster partitioning, clusters should always have an odd number of master nodes. For example, having three master nodes allows one to be down; having five master nodes allows two to be down, allowing for failure during a rolling update. Additional master nodes can be added for additional risk tolerance.
 - A cluster with only one master node is usable for development, but is not highly available and may not be able to recover from failure.
 
 #### <a name="dcos-agent-node"></a>Agent Node
@@ -399,4 +399,4 @@ A Marathon pod is a long-running service that may have one or more instances tha
 
 ### <a name="marathon-group"></a>Group
 
-A Marathon group is a set of services (applications and/or pods) within a hierarchical directory [path](https://en.wikipedia.org/wiki/Path_(computing)) structure for namespacing and organization.
+A Marathon group is a set of services (applications and/or pods) within a hierarchical directory [path](https://en.wikipedia.org/wiki/Path_(computing&#41;) structure for namespacing and organization.
