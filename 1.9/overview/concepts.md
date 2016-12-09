@@ -41,6 +41,7 @@ DC/OS is made up of many open source components, several of which existed before
 - [Package Manager](#dcos-package-manager)
 - [Package Registry](#dcos-package-registry)
 - [Mesosphere Universe](#mesosphere-universe)
+- [Container-Registry](#container-registry)
 - [Cloud Template](#cloud-template)
 
 ### <a name="dcos"></a>DC/OS
@@ -51,7 +52,7 @@ DC/OS is a [distributed operating system](https://en.wikipedia.org/wiki/Distribu
 - Unlike traditional [operating systems](https://en.wikipedia.org/wiki/Operating_system), DC/OS runs on a [cluster of nodes](#cluster), instead of a single machine. Each DC/OS node also has a [host operating system](#host-operating-system) that manages the underlying machine.
 - DC/OS is made up of many components, most notably a distributed systems kernel ([Mesos](#mesos)) and a container orchestration engine ([Marathon](#marathon)).
 - Prior to version 1.6, DC/OS was known as The Datacenter Operating System (DCOS). With version 1.6 the platform was renamed to DC/OS and open sourced.
-- While the core of DC/OS is open source, premium distributions like [Mesosphere Enterprise DC/OS](https://mesosphere.com/product/) may include additional components and features (e.g. multitenancy, fine-grained permissions, secrets management, and end-to-end encryption).
+- While DC/OS itself is open source, premium distributions like [Mesosphere Enterprise DC/OS](https://mesosphere.com/product/) may include additional closed-source components and features (e.g. multitenancy, fine-grained permissions, secrets management, and end-to-end encryption).
 
 ### <a name="dcos-gui"></a>DC/OS GUI
 
@@ -59,7 +60,7 @@ The [DC/OS graphical user interface (GUI)](/docs/1.9/usage/webinterface/) is an 
 
 ### <a name="dcos-cli"></a>DC/OS CLI
 
-The [DC/OS command line interface (CLI)](/docs/1.9/usage/cli/) is an interface for remotely controlling and managing a DC/OS cluster from a terminal.
+The [DC/OS command line interface (CLI)](/docs/1.8/usage/cli/) is an interface for remotely controlling and managing a DC/OS cluster from a terminal.
 
 ### <a name="dcos-cluster"></a>Cluster
 
@@ -92,7 +93,7 @@ A DC/OS node is a virtual or physical machine on which a Mesos agent and/or Meso
 A DC/OS master node is a virtual or physical machine that runs a collection of DC/OS components that work together to manage the rest of the cluster.
 
 - Each master node contains multiple DC/OS components, including most notably a [Mesos master](#mesos-master) process.
-- Master nodes work in a [quorum](https://en.wikipedia.org/wiki/Quorum_(distributed_computing&#41;) to provide consistency of cluster coordination. To avoid [split brain](https://en.wikipedia.org/wiki/Split-brain_(computing&#41;) cluster partitioning, clusters should always have an odd number of master nodes. For example, having three master nodes allows one to be down; having five master nodes allows two to be down, allowing for failure during a rolling update. Additional master nodes can be added for additional risk tolerance.
+- Master nodes work in a [quorum](https://en.wikipedia.org/wiki/Quorum_%28distributed_computing%29) to provide consistency of cluster coordination. To avoid [split brain](https://en.wikipedia.org/wiki/Split-brain_%28computing%29) cluster partitioning, clusters should always have an odd number of master nodes. For example, having three master nodes allows one to be down; having five master nodes allows two to be down, allowing for failure during a rolling update. Additional master nodes can be added for additional risk tolerance.
 - A cluster with only one master node is usable for development, but is not highly available and may not be able to recover from failure.
 
 #### <a name="dcos-agent-node"></a>Agent Node
@@ -102,7 +103,7 @@ A DC/OS agent node is a virtual or physical machine on which Mesos tasks are run
 - Each agent node contains multiple DC/OS components, including most notably a [Mesos agent](#mesos-agent) process.
 - Agent nodes can be [private](#private-agent-node) or [public](#public-agent-node), depending on agent and network configuration.
 
-For more information, see [Network Security](/docs/1.9/administration/securing-your-cluster/) and [Adding Agent Nodes](/docs/1.9/administration/installing/custom/add-a-node/).
+For more information, see [Network Security](/docs/1.8/administration/securing-your-cluster/) and [Adding Agent Nodes](/docs/1.8/administration/installing/custom/add-a-node/).
 
 ##### <a name="private-agent-node"></a>Private Agent Node
 
@@ -117,10 +118,10 @@ A private agent node is an agent node that is on a network that *does not* have 
 A public agent node is an agent node that is on a network that *does* have ingress access from outside of the cluster via the cluster’s infrastructure networking.
 
 - The Mesos agent on each public agent node is configured with the `public_ip:true` agent attribute and all of its resources allocated to the `slave_public` role.
-- Public agent nodes are used primarily for externally facing reverse proxy load balancers, like [Marathon-LB](/docs/1.9/usage/service-discovery/marathon-lb/).
+- Public agent nodes are used primarily for externally facing reverse proxy load balancers, like [Marathon-LB](/docs/1.8/usage/service-discovery/marathon-lb/).
 - Clusters generally have only a few public agent nodes, because a single load balancer can handle proxying multiple services.
 
-For more information, see [Converting Agent Node Types](/docs/1.9/administration/installing/custom/convert-agent-type/).
+For more information, see [Converting Agent Node Types](/docs/1.8/administration/installing/custom/convert-agent-type/).
 
 ### <a name="host-operating-system"></a>Host Operating System
 
@@ -135,10 +136,10 @@ A bootstrap machine is the machine on which the DC/OS installer artifacts are co
 
 - The bootstrap machine is not technically considered part of the cluster since it does not have DC/OS installed on it (this may change in the future). For most installation methods, the bootstrap node must be accessible to and from the machines in the cluster via infrastructure networking.
 - The bootstrap machine is sometimes used as a jumpbox to control SSH access into other nodes in the cluster for added security and logging.
-- One method of allowing master nodes to change IPs involves running ZooKeeper with Exhibitor on the bootstrap machine. Other alternatives include using S3, DNS, or static IPs, with various tradeoffs. For more information, see [configuring the exhibitor storage backend](/docs/1.9/administration/installing/custom/configuration-parameters/#exhibitor_storage_backend).
-- If a bootstrap machine is not required for managing master node IP changes or as an SSH jumpbox, it can be shut down after bootstrapping and spun up on demand to [add new nodes](/docs/1.9/administration/installing/custom/add-a-node/) to the cluster.
+- One method of allowing master nodes to change IPs involves running ZooKeeper with Exhibitor on the bootstrap machine. Other alternatives include using S3, DNS, or static IPs, with various tradeoffs. For more information, see [configuring the exhibitor storage backend](/docs/1.8/administration/installing/custom/configuration-parameters/#exhibitor_storage_backend).
+- If a bootstrap machine is not required for managing master node IP changes or as an SSH jumpbox, it can be shut down after bootstrapping and spun up on demand to [add new nodes](/docs/1.8/administration/installing/custom/add-a-node/) to the cluster.
 
-For more information, see the [system requirements](/docs/1.9/administration/installing/custom/system-requirements/#bootstrap-node).
+For more information, see the [system requirements](/docs/1.8/administration/installing/custom/system-requirements/#bootstrap-node).
 
 ### <a name="dcos-service"></a>Service
 
@@ -240,7 +241,7 @@ The DC/OS package manager ([Cosmos](https://github.com/dcos/cosmos)) is a compon
 
 ### <a name="dcos-package-registry"></a>Package Registry
 
-A DC/OS package registry is a repository of packages.
+A DC/OS package registry is a repository of DC/OS packages.
 
 - The [DC/OS package manager](#dcos-package-manager) may be configured to install packages from one or more package registries.
 
@@ -250,11 +251,17 @@ The Mesosphere Universe is a public package registry, managed by Mesosphere.
 
 For more information, see the [Universe repository](https://github.com/mesosphere/universe) on GitHub.
 
+### <a name="container-registry"></a>Container Registry
+
+A container registry is a repository of pre-built container images.
+
+The [Docker Runtime](#mesos-docker-runtime) and [Mesos Container Runtime](#mesos-universal-container-runtime) can both pull and run Docker images from public or private Docker container registries.
+
 ### <a name="cloud-template"></a>Cloud Template
 
 A cloud template is an infrastructure-specific method of decoratively describing a DC/OS cluster.
 
-For more information, see [Cloud Installation Options](/docs/1.9/administration/installing/cloud/).
+For more information, see [Cloud Installation Options](/docs/1.8/administration/installing/cloud/).
 
 
 ## <a name="mesos-concepts"></a>Mesos Concepts
@@ -363,7 +370,7 @@ Mesos depends on ZooKeeper, a high-performance coordination service to manage th
 
 Mesos-DNS is a DC/OS component that provides service discovery within the cluster. Mesos-DNS allows applications and services that are running on Mesos to find each other by using the domain name system (DNS), similar to how services discover each other throughout the Internet.
 
-For more information, see the [Mesos-DNS documentation](/docs/1.9/usage/service-discovery/mesos-dns/).
+For more information, see the [Mesos-DNS documentation](/docs/1.8/usage/service-discovery/mesos-dns/).
 
 ## <a name="marathon-concepts"></a>Marathon Concepts
 
@@ -399,4 +406,4 @@ A Marathon pod is a long-running service that may have one or more instances tha
 
 ### <a name="marathon-group"></a>Group
 
-A Marathon group is a set of services (applications and/or pods) within a hierarchical directory [path](https://en.wikipedia.org/wiki/Path_(computing&#41;) structure for namespacing and organization.
+A Marathon group is a set of services (applications and/or pods) within a hierarchical directory [path](https://en.wikipedia.org/wiki/Path_%28computing%29) structure for namespacing and organization.

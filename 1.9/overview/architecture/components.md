@@ -1,14 +1,57 @@
 ---
 post_title: Components
 nav_title: Components
-menu_order: 4
+menu_order: 3
 ---
 
 DC/OS is comprised of many individual open source components that are precisely configured to work together. 
 
 You can log into any host in the DC/OS cluster and view the currently running services by inspecting the `/etc/systemd/system/dcos.target.wants/` directory. 
 
-You can view the DC/OS component details in the <a href="https://github.com/dcos/dcos/">https://github.com/dcos/dcos/</a> repo in the packages directory. 
+You can view the DC/OS component details in the <a href="https://github.com/dcos/dcos/">https://github.com/dcos/dcos/</a> repo in the packages directory.
+
+![DC/OS Components](/docs/1.8/overview/architecture/img/dcos-component-diagram.png)
+
+## 100,000 ft view
+
+The DC/OS kernel space is comprised of Mesos masters and Mesos agents. The user space includes System Components such as Mesos-DNS, Distributed DNS Proxy, and services such as Marathon or Spark. The user space also includes processes that are managed by the services, for example a Marathon application.
+
+![DC/OS architecture 100,000ft view](/docs/1.8/overview/architecture/img/dcos-architecture-100000ft.png)
+
+Before we dive into the details of the interaction between different DC/OS components, let's define the terminology used.
+
+- Master: aggregates resource offers from all agent nodes and provides them to registered frameworks.
+- Scheduler: the scheduler component of a service, for example the Marathon scheduler.
+- User: also known as Client, is an application either internal or external to the cluster that kicks off a process, for example a human user that submits a Marathon app spec.
+- Agent: runs a discrete Mesos task on behalf of a framework. It is an agent instance registered with the Mesos master. The synonym of agent node is worker or slave node. You can have private or public agent nodes.
+- Executor: launched on agent nodes to run tasks for a service.
+- Task: a unit of work scheduled by a Mesos framework and executed on a Mesos agent.
+- Process: a logical collection of tasks initiated by a Client, for example a Marathon app or a Chronos job.
+
+### Kernel space
+
+In DC/OS, the kernel space manages resource allocation and two-level scheduling across the cluster. The two types of processes in the kernel space are Mesos masters and agents:
+
+- **Mesos masters** The `mesos-master` process orchestrates tasks that are run on Mesos agents. The Mesos Master process receives resource reports from Mesos agents and distributes those resources to registered DC/OS services, such as Marathon or Spark. When a leading Mesos master fails due to a crash or goes offline for an upgrade, a standby Mesos master automatically becomes the leader without disrupting running services. ZooKeeper performs leader election.
+- **Mesos agents**: Mesos agent nodes run discrete Mesos tasks on behalf of a framework. Private agent nodes run the deployed apps and services through a non-routable network. Public agent nodes run DC/OS apps and services in a publicly accessible network. The `mesos-slave` process on a Mesos agent manages its local resources (CPU cores, RAM, etc.) and registers these resources with the Mesos masters. It also accepts schedule requests from the Mesos master and invokes an Executor to launch a Task via [containerizers](http://mesos.apache.org/documentation/latest/containerizer/):
+  - The Mesos containerizer provides lightweight containerization and resource isolation of executors using Linux-specific functionality such as cgroups and namespaces.
+  - The Docker containerizer provides support for launching tasks that contain Docker images.
+
+### User space
+
+The DC/OS user space spans System Components and DC/OS services such as Chronos or Kafka:
+
+- [System Components](/docs/1.8/overview/components/) are installed and are running by default in the DC/OS cluster and include the following:
+  - The Admin Router is an open source NGINX configuration that provides central authentication and proxy to DC/OS services.
+  - Exhibitor automatically configures ZooKeeper during installation and provides a usable Web UI to ZooKeeper.
+  - Mesos-DNS provides service discovery, allowing apps and services to find each other by using the domain name system (DNS).
+  - Minuteman is the internal layer 4 load balancer.
+  - Distributed DNS Proxy is the internal DNS dispatcher.
+  - DC/OS Marathon, the native Marathon instance that is the 'init system' for DC/OS, starts and monitors DC/OS services.
+  - ZooKeeper, a high-performance coordination service that manages the DC/OS services.
+- Services
+  - A service in DC/OS consists of a Scheduler (responsible for scheduling tasks on behalf of a user) and an Executor (running Tasks on agents).
+  - User-level applications, for example an NGINX webserver launched through Marathon.
 
 
 <table class="table">
@@ -71,7 +114,7 @@ You can view the DC/OS component details in the <a href="https://github.com/dcos
   </tr>
   <tr>
     <td>Exhibitor</td>
-    <td>This component (`dcos-exhibitor.service`) is the Exhibitor supervisor for ZooKeeper. DC/OS uses Exhibitor, a project from <a href="https://github.com/Netflix/exhibitor">Netflix</a>, to manage and automate the deployment of <a href="/docs/1.9/overview/concepts/#exhibitorforzookeeper">ZooKeeper</a>.</td>
+    <td>This component (`dcos-exhibitor.service`) is the Exhibitor supervisor for ZooKeeper. DC/OS uses Exhibitor, a project from <a href="https://github.com/Netflix/exhibitor">Netflix</a>, to manage and automate the deployment of <a href="/docs/1.8/overview/concepts/#exhibitorforzookeeper">ZooKeeper</a>.</td>
   </tr>
   <tr>
     <td>Generate resolv.conf</td>
@@ -87,11 +130,11 @@ You can view the DC/OS component details in the <a href="https://github.com/dcos
   </tr>
   <tr>
     <td>Job</td>
-    <td>This component (`dcos-metronome.service`) powers the DC/OS Jobs feature. For more information, see the <a href="/docs/1.9/usage/jobs/">documentation</a>.</td>
+    <td>This component (`dcos-metronome.service`) powers the DC/OS Jobs feature. For more information, see the <a href="/docs/1.8/usage/jobs/">documentation</a>.</td>
   </tr>
   <tr>
     <td>Layer 4 Load Balancer</td>
-    <td>This component (`dcos-minuteman.service`), also known as <a href="https://github.com/dcos/minuteman">Minuteman</a>, is the DC/OS Layer 4 Load Balancer that enables multi-tier microservices architectures. For more information, see the <a href="/docs/1.9/usage/service-discovery/load-balancing-vips/">documentation</a>.</td>
+    <td>This component (`dcos-minuteman.service`), also known as <a href="https://github.com/dcos/minuteman">Minuteman</a>, is the DC/OS Layer 4 Load Balancer that enables multi-tier microservices architectures. For more information, see the <a href="/docs/1.8/usage/service-discovery/load-balancing-vips/">documentation</a>.</td>
   </tr>
   <tr>
     <td>Logrotate Mesos Master</td>
@@ -111,15 +154,15 @@ You can view the DC/OS component details in the <a href="https://github.com/dcos
   </tr>
   <tr>
     <td>Mesos Agent</td>
-    <td>This component (`dcos-mesos-slave.service`) is the mesos-slave process for <a href="/docs/1.9/overview/concepts/#private">private</a> agent nodes.</td>
+    <td>This component (`dcos-mesos-slave.service`) is the mesos-slave process for <a href="/docs/1.8/overview/concepts/#private">private</a> agent nodes.</td>
   </tr>
   <tr>
     <td>Mesos Agent Public</td>
-    <td>This component (`dcos-mesos-slave-public.service`) is the mesos-slave process for <a href="/docs/1.9/overview/concepts/#public">public</a> agent nodes.</td>
+    <td>This component (`dcos-mesos-slave-public.service`) is the mesos-slave process for <a href="/docs/1.8/overview/concepts/#public">public</a> agent nodes.</td>
   </tr>
   <tr>
     <td>Mesos DNS</td>
-    <td>This component (`dcos-mesos-dns.service`) provides service discovery within the cluster. Mesos-DNS is the internal DNS service (`dcos-mesos-dns.service`) for the DC/OS cluster. <a href="/docs/1.9/overview/concepts/#mesos-dns">Mesos-DNS</a> provides the namespace `$service.mesos` to all cluster hosts. For example, you can login to your leading mesos master with `ssh leader.mesos`.</td>
+    <td>This component (`dcos-mesos-dns.service`) provides service discovery within the cluster. Mesos-DNS is the internal DNS service (`dcos-mesos-dns.service`) for the DC/OS cluster. <a href="/docs/1.8/overview/concepts/#mesos-dns">Mesos-DNS</a> provides the namespace `$service.mesos` to all cluster hosts. For example, you can login to your leading mesos master with `ssh leader.mesos`.</td>
   </tr>
   <tr>
     <td>History Service</td>
