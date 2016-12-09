@@ -3,32 +3,40 @@ post_title: Metrics
 menu_order: 3.5
 ---
 
-This section provides information on metrics supported by DC/OS.
+The metrics component provides operational insight to your DC/OS cluster, providing discrete metrics about your applications and deployments. This can include charts, dashboards, and alerts based on cluster, node, container, and application-level statistics. The metrics component is natively integrated with DC/OS version 1.9 and later. No additional setup is required.  
 
+## Overview
+There are three layers of metrics identified in DC/OS: 
 
-# Metrics from Mesos tasks
-<!-- Enable Metrics Gathering from Mesos Tasks (App Level) (OSS) -->
-You can configure DC/OS to automatically send metrics from your Mesos tasks by using the `/v0/node` endpoint.  
+  * Host: metrics about the specific node which is part of the DC/OS cluster. 
+  * Container: metrics about cgroup allocations from tasks running in Mesos or Docker containerizers. 
+  * Application: metrics about a specific application running inside a Mesos or Docker containerizer.
 
-# Metrics from cgroup allocations
-<!-- Enable Metrics Gathering from CGroup Allocations (Container Level) (OSS) -->
-You can get individual container resource metrics for each container deployed by DC/OS by using the `/v0/containers/{id}` endpoint.
+The metrics component provides an HTTP API which exposes these three areas. 
 
-# Metrics from DC/OS host
-<!-- Enable Metrics Gathering from DC/OS Host (Host Level) (OSS) -->
-You can get per-host data regarding host-level resources in your DC/OS cluster by using the `/v0/containers/{id}/app/{metric-id}` endpoint.
+All three metrics layers are aggregated by a collector which is shipped as part of the DC/OS distribution. This enables metrics to run on every host in the cluster. It is the main entry point to the metrics ecosystem, aggregating metrics sent to it by the Metrics Mesos module, or gathering host and container level metrics on the box which is runs. 
 
-# Metrics HTTP API
-<!-- Expose All Metrics with a HTTP API (OSS) -->
-You can use your custom built tools to get any metric, either from running Mesos tasks or the hosts which run my DC/OS cluster. 
+The Mesos Metrics Module is bundled with every agent in the cluster. This module enables applications to publish metrics from applications running on top of DC/OS to the collector by exposing a StatsD port and host environment variable inside every container. These metrics are appended with structured data such as agent-id, framework-id and task-id.
 
-The HTTP producer is enabled by default and exposes a JSON-formatted HTTP API on each node in the cluster. These APIs include both metrics datapoints as well as dimensions, or key/value pairs with relevant node and cluster metadata.
+<!-- ![architecture diagram](https://www.lucidchart.com/publicSegments/view/30f4c23-b2f9-4db3-9954-a947f395eae5/image.png) -->
 
-The path to this API is `/system/v1/metrics/`. The available endpoints include:
+Per-container metrics tags enable you to arbitrarily group metrics, for example on a per-framework or per-system or agent basis. Here are the available tags:
 
-* `/v0/ping` - Basic health check
-* `/v0/node` - Node metrics (CPU, memory, storage, networks, etc)
-* `/v0/containers` - An array of container IDs running on the node
-* `/v0/containers/{id}` - Resource allocation and usage for the given container ID
-* `/v0/containers/{id}/app` - Application-level metrics from the container (shipped in [DogStatsD format](http://docs.datadoghq.com/guides/dogstatsd/) using the `STATSD_UDP_HOST` and `STATSD_UDP_PORT` environment variables)
-* `/v0/containers/{id}/app/{metric-id}` - Similar to `/v0/containers/{id}/app`, but only contains datapoints for a single metric ID
+* `agent_id`
+* `container_id`
+* `executor_id`
+* `framework_id`
+* `framework_name`
+* `framework_principal`
+* `hostname`
+* `labels`
+
+DC/OS applications will discover the endpoint via an environment variable (`STATSD_UDP_HOST` or `STATSD_UDP_PORT`). Applications leverage this StatsD interface to send custom profiling metrics to the system.
+
+These metrics are automatically collected.
+
+  * Per-container resource resource utilization (metrics named `usage.*`)
+  * Agent and system-level resource utilization (metrics named `node.*`, not tied to a specific container, so only tagged with `agent_id`)
+  
+## Security
+Because most metrics are sent to other service stacks and not consumed by DC/OS users, we will not implement any role based access control for them. However, the HTTP producer does expose and API endpoint, which can be consumed by DC/OS users. Because of this, Enterprise DC/OS provides coarse grained ACLs via the Admin Router proxy to ensure only DC/OS superusers have access to this HTTP API endpoint. 
