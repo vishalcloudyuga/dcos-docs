@@ -13,13 +13,25 @@ If you’ve created a DC/OS service named `service` and would like to see stdout
 $ dcos task log --follow service
 ```
 
-For more advanced usage, you can check out the CLI documentation:
+You can view the Mesos task and DC/OS cluster logs by running this CLI command with your task ID specified:
 
-- [DC/OS CLI Usage][1]
+```bash
+$ dcos task log <task_id>
+```
+
+You can view logs for specific DC/OS components by running this CLI command with the component name specified:
+
+```bash
+dcos node log --component=<component-name>
+```
+
+For more information about the DC/OS CLI, see the [documentation][1].
 
 ## GUI
 
 From the **Services** tab in the [DC/OS UI](/docs/1.9/usage/webinterface/) you can download all the log files for your service. You can also monitor stdout/stderr.
+
+<! - TODO add 1.9 GUI information. -->
 
 # Compliance
 
