@@ -1,7 +1,7 @@
 ---
 post_title: Spaces
 nav_title: Spaces
-menu_order: 6
+menu_order: 5
 ---
 
 In DC/OS, services may live in one of two spaces: the user space or the system space. These are analogous to the Linux user and kernel spaces.
@@ -16,7 +16,7 @@ The system space includes all [system services](/docs/1.9/overview/concepts/#sys
 
 System space services and jobs are scheduled manually by the DC/OS installer and managed by systemd on the nodes themselves.
 
-In future releases, the system space may also include [Marathon services](/docs/1.9/overview/concepts/#marathon-service).
+In future releases, some [Marathon services](/docs/1.9/overview/concepts/#marathon-service) may be deployed into the system space as well, using hierarchical security spaces.
 
 ## User space
 
