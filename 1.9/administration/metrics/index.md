@@ -3,7 +3,7 @@ post_title: Metrics
 menu_order: 3.5
 ---
 
-The metrics component provides operational insight to your DC/OS cluster, providing discrete metrics about your applications and deployments. This can include charts, dashboards, and alerts based on cluster, node, container, and application-level statistics. The metrics component is natively integrated with DC/OS version 1.9 and later. No additional setup is required.  
+The [metrics component](https://github.com/dcos/dcos-metrics) provides operational insight to your DC/OS cluster, providing discrete metrics about your applications and deployments. This can include charts, dashboards, and alerts based on cluster, node, container, and application-level statistics. The metrics component is natively integrated with DC/OS version 1.9 and later. No additional setup is required.  
 
 ## Overview
 There are three layers of metrics identified in DC/OS: 
