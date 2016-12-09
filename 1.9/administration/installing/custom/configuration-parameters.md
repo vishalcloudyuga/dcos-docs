@@ -234,6 +234,17 @@ This parameter specifies whether to enable sharing of anonymous data for your cl
 
 If you’ve already installed your cluster and would like to disable this in-place, you can go through an [upgrade][3] with the same parameter set.
 
+### cosmos_config
+This parameter specifies a dictionary of packaging configuration to pass to Cosmos, DC/OS package
+manager. If set, both of the following options must be set.
+
+* **staged_package_storage_uri**
+  This parameter specifies the location where you would like to temporarily store DC/OS Package
+  while the are being added. The value must be a file URL. E.g.
+  `file:///var/lib/dcos/cosmos/staged-packages`
+* **package_storage_uri**
+  This parameter specifies the location where you would like to permanetly store DC/OS Package.
+  The value must be a file URL. E.g. `file:///var/lib/dcos/cosmos/packages`
 
 # <a name="examples1"></a>Example Configurations
 
