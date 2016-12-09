@@ -4,11 +4,11 @@ nav_title: Components
 menu_order: 3
 ---
 
-DC/OS is comprised of many individual open source components that are precisely configured to work together. 
+DC/OS is comprised of multiple open source components that are precisely configured to work together.
 
 You can log into any host in the DC/OS cluster and view the currently running services by inspecting the `/etc/systemd/system/dcos.target.wants/` directory. 
 
-You can view the DC/OS component details in the <a href="https://github.com/dcos/dcos/">https://github.com/dcos/dcos/</a> repo in the packages directory.
+You can view the DC/OS component details in the package directory of the DC/OS source repository: <a href="https://github.com/dcos/dcos/">https://github.com/dcos/dcos/</a>.
 
 ![DC/OS Components](/docs/1.9/overview/architecture/img/dcos-component-diagram.png)
 
@@ -28,18 +28,14 @@ Before we dive into the details of the interaction between different DC/OS compo
 - Task: a unit of work scheduled by a Mesos framework and executed on a Mesos agent.
 - Process: a logical collection of tasks initiated by a Client, for example a Marathon app or a Chronos job.
 
-### Kernel space
-
-In DC/OS, the kernel space manages resource allocation and two-level scheduling across the cluster. The two types of processes in the kernel space are Mesos masters and agents:
+TODO: blend in the following Mesos description
 
 - **Mesos masters** The `mesos-master` process orchestrates tasks that are run on Mesos agents. The Mesos Master process receives resource reports from Mesos agents and distributes those resources to registered DC/OS services, such as Marathon or Spark. When a leading Mesos master fails due to a crash or goes offline for an upgrade, a standby Mesos master automatically becomes the leader without disrupting running services. ZooKeeper performs leader election.
 - **Mesos agents**: Mesos agent nodes run discrete Mesos tasks on behalf of a framework. Private agent nodes run the deployed apps and services through a non-routable network. Public agent nodes run DC/OS apps and services in a publicly accessible network. The `mesos-slave` process on a Mesos agent manages its local resources (CPU cores, RAM, etc.) and registers these resources with the Mesos masters. It also accepts schedule requests from the Mesos master and invokes an Executor to launch a Task via [containerizers](http://mesos.apache.org/documentation/latest/containerizer/):
   - The Mesos containerizer provides lightweight containerization and resource isolation of executors using Linux-specific functionality such as cgroups and namespaces.
   - The Docker containerizer provides support for launching tasks that contain Docker images.
 
-### User space
-
-The DC/OS user space spans System Components and DC/OS services such as Chronos or Kafka:
+TODO: blend in the following component descriptions
 
 - [System Components](/docs/1.9/overview/components/) are installed and are running by default in the DC/OS cluster and include the following:
   - The Admin Router is an open source NGINX configuration that provides central authentication and proxy to DC/OS services.
@@ -49,10 +45,8 @@ The DC/OS user space spans System Components and DC/OS services such as Chronos 
   - Distributed DNS Proxy is the internal DNS dispatcher.
   - DC/OS Marathon, the native Marathon instance that is the 'init system' for DC/OS, starts and monitors DC/OS services.
   - ZooKeeper, a high-performance coordination service that manages the DC/OS services.
-- Services
-  - A service in DC/OS consists of a Scheduler (responsible for scheduling tasks on behalf of a user) and an Executor (running Tasks on agents).
-  - User-level applications, for example an NGINX webserver launched through Marathon.
 
+## Component List
 
 <table class="table">
   <tr>
