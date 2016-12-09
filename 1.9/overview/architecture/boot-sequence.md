@@ -19,7 +19,7 @@ On each master node the following happens, in chronological order:
 1. DC/OS Marathon connects to the local ZooKeeper (127.0.0.1), discovers the leading Mesos master (`leader.mesos`) and registers as a framework.
 1. Admin Router depends on the Mesos master, Mesos-DNS, and the Distributed DNS Proxy. It runs on each of the master nodes. The admin router is what serves the DC/OS UI and proxies external admin connections into the cluster.
 1. DC/OS UI, Mesos UI, and Exhibitor UI become externally accessible through the Admin Router.
-1. [Auth](/docs/1.8/administration/id-and-access-mgt/) is managed on the master nodes.
+1. [Auth](/docs/1.9/administration/id-and-access-mgt/) is managed on the master nodes.
 1. The history service provides the data for the graphs in the DC/OS UI dashboard. This data is obtained from the masters.
 1. DC/OS diagnostics and systemd service on every node.
 

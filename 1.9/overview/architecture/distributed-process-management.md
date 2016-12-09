@@ -42,7 +42,7 @@ In detail, here are the steps:
 </tr>
 <tr>
 <td>4</td>
-<td>Client initiates process launch. For example, this could be a user creating a Marathon app via the DC/OS <a href="/docs/1.8/usage/webinterface">Services</a> tab or via the HTTP endpoint <code>/v2/app</code>.</td>
+<td>Client initiates process launch. For example, this could be a user creating a Marathon app via the DC/OS <a href="/docs/1.9/usage/webinterface">Services</a> tab or via the HTTP endpoint <code>/v2/app</code>.</td>
 </tr>
 <tr>
 <td>5</td>
@@ -79,5 +79,5 @@ In detail, here are the steps:
 </tbody>
 </table>
 
-[auth]: /docs/1.8/administration/id-and-access-mgt/
-[components]: /docs/1.8/overview/components/
+[auth]: /docs/1.9/administration/id-and-access-mgt/
+[components]: /docs/1.9/overview/components/
