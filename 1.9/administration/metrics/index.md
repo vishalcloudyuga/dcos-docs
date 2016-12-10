@@ -35,8 +35,8 @@ DC/OS applications will discover the endpoint via an environment variable (`STAT
 
 These metrics are automatically collected.
 
-  * Per-container resource resource utilization (metrics named `usage.*`)
-  * Agent and system-level resource utilization (metrics named `node.*`, not tied to a specific container, so only tagged with `agent_id`)
+* Per-container resource resource utilization (metrics named `usage.*`)
+* Agent and system-level resource utilization (metrics named `node.*`, not tied to a specific container, so only tagged with `agent_id`)
   
 ## Security
 Because most metrics are sent to other service stacks and not consumed by DC/OS users, there is not any role based access control for them. However, the HTTP producer does expose and API endpoint, which can be consumed by DC/OS users. Because of this, Enterprise DC/OS provides coarse grained ACLs via the Admin Router proxy to ensure only DC/OS superusers have access to this HTTP API endpoint. 
