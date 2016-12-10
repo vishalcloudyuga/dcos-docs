@@ -31,7 +31,7 @@ For more information about the DC/OS CLI, see the [documentation][1].
 
 From the **Services** tab in the [DC/OS UI](/docs/1.9/usage/webinterface/) you can download all the log files for your service. You can also monitor stdout/stderr.
 
-<! - TODO add 1.9 GUI information. -->
+<!-- TODO add 1.9 GUI information. -->
 
 # Compliance
 
