@@ -27,7 +27,7 @@ Because the task system is so generic, users generally do not create or interact
 
 ### Built-in schedulers
 
-DC/OS has two built-in schedulers: Marathon (services) and Metronome (jobs).
+DC/OS has two built-in schedulers:
 
 - The Marathon scheduler provides **services** (Apps and Pods), which run continuously and in parallel.
 - The Metronome scheduler provides **jobs**, which run immediately or on a defined schedule.
@@ -40,6 +40,10 @@ For more on Metronome jobs, see the [Metronome docs](/docs/1.9/usage/jobs/).
 
 Additional schedulers can be installed as [scheduler services](/docs/1.9/overview/concepts/#dcos-scheduler-service) on Marathon, either from the [Mesosphere Universe](/docs/1.9/overview/concepts/#mesosphere-universe) or directly via Marathon.
 
+Example user space schedulers:
+
 - The Kakfa scheduler provides **Kakfa brokers**, which run as lifecycle managed Kafka nodes.
 - The Cassandra scheduler provides **Cassandra nodes**, which run as lifecycle managed Cassandra nodes.
 - The Spark scheduler (dispatcher) provides **Spark jobs**, which are themselves schedulers for Spark tasks.
+
+For a full list of installable schedulers (and other packages), see the [Mesosphere Universe package list](https://universe.serv.sh/#/packages).
