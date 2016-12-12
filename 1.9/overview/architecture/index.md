@@ -1,7 +1,7 @@
 ---
 post_title: Architecture
 nav_title: Architecture
-menu_order: 1
+menu_order: 2
 ---
 
 DC/OS is a software platform on which user software runs. This platform layer runs on top of the infrastructure layer. The infrastructure layer is composed of virtual or physical hardware including compute, storage, and networking.
