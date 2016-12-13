@@ -101,7 +101,7 @@ Proceed with upgrading every master node using the following procedure. When you
     
 1. Migrate Exhibitor Filesystem Paths
 
-    __Important__: This only applies to clusters that were initially installed with a version of DC/OS < 1.8, if the cluster was installed starting with 1.8 the updated paths are already in use.
+    __Important__: This only applies to clusters that were initially installed with a version of DC/OS < 1.8. If the cluster was installed with DC/OS 1.8 or above, the updated paths are already in use.
     
     After all masters have been upgraded, run the following commands on any one of the master nodes.
     
@@ -111,14 +111,14 @@ Proceed with upgrading every master node using the following procedure. When you
         $ sudo /opt/mesosphere/bin/dcos-shell dcos-exhibitor-migrate-perform
         ```
         
-    * Wait for the updated config to be rolled out by exhibitor
+    * Wait for the updated config to be rolled out by exhibitor.
     
         ```
         $ until sudo /opt/mesosphere/bin/dcos-shell dcos-exhibitor-migrate-status;do sleep 15;done
         ```
       OR Navigate to `http://<dcos_master>/exhibitor/exhibitor/v1/ui/index.html#tabs-config` to follow the update progress from the exhibitor UI.    
 
-    For full details on what each exit code means run the command with `--help`.
+    For full details on what each exit code means, run the command with `--help`.
 
 ### DC/OS Agents
 
