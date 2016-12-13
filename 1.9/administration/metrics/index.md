@@ -32,11 +32,108 @@ Per-container metrics tags enable you to arbitrarily group metrics, for example 
 * `labels`
 
 DC/OS applications will discover the endpoint via an environment variable (`STATSD_UDP_HOST` or `STATSD_UDP_PORT`). Applications leverage this StatsD interface to send custom profiling metrics to the system.
-
-These metrics are automatically collected.
-
-* Per-container resource resource utilization (metrics named `usage.*`)
-* Agent and system-level resource utilization (metrics named `node.*`, not tied to a specific container, so only tagged with `agent_id`)
   
 ## Security
 Because most metrics are sent to other service stacks and not consumed by DC/OS users, there is not any role based access control for them. However, the HTTP producer does expose and API endpoint, which can be consumed by DC/OS users. Because of this, Enterprise DC/OS provides coarse grained ACLs via the Admin Router proxy to ensure only DC/OS superusers have access to this HTTP API endpoint. 
+
+## Metrics reference
+These metrics are automatically collected.
+
+*  Per-container resource resource utilization (metrics named `usage.*`). Sends various stats in Metrics Avro format to the provided Collector endpoint.
+
+| Metric            | Description                  |
+|-------------------|------------------------------|
+| usage.Free        | Available capacity in bytes. |
+| usage.InodesFree  | Available Inodes in btyes.   |
+| usage.InodesTotal | Available Inodes in bytes.   |
+| usage.InodesUsed  | Inodes used in bytes.        |
+| usage.Total       | Available capacity in bytes. |
+| usage.Used        | Capacity used in bytes.      |
+
+*  Agent and system-level resource utilization (metrics named `node.*`, not tied to a specific container, so only tagged with `agent_id`)
+
+   Node Metrics
+   
+| Metric            | Description                  |
+|-------------------|------------------------------|
+| cpu.cores         |    Number of cores.     |
+| cpu.idle         |                               |
+| cpu.system         |                               |
+| cpu.total         |   Percent of CPU available.     |
+| cpu.user         |   CPU used by user.   |
+| cpu.wait         |                               |
+| filesystems         |                               |
+| load.1min         |     System load average during the last minute.       |
+| load.5min         |   System load average during the last 5 minutes.        |
+| load.15min         |    System load average during the last 15 minutes.        |
+| memory.buffers         |                               |
+| memory.cached         |                               |
+| memory.free         |                               |
+| memory.total         |                               |
+| network_interfaces         |                               |
+| processes         |  Number of processes that are running.          |
+| swap.free         |                               |
+| swap.total         |                               |
+| swap.used         |                               |
+| uptime          |   The system reliability and load average.     |
+   
+   Node Filesystem
+   
+| Metric            | Description                  |
+|-------------------|------------------------------|
+| filesystem.{{.Name}}.capacity.free    |    |
+| filesystem.{{.Name}}.capacity.total    |    |
+| filesystem.{{.Name}}.capacity.used    |    |
+| filesystem.{{.Name}}.inodes.free    |    |
+| filesystem.{{.Name}}.inodes.total    |    |
+| filesystem.{{.Name}}.inodes.used    |    |
+      
+   Node NetworkInterface
+   
+| Metric            | Description                  |
+|-------------------|------------------------------|
+| network.{{.Name}}.in.bytes    |    |
+| network.{{.Name}}.in.dropped    |    |
+| network.{{.Name}}.in.errors    |    |
+| network.{{.Name}}.in.packets    |    |
+| network.{{.Name}}.out.bytes    |    |
+| network.{{.Name}}.out.dropped    |    |
+| network.{{.Name}}.out.errors    |    |
+| network.{{.Name}}.out.packets    |    |
+   
+   Agent resourceStatistics 
+   
+| Metric            | Description                  |
+|-------------------|------------------------------|
+| cpus_limit    |    |
+| cpus_system_time_secs    |    |
+| cpus_throttled_time_secs    |    |
+| cpus_user_time_secs    |    |
+
+   
+   Memory info
+   
+| Metric            | Description                  |
+|-------------------|------------------------------|
+| mem_limit_bytes,omitempty    |    |
+| mem_total_bytes,omitempty    |    |   
+   
+   Disk info
+   
+| Metric            | Description                  |
+|-------------------|------------------------------|
+| disk_limit_bytes    |    |
+| disk_used_bytes    |    |
+   
+   Network info
+   
+| Metric            | Description                  |
+|-------------------|------------------------------|
+| net_rx_bytes    |    |
+| net_rx_dropped    |    |
+| net_rx_errors    |    |
+| net_rx_packets    |    |
+| net_tx_bytes    |    |
+| net_tx_dropped    |    |
+| net_tx_errors    |    |
+| net_tx_packets    |    |
