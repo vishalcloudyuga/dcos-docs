@@ -8,8 +8,11 @@ A pod is a special kind of Mesos task group, and the tasks or containers in the 
 
 DC/OS handles and represents pods as single services. Containers in pods share networking namespace and ephemeral volumes.
 
-You configure a pod via a pod definition, which is similar to a Marathon application definition. There are some differences between pod and application definitions, however. For instance, you will need to specify an endpoint (not a port number) in order for other applications to communicate with your pod, pods have a separate REST API, and pods support only Mesos-level health checks.
-
+You configure a pod via a pod definition, which is similar to a Marathon application definition. There are nonetheless some differences between pod and application definitions. For instance:
+                                                                                                                                                                                 
+- You must specify an endpoint (not a port number) in order for other applications to communicate with your pod.
+- Pods have a separate REST API.
+- Pods support only Mesos-level health checks.
 You can create and manage pods with the [DC/OS CLI](/docs/1.9/usage/pods/pods-cli/) or via the /v2/pods/ endpoint of the [Marathon REST API](http://mesosphere.github.io/marathon/docs/generated/api.html).
 
 # Networking
@@ -17,7 +20,7 @@ Marathon pods only support the [DC/OS Universal container runtime](/docs/1.9/usa
 
 The Universal container runtime simplifies networking by allowing the containers of each pod instance to share a network namespace and communicate over localhost. If you specify a container network without a name in a pod definition, it will be assigned to the default network.
 
-If you need other applications to communicate with your pod, specify an endpoint in your pod definition. Other applications will communicate with your pod by addressing those endpoints. See [the Examples section](/docs/1.9/usage/pods/examples.md) for more information.
+If other applications need to communicate with your pod, specify an endpoint in your pod definition. Other applications will communicate with your pod by addressing those endpoints. See [the Examples section](/docs/1.9/usage/pods/examples.md) for more information.
 
 In your pod definition, you can declare a `host` or `container` network type. Pods created with `host` type share the network namespace of the host. Pods created with `container` type use virtual networking. If you specify the `container` network type and Marathon was not configured to have a default network name, you must also declare a virtual network name in the `name` field. See the [Examples](/docs/1.9/usage/pods/examples.md) section for the full JSON.
 
