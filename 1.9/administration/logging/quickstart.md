@@ -1,44 +1,33 @@
 ---
 post_title: Quick Start
-menu_order: 3.4
+menu_order: 0
 ---
 
 Use this guide to get started with DC/OS logging. 
 
 # Make Mesos logs available in journald
 
-1.  Create the following Marathon app definition and save as `test-log.json`:
+You can access the Mesos logs natively through the DC/OS CLI `dcos task log` command. In this example, a task is launched and the stderr and stdout logs from Mesos are accessed. 
 
+1.  Create the following Marathon app definition and save as `test-log.json`.
+    
     ```json
     {
-      "id": "test-log",
-      "labels": {},
-      "run": {
-        "artifacts": [],
-        "cmd": "while true;do echo stdout;echo stderr >&2;sleep 1;done",
-        "cpus": 0.01,
-        "disk": 0,
-        "env": {},
-        "maxLaunchDelay": 3600,
-        "mem": 32,
-        "placement": {
-          "constraints": []
-        },
-        "restart": {
-          "policy": "NEVER"
-        },
-        "volumes": []
-      }
+      "id": "/test-log",
+      "cmd": "while true;do echo stdout;echo stderr >&2;sleep 1;done",
+      "cpus": 0.001,
+      "instances": 1,
+      "mem": 128
     }
     ```
 
-1.  Deploy the job app with this CLI command:
+1.  Deploy the app with this CLI command:
     
     ```bash
-    $ dcos job add test-job.json
+    $ dcos marathon app add test-log.json
     ```
 
-1.  Verify that the app has been successfully deployed:
+1.  Verify that the app has been successfully deployed and note task ID:
 
     ```bash
     $ dcos task
@@ -47,16 +36,74 @@ Use this guide to get started with DC/OS logging.
     The output should resemble:
     
     ```bash
-    
+    NAME                                HOST        USER  STATE  ID
+    test-log                            10.0.1.105  root    R    test-log.e69c4b2f-c255-11e6-a451-aa711cbcaa78
     ```
 
+1.  Run this command to view the stdout logs, where `<task_id>` is the task ID:
 
+    ```bash
+    $ dcos task log <task_id>
+    ```
 
-Deploy marathon app that writes to stdout and stderr. For example:
-"cmd": "while true;do echo stdout;echo stderr >&2;sleep 1;done"
+1.  Run this command to view the stderr logs, where `<task_id>` is the task ID:
 
-Get task ID with CLI by running dcos task
-Get stdout logs with command dcos task log <task_id>
-Get stderr logs with command dcos task log <task_id> stderr
-Follow logs with command dcos task log --follow <task_id>
-Get last N log entries dcos task log <task_id> --lines=5
+    ```bash
+    $ dcos task log <task_id>
+    ```
+    
+1.  Run this command to follow the logs, where `<task_id>` is the task ID:
+
+    ```bash
+    dcos task log --follow <task_id>
+    ```
+    
+1.  Run this command to get last *N* log entries:
+ 
+    ```bash
+    dcos task log <task_id> --lines=5
+    ```
+
+# 
+
+1.  Create the following Marathon app definition and save as `test-log.json`.
+    
+    ```json
+    {
+      "id": "/test-log",
+      "cmd": "while true;do echo stdout;echo stderr >&2;sleep 1;done",
+      "cpus": 0.001,
+      "instances": 1,
+      "mem": 128
+    }
+    ```
+
+1.  Deploy the app with this CLI command:
+    
+    ```bash
+    $ dcos marathon app add test-log.json
+    ```
+
+1.  Verify that the app has been successfully deployed and note task ID:
+
+    ```bash
+    $ dcos task
+    ```
+    
+    The output should resemble:
+    
+    ```bash
+    NAME                                HOST        USER  STATE  ID
+    test-log                            10.0.1.105  root    R    test-log.e69c4b2f-c255-11e6-a451-aa711cbcaa78
+    ```
+
+1.  
+
+Get agent nodes IDs with command dcos node
+Get logs from leader with command dcos node log --leader
+Get logs from agent with command dcos node log --mesos-id <node-id>
+Get a list of components running on leader or agent node with a commands:
+dcos node list-components --leader
+dcos node list-componenets --mesos-id <node-id>
+Get marathon logs from leader with command
+dcos node log --leader --component dcos-marathon.service

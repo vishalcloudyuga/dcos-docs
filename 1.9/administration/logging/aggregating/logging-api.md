@@ -1,6 +1,6 @@
 ---
 post_title: Logging API 
-menu_order: 1
+menu_order: 3.5
 ---
 
 # dcos-go/dcos-log - HTTP server for journal events
