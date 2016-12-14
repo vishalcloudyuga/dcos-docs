@@ -18,4 +18,4 @@ Let’s say that you’ve got a service misbehaving. For some reason, it is cont
 
 # Debugging with the DC/OS CLI
 
-The `dcos task exec` command enables you to run any command inside a task container, including interactive Bash shells. It provides full AuthN and AuthZ support with DC/OS in strict mode (Enterprise Only). You do not need SSH access to a node. This functionality is similar to the [`docker exec`](https://docs.docker.com/engine/reference/commandline/exec/) command. 
+The `dcos task exec` command enables you to run any command inside a task container on a node, including interactive Bash shells. It provides full AuthN and AuthZ support with DC/OS in strict mode (Enterprise Only). You do not need SSH access to a node. This functionality is similar to the [`docker exec`](https://docs.docker.com/engine/reference/commandline/exec/) command. For more information, see the [Quick Start](/docs/1.9/administration/debugging/quickstart/).
