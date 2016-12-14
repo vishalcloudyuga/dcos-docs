@@ -1,28 +1,21 @@
 ---
-post_title: Debugging
+post_title: Quick Start
 menu_order: 3.3
 ---
 
-When things go wrong, you need to see the logs to understand how to fix it. DC/OS services and tasks write `stdout` and `stderr` files in their sandboxes by default. Traditionally, log aggregation has been the solution here. Write the logs locally and then ship all that data elsewhere for someone to actually access. Moving data around is expensive, especially when it ends up being written multiple times.
-
-For most debugging tasks, log aggregation ends up being a particularly heavy solution for a simple task. All you want is to see the logs, where they come from doesn’t actually matter. By scoping the debugging task down to this level, we’ve been able to provide a couple simple solutions that work for most use cases.
-
-DC/OS knows where every task has run in your cluster. It is also able to stream every file your application outputs. By combining these two features, you’re able to use the CLI or GUI to access historical and current logs such as stdout/stderr from your local machine.
-
-Let’s say that you’ve got a service misbehaving. For some reason, it is continually crashing and you need to figure out why. You don’t need to SSH to a specific machine to find the logs and start to understand this problem. Instead, you can use the CLI or GUI to immediately get access to the files that your service is creating.
 
 <!-- Fork a Process Inside a Mesos Container, stream its output (OSS) -->
 <!-- Support Optional Stream of STDIN to Forked Process (OSS) -->
 <!-- Support Optional Pseudo-Teletype for Forked Process (OSS) -->
 <!-- Secure the the Debugging API with Fine Grained Auth (Enterprise) -->
 
-# Debugging with the DC/OS CLI
 
-The `dcos task exec` command enables you to run any command inside a task container, including interactive Bash shells. It provides full AuthN and AuthZ support with DC/OS in strict mode (Enterprise Only). You do not need SSH access to a node. This functionality is similar to the [`docker exec`](https://docs.docker.com/engine/reference/commandline/exec/) command. 
+**Prerequisite:**
+
+- A container launched by using the [DC/OS Universal container runtime](/docs/1.9/usage/containerizers/).
 
 
-
-## Example
+# dcos task exec --interactive --tty task-exec-test_<unique-id> bash
 
 In this example, a long running job app is launched and then a TTY process is launched inside of its task container for debugging.
 
@@ -36,7 +29,7 @@ In this example, a long running job app is launched and then a TTY process is la
           "labels": {},
           "run": {
             "artifacts": [],
-            "cmd": "sleep",
+            "cmd": "cat",
             "cpus": 0.01,
             "disk": 0,
             "env": {},
@@ -97,5 +90,18 @@ In this example, a long running job app is launched and then a TTY process is la
     ```bash
     root@ip-10-0-2-53 / #
     ```
+
+# dcos task exec -i …
+# dcos task exec -t bash test -t 0
+
+
+
+**Important:**
+
+```
+$ echo "kevin" | dcos task exec -i klueska-test cat
+$ echo "kevin" | dcos task exec -it klueska-test cat
+Must be running in a tty to pass the '--tty flag'.
+```
 
  For more information about the `dcos task exec` command, see the CLI command [reference](/docs/1.9/usage/cli/command-reference/).
