@@ -62,9 +62,9 @@ In this tutorial, we'll go over creating a simple one-command service and a cont
     }
     ```
 
-1. Run the service with the following commandt.
+1. Run the service with the following command.
     ```bash
-    dcos marathon app add my-app.json
+    $ dcos marathon app add my-app-cli.json
     ```
 
 1. Run the following command to verify that your service is running:
