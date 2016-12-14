@@ -25,6 +25,7 @@ The metrics endpoints are all *service-specific*. The metrics component is desig
 ```
 http://<host>/system/v1/metrics/v0/<endpoint>
 ```
+# API reference
 
 <div class="swagger-section">
   <div id="message-bar" class="swagger-ui-wrap message-success" data-sw-translate=""></div>
