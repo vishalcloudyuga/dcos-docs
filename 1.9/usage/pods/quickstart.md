@@ -14,18 +14,20 @@ menu_order: 0
 
     ```json
     {
-      "id": "/simplepod",
-      "scaling": { "kind": "fixed", "instances": 1 },
-      "containers": [
-        {
-          "name": "sleep1",
-          "exec": { "command": { "shell": "sleep 1000" } },
-          "resources": { "cpus": 0.1, "mem": 32 }
-        }
-      ],
-      "networks": [ {"mode": "host"} ]
+        "id": "/simplepod",
+        "scaling": { "kind": "fixed", "instances": 1 },
+        "containers": [
+            {
+                "name": "sleep1",
+                "exec": { "command": { "shell": "sleep 1000" } },
+                "resources": { "cpus": 0.1, "mem": 32 }
+            }
+        ],
+        "networks": [ {"mode": "host"} ]
     }
     ```
+
+    **Note:** The pod ID (the `id` parameter in the pod specification above) is used for all interaction with the pod once it is created.
 
 1.  Launch the pod on DC/OS with the following DC/OS CLI command:
 
@@ -33,7 +35,12 @@ menu_order: 0
     $ dcos marathon pod add simple-pod.json
     ```
   
+1. Verify the status of your pod.
 
+    ```
+    dcos marathon pod show simplepod
+    ```
+    
 # Launching a pod from the DC/OS UI
 
 You can also launch a pod from the [**Services**](/docs/1.9/usage/webinterface) tab of the DC/OS web interface. Select **Services** -> **Deploy Service**, then toggle to JSON mode and paste in the application definition supplied above.
