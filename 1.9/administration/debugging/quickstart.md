@@ -15,13 +15,15 @@ menu_order: 3.3
 - A container launched by using the [DC/OS Universal container runtime](/docs/1.9/usage/containerizers/).
 
 
-# dcos task exec --interactive --tty task-exec-test_<unique-id> bash
+# Launch a long running Bash session on an agent node inside of a container
+
+dcos task exec --interactive --tty task-exec-test_<unique-id> bash
 
 In this example, a long running job app is launched and then a TTY process is launched inside of its task container for debugging.
 
 1.  Deploy and run a job app with the DC/OS CLI:
 
-    1.  Create the following app definition and save as `⁠⁠⁠⁠test-job.json`.
+    1.  Create the following app definition and save as `⁠⁠⁠⁠test-job.json`. This specifies a sleep job that runs for `10000000` seconds.
     
         ```bash
         {
@@ -29,7 +31,7 @@ In this example, a long running job app is launched and then a TTY process is la
           "labels": {},
           "run": {
             "artifacts": [],
-            "cmd": "cat",
+            "cmd": "sleep 100000000",
             "cpus": 0.01,
             "disk": 0,
             "env": {},
@@ -79,7 +81,7 @@ In this example, a long running job app is launched and then a TTY process is la
     20161209183121nz2F5.klueska-test    10.0.2.53  root    R    task-exec-test_<task_id>
     ```
 
-1.  Launch a TTY process inside of the pod container with the task ID (<task_id>) specified.
+1.  Launch a TTY process inside of the pod container with the task ID (<task_id>) specified. This will launch an interactive Bash session.
 
     ```bash
     $ dcos task exec --interactive --tty task-exec-test_<task_id> bash
@@ -91,17 +93,7 @@ In this example, a long running job app is launched and then a TTY process is la
     root@ip-10-0-2-53 / #
     ```
 
-# dcos task exec -i …
-# dcos task exec -t bash test -t 0
 
 
-
-**Important:**
-
-```
-$ echo "kevin" | dcos task exec -i klueska-test cat
-$ echo "kevin" | dcos task exec -it klueska-test cat
-Must be running in a tty to pass the '--tty flag'.
-```
 
  For more information about the `dcos task exec` command, see the CLI command [reference](/docs/1.9/usage/cli/command-reference/).
