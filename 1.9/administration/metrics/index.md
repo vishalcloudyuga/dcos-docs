@@ -18,7 +18,7 @@ All three metrics layers are aggregated by a collector which is shipped as part 
 
 The Mesos Metrics Module is bundled with every agent in the cluster. This module enables applications to publish metrics from applications running on top of DC/OS to the collector by exposing a StatsD port and host environment variable inside every container. These metrics are appended with structured data such as agent-id, framework-id and task-id.
 
-<!-- ![architecture diagram](https://www.lucidchart.com/publicSegments/view/30f4c23-b2f9-4db3-9954-a947f395eae5/image.png) -->
+<!-- insert graphic -->
 
 Per-container metrics tags enable you to arbitrarily group metrics, for example on a per-framework or per-system or agent basis. Here are the available tags:
 
@@ -32,108 +32,113 @@ Per-container metrics tags enable you to arbitrarily group metrics, for example 
 * `labels`
 
 DC/OS applications will discover the endpoint via an environment variable (`STATSD_UDP_HOST` or `STATSD_UDP_PORT`). Applications leverage this StatsD interface to send custom profiling metrics to the system.
-  
+
 ## Security
 Because most metrics are sent to other service stacks and not consumed by DC/OS users, there is not any role based access control for them. However, the HTTP producer does expose and API endpoint, which can be consumed by DC/OS users. Because of this, Enterprise DC/OS provides coarse grained ACLs via the Admin Router proxy to ensure only DC/OS superusers have access to this HTTP API endpoint. 
 
 ## Metrics reference
 These metrics are automatically collected.
 
-*  Per-container resource resource utilization (metrics named `usage.*`). Sends various stats in Metrics Avro format to the provided Collector endpoint.
+### Per-container resource resource utilization
 
 | Metric            | Description                  |
 |-------------------|------------------------------|
 | usage.Free        | Available capacity in bytes. |
+| usage.Total       | Available capacity in bytes. |
+| usage.Used        | Capacity used in bytes.      |
 | usage.InodesFree  | Available Inodes in btyes.   |
 | usage.InodesTotal | Available Inodes in bytes.   |
 | usage.InodesUsed  | Inodes used in bytes.        |
-| usage.Total       | Available capacity in bytes. |
-| usage.Used        | Capacity used in bytes.      |
 
-*  Agent and system-level resource utilization (metrics named `node.*`, not tied to a specific container, so only tagged with `agent_id`)
+###  Node
 
-   Node Metrics
+#### Metrics
    
 | Metric            | Description                  |
 |-------------------|------------------------------|
-| cpu.cores         |    Number of cores.     |
-| cpu.idle         |                               |
-| cpu.system         |                               |
-| cpu.total         |   Percent of CPU available.     |
-| cpu.user         |   CPU used by user.   |
-| cpu.wait         |                               |
-| filesystems         |                               |
-| load.1min         |     System load average during the last minute.       |
-| load.5min         |   System load average during the last 5 minutes.        |
-| load.15min         |    System load average during the last 15 minutes.        |
-| memory.buffers         |                               |
-| memory.cached         |                               |
-| memory.free         |                               |
-| memory.total         |                               |
-| network_interfaces         |                               |
+| cpu.cores         |    Percentage of cores used.     |
+| cpu.idle         |     Percentage of CPUs idle.         |
+| cpu.system         |    Percentage of system used.   |
+| cpu.total         |   Percentage of CPUs used.  |
+| cpu.user         |   Percentage of CPU used by the user.   |
+| cpu.wait         |   Percentage idle while waiting for an operation to complete.    |
+| load.1min         |     Load average for the past minute.       |
+| load.5min         |   Load average for the past 15 minutes 5 minutes.        |
+| load.15min         |    Load average for the past 15 minutes.        |
+| memory.buffers         |   Number of memory buffers.     |
+| memory.cached         |   Amount of cached memory.   |
+| memory.free         |    Amount of free memory in bytes.   |
+| memory.total         |   Total memory in bytes.   |
 | processes         |  Number of processes that are running.          |
-| swap.free         |                               |
-| swap.total         |                               |
-| swap.used         |                               |
-| uptime          |   The system reliability and load average.     |
+| swap.free         |  Amount of free swap space.   |
+| swap.total         |  Total swap space.    |
+| swap.used         |    Amount of swap space used.    |
+| uptime          |   The system reliability and load average.    |
    
-   Node Filesystem
+#### Filesystem
    
 | Metric            | Description                  |
 |-------------------|------------------------------|
-| filesystem.{{.Name}}.capacity.free    |    |
-| filesystem.{{.Name}}.capacity.total    |    |
-| filesystem.{{.Name}}.capacity.used    |    |
-| filesystem.{{.Name}}.inodes.free    |    |
-| filesystem.{{.Name}}.inodes.total    |    |
-| filesystem.{{.Name}}.inodes.used    |    |
+| filesystem.{{.Name}}.capacity.free    | Amount of available capacity in bytes. |
+| filesystem.{{.Name}}.capacity.total    | Total capacity in bytes. |
+| filesystem.{{.Name}}.capacity.used    |  Capacity used in bytes. |
+| filesystem.{{.Name}}.inodes.free    | Amount of available inodes in bytes. |
+| filesystem.{{.Name}}.inodes.total    | Total inodes in bytes. |
+| filesystem.{{.Name}}.inodes.used    | Inodes used in bytes.  |
       
-   Node NetworkInterface
+#### NetworkInterface
    
 | Metric            | Description                  |
 |-------------------|------------------------------|
-| network.{{.Name}}.in.bytes    |    |
-| network.{{.Name}}.in.dropped    |    |
-| network.{{.Name}}.in.errors    |    |
-| network.{{.Name}}.in.packets    |    |
-| network.{{.Name}}.out.bytes    |    |
-| network.{{.Name}}.out.dropped    |    |
-| network.{{.Name}}.out.errors    |    |
-| network.{{.Name}}.out.packets    |    |
+| network.{{.Name}}.in.bytes    | Number of bytes downloaded. |
+| network.{{.Name}}.in.dropped    | Number of downloaded bytes dropped. |
+| network.{{.Name}}.in.errors    | Number of downloaded bytes in error. |
+| network.{{.Name}}.in.packets    | Number of packets downloaded. |
+| network.{{.Name}}.out.bytes    | Number of bytes uploaded. |
+| network.{{.Name}}.out.dropped    | Number of uploaded bytes dropped. |
+| network.{{.Name}}.out.errors    | Number of uploaded bytes in error.  |
+| network.{{.Name}}.out.packets    | Number of packets uploaded. |
    
-   Agent resourceStatistics 
-   
-| Metric            | Description                  |
-|-------------------|------------------------------|
-| cpus_limit    |    |
-| cpus_system_time_secs    |    |
-| cpus_throttled_time_secs    |    |
-| cpus_user_time_secs    |    |
+### Container metrics
 
-   
-   Memory info
-   
-| Metric            | Description                  |
-|-------------------|------------------------------|
-| mem_limit_bytes,omitempty    |    |
-| mem_total_bytes,omitempty    |    |   
-   
-   Disk info
+Container metrics define the structure of the response expected from Mesos when referring to container and executor metrics.
+
+#### CPU usage info
+   <!-- https://github.com/apache/mesos/blob/1.0.1/include/mesos/v1/mesos.proto -->
    
 | Metric            | Description                  |
 |-------------------|------------------------------|
-| disk_limit_bytes    |    |
-| disk_used_bytes    |    |
-   
-   Network info
+| cpus_limit    | The number of CPUs allocated. |
+| cpus_system_time_secs    | Total CPU time spent in kernal mode in seconds. |
+| cpus_throttled_time_secs    | Total time, in seconds, that CPU was throttled. |
+| cpus_user_time_secs    | Total CPU time spent in user mode. |
+
+#### Disk info
    
 | Metric            | Description                  |
 |-------------------|------------------------------|
-| net_rx_bytes    |    |
-| net_rx_dropped    |    |
-| net_rx_errors    |    |
-| net_rx_packets    |    |
-| net_tx_bytes    |    |
-| net_tx_dropped    |    |
-| net_tx_errors    |    |
-| net_tx_packets    |    |
+| disk_limit_bytes    | Hard memory limit for disk in bytes. |
+| disk_used_bytes    | Hard memory used in bytes.  |
+   
+####  Memory info
+   <!-- https://github.com/apache/mesos/blob/1.0.1/include/mesos/v1/mesos.proto -->
+   
+| Metric            | Description                  |
+|-------------------|------------------------------|
+| mem_limit_bytes    | Hard memory limit for a container. |
+| mem_total_bytes    | Total memory of a process in RAM (as opposed to in Swap). |   
+   
+### Dimensions
+   <!-- http://mesos.apache.org/documentation/latest/port-mapping-isolator -->
+Dimensions are metadata about the metrics contained in a given MetricsMessage
+   
+| Metric            | Description                  |
+|-------------------|------------------------------|
+| net_rx_bytes    | Bytes received. |
+| net_rx_dropped    | Packets dropped on receive.  |
+| net_rx_errors    | Errors reported on receive. |
+| net_rx_packets    |  Packets received.  |
+| net_tx_bytes    |  Bytes sent. |
+| net_tx_dropped    | Packets dropped on send  |
+| net_tx_errors    | Errors reported on send. |
+| net_tx_packets    | Packets sent. |

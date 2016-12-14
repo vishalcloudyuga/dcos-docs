@@ -2,27 +2,6 @@
 swagger: "2.0"
 
 ############################################################################
-# Info                                                                     #
-############################################################################
-info:
-  version: "0"
-  title: "DC/OS Metrics Service HTTP API"
-  description: >
-    The first version of the DC/OS Metrics Service HTTP API.
-
-    Note that the endpoints in this spec are all *service-specific*. dcos-metrics
-    is designed to be put behind Admin Router, which provides security for these
-    endpoints. Therefore, on a DC/OS cluster, the final URL to query will resemble:
-
-        http://<host>/system/v1/metrics/v0/<endpoint>
-
-    For more information, please consult the project documentation located at
-    <https://github.com/dcos/dcos-metrics>.
-basePath: "/v0"
-produces:
-  - "application/json"
-
-############################################################################
 # Parameters                                                               #
 ############################################################################
 parameters:
