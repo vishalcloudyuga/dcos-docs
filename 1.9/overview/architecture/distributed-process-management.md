@@ -1,7 +1,7 @@
 ---
 post_title: Distributed Process Management
 nav_title: Distributed Process Management
-menu_order: 6
+menu_order: 5
 ---
 
 This section describes the management of processes in a DC/OS cluster, from the resource allocation to the execution of a process.

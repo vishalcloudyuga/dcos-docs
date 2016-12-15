@@ -1,7 +1,7 @@
 ---
 post_title: Node Types
 nav_title: Node Types
-menu_order: 4
+menu_order: 1
 ---
 
 A DC/OS node is a virtual or physical machine on which DC/OS components run. DC/OS nodes are networked together to form a DC/OS cluster.

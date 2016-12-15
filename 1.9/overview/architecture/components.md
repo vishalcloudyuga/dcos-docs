@@ -1,7 +1,7 @@
 ---
 post_title: Components
 nav_title: Components
-menu_order: 3
+menu_order: 4
 ---
 
 DC/OS is comprised of multiple open source components that are precisely configured to work together.

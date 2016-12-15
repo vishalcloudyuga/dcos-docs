@@ -1,7 +1,7 @@
 ---
 post_title: Boot Sequence
 nav_title: Boot Sequence
-menu_order: 7
+menu_order: 6
 ---
 
 During DC/OS installation, the components come online in a particular sequence due to interdependencies.
