@@ -58,7 +58,7 @@ You can run commands inside a container by using the `dcos task exec` command. I
 
 For more information about the `dcos task exec` command, see the CLI command [reference](/docs/1.9/usage/cli/command-reference/).
 
-# Run an interactive command inside task container
+# Run an interactive command inside a task's container
 You can run interactive commands on machines in your cluster by using the `dcos task exec` command. In this example, the `dcos task exec` command is used to copy a simple script from your local machine to the task container on the node. The script is then administered locally by using the `dcos task exec` command.
 
 1.  Create a Marathon app definition and name it `my-interactive-app.json` with the following contents:
@@ -67,7 +67,8 @@ You can run interactive commands on machines in your cluster by using the `dcos 
     {
        "id": "/my-interactive-app",
        "cmd": "sleep 100000000",
-       "cpus": 1
+       "cpus": 1,
+       "instances": 1
     }
     ```
 
@@ -195,8 +196,6 @@ In this example, a long running [job](/docs/1.9/usage/jobs/) is launched by usin
     root@ip-10-0-2-53 / #
     ```
     
-    **Tip:** You can use shorthand abbreviations `-i` for `--interactive` or `-t` for `--tty`. Also, only the beginning unique characters of the `<task_id>` are required. For example, if your task ID is `exec-test_20161214195` and there are no other task IDs that begin with the letter `e`, this is valid command syntax: `dcos task exec -i -t e bash`. For more information, see the CLI command [reference](/docs/1.9/usage/cli/command-reference/).
-    
 1.  Run a command from the interactive Bash session. For example, the `ls` command:
 
     ```bash
@@ -204,5 +203,7 @@ In this example, a long running [job](/docs/1.9/usage/jobs/) is launched by usin
     bin   dev  home  lib64	     media  opt   root	sbin  sys  usr
     boot  etc  lib	 lost+found  mnt    proc  run	srv   tmp  var
     ```
+    
+ **Tip:** You can use shorthand abbreviations `-i` for `--interactive` or `-t` for `--tty`. Also, only the beginning unique characters of the `<task_id>` are required. For example, if your task ID is `exec-test_20161214195` and there are no other task IDs that begin with the letter `e`, this is valid command syntax: `dcos task exec -i -t e bash`. For more information, see the CLI command [reference](/docs/1.9/usage/cli/command-reference/).
 
 
