@@ -1,5 +1,6 @@
 ---
 post_title: Logging
+feature_maturity: experimental
 menu_order: 3.4
 ---
 
@@ -7,82 +8,45 @@ DC/OS cluster nodes generate logs that contain diagnostic and status information
 
 ## Service and Task Logs
 
-If you're running something on top of DC/OS, you can get started right away by running this [DC/OS CLI][2] command: 
+You can access DC/OS task logs by running this CLI command: 
 
 ```bash
 $ dcos task log --follow my-service-name
 ```
 
-For more information about accessing your logs, see the service and task logs [documentation][1].
+From the **Services** tab in the [DC/OS GUI](/docs/1.9/usage/webinterface/) you can download all the log files for your service. You can also monitor stdout/stderr.
+
+For more information, see the Service and Task Logs [documentation](/docs/1.9/administration/logging/service-logs/).
 
 ## System Logs
 
-You can find which components are unhealthy in the DC/OS UI on the **System** tab.
-
-![system health](../img/ui-system-health-logging.gif)
-
-You can also aggregate your system logs by using ELK and Splunk. See our [ELK][3] and [Splunk][4] tutorials to get started.
-
-All of the DC/OS components use `systemd-journald` to store their logs. To access the DC/OS core component logs, [SSH into a node][5] and run this command to see all logs:
+DC/OS components use `systemd-journald` to store their logs. To access the DC/OS core component logs, [SSH into a node][5] and run this command to see all logs:
 
 ```bash
 $ journalctl -u "dcos-*" -b
 ```
 
-You can also view the logs for specific components by entering the component name: 
-
-**Admin Router**
+You can view the logs for specific [components](/docs/1.9/overview/components/) by entering the component name. For example, to access Admin Router logs, run this command:
     
 ```bash
 journalctl -u dcos-nginx -b
-```
-            
-**DC/OS Marathon**
-
-```bash
-journalctl -u dcos-marathon -b
-```
-
-**gen-resolvconf**
-
-```bash
-journalctl -u dcos-gen-resolvconf -b
-```
-    
-**Mesos master node**
-
-```bash
-journalctl -u dcos-mesos-master -b
 ``` 
 
-**Mesos agent node**
+You can find which components are unhealthy in the DC/OS GUI from the **Nodes** tab.
 
-```bash
-journalctl -u dcos-mesos-slave -b
-```
+![system health](../img/ui-system-health-logging.gif)
 
-**Mesos DNS**
 
-```bash
-journalctl -u dcos-mesos-dns -b
-```
+# Aggregation
 
-**ZooKeeper**
+Unfortunately, streaming logs from machines in your cluster isn’t always viable. Sometimes, you need the logs stored somewhere else as a history of what’s happened. This is where log aggregation really is required. Check out how to get it setup with some of the most common solutions:
 
-```bash
-journalctl -u dcos-exhibitor -b
-```
+- [ELK](/docs/1.9/administration/logging/aggregating/elk/)
+- [Splunk](/docs/1.9/administration/logging/aggregating/splunk/)
 
-## Next Steps
-
-- [Service and Task logs][1]
-- Log Aggregation
-
-    - [ELK][3]
-    - [Splunk][4]
 
 [1]: /docs/1.9/administration/logging/service-logs/
 [2]: /docs/1.9/usage/cli/install/
-[3]: /docs/1.9/administration/logging/elk/
-[4]: /docs/1.9/administration/logging/splunk/
+[3]: /docs/1.9/administration/logging/aggregating/elk/
+[4]: /docs/1.9/administration/logging/aggregating/splunk/
 [5]: /docs/1.9/administration/access-node/sshcluster/
