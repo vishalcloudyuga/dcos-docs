@@ -1,5 +1,6 @@
 ---
 post_title: Debugging
+feature_maturity: experimental
 menu_order: 3.3
 ---
 
@@ -10,3 +11,12 @@ For most debugging tasks, log aggregation ends up being a particularly heavy sol
 DC/OS knows where every task has run in your cluster. It is also able to stream every file your application outputs. By combining these two features, you’re able to use the CLI or GUI to access historical and current logs such as stdout/stderr from your local machine.
 
 Let’s say that you’ve got a service misbehaving. For some reason, it is continually crashing and you need to figure out why. You don’t need to SSH to a specific machine to find the logs and start to understand this problem. Instead, you can use the CLI or GUI to immediately get access to the files that your service is creating.
+
+<!-- Fork a Process Inside a Mesos Container, stream its output (OSS) -->
+<!-- Support Optional Stream of STDIN to Forked Process (OSS) -->
+<!-- Support Optional Pseudo-Teletype for Forked Process (OSS) -->
+<!-- Secure the the Debugging API with Fine Grained Auth (Enterprise) -->
+
+# Debugging with the DC/OS CLI
+
+The `dcos task exec` command enables you to run any command inside a task container on a node, including interactive Bash shells. It provides full AuthN and AuthZ support with DC/OS in strict mode (Enterprise Only). You do not need SSH access to a node. This functionality is similar to the [`docker exec`](https://docs.docker.com/engine/reference/commandline/exec/) command. For more information, see the [Quick Start](/docs/1.9/administration/debugging/quickstart/).
