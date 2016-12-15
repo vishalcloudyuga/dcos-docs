@@ -1,5 +1,6 @@
 ---
 post_title: Quick Start
+feature_maturity: experimental
 menu_order: 0
 ---
 
@@ -215,3 +216,4 @@ You can view logs from tasks or the host subsystem with the `dcos node log` comm
     Thu Dec 15 00:34:08 2016 ip-10-0-6-165.us-west-2.compute.internal java [2541] [2016-12-15 00:34:08,121] INFO  Received status update for task test-log.2fc56009-c25d-11e6-81b2-9a5d88789ccd: TASK_RUNNING (Reconciliation: Latest task state) (mesosphere.marathon.MarathonScheduler$$EnhancerByGuice$$28056dde:Thread-297)
     ...
     ```
+    
