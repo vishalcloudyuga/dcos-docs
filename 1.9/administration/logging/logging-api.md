@@ -8,11 +8,13 @@ menu_order: 3
 #### Endpoints:
 
 Every node exposes these endpoints:
+
 - `/system/v1/logs/v1/range/` get a range of logs matching the request query.
 - `/system/v1/logs/v1/stream/` tail logs keeping the connection opened, implements Server Sent Events.
 - `/system/v1/logs/v1/fields/<field>` returns all possible unique values for a specific `<field>`.
 
 Agent node endpoint:
+
 - `/system/v1/logs/v1/range/framework/{framework_id}/executor/{executor_id}/container/{container_id}` get a range of application logs.
 
 Master node endpoint:
@@ -37,10 +39,12 @@ NOTE: Accept header `text/event-stream` cannot be used with `/fields/<field>` en
 - `?read_reverse=true` read the journal in opposite direction (bottom to top).
 
 where
+
 - `FIELD`, `value` and `CURSOR` are strings.
 - `N` is uint64.
 
 NOTE:
+
 - It is possbile to move to the tail of the journal. If the `?cursor` parameter is not used then we consider the cursor
   is pointing to a head of the journal. `?skip_prev=1` can be used to move to the tail of the journal (very last entry). If you need to read last 10 entries you should use `?skip_prev=10`.
 - Parameter `?limit` cannot be used with `/stream/` endpoint.
