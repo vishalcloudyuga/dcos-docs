@@ -1,5 +1,6 @@
 ---
 post_title: Metrics API 
+feature_maturity: experimental
 menu_order: 1
 ---
 
@@ -15,7 +16,7 @@ The HTTP producer is enabled by default and exposes a JSON-formatted HTTP API on
 The API supports JSON only. You must include application/json as your Content-Type in the HTTP header, as shown below.
 
 ```bash
-Content-Type: application/json
+Accept: application/json
 ```
 
 # Hostname and base path

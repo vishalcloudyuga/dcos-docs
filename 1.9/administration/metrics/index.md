@@ -1,9 +1,10 @@
 ---
 post_title: Metrics
+feature_maturity: experimental
 menu_order: 3.5
 ---
 
-The [metrics component](https://github.com/dcos/dcos-metrics) provides operational insight to your DC/OS cluster, providing discrete metrics about your applications and deployments. This can include charts, dashboards, and alerts based on cluster, node, container, and application-level statistics. The metrics component is natively integrated with DC/OS version 1.9 and later. No additional setup is required.  
+The [metrics component](https://github.com/dcos/dcos-metrics) provides metrics from DC/OS cluster hosts, containers running on those hosts, and from applications running on DC/OS which choose to send statsd metrics to our Mesos Metrics Module. The metrics component is natively integrated with DC/OS version 1.9 and later and is available per-host from the `/system/v1/metrics/v0` HTTP API endpoint. No additional setup is required.  
 
 ## Overview
 There are three layers of metrics identified in DC/OS: 
@@ -33,22 +34,8 @@ Per-container metrics tags enable you to arbitrarily group metrics, for example 
 
 DC/OS applications will discover the endpoint via an environment variable (`STATSD_UDP_HOST` or `STATSD_UDP_PORT`). Applications leverage this StatsD interface to send custom profiling metrics to the system.
 
-## Security
-Because most metrics are sent to other service stacks and not consumed by DC/OS users, there is not any role based access control for them. However, the HTTP producer does expose and API endpoint, which can be consumed by DC/OS users. Because of this, Enterprise DC/OS provides coarse grained ACLs via the Admin Router proxy to ensure only DC/OS superusers have access to this HTTP API endpoint. 
-
 ## Metrics reference
 These metrics are automatically collected.
-
-### Per-container resource resource utilization
-
-| Metric            | Description                  |
-|-------------------|------------------------------|
-| usage.Free        | Available capacity in bytes. |
-| usage.Total       | Available capacity in bytes. |
-| usage.Used        | Capacity used in bytes.      |
-| usage.InodesFree  | Available Inodes in btyes.   |
-| usage.InodesTotal | Available Inodes in bytes.   |
-| usage.InodesUsed  | Inodes used in bytes.        |
 
 ###  Node
 
@@ -75,7 +62,7 @@ These metrics are automatically collected.
 | swap.used         |    Amount of swap space used.    |
 | uptime          |   The system reliability and load average.    |
    
-#### Filesystem
+#### Filesystems
    
 | Metric            | Description                  |
 |-------------------|------------------------------|
@@ -85,8 +72,10 @@ These metrics are automatically collected.
 | filesystem.{{.Name}}.inodes.free    | Amount of available inodes in bytes. |
 | filesystem.{{.Name}}.inodes.total    | Total inodes in bytes. |
 | filesystem.{{.Name}}.inodes.used    | Inodes used in bytes.  |
+
+**Note:** `{{.Name}}` is part of a [go template](https://golang.org/pkg/html/template/) and is automatically populated based on the mount path of the local filesystem (e.g., `/`, `/boot`, etc).
       
-#### NetworkInterface
+#### Network interfaces
    
 | Metric            | Description                  |
 |-------------------|------------------------------|
@@ -98,10 +87,12 @@ These metrics are automatically collected.
 | network.{{.Name}}.out.dropped    | Number of uploaded bytes dropped. |
 | network.{{.Name}}.out.errors    | Number of uploaded bytes in error.  |
 | network.{{.Name}}.out.packets    | Number of packets uploaded. |
+
+**Note:** `{{.Name}}` is part of a [go template](https://golang.org/pkg/html/template/) and is automatically populated based on the mount path of the local filesystem (e.g., `/`, `/boot`, etc).
    
 ### Container metrics
 
-Container metrics define the structure of the response expected from Mesos when referring to container and executor metrics.
+Per-container resource utilization metrics.
 
 #### CPU usage info
    <!-- https://github.com/apache/mesos/blob/1.0.1/include/mesos/v1/mesos.proto -->
