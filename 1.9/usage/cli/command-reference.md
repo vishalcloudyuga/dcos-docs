@@ -672,4 +672,4 @@ If you use a regular expression, you must enclose the task ID in double quotatio
 
 For more information about the `dcos task exec` command, see the Debugging [documentation](/docs/1.9/administration/debugging/quickstart/).
 
- [1]: /docs/1.9/administration/logging/service-logs/
+ [1]: /docs/1.9/administration/logging/quickstart/index.html
