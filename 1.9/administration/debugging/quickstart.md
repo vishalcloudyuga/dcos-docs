@@ -23,8 +23,8 @@ You can run commands inside a container by using the `dcos task exec` command. I
        "cpus": 1,
        "instances": 1
      }
-     ```
-
+    ``` 
+    
 1.  Deploy the service on DC/OS:
 
     ```bash
