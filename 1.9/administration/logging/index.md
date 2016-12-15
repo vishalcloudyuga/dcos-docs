@@ -16,7 +16,7 @@ $ dcos task log --follow my-service-name
 
 From the **Services** tab in the [DC/OS GUI](/docs/1.9/usage/webinterface/) you can download all the log files for your service. You can also monitor stdout/stderr.
 
-For more information, see the Service and Task Logs [documentation](/docs/1.9/administration/logging/service-logs/).
+For more information, see the Service and Task Logs [documentation](/docs/1.9/administration/logging/quickstart/index.html).
 
 ## System Logs
 
@@ -45,7 +45,7 @@ Unfortunately, streaming logs from machines in your cluster isn’t always viabl
 - [Splunk](/docs/1.9/administration/logging/aggregating/splunk/)
 
 
-[1]: /docs/1.9/administration/logging/service-logs/
+[1]: /docs/1.9/administration/logging/quickstart/index.html
 [2]: /docs/1.9/usage/cli/install/
 [3]: /docs/1.9/administration/logging/aggregating/elk/
 [4]: /docs/1.9/administration/logging/aggregating/splunk/
