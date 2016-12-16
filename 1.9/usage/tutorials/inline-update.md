@@ -1,6 +1,6 @@
 ---
-post_title: Updating A User-Created Service Inline
-nav_title: Updating A Service Inline
+post_title: Updating a User-Created Service inline
+nav_title: Updating a Service inline
 menu_order: 30
 ---
 
