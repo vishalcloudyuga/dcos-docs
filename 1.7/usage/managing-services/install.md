@@ -26,7 +26,7 @@ $ dcos package install chronos
 
 2.  Choose your package and click **Install package**. 
 
-3.  Confirm your installation or choose [**Advanced Installation**](/docs/1.7/usage/config).
+3.  Confirm your installation or choose [**Advanced Installation**](/docs/1.7/usage/config/).
 
 ## Verifying your installation
 

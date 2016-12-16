@@ -9,7 +9,7 @@ DC/OS comes pre-configured with the [Mesosphere Universe](https://github.com/mes
 You can use either the web interface or the CLI to:
 
 * [Listing](#listing)
-* [Searching](#find-packages)
+* [Searching](#finding-packages)
 * [Adding](#adding)
 * [Removing](#removing)
 
