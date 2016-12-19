@@ -5,8 +5,8 @@ menu_order: 7
 ---
 
 # Prerequisites
-* A [running DC/OS cluster](/docs/1.8/tutorial/cli/) with [the DC/OS CLI installed](link to installation instructions].
-* [app2 and Marathon-LB](/docs/1.8/tutorial/app2/) deployed and running in your cluster.
+* A [running DC/OS cluster](/docs/1.8/usage/tutorials/dcos-101/cli/) with [the DC/OS CLI installed](link to installation instructions].
+* [app2 and Marathon-LB](/docs/1.8/usage/tutorials/dcos-101/app2/) deployed and running in your cluster.
 
 # Objective
 In this final session, we will scale our application to multiple instances and learn how internal and external services choose which instance to use once the application has been scaled.

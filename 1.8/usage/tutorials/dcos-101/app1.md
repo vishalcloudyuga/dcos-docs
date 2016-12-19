@@ -6,8 +6,8 @@ menu_order: 3
 
 
 # Prerequisites
-* A [running DC/OS cluster](/docs/1.8/tutorial/cli/) with [the DC/OS CLI installed](/docs/1.8/tutorial/cli/).
-* [redis](/docs/1.8/tutorial/redis-package/) deployed and running in your cluster.
+* A [running DC/OS cluster](/docs/1.8/usage/tutorials/dcos-101/cli/) with [the DC/OS CLI installed](/docs/1.8/usage/tutorials/dcos-101/cli/).
+* [redis](/docs/1.8/usage/tutorials/dcos-101/redis-package/) deployed and running in your cluster.
 
 # Objective
 We now have a working persistence layer -redis- running in our cluster.

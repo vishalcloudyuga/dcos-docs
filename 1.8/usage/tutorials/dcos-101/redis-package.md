@@ -7,7 +7,7 @@ menu_order: 2
 Welcome to part 2 of the DC/OS 101 Tutorial.
 
 # Prerequisites
-By now, you have a running DC/OS cluster and the DC/OS CLI installed and configured. If that isn't the case, please follow these [instructions](/docs/1.8/tutorial/cli/).
+By now, you have a running DC/OS cluster and the DC/OS CLI installed and configured. If that isn't the case, please follow these [instructions](/docs/1.8/usage/tutorials/dcos-101/cli/).
 Furthermore, we use [jq](https://stedolan.github.io/jq/) as a json processor to simplify some of the commands below.
 
 # Objective
