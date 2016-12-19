@@ -55,7 +55,7 @@ DC/OS is a [distributed operating system](https://en.wikipedia.org/wiki/Distribu
 
 ### <a name="dcos-gui"></a>DC/OS GUI
 
-The [DC/OS graphical user interface (GUI)](/1.9/usage/webinterface/) is an interface for remotely controlling and managing a DC/OS cluster from a web browser. The GUI is also sometimes called the DC/OS UI or DC/OS web interface.
+The [DC/OS graphical user interface (GUI)](/docs/1.9/usage/webinterface/) is an interface for remotely controlling and managing a DC/OS cluster from a web browser. The GUI is also sometimes called the DC/OS UI or DC/OS web interface.
 
 ### <a name="dcos-cli"></a>DC/OS CLI
 
