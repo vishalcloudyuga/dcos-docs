@@ -5,8 +5,8 @@ menu_order: 6
 ---
 
 # Prerequisites
-In order to get started with this tutorial, you should have access to a running DC/OS OSS cluster and the DC/OS CLI installed and configured.
-Furthermore, you have just deployed app2 in our cluster and have verified it is running.
+* A [running DC/OS cluster](/docs/1.8/usage/tutorials/dcos-101/cli/) with [the DC/OS CLI installed](/docs/1.8/usage/tutorials/dcos-101/cli/).
+* [app2](/docs/1.8/usage/tutorials/dcos-101/app2/) deployed and running in your cluster.
 
 # Objective
 In this section we will make app2 available from outside the cluster by running it on a public agent node with Marathon-LB.

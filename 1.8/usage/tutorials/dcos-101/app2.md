@@ -5,8 +5,8 @@ menu_order: 5
 ---
 
 # Prerequisites
-* A [running DC/OS cluster](/docs/1.8/tutorial/cli/) with [the DC/OS CLI installed](link to installation instructions].
-* [app1](/docs/1.8/tutorial/app1/) deployed and running in your cluster.
+* A [running DC/OS cluster](/docs/1.8/usage/tutorials/dcos-101/cli/) with [the DC/OS CLI installed](/docs/1.8/usage/tutorials/dcos-101/cli/).
+* [app1](/docs/1.8/usage/tutorials/dcos-101/app1/) deployed and running in your cluster.
 
 # Objective
 We already deployed an app which is running internally in our cluster (i.e., it is not targeted to users directly). Next, will deploy an app which provides a web UI to users.
