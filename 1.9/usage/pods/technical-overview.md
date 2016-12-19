@@ -13,16 +13,16 @@ You configure a pod via a pod definition, which is similar to a Marathon applica
 - You must specify an endpoint (not a port number) in order for other applications to communicate with your pod.
 - Pods have a separate REST API.
 - Pods support only Mesos-level health checks.
-You can create and manage pods with the [DC/OS CLI](/docs/1.9/usage/pods/pods-cli/) or via the /v2/pods/ endpoint of the [Marathon REST API](http://mesosphere.github.io/marathon/docs/generated/api.html).
+You can create and manage pods with the DC/OS CLI or via the /v2/pods/ endpoint of the [Marathon REST API](http://mesosphere.github.io/marathon/docs/generated/api.html).
 
 # Networking
 Marathon pods only support the [DC/OS Universal container runtime](/docs/1.9/usage/containerizers/), which supports multiple image formats, including Docker.
 
 The Universal container runtime simplifies networking by allowing the containers of each pod instance to share a network namespace and communicate over localhost. If you specify a container network without a name in a pod definition, it will be assigned to the default network.
 
-If other applications need to communicate with your pod, specify an endpoint in your pod definition. Other applications will communicate with your pod by addressing those endpoints. See [the Examples section](/docs/1.9/usage/pods/examples.md) for more information.
+If other applications need to communicate with your pod, specify an endpoint in your pod definition. Other applications will communicate with your pod by addressing those endpoints. See [the Examples section](/docs/1.9/usage/pods/examples/) for more information.
 
-In your pod definition, you can declare a `host` or `container` network type. Pods created with `host` type share the network namespace of the host. Pods created with `container` type use virtual networking. If you specify the `container` network type and Marathon was not configured to have a default network name, you must also declare a virtual network name in the `name` field. See the [Examples](/docs/1.9/usage/pods/examples.md) section for the full JSON.
+In your pod definition, you can declare a `host` or `container` network type. Pods created with `host` type share the network namespace of the host. Pods created with `container` type use virtual networking. If you specify the `container` network type and Marathon was not configured to have a default network name, you must also declare a virtual network name in the `name` field. See the [Examples](/docs/1.9/usage/pods/examples/) section for the full JSON.
 
 # Ephemeral Storage
 Containers within a pod share ephemeral storage. Volumes are declared at the pod-level and referenced by `name` when mounting them into specific containers.

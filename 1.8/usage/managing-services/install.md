@@ -31,7 +31,7 @@ From the DC/OS UI you can install services from the **Services** or **Universe**
 
 2.  Choose your package and click **Install package**. 
 
-3.  Confirm your installation or choose [**Advanced Installation**](/docs/1.8/usage/config/) to include a custom configuration.
+3.  Confirm your installation or choose [**Advanced Installation**](/docs/1.8/usage/managing-services/config/) to include a custom configuration.
 
 ### Services tab
 
