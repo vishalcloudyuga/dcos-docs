@@ -282,13 +282,6 @@ Several components are configured to use [systemd sockets](https://www.freedeskt
 Several components are configured to use [systemd timers](https://www.freedesktop.org/software/systemd/man/systemd.timer.html) which allows them to be periodically executed or restarted. Periodic execution avoids continuous execution and consuming resources unnecessarily. Periodic restarting allows for picking up new configurations from downstream dependencies, like time-based DNS cache expiration. While these timers are separate [systemd units](https://www.freedesktop.org/software/systemd/man/systemd.unit.html) they are not considered separate components.
 
 
-## Component Management
-
-TODO: GUI components page
-
-TODO: CLI component list/logs
-
-
 ## Component Installation
 
 DC/OS components are installed, upgraded, and managed by [pkgpanda](https://github.com/dcos/dcos/tree/master/pkgpanda), a package manager for systemd units.
