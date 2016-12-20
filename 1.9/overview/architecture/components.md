@@ -29,8 +29,6 @@ Mesos Agent Public is a Mesos Agent configured to run on [DC/OS public agent nod
 
 System Service(s): dcos-mesos-master.service, dcos-mesos-slave.service, dcos-mesos-slave-public.service
 
-Dependencies: Zookeeper
-
 [Docs](http://mesos.apache.org/), [Source](https://github.com/apache/mesos)
 
 ### Exhibitor &amp; Apache Zookeeper
@@ -40,8 +38,6 @@ Zookeeper stores cluster state.
 Exhibitor manages Zookeeper and provides a management web interface.
 
 System Service(s): dcos-exhibitor.service
-
-Dependencies: N/A
 
 [Exhibitor Source](https://github.com/Netflix/exhibitor), [Zookeeper Docs](https://zookeeper.apache.org/), [Zookeeper Source](https://github.com/apache/mesos)
 
@@ -53,8 +49,6 @@ As part of the install process on each node, the DC/OS Download service download
 
 System Service(s): dcos-download.service, dcos-setup.service
 
-Dependencies: N/A
-
 [Docs](/docs/1.9/administration/installing/), [Source](https://github.com/dcos/dcos)
 
 ### DC/OS GUI
@@ -63,8 +57,6 @@ The DC/OS GUI (web interface) is a browser-based system dashboard and control ce
 
 System Service(s): N/A - The GUI is served by Admin Router.
 
-Dependencies: TODO
-
 [Docs](/docs/1.9/usage/webinterface/), [Source](https://github.com/dcos/dcos-ui)
 
 ### DC/OS CLI
@@ -72,8 +64,6 @@ Dependencies: TODO
 The DC/OS CLI is a terminal-based remote client.
 
 System Service(s): N/A - The CLI is a user downloadable binary.
-
-Dependencies: DC/OS
 
 [Docs](/docs/1.9/usage/cli/), [Source](https://github.com/dcos/dcos-cli)
 
@@ -88,8 +78,6 @@ Marathon orchestrates long-lived containerized services (apps &amp; pods).
 
 System Service(s): dcos-marathon.service
 
-Dependencies: TODO
-
 [Docs](https://mesosphere.github.io/marathon/), [Source](https://github.com/mesosphere/marathon)
 
 ### Metronome
@@ -97,8 +85,6 @@ Dependencies: TODO
 Metronome orchestrates short-lived, scheduled or immediate, containerized jobs.
 
 System Service(s): dcos-metronome.service
-
-Dependencies: TODO
 
 [Docs](/docs/1.9/usage/jobs/), [Source](https://github.com/dcos/metronome)
 
@@ -109,8 +95,6 @@ Dependencies: TODO
 Docker GC garbage collects Docker containers and images.
 
 System Service(s): dcos-docker-gc.service, dcos-docker-gc.timer
-
-Dependencies: TODO
 
 [Source](https://github.com/spotify/docker-gc)
 
@@ -127,8 +111,6 @@ API: `/system/health/v1/`
 
 System Service(s): dcos-3dt.service, dcos-3dt.socket
 
-Dependencies: TODO
-
 [Source](https://github.com/dcos/3dt)
 
 ### Log Service
@@ -138,8 +120,6 @@ Dependencies: TODO
 Log Service exposes component, container, and task logs.
 
 System Service(s): dcos-log-master.service, dcos-log-master.socket, dcos-logrotate-master.service, dcos-logrotate-master.timer, dcos-log-agent.service, dcos-log-agent.socket
-
-Dependencies: TODO
 
 [Source](https://github.com/dcos/dcos-log)
 
@@ -157,8 +137,6 @@ Metrics Service exposes host, container, and task metrics.
 
 System Service(s): dcos-metrics-master.service, dcos-metrics-master.socket, dcos-metrics-agent.service, dcos-metrics-agent.socket
 
-Dependencies: TODO
-
 [Source](https://github.com/dcos/dcos-metrics)
 
 ### Signal
@@ -167,8 +145,6 @@ Signal reports cluster telemetry and analytics to help improve DC/OS. Administra
 
 System Service(s): dcos-signal.service, dcos-signal.timer
 
-Dependencies: TODO
-
 [Source](https://github.com/dcos/dcos-signal)
 
 ### History Service
@@ -176,8 +152,6 @@ Dependencies: TODO
 History Service caches and exposes historical system state to facilitate cluster usage statistics in the GUI.
 
 System Service(s): dcos-history.service
-
-Dependencies: TODO
 
 [Source](https://github.com/dcos/dcos/tree/master/packages/dcos-history/extra)
 
@@ -194,8 +168,6 @@ Admin Router Agent proxies node-specific health, logs, metrics, and package mana
 
 System Service(s): dcos-adminrouter.service, dcos-adminrouter-reload.service, dcos-adminrouter-reload.timer, dcos-adminrouter-agent.service, dcos-adminrouter-agent-reload.service, dcos-adminrouter-agent-reload.timer
 
-Dependencies: TODO
-
 [Source](https://github.com/dcos/adminrouter)
 
 ### Mesos-DNS
@@ -203,8 +175,6 @@ Dependencies: TODO
 Mesos-DNS provides domain name based service discovery within the cluster.
 
 System Service(s): dcos-mesos-dns.service
-
-Dependencies: TODO
 
 [Docs](http://mesosphere.github.io/mesos-dns/), [Source](https://github.com/mesosphere/mesos-dns)
 
@@ -216,8 +186,6 @@ Spartan Watchdog restarts Spartan when it is unhealthy.
 
 System Service(s): dcos-spartan.service, dcos-spartan-watchdog.service, dcos-spartan-watchdog.timer
 
-Dependencies: TODO
-
 [Source](https://github.com/dcos/spartan)
 
 ### Generate resolv.conf
@@ -225,8 +193,6 @@ Dependencies: TODO
 Generate resolv.conf manages DNS resolution configuration in `/etc/resolv.conf` to facilitate DC/OS's software defined networking.
 
 System Service(s): dcos-gen-resolvconf.service, dcos-gen-resolvconf.timer
-
-Dependencies: TODO
 
 [Source](https://github.com/dcos/dcos/blob/master/packages/spartan/extra/gen_resolvconf.py)
 
@@ -236,8 +202,6 @@ Minuteman provides distributed [Layer 4](https://en.wikipedia.org/wiki/Transport
 
 System Service(s): dcos-minuteman.service
 
-Dependencies: TODO
-
 [Docs](/docs/1.9/usage/service-discovery/load-balancing-vips/), [Source](https://github.com/dcos/minuteman)
 
 ### Navstar
@@ -246,8 +210,6 @@ Navstar orchestrates virtual overlay networks using [VXLAN](https://en.wikipedia
 
 System Service(s): dcos-navstar.service
 
-Dependencies: TODO
-
 [Source](https://github.com/dcos/navstar)
 
 ### Erlang Port Mapper
@@ -255,8 +217,6 @@ Dependencies: TODO
 Erlang Port Mapper (EPMD) maps symbolic names to machine addresses, facilitating named virtual IPs.
 
 System Service(s): dcos-epmd.service
-
-Dependencies: TODO
 
 [Source](https://github.com/erlang/epmd)
 
@@ -271,8 +231,6 @@ Cosmos installs and manages DC/OS packages from [DC/OS package repositories](/do
 
 System Service(s): dcos-cosmos.service
 
-Dependencies: TODO
-
 [Source](https://github.com/dcos/cosmos)
 
 ### PkgPanda
@@ -280,8 +238,6 @@ Dependencies: TODO
 PkgPanda installs and manages DC/OS components.
 
 System Service(s): dcos-pkgpanda-api.service, dcos-pkgpanda-api.socket
-
-Dependencies: TODO
 
 [Source](https://github.com/dcos/dcos/tree/master/pkgpanda)
 
@@ -296,8 +252,6 @@ OAuth Service authenticates users using [OAuth](https://oauth.net/) and [Auth0](
 
 System Service(s): dcos-oauth.service
 
-Dependencies: TODO
-
 [Source](https://github.com/dcos/dcos-oauth)
 
 
@@ -310,8 +264,6 @@ DC/OS provides multiple different ways to provision and allocate disk space and 
 REX-Ray orchestrates provisioning, attachment, and mounting of external persistent volumes.
 
 System Service(s): dcos-rexray.service
-
-Dependencies: TODO
 
 [Docs](http://rexray.readthedocs.io/), [Source](https://github.com/codedellemc/rexray)
 
