@@ -350,7 +350,7 @@ Most DC/OS components run as [systemd services](/docs/1.9/overview/concepts/#sys
 
 To see a list of the systemd components running on any particular node, list the contents of the `/etc/systemd/system/dcos.target.wants/` directory or execute `systemctl | grep dcos-` to see their current status.
 
-On a master node:
+On master nodes:
 
 ```
 [vagrant@m1 ~]$ ls /etc/systemd/system/dcos.target.wants/
@@ -366,7 +366,7 @@ dcos-gen-resolvconf.timer        dcos-metrics-master.socket     dcos-spartan-wat
 dcos-history.service             dcos-metronome.service         dcos-spartan-watchdog.timer
 ```
 
-On a private agent node:
+On private agent nodes:
 
 ```
 [vagrant@a1 ~]$ ls /etc/systemd/system/dcos.target.wants/
@@ -381,8 +381,9 @@ dcos-epmd.service                      dcos-metrics-agent.socket     dcos-sparta
 dcos-gen-resolvconf.service            dcos-minuteman.service
 ```
 
-On a public agent node:
+On public agent nodes:
 
+```
 [vagrant@p1 ~]$ ls /etc/systemd/system/dcos.target.wants/
 dcos-3dt.service                       dcos-gen-resolvconf.timer        dcos-navstar.service
 dcos-3dt.socket                        dcos-log-agent.service           dcos-pkgpanda-api.service
@@ -393,3 +394,4 @@ dcos-docker-gc.service                 dcos-mesos-slave-public.service  dcos-spa
 dcos-docker-gc.timer                   dcos-metrics-agent.service       dcos-spartan-watchdog.service
 dcos-epmd.service                      dcos-metrics-agent.socket        dcos-spartan-watchdog.timer
 dcos-gen-resolvconf.service            dcos-minuteman.service
+```
