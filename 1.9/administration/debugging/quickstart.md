@@ -41,7 +41,7 @@ You can run commands inside a container by using the `dcos task exec` command. I
     
     ```bash
     NAME        HOST        USER  STATE  ID                                               
-    my-app  10.0.1.106  root    R    <task_id>
+    my-app      10.0.1.106  root    R    <task_id>
     ```
 
 1.  Run this command to show the hostname of the container running your app, where `<task-ID>` is your task ID.
@@ -87,7 +87,7 @@ You can run interactive commands on machines in your cluster by using the `dcos 
     The output should look similar to this: 
     
     ```bash
-    NAME        HOST        USER  STATE  ID                                               
+    NAME                HOST        USER  STATE  ID                                               
     my-interactive-app  10.0.1.106  root    R    <task_id>
     ```
 
@@ -161,7 +161,12 @@ In this example, a long running [job](/docs/1.9/usage/jobs/) is launched by usin
     
         ```bash
         $ dcos job list
-        ID              DESCRIPTION  STATUS   LAST SUCCESFUL RUN        
+        ```
+        
+        The output should resemble:
+        
+        ```bash
+        ID      DESCRIPTION  STATUS       LAST SUCCESFUL RUN        
         my-job               Unscheduled         None
         ```
 
@@ -180,7 +185,7 @@ In this example, a long running [job](/docs/1.9/usage/jobs/) is launched by usin
     The output should look similar to this: 
     
     ```bash
-    NAME                                HOST       USER  STATE  ID                                                                       
+    NAME                          HOST       USER  STATE  ID                                                                       
     20161209183121nz2F5.my-job    10.0.2.53  root    R    <task_id>
     ```
 
