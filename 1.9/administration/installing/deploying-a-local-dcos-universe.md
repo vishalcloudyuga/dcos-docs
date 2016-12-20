@@ -122,7 +122,7 @@ To install your own set of packages you must build a customized local Universe D
     $ sudo make local-universe
     ```
 
-5.  Perform steps from 2 to 7 of [Installing the default Universe packages][5] section exept of the 6th one. Run the following command instead:
+5.  Perform steps from 2 to 7 of [Installing the default Universe packages][5] section, except step 6. Run the following command instead:
 
     ```bash
     $ dcos package repo add local-universe http://master.mesos:8082/repo
