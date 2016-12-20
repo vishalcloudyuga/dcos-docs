@@ -4,204 +4,392 @@ nav_title: Components
 menu_order: 4
 ---
 
-DC/OS is comprised of multiple open source components that are precisely configured to work together.
-
-You can log into any host in the DC/OS cluster and view the currently running services by inspecting the `/etc/systemd/system/dcos.target.wants/` directory. 
-
-You can view the DC/OS component details in the package directory of the DC/OS source repository: <a href="https://github.com/dcos/dcos/">https://github.com/dcos/dcos/</a>.
+DC/OS is composed of many open source microservice components meticulously tuned and configured to work together.
 
 ![DC/OS Components](/docs/1.9/overview/architecture/img/dcos-component-diagram.png)
 
-## 100,000 ft view
+From the top, DC/OS is a batteries-included container platform that handles container orchestration, package management, and security.
 
-The DC/OS kernel space is comprised of Mesos masters and Mesos agents. The user space includes System Components such as Mesos-DNS, Distributed DNS Proxy, and services such as Marathon or Spark. The user space also includes processes that are managed by the services, for example a Marathon application.
-
-![DC/OS architecture 100,000ft view](/docs/1.9/overview/architecture/img/dcos-architecture-100000ft.png)
-
-Before we dive into the details of the interaction between different DC/OS components, let's define the terminology used.
-
-- Master: aggregates resource offers from all agent nodes and provides them to registered frameworks.
-- Scheduler: the scheduler component of a service, for example the Marathon scheduler.
-- User: also known as Client, is an application either internal or external to the cluster that kicks off a process, for example a human user that submits a Marathon app spec.
-- Agent: runs a discrete Mesos task on behalf of a framework. It is an agent instance registered with the Mesos master. The synonym of agent node is worker or slave node. You can have private or public agent nodes.
-- Executor: launched on agent nodes to run tasks for a service.
-- Task: a unit of work scheduled by a Mesos framework and executed on a Mesos agent.
-- Process: a logical collection of tasks initiated by a Client, for example a Marathon app or a Chronos job.
-
-TODO: blend in the following Mesos description
-
-- **Mesos masters** The `mesos-master` process orchestrates tasks that are run on Mesos agents. The Mesos Master process receives resource reports from Mesos agents and distributes those resources to registered DC/OS services, such as Marathon or Spark. When a leading Mesos master fails due to a crash or goes offline for an upgrade, a standby Mesos master automatically becomes the leader without disrupting running services. ZooKeeper performs leader election.
-- **Mesos agents**: Mesos agent nodes run discrete Mesos tasks on behalf of a framework. Private agent nodes run the deployed apps and services through a non-routable network. Public agent nodes run DC/OS apps and services in a publicly accessible network. The `mesos-slave` process on a Mesos agent manages its local resources (CPU cores, RAM, etc.) and registers these resources with the Mesos masters. It also accepts schedule requests from the Mesos master and invokes an Executor to launch a Task via [containerizers](http://mesos.apache.org/documentation/latest/containerizer/):
-  - The Mesos containerizer provides lightweight containerization and resource isolation of executors using Linux-specific functionality such as cgroups and namespaces.
-  - The Docker containerizer provides support for launching tasks that contain Docker images.
-
-TODO: blend in the following component descriptions
-
-- [System Components](/docs/1.9/overview/components/) are installed and are running by default in the DC/OS cluster and include the following:
-  - The Admin Router is an open source NGINX configuration that provides central authentication and proxy to DC/OS services.
-  - Exhibitor automatically configures ZooKeeper during installation and provides a usable Web UI to ZooKeeper.
-  - Mesos-DNS provides service discovery, allowing apps and services to find each other by using the domain name system (DNS).
-  - Minuteman is the internal layer 4 load balancer.
-  - Distributed DNS Proxy is the internal DNS dispatcher.
-  - DC/OS Marathon, the native Marathon instance that is the 'init system' for DC/OS, starts and monitors DC/OS services.
-  - ZooKeeper, a high-performance coordination service that manages the DC/OS services.
-
-## Component List
-
-<table class="table">
-  <tr>
-    <th>Component</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>Admin Router Agent</td>
-    <td>This component (<code>dcos-adminrouter-agent</code>)is a high performance web server and a reverse proxy server that lists all of the agent nodes in your cluster.</td>
-  </tr>
-  <tr>
-    <td>Admin Router Master</td>
-    <td>This component is a high performance web server and a reverse proxy server that lists all of the master nodes in your cluster.</td>
-  </tr>
-  <tr>
-    <td>Admin Router Reloader</td>
-    <td>This component (`dcos-adminrouter-reload.service`) restarts the Admin Router Nginx server so that it can pick up new DNS resolutions, for example `master.mesos` and `leader.mesos`.</td>
-  </tr>
-  <tr>
-    <td>Admin Router Reloader Timer</td>
-    <td>This component (`dcos-adminrouter-reload.timer`) sets the Admin Router Reloader interval at once per hour.</td>
-  </tr>
-  <tr>
-      <td>Admin Router Service</td>
-      <td>This component is an open-source Nginx configuration created by Mesosphere that provides central authentication and proxy to DC/OS services within the cluster. The Admin Router service (`dcos-adminrouter.service `) is the core internal load balancer for DC/OS. Admin Router is a customized <a href="https://www.nginx.com/resources/wiki/">Nginx</a> that proxies all of the internal services on port `80`.</td>
-    </tr>
-  <tr>
-    <td>Cluster ID</td>
-    <td>The cluster-id service generates a universally unique identifier (UUID) for each cluster. We use this ID to track cluster health remotely (if enabled). This remote tracking allows our support team to better assist our customers.</td>
-  </tr>
-  <tr>
-    <td>Diagnostics</td>
-    <td><p>This component (`dcos-3dt.service`) is the diagnostics utility for DC/OS systemd components. This service runs on every host, tracking the internal state of the systemd unit. The service runs in two modes: with or without the `-pull` argument. If running on a master host, it executes `/opt/mesosphere/bin/3dt -pull`, which queries Mesos-DNS for a list of known masters in the cluster, then queries a master (usually itself) `:5050/statesummary` and gets a list of agents.</p><p>From this complete list of cluster hosts, it queries all 3DT health endpoints (`:1050/system/health/v1/health`). This endpoint returns health state for the DC/OS systemd units on that host. The master 3DT processes, along with doing this aggregation, also expose `/system/health/v1/` endpoints to feed this data by `unit` or `node` IP to the DC/OS user interface.</p></td>
-  </tr>
-  <tr>
-    <td>Diagnostics socket</td>
-    <td>This component (`dcos-3dt.socket`) is the DC/OS Distributed Diagnostics Tool master API and aggregation socket.</td>
-  </tr>
-  <tr>
-    <td>DNS Dispatcher</td>
-    <td>This component (`dcos-spartan.service`) is an RFC5625 Compliant DNS Forwarder. It's job is to dual-dispatch DNS to multiple upstream resolvers, and to route DNS to the upstreams or Mesos DNS, depending on some rules.</td>
-  </tr>
-  <tr>
-    <td>DNS Dispatcher Watchdog</td>
-    <td>This component (dcos-spartan-watchdog.service) ensures that the DNS Dispatcher is running and healthy. If the DNS Dispatcher is unhealthy, this watchdog service kills it.</td>
-  </tr>
-  <tr>
-    <td>DNS Dispatcher Watchdog Timer</td>
-    <td>This component (`dcos-spartan-watchdog.timer`) wakes up the DNS Dispatcher Watchdog every 5 minutes, to see if DC/OS needs to restart DNS Dispatcher.</td>
-  </tr>
-  <tr>
-      <td>Downloads Service
-        </td>
-      <td>This component (`dcos-download.service`) downloads the DC/OS installation tarball on first boot.</td>
-      </tr>
-  <tr>
-    <td>Erlang Port Mapping Daemon</td>
-    <td>This component (`dcos-epmd.service`) supports the internal DC/OS layer 4 load balancer that is called <a href="https://github.com/dcos/minuteman">Minuteman</a>.</td>
-  </tr>
-  <tr>
-    <td>Exhibitor</td>
-    <td>This component (`dcos-exhibitor.service`) is the Exhibitor supervisor for ZooKeeper. DC/OS uses Exhibitor, a project from <a href="https://github.com/Netflix/exhibitor">Netflix</a>, to manage and automate the deployment of <a href="/docs/1.9/overview/concepts/#exhibitorforzookeeper">ZooKeeper</a>.</td>
-  </tr>
-  <tr>
-    <td>Generate resolv.conf</td>
-    <td>This component (`dcos-gen-resolvconf.service`) dynamically provisions `/etc/resolv.conf` so that each cluster host can use Mesos-DNS to resolve task names to the IP and port addresses.</td>
-  </tr>
-  <tr>
-    <td>Generate resolv.conf Timer</td>
-    <td>This component (`dcos-gen-resolvconf.timer`) periodically updates the systemd-resolved for Mesos DNS.</td>
-  </tr>
-  <tr>
-    <td>History Service</td>
-    <td>This component (`dcos-history.service`) enables the DC/OS UI to display cluster usage statistics and stores the dashboard graph data for the UI. This data is stored on disk for 24 hours. Along with storing this data, the history service also exposes a HTTP API for the DC/OS user interface to query. All DC/OS cluster stats which involve memory, CPU and disk usage are driven by this service.</td>
-  </tr>
-  <tr>
-    <td>Job</td>
-    <td>This component (`dcos-metronome.service`) powers the DC/OS Jobs feature. For more information, see the <a href="/docs/1.9/usage/jobs/">documentation</a>.</td>
-  </tr>
-  <tr>
-    <td>Layer 4 Load Balancer</td>
-    <td>This component (`dcos-minuteman.service`), also known as <a href="https://github.com/dcos/minuteman">Minuteman</a>, is the DC/OS Layer 4 Load Balancer that enables multi-tier microservices architectures. For more information, see the <a href="/docs/1.9/usage/service-discovery/load-balancing-vips/">documentation</a>.</td>
-  </tr>
-  <tr>
-    <td>Logrotate Mesos Master</td>
-    <td>This component (`dcos-logrotate-master.service`) automatically manages compression, removal, and mailing of log files for Mesos master processes. This ensures DC/OS services don't overload cluster hosts with too much log data on disk.</td>
-  </tr>
-  <tr>
-    <td>Logrotate Mesos Slave</td>
-    <td>This component (`dcos-logrotate-agent.service/`) automatically rotates compression, removal, and mailing of log files for agent nodes.</td>
-  </tr>
-  <tr>
-    <td>Logrotate Timer</td>
-    <td>These components (`dcos-logrotate-agent.timer` and `dcos-logrotate-master.timer`) set the logrotate interval at 2 minutes.</td>
-  </tr>
-  <tr>
-    <td>Marathon</td>
-    <td>This component (`dcos-marathon.service`) is the DC/OS Marathon instance which starts and monitors DC/OS applications and services.</td>
-  </tr>
-  <tr>
-    <td>Mesos Agent</td>
-    <td>This component (`dcos-mesos-slave.service`) is the mesos-slave process for <a href="/docs/1.9/overview/concepts/#private">private</a> agent nodes.</td>
-  </tr>
-  <tr>
-    <td>Mesos Agent Public</td>
-    <td>This component (`dcos-mesos-slave-public.service`) is the mesos-slave process for <a href="/docs/1.9/overview/concepts/#public">public</a> agent nodes.</td>
-  </tr>
-  <tr>
-    <td>Mesos DNS</td>
-    <td>This component (`dcos-mesos-dns.service`) provides service discovery within the cluster. Mesos-DNS is the internal DNS service (`dcos-mesos-dns.service`) for the DC/OS cluster. <a href="/docs/1.9/overview/concepts/#mesos-dns">Mesos-DNS</a> provides the namespace `$service.mesos` to all cluster hosts. For example, you can login to your leading mesos master with `ssh leader.mesos`.</td>
-  </tr>
-  <tr>
-    <td>History Service</td>
-    <td>This component (`dcos-history-service.service`) enables the DC/OS web interface to display cluster usage statistics.</td>
-  </tr>
-  <tr>
-    <td>Mesos Master</td>
-    <td>This component (`dcos-mesos-master.service`) is the mesos-master process that orchestrates agent tasks.</td>
-  </tr>
-  <tr>
-    <td>Mesos Persistent Volume Discovery</td>
-    <td>This component (`dcos-vol-discovery-pub-agent.service`) connects to existing Mesos volume mounts on agent nodes during installation. For more information on Mesos Persistent Volumes, see the <a href="http://mesos.apache.org/documentation/latest/persistent-volume/">documentation</a>.</td>
-  </tr>
-  <tr>
-    <td>Virtual Network Service</td>
-    <td>This component (`dcos-navstar.service/`) is a daemon that provides virtual networking and DNS services. It is the network overlay orchestrator. For more information, see the <a href="https://github.com/dcos/navstar">documentation</a>.</td>
-  </tr>
-  <tr>
-    <td>OAuth</td>
-    <td>This component (`dcos-oauth.service`) provides the DC/OS authorization service.</td>
-  </tr>
-  <tr>
-    <td>Package service</td>
-    <td>This component (`dcos-cosmos.service `) is the internal packaging API service. This service is accessed every time that you run `dcos package install` from the CLI. This API deploys DC/OS packages from the DC/OS <a href="https://github.com/mesosphere/universe">Universe</a> to your DC/OS cluster.</td>
-  </tr>
-    <td>Signal</td>
-    <td>This component (`dcos-signal.service`) sends a periodic ping back to Mesosphere with high-level cluster information to help improve DC/OS, and provides advanced monitoring of cluster issues. Signal queries the diagnostics service `/system/health/v1/report` endpoint on the leading master and sends this data to SegmentIO for use in tracking metrics and customer support.</td>
-  </tr>
-  <tr>
-    <td>Signal Timer</td>
-    <td>This component (`dcos-signal.timer`) sets the Signal component interval at once per hour.</td>
-  </tr>
-<tr>
-      <td>REX-Ray</td>
-      <td>This component (<code>dcos-rexray.service</code>) is the REX-Ray storage method for enabling external persistent volumes in Marathon.</td>
-    </tr>
-<tr>
-      <td>System Package Manager API</td>
-      <td>This component (`dcos-pkgpanda-api.service`) creates symlinks, installs systemd units, and sets up the roles for each host (master, private agent, public agent).</td>
-    </tr>
-    <tr>
-      <td>System Package Manager API socket</td>
-      <td>This component (`dcos-pkgpanda-api.socket`) is the System Package Manager API socket.</td>
-    </tr>
-  <tr>
-</table>
+From the bottom, DC/OS is an operating system built on top of [Apache Mesos](http://mesos.apache.org/) that handles cluster management and software defined networking while simplifying logging and metrics collection.
 
 
+## Cluster Management
+
+DC/OS provides a way to view and operate a large number of individual machine-level systems as a single cluster-level system. It hides the complexity of Mesos, the distributed systems kernel, with higher level abstractions, interfaces, and tools. Cluster management is the core of that functionality, including the kernel, its dependencies, and its user interfaces.
+
+### Apache Mesos
+
+Mesos manages resources and tasks as a distributed systems kernel.
+
+Mesos Master exposes scheduler, executor, and operator interfaces to facilitate cluster management.
+
+Mesos Agent manages individual executors, tasks, and resources on each [DC/OS agent node](/docs/1.9/overview/concepts/#dcos-agent-node).
+
+Mesos Agent Public is a Mesos Agent configured to run on [DC/OS public agent nodes](/docs/1.9/overview/concepts/#public-agent-node).
+
+System Service(s): dcos-mesos-master.service, dcos-mesos-slave.service, dcos-mesos-slave-public.service
+
+Dependencies: Zookeeper
+
+[Docs](http://mesos.apache.org/), [Source](https://github.com/apache/mesos)
+
+### Exhibitor &amp; Apache Zookeeper
+
+Zookeeper stores cluster state.
+
+Exhibitor manages Zookeeper and provides a management web interface.
+
+System Service(s): dcos-exhibitor.service
+
+Dependencies: N/A
+
+[Exhibitor Source](https://github.com/Netflix/exhibitor), [Zookeeper Docs](https://zookeeper.apache.org/), [Zookeeper Source](https://github.com/apache/mesos)
+
+### DC/OS Installer
+
+The DC/OS Installer (dcos_generate_config.sh) generates install artifacts and installs DC/OS.
+
+As part of the install process on each node, the DC/OS Download service downloads the install artifacts from the bootstrap machine and the DC/OS Setup service installs components using PkgPanda.
+
+System Service(s): dcos-download.service, dcos-setup.service
+
+Dependencies: N/A
+
+[Docs](/docs/1.9/administration/installing/), [Source](https://github.com/dcos/dcos)
+
+### DC/OS GUI
+
+The DC/OS GUI (web interface) is a browser-based system dashboard and control center.
+
+System Service(s): N/A - The GUI is served by Admin Router.
+
+Dependencies: TODO
+
+[Docs](/docs/1.9/usage/webinterface/), [Source](https://github.com/dcos/dcos-ui)
+
+### DC/OS CLI
+
+The DC/OS CLI is a terminal-based remote client.
+
+System Service(s): N/A - The CLI is a user downloadable binary.
+
+Dependencies: DC/OS
+
+[Docs](/docs/1.9/usage/cli/), [Source](https://github.com/dcos/dcos-cli)
+
+
+## Container Orchestration
+
+While Mesos enables the utilization of custom schedulers, most containerized tasks have very similar scheduling and lifecycle management needs. So DC/OS includes a couple built-in schedulers to orchestrate the most common of these higher level abstractions: jobs and services.
+
+### Marathon
+
+Marathon orchestrates long-lived containerized services (apps &amp; pods).
+
+System Service(s): dcos-marathon.service
+
+Dependencies: TODO
+
+[Docs](https://mesosphere.github.io/marathon/), [Source](https://github.com/mesosphere/marathon)
+
+### Metronome
+
+Metronome orchestrates short-lived, scheduled or immediate, containerized jobs.
+
+System Service(s): dcos-metronome.service
+
+Dependencies: TODO
+
+[Docs](/docs/1.9/usage/jobs/), [Source](https://github.com/dcos/metronome)
+
+### Docker GC
+
+**NEW IN 1.9.0**
+
+Docker GC garbage collects Docker containers and images.
+
+System Service(s): dcos-docker-gc.service, dcos-docker-gc.timer
+
+Dependencies: TODO
+
+[Source](https://github.com/spotify/docker-gc)
+
+
+## Logging &amp; Metrics
+
+No software runs perfectly, especially not the first time. Distribute tasks across a cluster and the normal patterns of analyzing and debugging these services become tedious and painful. So DC/OS includes several components to help ease the pain of debugging distributed systems by aggregating, caching, and streaming logs, metrics, and cluster state metadata.
+
+### 3DT
+
+The DC/OS Distributed Diagnostics Tool (3DT) aggregates and exposes system component health.
+
+API: `/system/health/v1/`
+
+System Service(s): dcos-3dt.service, dcos-3dt.socket
+
+Dependencies: TODO
+
+[Source](https://github.com/dcos/3dt)
+
+### Log Service
+
+**NEW IN 1.9.0**
+
+Log Service exposes component, container, and task logs.
+
+System Service(s): dcos-log-master.service, dcos-log-master.socket, dcos-logrotate-master.service, dcos-logrotate-master.timer, dcos-log-agent.service, dcos-log-agent.socket
+
+Dependencies: TODO
+
+[Source](https://github.com/dcos/dcos-log)
+
+### Logrotate
+
+Logrotate manages rotation, compression, and deletion of historical log files.
+
+[Docs](http://www.linuxcommand.org/man_pages/logrotate8.html), [Source](https://github.com/logrotate/logrotate)
+
+### Metrics Service
+
+**NEW IN 1.9.0**
+
+Metrics Service exposes host, container, and task metrics.
+
+System Service(s): dcos-metrics-master.service, dcos-metrics-master.socket, dcos-metrics-agent.service, dcos-metrics-agent.socket
+
+Dependencies: TODO
+
+[Source](https://github.com/dcos/dcos-metrics)
+
+### Signal
+
+Signal reports cluster telemetry and analytics to help improve DC/OS. Administrators can [opt-out of telemetry](/docs/1.9/administration/installing/opt-out/#telemetry) at install time.
+
+System Service(s): dcos-signal.service, dcos-signal.timer
+
+Dependencies: TODO
+
+[Source](https://github.com/dcos/dcos-signal)
+
+### History Service
+
+History Service caches and exposes historical system state to facilitate cluster usage statistics in the GUI.
+
+System Service(s): dcos-history.service
+
+Dependencies: TODO
+
+[Source](https://github.com/dcos/dcos/tree/master/packages/dcos-history/extra)
+
+
+## Networking
+
+In a world where machines are are given numbers instead of names, tasks are scheduled automatically, dependencies are declaratively defined, and services run in distributed sets, network administration also needs to be elevated from plugging in cables to configuring software-defined networks. To accomplish this, DC/OS includes a fleet of networking components for routing, proxying, name resolution, virtual IPs, load balancing, and distributed reconfiguration.
+
+### Admin Router
+
+Admin Router exposes a unified control plane proxy for components and services using [NGINX](https://www.nginx.com/).
+
+Admin Router Agent proxies node-specific health, logs, metrics, and package management internal endpoints.
+
+System Service(s): dcos-adminrouter.service, dcos-adminrouter-reload.service, dcos-adminrouter-reload.timer, dcos-adminrouter-agent.service, dcos-adminrouter-agent-reload.service, dcos-adminrouter-agent-reload.timer
+
+Dependencies: TODO
+
+[Source](https://github.com/dcos/adminrouter)
+
+### Mesos-DNS
+
+Mesos-DNS provides domain name based service discovery within the cluster.
+
+System Service(s): dcos-mesos-dns.service
+
+Dependencies: TODO
+
+[Docs](http://mesosphere.github.io/mesos-dns/), [Source](https://github.com/mesosphere/mesos-dns)
+
+### Spartan
+
+Spartan forwards DNS requests to multiple DNS servers.
+
+Spartan Watchdog restarts Spartan when it is unhealthy.
+
+System Service(s): dcos-spartan.service, dcos-spartan-watchdog.service, dcos-spartan-watchdog.timer
+
+Dependencies: TODO
+
+[Source](https://github.com/dcos/spartan)
+
+### Generate resolv.conf
+
+Generate resolv.conf manages DNS resolution configuration in `/etc/resolv.conf` to facilitate DC/OS's software defined networking.
+
+System Service(s): dcos-gen-resolvconf.service, dcos-gen-resolvconf.timer
+
+Dependencies: TODO
+
+[Source](https://github.com/dcos/dcos/blob/master/packages/spartan/extra/gen_resolvconf.py)
+
+### Minuteman
+
+Minuteman provides distributed [Layer 4](https://en.wikipedia.org/wiki/Transport_layer) virtual IP load balancing.
+
+System Service(s): dcos-minuteman.service
+
+Dependencies: TODO
+
+[Docs](/docs/1.9/usage/service-discovery/load-balancing-vips/), [Source](https://github.com/dcos/minuteman)
+
+### Navstar
+
+Navstar orchestrates virtual overlay networks using [VXLAN](https://en.wikipedia.org/wiki/Virtual_Extensible_LAN).
+
+System Service(s): dcos-navstar.service
+
+Dependencies: TODO
+
+[Source](https://github.com/dcos/navstar)
+
+### Erlang Port Mapper
+
+Erlang Port Mapper (EPMD) maps symbolic names to machine addresses, facilitating named virtual IPs.
+
+System Service(s): dcos-epmd.service
+
+Dependencies: TODO
+
+[Source](https://github.com/erlang/epmd)
+
+
+## Package Management
+
+Just as machine operating systems need package management to install, upgrade, configure, and remove individual applications and services, a datacenter operating system needs package management to do the same for distributed services. In DC/OS there are two levels of package management: machine-level for components; and cluster-level for user services.
+
+### Cosmos
+
+Cosmos installs and manages DC/OS packages from [DC/OS package repositories](/docs/1.9/usage/repo/), such as [Mesosphere Universe](https://github.com/mesosphere/universe).
+
+System Service(s): dcos-cosmos.service
+
+Dependencies: TODO
+
+[Source](https://github.com/dcos/cosmos)
+
+### PkgPanda
+
+PkgPanda installs and manages DC/OS components.
+
+System Service(s): dcos-pkgpanda-api.service, dcos-pkgpanda-api.socket
+
+Dependencies: TODO
+
+[Source](https://github.com/dcos/dcos/tree/master/pkgpanda)
+
+
+## IAM & Security
+
+Identity management in DC/OS is delegated to external identity providers, taking advantage of existing infrastructure to reduce the cost and time to market. Security is provided via OAuth authentication and enforced at the edge by Admin Router's reverse proxy.
+
+### OAuth Service
+
+OAuth Service authenticates users using [OAuth](https://oauth.net/) and [Auth0](https://auth0.com/).
+
+System Service(s): dcos-oauth.service
+
+Dependencies: TODO
+
+[Source](https://github.com/dcos/dcos-oauth)
+
+
+## Storage
+
+DC/OS provides multiple different ways to provision and allocate disk space and volumes to tasks. One of those methods, external persistent volumes, is managed by its own component.
+
+### REX-Ray
+
+REX-Ray orchestrates provisioning, attachment, and mounting of external persistent volumes.
+
+System Service(s): dcos-rexray.service
+
+Dependencies: TODO
+
+[Docs](http://rexray.readthedocs.io/), [Source](https://github.com/codedellemc/rexray)
+
+
+## Legacy Component Changes
+
+The **Cluster ID service** was removed in DC/OS 1.9.0. The universally unique identifier (UUID) for each cluster is now generated by the DC/OS Setup service.
+
+The **Mesos Persistent Volume Discovery service** was removed in DC/OS 1.9.0. Detection of [mounted disk resources](https://dcos.io/docs/1.8/administration/storage/mount-disk-resources/) is now handled by the DC/OS Setup service.
+
+
+## Sockets &amp; Timers
+
+Several components are configured to use [systemd sockets](https://www.freedesktop.org/software/systemd/man/systemd.socket.html) which allows them to be started on-demand when a request comes in, rather than running continuously and consuming resources unnecessarily. While these sockets are separate [systemd units](https://www.freedesktop.org/software/systemd/man/systemd.unit.html) they are not considered separate components.
+
+Several components are configured to use [systemd timers](https://www.freedesktop.org/software/systemd/man/systemd.timer.html) which allows them to be periodically executed or restarted. Periodic execution avoids continuous execution and consuming resources unnecessarily. Periodic restarting allows for picking up new configurations from downstream dependencies, like time-based DNS cache expiration. While these timers are separate [systemd units](https://www.freedesktop.org/software/systemd/man/systemd.unit.html) they are not considered separate components.
+
+
+## Component Management
+
+TODO: GUI components page
+
+TODO: CLI component list/logs
+
+
+## Component Installation
+
+DC/OS components are installed, upgraded, and managed by [pkgpanda](https://github.com/dcos/dcos/tree/master/pkgpanda), a package manager for systemd units.
+
+To see the full list of packages managed by the DC/OS installer, see the [packages directory of the DC/OS source repository](https://github.com/dcos/dcos/tree/master/packages).
+
+
+## Systemd Services
+
+Most DC/OS components run as [systemd services](/docs/1.9/overview/concepts/#systemd-service) on the DC/OS nodes.
+
+To see a list of the systemd components running on any particular node, list the contents of the `/etc/systemd/system/dcos.target.wants/` directory or execute `systemctl | grep dcos-` to see their current status.
+
+On a master node:
+
+```
+[vagrant@m1 ~]$ ls /etc/systemd/system/dcos.target.wants/
+dcos-3dt.service                 dcos-log-master.service        dcos-minuteman.service
+dcos-adminrouter-reload.service  dcos-log-master.socket         dcos-navstar.service
+dcos-adminrouter-reload.timer    dcos-logrotate-master.service  dcos-oauth.service
+dcos-adminrouter.service         dcos-logrotate-master.timer    dcos-pkgpanda-api.service
+dcos-cosmos.service              dcos-marathon.service          dcos-pkgpanda-api.socket
+dcos-epmd.service                dcos-mesos-dns.service         dcos-signal.service
+dcos-exhibitor.service           dcos-mesos-master.service      dcos-signal.timer
+dcos-gen-resolvconf.service      dcos-metrics-master.service    dcos-spartan.service
+dcos-gen-resolvconf.timer        dcos-metrics-master.socket     dcos-spartan-watchdog.service
+dcos-history.service             dcos-metronome.service         dcos-spartan-watchdog.timer
+```
+
+On a private agent node:
+
+```
+[vagrant@a1 ~]$ ls /etc/systemd/system/dcos.target.wants/
+dcos-3dt.service                       dcos-gen-resolvconf.timer     dcos-navstar.service
+dcos-3dt.socket                        dcos-log-agent.service        dcos-pkgpanda-api.service
+dcos-adminrouter-agent-reload.service  dcos-log-agent.socket         dcos-pkgpanda-api.socket
+dcos-adminrouter-agent-reload.timer    dcos-logrotate-agent.service  dcos-rexray.service
+dcos-adminrouter-agent.service         dcos-logrotate-agent.timer    dcos-signal.timer
+dcos-docker-gc.service                 dcos-mesos-slave.service      dcos-spartan.service
+dcos-docker-gc.timer                   dcos-metrics-agent.service    dcos-spartan-watchdog.service
+dcos-epmd.service                      dcos-metrics-agent.socket     dcos-spartan-watchdog.timer
+dcos-gen-resolvconf.service            dcos-minuteman.service
+```
+
+On a public agent node:
+
+[vagrant@p1 ~]$ ls /etc/systemd/system/dcos.target.wants/
+dcos-3dt.service                       dcos-gen-resolvconf.timer        dcos-navstar.service
+dcos-3dt.socket                        dcos-log-agent.service           dcos-pkgpanda-api.service
+dcos-adminrouter-agent-reload.service  dcos-log-agent.socket            dcos-pkgpanda-api.socket
+dcos-adminrouter-agent-reload.timer    dcos-logrotate-agent.service     dcos-rexray.service
+dcos-adminrouter-agent.service         dcos-logrotate-agent.timer       dcos-signal.timer
+dcos-docker-gc.service                 dcos-mesos-slave-public.service  dcos-spartan.service
+dcos-docker-gc.timer                   dcos-metrics-agent.service       dcos-spartan-watchdog.service
+dcos-epmd.service                      dcos-metrics-agent.socket        dcos-spartan-watchdog.timer
+dcos-gen-resolvconf.service            dcos-minuteman.service
