@@ -1,14 +1,16 @@
 ---
 post_title: Quick Start
-feature_maturity: experimental
 menu_order: 0
+post_excerpt: ""
+feature_maturity: experimental
+enterprise: 'no'
 ---
+
 
 Use this guide to get started with DC/OS logging. 
 
-# View the Mesos and DC/OS logs
-
-You can access the Mesos stderr and stdout logs natively through the DC/OS CLI `dcos task log` command. In this example, a task is launched and the stderr and stdout logs from Mesos are accessed. 
+# Deploy a sample app
+Deploy a sample Marathon app for use in this quick start guide.
 
 1.  Create the following Marathon app definition and save as `test-log.json`.
     
@@ -31,16 +33,20 @@ You can access the Mesos stderr and stdout logs natively through the DC/OS CLI `
 1.  Verify that the app has been successfully deployed and note task ID:
 
     ```bash
-    $ dcos task
+    $ dcos task test-log
     ```
     
     The output should resemble:
     
     ```bash
-    NAME                                HOST        USER  STATE  ID
-    test-log                            10.0.1.105  root    R    test-log.e69c4b2f-c255-11e6-a451-aa711cbcaa78
+    NAME      HOST        USER  STATE  ID 
+    test-log  10.0.1.105  root    R    test-log.e69c4b2f-c255-11e6-a451-aa711cbcaa78
     ```
 
+# View the Mesos and DC/OS logs
+
+You can access the Mesos stderr and stdout logs natively through the DC/OS CLI `dcos task log` command. In this example, a task is launched and the stderr and stdout logs from Mesos are accessed. 
+  
 1.  Run this command to view the stdout logs, where `<task_id>` is the task ID:
 
     ```bash
@@ -65,7 +71,7 @@ You can access the Mesos stderr and stdout logs natively through the DC/OS CLI `
     Wed Dec 14 16:50:12 2016 ip-10-0-1-177.us-west-2.compute.internal Command Executor (Task: test-log.2fc56009-c25d-11e6-81b2-9a5d88789ccd) (Command: sh -c 'while true;d...') [7131]: stdout
     Wed Dec 14 16:50:13 2016 ip-10-0-1-177.us-west-2.compute.internal Command Executor (Task: test-log.2fc56009-c25d-11e6-81b2-9a5d88789ccd) (Command: sh -c 'while true;d...') [7131]: stdout
     ```
-    
+
 1.  Run this command to get last 5 log entries:
  
     ```bash
@@ -85,50 +91,6 @@ You can access the Mesos stderr and stdout logs natively through the DC/OS CLI `
 # View the Mesos task and system logs 
 
 You can view logs from tasks or the host subsystem with the `dcos node log` command. 
-
-1.  Create the following Marathon app definition and save as `test-log.json`.
-    
-    ```json
-    {
-      "id": "/test-log",
-      "cmd": "while true;do echo stdout;echo stderr >&2;sleep 1;done",
-      "cpus": 0.001,
-      "instances": 1,
-      "mem": 128
-    }
-    ```
-
-1.  Deploy the app with this CLI command:
-    
-    ```bash
-    $ dcos marathon app add test-log.json
-    ```
-
-1.  Verify that the app has been successfully deployed and note task ID:
-
-    ```bash
-    $ dcos task
-    ```
-    
-    The output should resemble:
-    
-    ```bash
-    NAME                                HOST        USER  STATE  ID
-    test-log                            10.0.1.105  root    R    test-log.e69c4b2f-c255-11e6-a451-aa711cbcaa78
-    ```
-
-1.  Run this command to get the node IDs:
-
-    ```bash
-    $ dcos node
-    ```
-    
-    The output should resemble:
-        
-    ```bash
-    NAME      HOST        USER  STATE  ID                                             
-    test-log  10.0.1.177  root    R    test-log.2fc56009-c25d-11e6-81b2-9a5d88789ccd
-    ```
     
 1.  Run this command to view the leading Mesos master logs:
 
@@ -149,6 +111,8 @@ You can view logs from tasks or the host subsystem with the `dcos node log` comm
     ```bash
     $ dcos node log --mesos-id=<node_id> --lines 3
     ```
+    
+    **Tip:** Run `dcos task` to identify which node is running your app, followed by `dcos node` to get the node ID.
     
     The output should resemble:
     
@@ -203,7 +167,7 @@ You can view logs from tasks or the host subsystem with the `dcos node log` comm
        ...
        ```
     
-1.  Run this command to view the leading master component log for Marathon:
+1.  Run this command to view the leading master component log for DC/OS components. In this example, the Marathon component logs are queried:
 
     ```bash
     $ dcos node log --leader --component dcos-marathon.service
