@@ -6,7 +6,7 @@ menu_order: 4
 
 DC/OS is composed of many open source microservice components meticulously tuned and configured to work together.
 
-![DC/OS Components](/docs/1.9/overview/architecture/img/dcos-component-diagram.png)
+![DC/OS Components](/docs/1.9/overview/architecture/img/dcos-component-diagram-1.9.png)
 
 From the top, DC/OS is a batteries-included container platform that handles container orchestration, package management, and security.
 
@@ -70,7 +70,9 @@ System Service(s): N/A - The CLI is a user downloadable binary.
 
 ## Container Orchestration
 
-While Mesos enables the utilization of custom schedulers, most containerized tasks have very similar scheduling and lifecycle management needs. So DC/OS includes a couple built-in schedulers to orchestrate the most common of these higher level abstractions: jobs and services.
+Container orchestration is the continuous, automated scheduling, coordination, and management of containerized processes and the resources they consume.
+
+DC/OS includes built-in orchestration of the most commonly used high level container-based abstractions: jobs and services. Many use cases are handled directly by these basic abstractions, but they also enable the deployment of custom schedulers for tasks that require more flexible programmatic lifecycle management automation.
 
 ### Marathon
 
@@ -88,11 +90,36 @@ System Service(s): dcos-metronome.service
 
 [Docs](/docs/1.9/usage/jobs/), [Source](https://github.com/dcos/metronome)
 
+
+## Container Runtimes
+
+Container runtimes execute and manage machine level processes in isolated operating system level environments.
+
+DC/OS supports multiple container runtimes using [Mesos' containerizer abstraction](http://mesos.apache.org/documentation/latest/containerizer/).
+
+### Mesos Container Runtime
+
+Mesos Container Runtime (Mesos Containerizer) is a logical component built-in to the Mesos Agent, not technically a separate process. It containerizes Mesos tasks with configurable isolators.
+
+Mesos Container Runtime is often called the Mesos Universal Container Runtime because it supports multiple image formats, including Docker images without using Docker Engine.
+
+System Service(s): N/A
+
+[Mesos Containerizer Docs](http://mesos.apache.org/documentation/latest/mesos-containerizer/)
+
+### Docker Engine
+
+Docker Engine is not installed by the DC/OS Installer, but rather is a system dependency that runs on each node. Mesos Agent also includes a separate logical component called Docker Containerizer which delegates the containerization of Mesos task to Docker Engine.
+
+System Service(s): docker.service
+
+[Docker Containerizer Docs](http://mesos.apache.org/documentation/latest/docker-containerizer/), [Docker Engine Docs](https://docs.docker.com/engine/), [Docker Engine Source](https://github.com/docker/docker/)
+
 ### Docker GC
 
 **NEW IN 1.9.0**
 
-Docker GC garbage collects Docker containers and images.
+Docker GC periodically garbage collects Docker containers and images.
 
 System Service(s): dcos-docker-gc.service, dcos-docker-gc.timer
 
@@ -248,7 +275,7 @@ Identity management in DC/OS is delegated to external identity providers, taking
 
 ### OAuth Service
 
-OAuth Service authenticates users using [OAuth](https://oauth.net/) and [Auth0](https://auth0.com/).
+OAuth Service authenticates users using [OpenID Connect](http://openid.net/connect/) and [Auth0](https://auth0.com/).
 
 System Service(s): dcos-oauth.service
 
