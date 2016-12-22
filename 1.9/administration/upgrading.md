@@ -101,7 +101,7 @@ Proceed with upgrading every master node using the following procedure. When you
     
 1. Migrate Exhibitor Filesystem Paths
 
-    __Important__: This only applies to clusters that were initially installed with a version of DC/OS < 1.8. If the cluster was installed with DC/OS 1.8 or above, the updated paths are already in use.
+    __Important__: This only applies to DC/OS clusters that were initially installed with DC/OS version 1.7.x or earlier. If the cluster was installed with DC/OS 1.8 or above, the updated paths are already in use.
     
     After all masters have been upgraded, run the following commands on any one of the master nodes.
     
