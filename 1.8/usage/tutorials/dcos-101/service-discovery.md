@@ -20,9 +20,9 @@ In this section, we will learn about DC/OS service discovery by exploring the di
   <a name="mesosdns"></a>
   * [Mesos-DNS](https://dcos.io/docs/1.8/usage/service-discovery/mesos-dns/) assigns a Mesos-DNS for every Marathon app. The naming pattern is  *task.scheduler.mesos* and the default scheduler for jobs is `marathon`, so the Mesos-DNS name for our redis service is *redis.marathon.mesos*.
 
-  Let us use [dig](https://en.wikipedia.org/wiki/Dig_(command)) to retrieve the address record (also called the A record): `dig redis.marathon.mesos`.
+  Let us use [dig](https://linux.die.net/man/1/dig) to retrieve the address record (also called the A record): `dig redis.marathon.mesos`.
 
-  The answer should contain similar to this response:
+  The answer should be similar to this response:
 
   ```
   ;; ANSWER SECTION:
