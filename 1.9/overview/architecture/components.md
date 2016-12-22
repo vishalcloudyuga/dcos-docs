@@ -6,7 +6,7 @@ menu_order: 4
 
 DC/OS is composed of many open source microservice components meticulously tuned and configured to work together.
 
-![DC/OS Components](/docs/1.9/overview/architecture/img/dcos-component-diagram-1.9.png)
+![DC/OS Components](/docs/1.9/overview/architecture/img/dcos-components-1.9.png)
 
 From the top, DC/OS is a batteries-included container platform that handles container orchestration, package management, and security.
 
