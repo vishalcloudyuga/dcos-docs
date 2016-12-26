@@ -23,6 +23,8 @@ Issues on Github will be disabled soon.**
 
 - Begin all links at the root `docs` level and include the version number subdirectory. (e.g., `/docs/1.8/administration/access-node/sshcluster/`).
 
+- Do not use hard line breaks for formatting purposes. These are unpredictable in the final output. 
+
 - Each directory must contain an `index.md` file. This acts as the base-level topic for each folder in the site (required).
 
 - Do not include file names in your paths. Our site converts any files not named `index.md` into directory names. For example, the directory `/docs/1.8/administration/` contains a file named `user-management.md`. To link to this content on the live site, you would use the following path: `/docs/1.8/administration/user-management/`.
