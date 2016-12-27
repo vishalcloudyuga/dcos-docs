@@ -215,7 +215,7 @@ Specify the login name used for accessing each GCE instance. Default: `ajazam`.
 Specify the bootstrap nodes public IP. Default: `10.132.0.2`.
 
 ### zone
-You can optionally specify your preferred zone. Default: `europe-west1-d`.
+You can optionally specify your preferred zone. Default: `europe-west1-c`.
 
 
 ### Group 2
