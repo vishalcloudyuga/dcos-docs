@@ -136,7 +136,7 @@ You must create the RSA public/private keypairs to allow passwordless logins via
 1.  Download the `dcos-gce` scripts
 
     ```bash
-    $ git clone https://github.com/ajazam/dcos-gce
+    $ git clone https://github.com/dcos-labs/dcos-gce
     ```
 
 1.  Change directory.
