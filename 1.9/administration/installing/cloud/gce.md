@@ -252,7 +252,7 @@ Specify the number appended to the text *agent* is used to define the hostname o
 Specify the location of the gcloudbin binary. Default: `/usr/local/bin/gcloud`.
 
 ### image
-Specify the disk image used on the master and agent. Default: `/centos-cloud/centos-7-v20160921`.
+Specify the disk image used on the master and agent. Default: `/centos-cloud/centos-7-v20161027`.
 
 ### bootstrap_public_port
 Specify the port on the bootstrap node which is used to fetch the DC/OS installer from each of the master and agent nodes. Default: `8080`.
