@@ -6,7 +6,7 @@ menu_order: 1
 
 The recommended method to install the DC/OS CLI is by clicking the quick-launch icon on the top-left panel of the DC/OS [web interface](/docs/1.9/usage/webinterface). Or, you can manually install the CLI by following these instructions.
 
-<! -- Insert screenshot here, once design is finished. -->
+<!-- Insert screenshot here, once design is finished. -->
 
 *   [Installing the DC/OS CLI on Linux](#linux)
 *   [Installing the DC/OS CLI on OS X](#osx)
