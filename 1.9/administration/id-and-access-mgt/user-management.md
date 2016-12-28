@@ -28,7 +28,7 @@ To manage users:
 
     To switch users, you must log out of the current user and then back in as the new user.
 
-    *   To log out of the DC/OS web interface, click on your username in the lower left corner and select **Sign Out**.
+    *   To log out of the DC/OS web interface, click on your username in the upper-left side and select **Sign Out**.
 
         ![log out](/docs/1.9/administration/id-and-access-mgt/img/auth-enable-logout-user.gif)
 

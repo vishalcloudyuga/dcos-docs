@@ -104,7 +104,7 @@ Launch the DC/OS web interface by entering the Mesos master IP address:
 
 1.  Cut/paste the link provided by after running terraform apply, or by running terraform output from the same directory, into your browser to open the DC/OS web interface. The interface runs on the standard HTTP port 80, so you do not need to specify a port number after the hostname.
 
-2.  Install the DC/OS Command-Line Interface (CLI). You can install the CLI to administer your DC/OS cluster. You can access the documentation at any time by clicking the caret icon in the lower left corner.
+2.  Install the DC/OS Command-Line Interface (CLI). You can install the CLI to administer your DC/OS cluster. You can access the documentation at any time by clicking the cluster name in the upper-left corner.
 
     ![dcos help link](../../../img/digitalocean_help_link.png)
 

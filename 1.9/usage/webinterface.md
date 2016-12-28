@@ -16,7 +16,7 @@ There main tabs in the DC/OS UI are:
 - [Universe](#universe)
 - [System](#system)
 
-Additionally, there is a User Menu on the upper-right side of the web interface that includes links for documentation, CLI installation, and user sign out.
+Additionally, there is a User Menu on the upper-left side of the web interface that includes links for documentation, CLI installation, and user sign out.
 
 # <a name="dashboard"></a>Dashboard
 
