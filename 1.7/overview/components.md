@@ -46,6 +46,8 @@ From this complete list of cluster hosts, it queries all 3DT health endpoints (`
 ## Distributed DNS Proxy
 Distributed DNS Proxy is our internal DNS dispatcher. It conforms to RFC5625 as a DNS forwarder for DC/OS cluster services.
 
+## Downloads Service
+This component (`dcos-download.service`) downloads the DC/OS installation tarball on first boot.
 
 ## Erlang Port Mapper (EPMD) Service
 The erlang port mapper is designed to support our internal layer 4 load balancer we call `minuteman`.
