@@ -136,7 +136,7 @@ You must create the RSA public/private keypairs to allow passwordless logins via
 1.  Download the `dcos-gce` scripts
 
     ```bash
-    $ git clone https://github.com/ajazam/dcos-gce
+    $ git clone https://github.com/dcos-labs/dcos-gce
     ```
 
 1.  Change directory.
@@ -211,7 +211,7 @@ Specify the login name used for accessing each GCE instance. Default: `ajazam`.
 Specify the bootstrap nodes public IP. Default: `10.132.0.2`.
 
 ### zone
-You can optionally specify your preferred zone. Default: `europe-west1-d`.
+You can optionally specify your preferred zone. Default: `europe-west1-c`.
 
 
 ### Group 2
@@ -252,7 +252,7 @@ Specify the number appended to the text *agent* is used to define the hostname o
 Specify the location of the gcloudbin binary. Default: `/usr/local/bin/gcloud`.
 
 ### image
-Specify the disk image used on the master and agent. Default: `/centos-cloud/centos-7-v20160921`.
+Specify the disk image used on the master and agent. Default: `/centos-cloud/centos-7-v20161027`.
 
 ### bootstrap_public_port
 Specify the port on the bootstrap node which is used to fetch the DC/OS installer from each of the master and agent nodes. Default: `8080`.
