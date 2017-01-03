@@ -215,7 +215,7 @@ To demonstrate the vhost feature:
 
 1.  Find your [public agent IP](/docs/1.9/administration/locate-public-agent/). 
 
-1.  Modify the external nginx app (`nginx-external.json`) to point to your public agent IP. You can modify your app by using the DC/OS CLI or GUI.
+1.  Modify the external nginx app (`nginx-external.json`) to point to your public DNS name. You can modify your app by using the DC/OS CLI or GUI.
 
     **DC/OS CLI** 
         
@@ -229,6 +229,7 @@ To demonstrate the vhost feature:
           }
         }
         ```
+        **Important:** Do not include the leading `http://`trailing slash (`/`) in your public DNS name.
     
     1.  Run this command to replace the contents of the deployed `nginx-external.json` with your modified local copy:
    
@@ -241,20 +242,18 @@ To demonstrate the vhost feature:
         ```bash
         Created deployment 5f3e06ff-e077-48ee-afc0-745f167bc105
         ```
-        
-    1.  Deploy the modified nginx external app on DC/OS using this command:
-    
-        ```bash
-        dcos marathon app add nginx-external.json
-        ```
        
     **DC/OS GUI**
     
-    1.  Navigate to the **Services** > **nginx-external** service.
+    1.  Navigate to the **Services > Services > nginx-external** service and click edit.
  
-    1.  Select **Edit** > **Labels** > **Add Label**.
+    1.  Select **Environment > ADD LABEL**.
+    
+    1.  Enter `HAPROXY_0_VHOST` for **KEY** and specify your public DNS name for **VALUE**.
     
         ![Update app](/docs/1.9/usage/service-discovery/marathon-lb/img/nginx-external-gui.png)
+        
+        **Important:** Do not include the leading `http://`trailing slash (`/`) in your public DNS name.
         
     1.  Select **Deploy**.
     
