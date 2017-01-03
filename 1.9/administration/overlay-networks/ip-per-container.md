@@ -192,5 +192,5 @@ To replace your virtual network, uninstall DC/OS and delete the replicated log o
 
 # Troubleshooting
 
-The **Networking** tab of the DC/OS web interface provides information helpful for troubleshooting. You can see which containers are on which network and see their IP addresses.
+The **Networkinging** tab of the DC/OS web interface provides information helpful for troubleshooting. You can see which containers are on which network and see their IP addresses.
 
