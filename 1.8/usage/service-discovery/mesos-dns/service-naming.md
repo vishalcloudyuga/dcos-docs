@@ -3,7 +3,7 @@ post_title: Service Naming
 menu_order: 0
 ---
 
-Mesos-DNS defines the DNS top-level domain `.mesos` for Mesos tasks that are running on DC/OS. Tasks and services are discovered by looking up A and, optionally, SRV records within this Mesos domain. 
+Mesos-DNS defines the DNS top-level domain `.mesos` for Mesos tasks that are running on DC/OS. Tasks and services are discovered by looking up A and, optionally, SRV records within this Mesos domain.
 
 - [A Records](#a-records)
 - [SRV Records](#srv-records)
@@ -284,21 +284,21 @@ You can get a comprehensive list of the apps running on your DC/OS cluster nodes
 **Prerequisites:** [DC/OS and DC/OS CLI](/docs/1.8/administration/installing/) are installed.
 
 1.  SSH into your node. For example, use this CLI command to SSH to your master:
-    
+
     ```bash
     $ dcos node ssh --leader --master-proxy
-    ``` 
-    
-    For more information, see the SSH [documentation]/docs/1.8/administration/access-node/sshcluster/.
+    ```
+
+    For more information, see the SSH [documentation](/docs/1.8/administration/access-node/sshcluster/).
 
 2.  Run this command from your master node to view the node details:
-    
+
     ```bash
     $ curl http://master.mesos:8123/v1/enumerate
-    ``` 
-    
+    ```
+
     In this example, Kafka and Chronos are installed:
-    
+
     ```bash
        $ curl http://master.mesos:8123/v1/enumerate
          {
@@ -399,7 +399,7 @@ You can get a comprehensive list of the apps running on your DC/OS cluster nodes
              "name": "marathon"
             }
            ]
-    ```       
+    ```
 
 
 
