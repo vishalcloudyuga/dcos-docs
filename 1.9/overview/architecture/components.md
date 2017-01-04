@@ -62,6 +62,7 @@ DC/OS provides a way to view and operate a large number of individual machine-le
 </span>
 </div>
 
+
 # Container Orchestration
 
 Container orchestration is the continuous, automated scheduling, coordination, and management of containerized processes and the resources they consume.
@@ -85,6 +86,7 @@ DC/OS includes built-in orchestration of the most commonly used high level conta
 <p><strong>See Also:</strong> [Docs](/docs/1.9/usage/jobs/), [Source](https://github.com/dcos/metronome)</p>
 </span>
 </div>
+
 
 # Container Runtimes
 
@@ -119,6 +121,7 @@ DC/OS supports multiple container runtimes using [Mesos' containerizer abstracti
 <p><strong>See Also:</strong> [Source](https://github.com/spotify/docker-gc)</p>
 </span>
 </div>
+
 
 # Logging and Metrics
 
@@ -247,6 +250,7 @@ In a world where machines are are given numbers instead of names, tasks are sche
 <p><strong>See Also:</strong> [Source](https://github.com/erlang/epmd)</p>
 </span>
 </div>
+
 
 # Package Management
 
