@@ -4,7 +4,7 @@ nav_title: Task Types
 menu_order: 2
 ---
 
-DC/OS is capable of running many different kinds of workloads. All workloads are composed of tasks.
+DC/OS can run many different kinds of workloads, which are composed of tasks.
 
 DC/OS tasks are [Mesos tasks](/docs/1.9/overview/concepts/#mesos-task) that have been scheduled by either a DC/OS built-in scheduler or a scheduler service running on DC/OS.
 
@@ -14,7 +14,7 @@ Task types are determined by the [Mesos Executor](/docs/1.9/overview/concepts/#m
 
 ### Built-in executors
 
-Mesos has a couple built-in executors that are available to all schedulers, but schedulers may also bring their own executors.
+Mesos includes built-in executors that are available to all schedulers, but schedulers can also include their own executors.
 
 - Command Executor - execute shell commands or Docker containers
 - Default Executor (Mesos 1.1) - execute a group of shell commands or Docker containers
@@ -32,9 +32,9 @@ DC/OS has two built-in schedulers:
 - The Marathon scheduler provides **services** (Apps and Pods), which run continuously and in parallel.
 - The Metronome scheduler provides **jobs**, which run immediately or on a defined schedule.
 
-For more on Marathon services, see [Service Management with Marathon](/docs/1.9/usage/marathon/) or the [Marathon docs](https://mesosphere.github.io/marathon/docs/).
+For more on Marathon services, see the [Services docs](/docs/1.9/usage/marathon/) or the [Marathon docs](https://mesosphere.github.io/marathon/docs/).
 
-For more on Metronome jobs, see the [Metronome docs](/docs/1.9/usage/jobs/).
+For more on Metronome jobs, see the [Jobs docs](/docs/1.9/usage/jobs/).
 
 ### User space schedulers
 

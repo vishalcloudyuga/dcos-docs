@@ -4,7 +4,7 @@ nav_title: Spaces
 menu_order: 3
 ---
 
-In DC/OS, services may live in one of two spaces: the user space or the system space. These are analogous to the Linux user and kernel spaces.
+In DC/OS, services can live in the user space or the system space. These are analogous to the Linux user and kernel spaces.
 
 These spaces are primarily distinguished by owner and service manager. The system space is owned and managed by the system administrator, while the user space is shared by the other users of the system.
 
