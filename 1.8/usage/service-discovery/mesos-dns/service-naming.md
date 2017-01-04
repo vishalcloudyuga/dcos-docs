@@ -294,13 +294,13 @@ You can get a comprehensive list of the apps running on your DC/OS cluster nodes
 2.  Run this command from your master node to view the node details:
 
     ```bash
-    $ curl http://master.mesos:8123/v1/enumerate
+    $ curl http://localhost:8123/v1/enumerate
     ```
 
     In this example, Kafka and Chronos are installed:
 
     ```bash
-       $ curl http://master.mesos:8123/v1/enumerate
+       $ curl http://localhost:8123/v1/enumerate
          {
            "frameworks": [
             {
