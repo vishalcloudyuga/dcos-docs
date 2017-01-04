@@ -31,7 +31,7 @@ DC/OS provides a way to view and operate a large number of individual machine-le
 <span>
 <p><strong>Description:</strong> Zookeeper stores cluster state. Exhibitor manages Zookeeper and provides a management web interface.<p>
 <p><strong>System Service(s):</strong> <code class="nowrap">dcos-exhibitor.service</code></p>
-<p><strong>See Also:</strong> [Exhibitor Source](https://github.com/Netflix/exhibitor), [Zookeeper Docs](https://zookeeper.apache.org/), [Zookeeper Source](https://github.com/apache/mesos)</p>
+<p><strong>See Also:</strong> [Exhibitor Source](https://github.com/Netflix/exhibitor), [Exhibitor Wrapper Source](https://github.com/mesosphere/exhibitor-dcos), [Zookeeper Docs](https://zookeeper.apache.org/), [Zookeeper Source](https://github.com/apache/mesos)</p>
 </span>
 </div>
 
