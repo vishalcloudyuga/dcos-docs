@@ -27,7 +27,7 @@ DC/OS provides a way to view and operate a large number of individual machine-le
 </div>
 
 <div data-role="collapsible">
-<h2>Exhibitor &amp; Apache Zookeeper</h2>
+<h2>Exhibitor and Apache Zookeeper</h2>
 <span>
 <p><strong>Description:</strong> Zookeeper stores cluster state. Exhibitor manages Zookeeper and provides a management web interface.<p>
 <p><strong>System Service(s):</strong> <code class="nowrap">dcos-exhibitor.service</code></p>
@@ -71,7 +71,7 @@ DC/OS includes built-in orchestration of the most commonly used high level conta
 <div data-role="collapsible">
 <h2>Marathon</h2>
 <span>
-<p><strong>Description:</strong> Marathon orchestrates long-lived containerized services (apps &amp; pods).</p>
+<p><strong>Description:</strong> Marathon orchestrates long-lived containerized services (apps and pods).</p>
 <p><strong>System Service(s):</strong> <code class="nowrap">dcos-marathon.service</code></p>
 <p><strong>See Also:</strong> [Docs](https://mesosphere.github.io/marathon/), [Source](https://github.com/mesosphere/marathon)</p>
 </span>
@@ -120,7 +120,7 @@ DC/OS supports multiple container runtimes using [Mesos' containerizer abstracti
 </span>
 </div>
 
-# Logging &amp; Metrics
+# Logging and Metrics
 
 No software runs perfectly, especially not the first time. Distribute tasks across a cluster and the normal patterns of analyzing and debugging these services become tedious and painful. So DC/OS includes several components to help ease the pain of debugging distributed systems by aggregating, caching, and streaming logs, metrics, and cluster state metadata.
 
@@ -271,7 +271,7 @@ Just as machine operating systems need package management to install, upgrade, c
 </div>
 
 
-# IAM & Security
+# IAM and Security
 
 Identity management in DC/OS is delegated to external identity providers, taking advantage of existing infrastructure to reduce the cost and time to market. Security is provided via OAuth authentication and enforced at the edge by Admin Router's reverse proxy.
 
@@ -306,7 +306,7 @@ The **Cluster ID service** was removed in DC/OS 1.9.0. The universally unique id
 The **Mesos Persistent Volume Discovery service** was removed in DC/OS 1.9.0. Detection of [mounted disk resources](https://dcos.io/docs/1.8/administration/storage/mount-disk-resources/) is now handled by the DC/OS Setup service.
 
 
-# Sockets &amp; Timers
+# Sockets and Timers
 
 Several components are configured to use [systemd sockets](https://www.freedesktop.org/software/systemd/man/systemd.socket.html) which allows them to be started on-demand when a request comes in, rather than running continuously and consuming resources unnecessarily. While these sockets are separate [systemd units](https://www.freedesktop.org/software/systemd/man/systemd.unit.html) they are not considered separate components.
 
