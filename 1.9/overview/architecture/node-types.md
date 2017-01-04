@@ -15,7 +15,7 @@ A DC/OS cluster is composed of three types of nodes: masters, private agents, an
 
 A DC/OS master node is a node that works together with other master nodes to manage the rest of the cluster.
 
-Master nodes contain the bulk of the DC/OS components, including most notably a Mesos master process.
+Master nodes contain the bulk of the DC/OS components, including a Mesos master process.
 
 ### Protected Zone
 
@@ -31,7 +31,7 @@ A cluster with only one master node is usable for development, but is not highly
 
 Mesos performs [leader election](https://en.wikipedia.org/wiki/Leader_election) and routes incoming traffic to the current leader to ensure consistency.
 
-Like Mesos, several DC/OS master node components (e.g. Marathon &amp; Zookeeper) also perform independent leader election. This means that the leaders for different components may be on different master nodes.
+Like Mesos, several other DC/OS master node components perform independent leader election. This means that the leaders for different components, like Marathon and ZooKeeper, may be on different master nodes.
 
 ### Quorum
 
@@ -39,14 +39,14 @@ To maintain consistency, a quorum (half plus one) of master nodes must be connec
 
 For example, having three master nodes allows one to be down; having five master nodes allows two to be down, allowing for failure during a rolling update. Additional master nodes can be added for additional risk tolerance.
 
-DC/OS currently only allows specifying the number of master nodes at install time, due mostly to the complexity of changing the quorum and configuration of multiple components with leaders on different nodes.
+The number of master nodes can only be specified during installation. This is primarily because of the complexity of changing the quorum and configuration of multiple components with leaders on different nodes. This may change in the future.
 
 
 ## Agent Nodes
 
 A DC/OS agent node is a node on which user tasks are run.
 
-Agent nodes contain a few DC/OS components, including most notably a Mesos agent process.
+Agent nodes contain a few DC/OS components, including a Mesos agent process.
 
 Agent nodes can be public or private, depending on agent and network configuration.
 
@@ -56,7 +56,7 @@ A public agent node is an agent node that is on a network with have ingress acce
 
 The resources on private agent nodes are, by default, configured to only be allocated to tasks that specify the `slave_public` role. The Mesos agents on private agent nodes also have the `public_ip:true` agent attribute to assist in their discovery.
 
-Public agent nodes are used primarily for externally facing reverse proxy load balancers, like Marathon-LB. This provides a [DMZ](https://en.wikipedia.org/wiki/DMZ_(computing)) that decreases the surface area accessible by malicious attackers.
+Public agent nodes are used primarily for externally facing reverse proxy load balancers, like Marathon-LB. This provides a [DMZ](https://en.wikipedia.org/wiki/DMZ_%28computing%29) that decreases the surface area accessible by malicious attackers.
 
 Clusters generally have only a few public agent nodes, because a few load balancers can usually handle proxying to multiple services.
 
@@ -66,9 +66,9 @@ A private agent node is an agent node that is on a network that does not have in
 
 The resources on private agent nodes are, by default, configured to allow undifferentiated allocation. More precisely, the resources are given the `*` role, allowing them to be allocated to any task that does not specify a role. For more information, see [Mesos resource roles](http://mesos.apache.org/documentation/latest/roles/).
 
-Because these resources are undifferentiated, most tasks are scheduled on private agent nodes and are thus inaccessible from outside the cluster, decreasing the surface area accessible by malicious attackers. For this reason, clusters are generally comprised of mostly private agent nodes. Likewise, most [Mesosphere Universe](https://dcos.io/docs/1.8/overview/concepts/#mesosphere-universe) packages install by default on private agent nodes.
+Because these resources are undifferentiated, most tasks are scheduled on private agent nodes and are inaccessible from outside the cluster, decreasing the surface area accessible by malicious attackers. For this reason, clusters are generally comprised of mostly private agent nodes. Likewise, most [Mesosphere Universe](https://dcos.io/docs/1.8/overview/concepts/#mesosphere-universe) packages install by default on private agent nodes.
 
-## See Also
+## More Information
 
 For more on master and agent node components, see [Components](/docs/1.9/overview/architecture/components/).
 
