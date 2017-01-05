@@ -4,12 +4,8 @@ nav_title: Concepts
 menu_order: 5
 ---
 
-- [DC/OS Concepts](#dcos-concepts)
-- [Mesos Concepts](#mesos-concepts)
-- [Marathon Concepts](#marathon-concepts)
 
-
-## <a name="dcos-concepts"></a>DC/OS Concepts
+# <a name="dcos-concepts"></a>DC/OS Concepts
 
 DC/OS is made up of many open source components, several of which existed before DC/OS. The terms used in this document may be similar to pre-existing terms that you are familiar with, however, they might be used in a different way with DC/OS.
 
@@ -257,7 +253,7 @@ A cloud template is an infrastructure-specific method of decoratively describing
 For more information, see [Cloud Installation Options](/docs/1.9/administration/installing/cloud/).
 
 
-## <a name="mesos-concepts"></a>Mesos Concepts
+# <a name="mesos-concepts"></a>Mesos Concepts
 
 The following terms are contextually correct when talking about Apache Mesos, but may be hidden by other abstraction within DC/OS.
 
@@ -365,7 +361,7 @@ Mesos-DNS is a DC/OS component that provides service discovery within the cluste
 
 For more information, see the [Mesos-DNS documentation](/docs/1.9/usage/service-discovery/mesos-dns/).
 
-## <a name="marathon-concepts"></a>Marathon Concepts
+# <a name="marathon-concepts"></a>Marathon Concepts
 
 The following terms are contextually correct when talking about Marathon, but may be hidden by other abstraction within DC/OS.
 
