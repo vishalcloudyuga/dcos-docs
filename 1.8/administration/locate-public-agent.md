@@ -24,8 +24,6 @@ Here is an example where the public IP address is `52.39.29.79`:
 ```
 $ for id in $(dcos node --json | jq --raw-output '.[] | select(.reserved_resources.slave_public != null) | .id'); do dcos node ssh --option StrictHostKeyChecking=no --option LogLevel=quiet --master-proxy --mesos-id=$id "curl -s ifconfig.co" ; done 2>/dev/null
 52.39.29.79
-52.40.79.170
-52.40.79.170
 ```
 
 

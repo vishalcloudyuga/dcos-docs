@@ -27,6 +27,7 @@ Below you will find some instructions on how to contribute to the DC/OS docs. By
 
   - If this is your first contribution, go to your terminal, navigate to the directory where you keep your Git projects, and clone your fork of the [dcos-docs](https://github.com/dcos/dcos-docs) repo.
 
+
       ```bash
       $ git clone https://github.com/<your-user-name>/dcos-docs
       ```

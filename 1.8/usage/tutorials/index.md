@@ -31,8 +31,15 @@ Continuous Integration and Continuous Deployment:
 
 - [Jenkins](https://github.com/dcos/examples/tree/master/1.8/jenkins/)
 - [Private Docker registry](https://github.com/dcos/examples/tree/master/1.8/registry)
-- [Autoscaling with Marathon](/docs/1.8/usage/tutorials/autoscaling/)
 - [Chronos](https://github.com/dcos/examples/tree/master/1.8/chronos/)
+- [Nexus 3](https://github.com/dcos/examples/tree/master/1.8/nexus)
+
+Day 2 operations:
+
+- [Autoscaling with Marathon](/docs/1.8/usage/tutorials/autoscaling/)
+- [linkerd](https://github.com/dcos/examples/blob/master/1.8/linkerd)
+- [Monitoring with cAdvisor, InfluxDB and Grafana](https://github.com/dcos/examples/blob/master/1.8/cadvisor-influxdb-grafana)
+- [Vamp](https://github.com/dcos/examples/tree/master/1.8/vamp)
 
 Web and app server:
 
@@ -42,7 +49,6 @@ Web and app server:
 Combined services and miscellaneous: 
 
 - [WordPress](https://github.com/dcos/examples/tree/master/1.8/wordpress/)
+- [Scale](https://github.com/dcos/examples/tree/master/1.8/scale), on-demand, near real-time, automated processing of large datasets
 - [Building an IoT Pipeline](/docs/1.8/usage/tutorials/iot_pipeline/)
-
-Canary releasing:
-- [Vamp] (https://github.com/dcos/examples/tree/master/1.8/vamp)
+- [Bookkeeper](https://github.com/dcos/examples/tree/master/1.8/bookkeeper)

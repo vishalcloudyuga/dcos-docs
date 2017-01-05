@@ -4,7 +4,7 @@ nav_title: Reference
 menu_order: 5
 ---
 
-## dcos
+# dcos
 
     Description:
         The Mesosphere Datacenter Operating System (DC/OS) spans all of the machines in
@@ -30,31 +30,50 @@ menu_order: 5
             Print version information.
     
 
-## dcos auth
+# dcos auth
 
     Description:
-        Authenticate to DC/OS cluster.
+        Authenticate to DC/OS cluster
     
     Usage:
+        dcos auth --help
         dcos auth --info
+        dcos auth list-providers [--json]
         dcos auth login
+            [--provider=<provider_id>] [--username=<username>]
+            [--password=<password> | --password-file=<password_file>
+            | --password-env=<password_env> | --private-key=<key_path>]
         dcos auth logout
     
     Commands:
+        list-providers
+            List configured authentication providers for your DC/OS cluster.
         login
-            Login to your DC/OS Cluster.
+            Login to your DC/OS cluster.
         logout
-            Logout of your DC/OS Cluster.
+            Logout of your DC/OS cluster.
     
     Options:
         -h, --help
             Print usage.
         --info
             Print a short description of this subcommand.
+        --password=<password>
+            Specify password on the command line (insecure).
+        --password-env=<password_env>
+            Specify environment variable name that contains the password.
+        --password-file=<password_file>
+            Specify path to a file that contains the password.
+        --provider=<provider_id>
+            Specify authentication provider to use for login.
+        --private-key=<key_path>
+            Specify path to file that contains the private key.
+        --username=<username>
+            Specify username for login.
         --version
             Print version information.
 
-## dcos config
+# dcos config
 
     Description:
         Manage the DC/OS configuration file.
@@ -92,7 +111,7 @@ menu_order: 5
             The value of the property.
     
 
-## dcos help
+# dcos help
 
     Description:
         Display help information about DC/OS.
@@ -118,7 +137,7 @@ menu_order: 5
         <subcommand>
             The subcommand name.
     
-## dcos job
+# dcos job
 
     Description:
         Deploy and manage jobs in DC/OS.
@@ -202,13 +221,14 @@ menu_order: 5
         <schedule-id>
             The schedule ID.
 
-## dcos marathon
+# dcos marathon
 
     Description:
         Deploy and manage applications to DC/OS.
     
     Usage:
         dcos marathon --config-schema
+        dcos marathon --help
         dcos marathon --info
         dcos marathon about
         dcos marathon app add [<app-resource>]
@@ -232,7 +252,17 @@ menu_order: 5
         dcos marathon group show [--group-version=<group-version>] <group-id>
         dcos marathon group remove [--force] <group-id>
         dcos marathon group update [--force] <group-id> [<properties>...]
+        dcos marathon pod add [<pod-resource>]
+        dcos marathon pod kill <pod-id> [<instance-ids>...]
+        dcos marathon pod list [--json]
+        dcos marathon pod remove [--force] <pod-id>
+        dcos marathon pod show <pod-id>
+        dcos marathon pod update [--force] <pod-id>
+        dcos marathon debug list [--json]
+        dcos marathon debug summary <app-id> [--json]
+        dcos marathon debug details <app-id> [--json]
         dcos marathon task list [--json <app-id>]
+        dcos marathon task stop [--wipe] <task-id>
         dcos marathon task show <task-id>
     
     Commands:
@@ -241,7 +271,7 @@ menu_order: 5
         app add
             Add an application.
         app list
-            Print a list of the installed applications.
+            List the installed applications.
         app remove
             Remove an application.
         app restart
@@ -278,10 +308,33 @@ menu_order: 5
             Remove a group.
         group update
             Update a group.
+        pod add
+            Create a new pod.
+        pod kill
+            Kill one or more running pod instances.
+        pod list
+            List the deployed pods.
+        pod remove
+            Remove a pod.
+        pod show
+            Display detailed information for a specific pod.
+        pod update
+            Update a pod.
+        debug list
+            Print a list of currently queued instance launches for
+            debugging purpose.
+        debug summary
+            Display summarized information for a queued instance launch
+            for debugging purpose.
+        debug details
+            Display detailed information for a queued instance launch
+            for debugging purpose.
         task list
-            Print a list of all tasks.
+            List all tasks.
+        task stop
+            Stop a task. Wipe persistent data if `--wipe` is set.
         task show
-            Print a specific task.
+            List a specific task.
     
     Options:
         --app-version=<app-version>
@@ -307,7 +360,7 @@ menu_order: 5
         --interval=<interval>
             Number of seconds to wait between actions.
         --json
-            Print JSON-formatted list of tasks.
+            Print JSON-formatted data.
         --max-count=<max-count>
             Maximum number of entries to fetch and return.
         --scale
@@ -322,7 +375,7 @@ menu_order: 5
             Path to a file or HTTP(S) URL that contains the app's JSON definition.
             If omitted, the definition is read from stdin. For a detailed
             description see
-            https://mesosphere.github.io/marathon/docs/rest-api.html#post-/v2/apps.
+            https://mesosphere.github.io/marathon/docs/rest-api.html#post-v2-apps.
         <deployment-id>
             The deployment ID.
         <group-id>
@@ -331,20 +384,27 @@ menu_order: 5
             Path to a file or HTTP(S) URL that contains the group's JSON definition.
             If omitted, the definition is read from stdin. For a detailed
             description see
-            https://mesosphere.github.io/marathon/docs/rest-api.html#post-/v2/groups.
+            https://mesosphere.github.io/marathon/docs/rest-api.html#post-v2-groups.
+        <instance-ids>
+            List of one or more space-separated pod instance IDs.
         <instances>
             The number of instances.
+        <pod-id>
+            The pod ID.
+        <pod-resource>
+            Path to a file or HTTP(S) URL that contains the pod's JSON definition.
+            If omitted, the definition is read from stdin.
         <properties>
-            List of space-separated config.json properties to update.  The list must
-            be formatted as <key>=<value>. For example, `cpus=2.0 mem=308`. If
-            omitted, properties are read from stdin.
+            List of space-separated JSON object properties to update.  The list
+            must be formatted as <key>=<value>. For example, `cpus=2.0 mem=308`.
+            If omitted, properties are read from a JSON object provided on stdin.
         <task-id>
             The task ID.
         <scale-factor>
             The factor to scale an application group by.
     
 
-## dcos node
+# dcos node
 
     Description:
         Administer and manage DC/OS cluster nodes.
@@ -354,6 +414,8 @@ menu_order: 5
         dcos node --info
         dcos node [--json]
         dcos node log [--follow --lines=N --leader --master --mesos-id=<mesos-id> --slave=<slave-id>]
+                      [--component=<component-name> --filter=<filter>...]
+        dcos node list-components [--leader --mesos-id=<mesos-id> --json]
         dcos node ssh [--option SSHOPT=VAL ...]
                       [--config-file=<path>]
                       [--user=<user>]
@@ -363,8 +425,7 @@ menu_order: 5
         dcos node diagnostics create (<nodes>)...
         dcos node diagnostics delete <bundle>
         dcos node diagnostics download <bundle> [--location=<location>]
-        dcos node diagnostics (--list | --status | --cancel)
-                           [--json]
+        dcos node diagnostics (--list | --status | --cancel) [--json]
     
     Commands:
         log
@@ -374,7 +435,7 @@ menu_order: 5
             cluster.
         diagnostics create
             Create a diagnostics bundle. Nodes can be: ip address, hostname, mesos ID
-            or key words "all", "masters", "agents".
+            or keywords "all", "masters", "agents" (notice the quotes around the keywords).
         diagnostics download
             Download a diagnostics bundle.
         diagnostics delete
@@ -421,6 +482,13 @@ menu_order: 5
             If not set, default to present working directory.
         --version
             Print version information.
+        --list-components
+            Print a list of available DC/OS components on specified node.
+        --component=<component-name>
+            Show DC/OS component logs.
+        --filter=<filter>
+            Filter logs by field and value. Filter must be a string separated by colon.
+            For example: --filter _PID:0 --filter _UID:1
     
     Positional Arguments:
         <command>
@@ -428,7 +496,7 @@ menu_order: 5
 
 By default, `dcos node ssh` connects to the private IP of the node, which is only accessible from hosts within the same network, so you must use the `--master-proxy` option to access your cluster from an outside network. For example, in the default AWS configuration, the private agents are unreachable from the public internet, but you can SSH to them using this option, which will proxy the SSH connection through the publicly reachable master.
 
-## <a name="cli-dcos-package"></a>dcos package
+# <a name="cli-dcos-package"></a>dcos package
 
     Description:
         Install and manage software packages from the a DC/OS package repository.
@@ -525,7 +593,7 @@ By default, `dcos node ssh` connects to the private IP of the node, which is onl
             https://universe.mesosphere.com/rep
     
 
-## dcos service
+# dcos service
 
     Description:
         Manage DC/OS services.
@@ -580,54 +648,69 @@ By default, `dcos node ssh` connects to the private IP of the node, which is onl
 
 **Important:** To view the native DC/OS Marathon logs by using the `dcos service log marathon` command, you must be on the same network or connected by VPN to your cluster. For more information, see [Accessing native DC/OS Marathon logs][1].
 
-## dcos task
+# dcos task
 
-    Description:
-        Manage DC/OS tasks.
-    
-    Usage:
-        dcos task --info
-        dcos task [--completed --json <task>]
-        dcos task log [--completed --follow --lines=N] <task> [<file>]
-        dcos task ls [--long] <task> [<path>]
-    
-    Command:
-        log
-            Print the task log. By default, the 10 most recent task logs from stdout
-            are printed.
-        ls
-            Print the list of files in the Mesos task sandbox.
-    
-    
-    Options:
-        --completed
-            Print completed and in-progress tasks.
-        -h, --help
-            Print usage.
-        --info
-            Print a short description of this subcommand.
-        --follow
-            Dynamically update the log.
-        --json
-            Print JSON-formatted list of tasks.
-        --lines=N
-            Print the last N lines. The default is 10 lines.
-        --long
-            Print full Mesos sandbox file attributes.
-        --version
-            Print version information.
-    
-    Positional Arguments:
-        <file>
-            Specify the sandbox file to print. The default is stdout.
-        <path>
-            The Mesos sandbox directory path. The default is '.'.
-        <task>
-            A full task ID, a partial task ID, or a regular expression.
-    
+```
+Description:
+    Manage DC/OS tasks.
+
+Usage:
+    dcos task --help
+    dcos task --info
+    dcos task exec [--interactive --tty] <task> <cmd> [<args>...]
+    dcos task log [--completed --follow --lines=N] [<task>] [<file>]
+    dcos task ls [--long --completed] [<task>] [<path>]
+    dcos task [--completed --json <task>]
+
+Command:
+    exec
+        Launch a process (<cmd>) inside of a container for a task (<task_id>).
+
+    log
+        Print the task log. By default, the 10 most recent task logs from stdout
+        are printed.
+    ls
+        Print the list of files in the Mesos task sandbox.
+
+Options:
+    --completed
+        Print completed and in-progress tasks.
+    -h, --help
+        Print usage.
+    --info
+        Print a short description of this subcommand.
+    --interactive
+        Attach a STDIN stream to the remote command for interactive session.
+    --tty
+        Attach a TTY to the remote stream.
+    --follow
+        Dynamically update the log.
+    --json
+        Print JSON-formatted list of tasks.
+    --lines=N
+        Print the last N lines. The default is 10 lines.
+    --long
+        Print full Mesos sandbox file attributes.
+    --version
+        Print version information.
+
+Positional Arguments:
+    <cmd>
+        The command to execute inside of the remote container. For example: `/bin/bash`.
+    <args>
+        Additional arguments to pass to the command (`<cmd>`).
+    <file>
+        Specify the sandbox file to print. The default is stdout.
+    <path>
+        The Mesos sandbox directory path. The default is '.'.
+    <task>
+        A full task ID, a partial task ID, or a regular expression.
+``` 
 
 If you specify a partial task ID, logs for all task names that contain the partial task ID are displayed. For example, if you have tasks named `spark1`, `spark2`, and `spark3`, then the command `dcos task log spark` will display task logs for all three of these tasks; you do not need to use wildcards.
 
 If you use a regular expression, you must enclose the task ID in double quotation marks and include an asterisk at the end of the task ID. For example, `dcos task log "spark[13]*"` will display information for tasks `spark1` and `spark3`, but not `spark2`.
 
- [1]: /docs/1.9/administration/logging/service-logs/
+For more information about the `dcos task exec` command, see the Debugging [documentation](/docs/1.9/administration/debugging/quickstart/).
+
+ [1]: /docs/1.9/administration/logging/quickstart/

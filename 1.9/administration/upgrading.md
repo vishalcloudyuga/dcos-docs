@@ -65,7 +65,7 @@ Proceed with upgrading every master node using the following procedure. When you
 1.  Download the `dcos_install.sh` script:
 
     ```
-    $ curl -O <bootstrap_url>/dcos_install.sh
+    $ curl -O http://<bootstrap_url>:<your_port>/dcos_install.sh
     ```
 
 1.  Uninstall pkgpanda:
@@ -98,6 +98,27 @@ Proceed with upgrading every master node using the following procedure. When you
     - Monitor the Exhibitor UI to confirm that the Master rejoins the ZooKeeper quorum successfully (the status indicator will turn green).  The Exhibitor UI is available at `http://<dcos_master>:8181/`.
     - Verify that `curl http://<dcos_master_private_ip>:5050/metrics/snapshot` has the metric `registrar/log/recovered` with a value of `1`.
     - Verify that `http://<dcos_master>/mesos` indicates that the upgraded master is running Mesos 1.0.1.
+    
+1. Migrate Exhibitor Filesystem Paths
+
+    __Important__: This only applies to DC/OS clusters that were initially installed with DC/OS version 1.7.x or earlier. If the cluster was installed with DC/OS 1.8 or above, the updated paths are already in use.
+    
+    After all masters have been upgraded, run the following commands on any one of the master nodes.
+    
+    * Start the migration
+        
+        ```
+        $ sudo /opt/mesosphere/bin/dcos-shell dcos-exhibitor-migrate-perform
+        ```
+        
+    * Wait for the updated config to be rolled out by exhibitor.
+    
+        ```
+        $ until sudo /opt/mesosphere/bin/dcos-shell dcos-exhibitor-migrate-status;do sleep 15;done
+        ```
+      OR Navigate to `http://<dcos_master>/exhibitor/exhibitor/v1/ui/index.html#tabs-config` to follow the update progress from the exhibitor UI.    
+
+    For full details on what each exit code means, run the command with `--help`.
 
 ### DC/OS Agents
 
@@ -108,7 +129,7 @@ Proceed with upgrading every master node using the following procedure. When you
 1.  Download The dcos_install.sh Script
 
     ```
-    $ curl -O <bootstrap_url>/dcos_install.sh
+    $ curl -O http://<bootstrap_url>:<your_port>/dcos_install.sh
     ```
 
 1.  Uninstall pkgpanda

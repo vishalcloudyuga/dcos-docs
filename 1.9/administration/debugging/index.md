@@ -1,11 +1,8 @@
 ---
-post_title: Service and Task Logging
-menu_order: 0
+post_title: Debugging
+feature_maturity: experimental
+menu_order: 3.3
 ---
-
-As soon as you move from one machine to many, accessing and aggregating logs becomes difficult. Once you hit a certain scale, keeping these logs and making them available to others can add massive overhead to your cluster. After watching how users interact with their logs, we’ve scoped the problem to two primary use cases. This allows you to pick the solution with the lowest overhead that solves your specific problem.
-
-# Debugging
 
 When things go wrong, you need to see the logs to understand how to fix it. DC/OS services and tasks write `stdout` and `stderr` files in their sandboxes by default. Traditionally, log aggregation has been the solution here. Write the logs locally and then ship all that data elsewhere for someone to actually access. Moving data around is expensive, especially when it ends up being written multiple times.
 
@@ -15,29 +12,11 @@ DC/OS knows where every task has run in your cluster. It is also able to stream 
 
 Let’s say that you’ve got a service misbehaving. For some reason, it is continually crashing and you need to figure out why. You don’t need to SSH to a specific machine to find the logs and start to understand this problem. Instead, you can use the CLI or GUI to immediately get access to the files that your service is creating.
 
-## CLI
+<!-- Fork a Process Inside a Mesos Container, stream its output (OSS) -->
+<!-- Support Optional Stream of STDIN to Forked Process (OSS) -->
+<!-- Support Optional Pseudo-Teletype for Forked Process (OSS) -->
+<!-- Secure the the Debugging API with Fine Grained Auth (Enterprise) -->
 
-If you’ve created a DC/OS service named `service` and would like to see stdout for every instance of that in real time, you can run the following:
+# Debugging with the DC/OS CLI
 
-```
-$ dcos task log --follow service
-```
-
-For more advanced usage, you can check out the CLI documentation:
-
-- [DC/OS CLI Usage][1]
-
-## GUI
-
-From the **Services** tab in the [DC/OS UI](/docs/1.9/usage/webinterface/) you can download all the log files for your service. You can also monitor stdout/stderr.
-
-# Compliance
-
-Unfortunately, streaming logs from machines in your cluster isn’t always viable. Sometimes, you need the logs stored somewhere else as a history of what’s happened. This is where log aggregation really is required. Check out how to get it setup with some of the most common solutions:
-
-- [ELK][2]
-- [Splunk][3]
-
-[1]: /docs/1.9/usage/cli/
-[2]: ../elk/
-[3]: ../splunk/
+The `dcos task exec` command enables you to run any command inside a task container on a node, including interactive Bash shells. It provides full AuthN and AuthZ support with DC/OS in strict mode (Enterprise Only). You do not need SSH access to a node. This functionality is similar to the [`docker exec`](https://docs.docker.com/engine/reference/commandline/exec/) command. For more information, see the [Quick Start](/docs/1.9/administration/debugging/quickstart/).

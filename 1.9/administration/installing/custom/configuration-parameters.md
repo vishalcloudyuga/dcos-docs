@@ -62,7 +62,7 @@ This parameter specifies the type of storage backend to use for Exhibitor. You c
     *   **exhibitor_zk_hosts**
         This parameter specifies a comma-separated list (`<ZK_IP>:<ZK_PORT>, <ZK_IP>:<ZK_PORT>, <ZK_IP:ZK_PORT>`) of one or more ZooKeeper node IP and port addresses to use for configuring the internal Exhibitor instances. Exhibitor uses this ZooKeeper cluster to orchestrate it's configuration. Multiple ZooKeeper instances are recommended for failover in production environments.
     *   **exhibitor_zk_path**
-        This parameter specifies the filepath that Exhibitor uses to store data, including the `zoo.cfg` file.
+        This parameter specifies the filepath that Exhibitor uses to store data.
 *   `exhibitor_storage_backend: aws_s3`
     This option specifies an Amazon Simple Storage Service (S3) bucket for shared storage. If you specify `aws_s3`, you must also specify these parameters:
     *  **aws_access_key_id**
@@ -234,6 +234,17 @@ This parameter specifies whether to enable sharing of anonymous data for your cl
 
 If you’ve already installed your cluster and would like to disable this in-place, you can go through an [upgrade][3] with the same parameter set.
 
+### cosmos_config
+This parameter specifies a dictionary of packaging configuration to pass to the
+[DC/OS package manager](https://github.com/dcos/cosmos). If set, the following options must be
+specified.
+
+* **staged_package_storage_uri**
+  This parameter specifies where to temporarily store DC/OS packages while they are being added.
+  The value must be a file URL, for example, `file:///var/lib/dcos/cosmos/staged-packages`
+* **package_storage_uri**
+  This parameter specifies where to permanently store DC/OS packages. The value must be a file URL,
+  for example, `file:///var/lib/dcos/cosmos/packages`
 
 # <a name="examples1"></a>Example Configurations
 
@@ -334,7 +345,6 @@ ssh_user: <username>
     agent_list:
     - <agent-private-ip-1>
     - <agent-private-ip-2>
-    - <agent-private-ip-3>
     # Use this bootstrap_url value unless you have moved the DC/OS installer assets.
     bootstrap_url: file:///opt/dcos_install_tmp
     cluster_name: <cluster-name>
@@ -371,7 +381,6 @@ ssh_user: <username>
     agent_list:
     - <agent-private-ip-1>
     - <agent-private-ip-2>
-    - <agent-private-ip-3>
     # Use this bootstrap_url value unless you have moved the DC/OS installer assets.
     bootstrap_url: file:///opt/dcos_install_tmp
     cluster_name: <cluster-name>
@@ -400,7 +409,6 @@ ssh_user: <username>
     agent_list:
     - <agent-private-ip-1>
     - <agent-private-ip-2>
-    - <agent-private-ip-3>
     # Use this bootstrap_url value unless you have moved the DC/OS installer assets.
     bootstrap_url: file:///opt/dcos_install_tmp
     cluster_docker_credentials:
@@ -423,6 +431,31 @@ ssh_user: <username>
     - 8.8.8.8
     ssh_port: 22
     ssh_user: centos
+```
+
+#### <a name="cosmos-config"></a>DC/OS cluster with one master, an Exhibitor/ZooKeeper managed internally, three private agents, Google DNS, and the package manager (Cosmos) configured with persistent storage.
+
+```yaml
+    agent_list:
+    - <agent-private-ip-1>
+    - <agent-private-ip-2>
+    - <agent-private-ip-3>
+    # Use this bootstrap_url value unless you have moved the DC/OS installer assets.
+    bootstrap_url: file:///opt/dcos_install_tmp
+    cluster_name: <cluster-name>
+    master_discovery: static
+    master_list:
+    - <master-private-ip-1>
+    resolvers:
+    # You probably do not want to use these values since they point to public DNS servers.
+    # Instead use values that are more specific to your particular infrastructure.
+    - 8.8.4.4
+    - 8.8.8.8
+    ssh_port: 22
+    ssh_user: centos
+    cosmos_config:
+      staged_package_storage_uri: file:///var/lib/dcos/cosmos/staged-packages
+      package_storage_uri: file:///var/lib/dcos/cosmos/packages
 ```
 
  [1]: https://en.wikipedia.org/wiki/YAML
