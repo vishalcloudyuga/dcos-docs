@@ -100,16 +100,29 @@ If you use the same schedule for more than one job, you can create a separate JS
     dcos job list
     ```
  
-## Modify or View a Job
+## Modify a Job
  
 To modify your job, by update your JSON job file, then run
  
 ```
-dcos job update <job-file.json>
+dcos job update <job-file>.json
 ```
 
-<a name="add-sched"></a>
-To modify the schedule of your job, modify the `schedules` parameter of your jobs file. Then, run one of the following commands:
+### Modify a Job's Schedule
+
+You can update the schedule of your job in two ways, depending if your job has a schedule specified in the `<job-file>.json` or if your job's schedule is kept in a separate file.
+
+#### Modify a Job with a Schedule
+
+Modify the `schedules` parameter of your `<job-file>.json`. Then run
+
+```
+dcos job update <job-file>.json
+```
+
+#### Modify a Job with a Separate Schedule file
+
+Modify your `<schedule-file>.json`. Then, run one of the following commands:
  
 ```bash
 dcos job schedule add <job-id> <schedule-file>.json
@@ -117,6 +130,8 @@ dcos job schedule remove <job-id> <schedule-id>
 dcos job schedule update <job-id> <schedule-file>.json
 ```
  
+## View a Job
+
 To view details about your job, run:
  
 ```
@@ -133,7 +148,7 @@ dcos job schedule show <job-id>
 
 You can also create and administer jobs via the API. [View the full API here](http://dcos.github.io/metronome/docs/generated/api.html).
 
-**Note:** The DC/OS CLI and web interface support a combined JSON format (accessed via the `/v0` endpoint) that allows you to specify a schedule in the job descriptor. To [schedule a job via the API](#add-sched), use two calls: one to add an unscheduled job and another to add a schedule to the job.
+**Note:** The DC/OS CLI and web interface support a combined JSON format (accessed via the `/v0` endpoint) that allows you to specify a schedule in the job descriptor. To schedule a job via the API, use two calls: one to add an unscheduled job and another to associate a `<schedule-file>.json` with the job.
 
 ## Add a Job
 
@@ -163,13 +178,13 @@ curl -H "Authorization: token=$(dcos config show core.dcos_acs_token)" $(dcos co
 The following command lists job runs:
 
 ```
-curl -H "Authorization: token=$(dcos config show core.dcos_acs_token)" $(dcos config show core.dcos_url)/service/metronome/v1/jobs/<myjob>/runs/
+curl -H "Authorization: token=$(dcos config show core.dcos_acs_token)" "$(dcos config show core.dcos_url)/service/metronome/v1/jobs/<myjob>/runs/"
 ```
 
 Stop a run with the following command:
 
 ```
-curl -X POST -H "Authorization: token=$(dcos config show core.dcos_acs_token)" “$(dcos config show core.dcos_url)/service/metronome/v1/jobs/<myjob>/runs/20160725212507ghwfZ/actions/stop”
+curl -X POST -H "Authorization: token=$(dcos config show core.dcos_acs_token)" "$(dcos config show core.dcos_url)/service/metronome/v1/jobs/<myjob>/runs/20160725212507ghwfZ/actions/stop"
 ```
 
 <a name="add-sched"></a>
