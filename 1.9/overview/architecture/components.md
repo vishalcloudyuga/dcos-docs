@@ -116,7 +116,7 @@ DC/OS supports multiple container runtimes using [Mesos' containerizer abstracti
 <h2>Docker GC</h2>
 <span>
 <p><strong><em>NEW IN 1.9.0</em></strong></p>
-<p><strong>Description:</strong> **Docker GC periodically garbage collects Docker containers and images.</p>
+<p><strong>Description:</strong> Docker GC periodically garbage collects Docker containers and images.</p>
 <p><strong>System Service(s):</strong> <code class="nowrap">dcos-docker-gc.service</code>, <code class="nowrap">dcos-docker-gc.timer</code></p>
 <p><strong>See Also:</strong> [Source](https://github.com/spotify/docker-gc)</p>
 </span>
@@ -128,20 +128,20 @@ DC/OS supports multiple container runtimes using [Mesos' containerizer abstracti
 No software runs perfectly, especially not the first time. Distribute tasks across a cluster and the normal patterns of analyzing and debugging these services become tedious and painful. So DC/OS includes several components to help ease the pain of debugging distributed systems by aggregating, caching, and streaming logs, metrics, and cluster state metadata.
 
 <div data-role="collapsible">
-<h2>3DT</h2>
+<h2>DC/OS Diagnostics</h2>
 <span>
-<p><strong>Description:</strong> The DC/OS Distributed Diagnostics Tool (3DT) aggregates and exposes system component health.</p>
+<p><strong>Description:</strong> The DC/OS Diagnostics service aggregates and exposes system component health. DC/OS Diagnostics is also known as DC/OS Distributed Diagnostics Tool (3DT).</p>
 <p><strong>System Service(s):</strong> <code class="nowrap">dcos-3dt.service</code>, <code class="nowrap">dcos-3dt.socket</code></p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/3dt)</p>
 </span>
 </div>
 
 <div data-role="collapsible">
-<h2>Log Service</h2>
+<h2>DC/OS Log</h2>
 <span>
 <p><strong><em>NEW IN 1.9.0</em></strong></p>
-<p><strong>Description:</strong> Log Service exposes component, container, and task logs.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-log-master.service</code>, <code class="nowrap">dcos-log-master.socket</code>, <code class="nowrap">dcos-logrotate-master.service</code>, <code class="nowrap">dcos-logrotate-master.timer</code>, <code class="nowrap">dcos-log-agent.service</code>, <code class="nowrap">dcos-log-agent.socket</code></p>
+<p><strong>Description:</strong> The DC/OS Log service exposes component, container, and task logs.</p>
+<p><strong>System Service(s):</strong> <code class="nowrap">dcos-log-master.service</code>, <code class="nowrap">dcos-log-master.socket</code>, <code class="nowrap">dcos-log-agent.service</code>, <code class="nowrap">dcos-log-agent.socket</code></p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/dcos-log)</p>
 </span>
 </div>
@@ -150,16 +150,16 @@ No software runs perfectly, especially not the first time. Distribute tasks acro
 <h2>Logrotate</h2>
 <span>
 <p><strong>Description:</strong> Logrotate manages rotation, compression, and deletion of historical log files.</p>
-<p><strong>System Service(s):</strong> N/A</p>
+<p><strong>System Service(s):</strong> <code class="nowrap">dcos-logrotate-master.service</code>, <code class="nowrap">dcos-logrotate-master.timer</code>, <code class="nowrap">dcos-logrotate-agent.service</code>, <code class="nowrap">dcos-logrotate-agent.timer</code></p>
 <p><strong>See Also:</strong> [Docs](http://www.linuxcommand.org/man_pages/logrotate8.html), [Source](https://github.com/logrotate/logrotate)</p>
 </span>
 </div>
 
 <div data-role="collapsible">
-<h2>Metrics Service</h2>
+<h2>DC/OS Metrics</h2>
 <span>
 <p><strong><em>NEW IN 1.9.0</em></strong></p>
-<p><strong>Description:</strong> Metrics Service exposes host, container, and task metrics.</p>
+<p><strong>Description:</strong> The DC/OS Metrics service exposes host, container, and task metrics.</p>
 <p><strong>System Service(s):</strong> <code class="nowrap">dcos-metrics-master.service</code>, <code class="nowrap">dcos-metrics-master.socket</code>, <code class="nowrap">dcos-metrics-agent.service</code>, <code class="nowrap">dcos-metrics-agent.socket</code></p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/dcos-metrics)</p>
 </span>
@@ -175,9 +175,9 @@ No software runs perfectly, especially not the first time. Distribute tasks acro
 </div>
 
 <div data-role="collapsible">
-<h2>History Service</h2>
+<h2>DC/OS History</h2>
 <span>
-<p><strong>Description:</strong> History Service caches and exposes historical system state to facilitate cluster usage statistics in the GUI.</p>
+<p><strong>Description:</strong> The DC/OS History service caches and exposes historical system state to facilitate cluster usage statistics in the GUI.</p>
 <p><strong>System Service(s):</strong> <code class="nowrap">dcos-history.service</code></p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/dcos/tree/master/packages/dcos-history/extra)</p>
 </span>
@@ -198,9 +198,9 @@ In a world where machines are are given numbers instead of names, tasks are sche
 </div>
 
 <div data-role="collapsible">
-<h2>Mesos-DNS</h2>
+<h2>Mesos DNS</h2>
 <span>
-<p><strong>Description:</strong> Mesos-DNS provides domain name based service discovery within the cluster.</p>
+<p><strong>Description:</strong> Mesos DNS provides domain name based service discovery within the cluster.</p>
 <p><strong>System Service(s):</strong> <code class="nowrap">dcos-mesos-dns.service</code></p>
 <p><strong>See Also:</strong> [Docs](http://mesosphere.github.io/mesos-dns/), [Source](https://github.com/mesosphere/mesos-dns)</p>
 </span>
@@ -243,9 +243,9 @@ In a world where machines are are given numbers instead of names, tasks are sche
 </div>
 
 <div data-role="collapsible">
-<h2>EPMD</h2>
+<h2>Erlang Port Mapping Daemon</h2>
 <span>
-<p><strong>Description:</strong> Erlang Port Mapper (EPMD) maps symbolic names to machine addresses, facilitating named virtual IPs.</p>
+<p><strong>Description:</strong> Erlang Port Mapping Daemon (EPMD) maps symbolic names to machine addresses, facilitating named virtual IPs.</p>
 <p><strong>System Service(s):</strong> <code class="nowrap">dcos-epmd.service</code></p>
 <p><strong>See Also:</strong> [Source](https://github.com/erlang/epmd)</p>
 </span>
@@ -280,9 +280,9 @@ Just as machine operating systems need package management to install, upgrade, c
 Identity management in DC/OS is delegated to external identity providers, taking advantage of existing infrastructure to reduce the cost and time to market. Security is provided via OAuth authentication and enforced at the edge by Admin Router's reverse proxy.
 
 <div data-role="collapsible">
-<h2>OAuth Service</h2>
+<h2>DC/OS Authentication</h2>
 <span>
-<p><strong>Description:</strong> OAuth Service authenticates users using [OpenID Connect](http://openid.net/connect/) and [Auth0](https://auth0.com/).</p>
+<p><strong>Description:</strong> The DC/OS Authentication (OAuth) service authenticates users using [OpenID Connect](http://openid.net/connect/) and [Auth0](https://auth0.com/).</p>
 <p><strong>System Service(s):</strong> <code class="nowrap">dcos-oauth.service</code></p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/dcos-oauth)</p>
 </span>

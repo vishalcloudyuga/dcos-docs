@@ -4,15 +4,15 @@ nav_title: Boot Sequence
 menu_order: 6
 ---
 
-During installation, the DC/OS components are all started in parallel but initialize and become responsive in a particular sequence because of interdependencies.
+During installation, the DC/OS components are all started in parallel but initialize and become responsive in a relatively consistent sequence because of interdependencies.
 
-3DT monitors component health on each node. Once all node components are healthy, 3DT reports that that node is healthy. Once all master nodes are healthy, 3DT reports that the cluster is healthy.
+The DC/OS Diagnostics service monitors component and node health. A node is marked as healthy when all its component services are healthy.
 
 ## Master nodes
 
 The following is the boot sequence of DC/OS components on each master node.
 
-1. 3DT starts
+1. DC/OS Diagnostics starts
     1. Polls systemd for component status
     1. Reports node unhealthy until all components (systemd services) are healthy
     1. Reports cluster unhealthy until all master nodes are healthy
@@ -48,7 +48,7 @@ The following is the boot sequence of DC/OS components on each master node.
 
 The following is the boot sequence of DC/OS components on each agent node.
 
-1. 3DT starts
+1. DC/OS Diagnostics starts
     1. Polls systemd for component status
     1. Reports node unhealthy until all components (systemd services) are healthy
 1. Mesos Agent starts
