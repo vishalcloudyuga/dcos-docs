@@ -9,9 +9,9 @@ Issues on Github will be disabled soon.**
 
 # Contributing
 
-If this is your first contribution to an open source software (OSS) project, congratulations! Contributing to the docs is a great way to get started; you can learn more about DC/OS, and contribute back to an OSS project right away. No expertise necessary. If you are an old hand, welcome back!
+If this is your first contribution to an open source software (OSS) project, congratulations! Contributing to the documentation is a great way to get started. By following these instructions you can learn more about DC/OS, and contribute back to an OSS project right away. No expertise necessary!
 
-Below you will find some instructions on how to contribute to the DC/OS docs. By following them you help make sure that no one unnecessarily duplicates work, and that the people who can merge (approve and integrate) your contribution are aware that you’re working on something. In order to follow these instructions you’ll need to have a [GitHub account](https://github.com/join?source=header-home) and an account on the [DC/OS JIRA](https://dcosjira.atlassian.net/admin/users/sign-up). If you aren’t signed up for those things yet go do it now. We’ll be here when you get back.
+This page provides instructions on how to contribute to the DC/OS documentation. The process ensures that work is not duplicated, and that your contributions are merged and approved by the admins. To get started you need a [GitHub account](https://github.com/join?source=header-home) and an account on the [DC/OS JIRA](https://dcosjira.atlassian.net/admin/users/sign-up).
 
 - [Making your contribution](#making)
 - [Styling and formatting your contribution](#styling)
@@ -19,7 +19,9 @@ Below you will find some instructions on how to contribute to the DC/OS docs. By
 
 ## <a name="making"></a>Making your contribution
 
-1. Search [JIRA](https://dcosjira.atlassian.net/browse/DCOS-508?jql=project%20%3D%20DCOS%20AND%20component%20%3D%20documentation) to make sure that no one is already working on your issue. If you find your issue and it isn’t assigned to anyone, it’s free: assign it to yourself! If you don’t see the issue you want to work on, [create a new issue](https://dcosjira.atlassian.net/secure/CreateIssue!default.jspa), select documentation as the component, and assign it to yourself. That way other contributors will know you are working on it.
+1. Search [JIRA](https://dcosjira.atlassian.net/issues/?filter=10201) to review the currently open issues and make sure that no one is already working on your issue. If you find an open issue that is unassigned that you want to work, you can assign it to yourself! If you don’t see an issue related to yours, [create a new issue](https://dcosjira.atlassian.net/secure/CreateIssue!default.jspa), select documentation as the component, and assign it to yourself.
+
+![Example of the JIRA issues screen](https://d3vv6lp55qjaqc.cloudfront.net/items/0k2v3s3J2T250l0D223A/Image%202016-11-30%20at%2011.25.08%20AM.png?X-CloudApp-Visitor-Id=f9e27f8200d2918234e4cffed03e0a2e&v=2133d36c "JIRA issue")
 
 1. If this is your first contribution [Fork](https://help.github.com/articles/fork-a-repo/) the [dcos-docs](https://github.com/dcos/dcos-docs) repo. (Once you’ve forked the repo, that fork stays associated with your GitHub account. If you try to fork it again GitHub will remind you that you already have a fork.)
 
@@ -48,7 +50,7 @@ Below you will find some instructions on how to contribute to the DC/OS docs. By
 1. Create your content.
 
   - In most cases you should be able to create your content within the existing directory structure.
-  - If you're not sure how to add formatting, take a look at a live doc with the type of content you want to add, and copy the formatting in that doc's markdown file.
+  - If you're not sure how to add formatting, take a look at [dcos.io/docs](dcos.io/docs/) for examples.
   - Be sure you follow the style and formatting guidelines in the [next section](#styling).
   - Don't forget to update your post's metadata if necessary, including the required metadata `post_title` and optional `nav_title` and `menu_order`. Where applicable, add the optional `feature_maturity` label. Description of various feature maturity phases can be found [here](https://dcos.io/docs/1.8/overview/feature-maturity/).
 
@@ -91,21 +93,21 @@ Below you will find some instructions on how to contribute to the DC/OS docs. By
 1. Submit a [pull request](https://help.github.com/articles/using-pull-requests/) against the [dcos-docs](https://github.com/dcos/dcos-docs) repo.
 
   - Don't forget to add a link to this PR in your [JIRA issue](https://dcosjira.atlassian.net/).
-  - Community managers will test drive and validate contributions that include hands-on instructions, and they'll probably ask for improvements or modifications by commenting on your PR. If you agree with their changes, go to the same branch of your local repo that you made when you first created your content, and repeat steps 5-7 above. If you don't agree with their comments, discuss it more on the PR. Pull requests are where the real collaboration on open source projects happens.
+  - Community managers will test drive and validate contributions that include hands-on instructions, and they'll probably ask for improvements or modifications by commenting on your PR. If you agree with their changes make them in your local repo and repeat steps 5-7 above, or feel free to continue the discussion.
 
 ## <a name="styling"></a>Styling and formatting your contribution
 
 - Use [GitHub-flavored markdown](https://help.github.com/enterprise/11.10.340/user/articles/github-flavored-markdown/).
 - Use relative links.
   - Begin all links at the root `docs` level and include the version number subdirectory. (e.g., `/docs/1.8/administration/sshcluster/`).
-- Do not include file extensions in your link or image paths. Our site converts any files not named `index.md` into directory names. For example, the directory `/docs/1.8/administration/` contains a file named `user-management.md`. To link to this content on the live site, you would use the following path: `/docs/1.8/administration/user-management/`.
+- Do not include file extensions in your link or image paths. For example, the directory `/docs/1.8/administration/` contains a file named `user-management.md`. To link to this content on the live site, you would use the following path: `/docs/1.8/administration/user-management/`.
 - Each directory must contain an `index.md` file. This acts as the base-level topic for each folder in the site (required).
 - The table of contents of each page is automatically generated based on the top-level headers.
   - Directory tables of contents are automatically generated based on `post_title` (or `nav_title`) and `post_excerpt` headers.
 - Use active voice whenever possible.
 - Use sentence-style capitalization for headings.
 
-In addition to the above technical notes, make sure you read your doc for clarity and accuracy. Pretend you are someone else seeing your instructions for the first time. Try to follow them based only on the information you provided. Can they stand alone? Are they clear? What have you assumed about your reader, and were those assumptions fair?
+In addition to the above technical notes, make sure you read your doc for clarity and accuracy. Pretend you are someone else seeing your instructions for the first time, and try to follow them based only on the information you provided.
 
 ## <a name="test-local"></a>Building and testing your content locally
 
