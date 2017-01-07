@@ -3,7 +3,7 @@ post_title: DC/OS Ports
 menu_order: 4
 ---
 
-The following is a list of ports used by DC/OS [components](/docs/1.9/overview/components/) and their corresponding systemd unit.
+The following is a list of ports used by DC/OS [components](/docs/1.9/overview/architecture/components/) and their corresponding systemd unit.
 
 ## All nodes
 
