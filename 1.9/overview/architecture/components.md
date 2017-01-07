@@ -218,7 +218,7 @@ In a world where machines are are given numbers instead of names, tasks are sche
 <div data-role="collapsible">
 <h2>Generate resolv.conf</h2>
 <span>
-<p><strong>Description:</strong> Generate resolv.conf manages DNS resolution configuration in <code class="nowrap">/etc/resolv.conf</code> to facilitate DC/OS's software defined networking.</p>
+<p><strong>Description:</strong> Generate resolv.conf configures network name resolution ([systemd-resolved](https://www.freedesktop.org/software/systemd/man/systemd-resolved.service.html)) by updating <code class="nowrap">/etc/resolv.conf</code> to facilitate DC/OS's software defined networking.</p>
 <p><strong>System Service(s):</strong> <code class="nowrap">dcos-gen-resolvconf.service</code>, <code class="nowrap">dcos-gen-resolvconf.timer</code></p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/dcos/blob/master/packages/spartan/extra/gen_resolvconf.py)</p>
 </span>
@@ -266,9 +266,9 @@ Just as machine operating systems need package management to install, upgrade, c
 </div>
 
 <div data-role="collapsible">
-<h2>PkgPanda</h2>
+<h2>Pkgpanda</h2>
 <span>
-<p><strong>Description:</strong> PkgPanda installs and manages DC/OS components.</p>
+<p><strong>Description:</strong> Pkgpanda installs and manages DC/OS components.</p>
 <p><strong>System Service(s):</strong> <code class="nowrap">dcos-pkgpanda-api.service</code>, <code class="nowrap">dcos-pkgpanda-api.socket</code></p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/dcos/tree/master/pkgpanda)</p>
 </span>

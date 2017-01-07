@@ -52,7 +52,7 @@ Agent nodes can be public or private, depending on agent and network configurati
 
 ### Public Agent Nodes
 
-A public agent node is an agent node that is on a network with have ingress access from outside of the cluster via the cluster’s [infrastructure networking](/docs/1.9/overview/concepts/#infrastructure-network).
+A public agent node is an agent node that is on a network that allows ingress from outside of the cluster via the cluster’s [infrastructure networking](/docs/1.9/overview/concepts/#infrastructure-network).
 
 The resources on private agent nodes are, by default, configured to only be allocated to tasks that specify the `slave_public` role. The Mesos agents on private agent nodes also have the `public_ip:true` agent attribute to assist in their discovery.
 
