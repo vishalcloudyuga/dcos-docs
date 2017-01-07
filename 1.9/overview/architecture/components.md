@@ -21,7 +21,14 @@ DC/OS provides a way to view and operate a large number of individual machine-le
 <h2>Apache Mesos</h2>
 <span>
 <p><strong>Description:</strong> Mesos manages resources and tasks as a distributed systems kernel. Mesos Master exposes scheduler, executor, and operator interfaces to facilitate cluster management. Mesos Agent</strong> manages individual executors, tasks, and resources on each [DC/OS agent node](/docs/1.9/overview/concepts/#dcos-agent-node). Mesos Agent Public is a Mesos Agent configured to run on [DC/OS public agent nodes](/docs/1.9/overview/concepts/#public-agent-node).</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-mesos-master.service</code>, <code class="nowrap">dcos-mesos-slave.service</code>, <code class="nowrap">dcos-mesos-slave-public.service</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-mesos-master.service</code></li>
+    <li><code class="nowrap">dcos-mesos-slave.service</code></li>
+    <li><code class="nowrap">dcos-mesos-slave-public.service</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Docs](http://mesos.apache.org/), [Source](https://github.com/apache/mesos)</p>
 </span>
 </div>
@@ -30,7 +37,12 @@ DC/OS provides a way to view and operate a large number of individual machine-le
 <h2>Exhibitor and Apache Zookeeper</h2>
 <span>
 <p><strong>Description:</strong> Zookeeper stores cluster state. Exhibitor manages Zookeeper and provides a management web interface.<p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-exhibitor.service</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-exhibitor.service</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Exhibitor Source](https://github.com/Netflix/exhibitor), [Exhibitor Wrapper Source](https://github.com/mesosphere/exhibitor-dcos), [Zookeeper Docs](https://zookeeper.apache.org/), [Zookeeper Source](https://github.com/apache/mesos)</p>
 </span>
 </div>
@@ -39,7 +51,14 @@ DC/OS provides a way to view and operate a large number of individual machine-le
 <h2>DC/OS Installer</h2>
 <span>
 <p><strong>Description:</strong> The DC/OS Installer (dcos_generate_config.sh) generates install artifacts and installs DC/OS. As part of the install process on each node, the DC/OS Download service downloads the install artifacts from the bootstrap machine and the DC/OS Setup service installs components using PkgPanda.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-download.service</code>, <code class="nowrap">dcos-setup.service</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-download.service</code></li>
+    <li><code class="nowrap">dcos-setup.service</code></li>
+  </ul>
+</p>
+
 <p><strong>See Also:</strong> [Docs](/docs/1.9/administration/installing/), [Source](https://github.com/dcos/dcos)</p>
 </span>
 </div>
@@ -73,7 +92,12 @@ DC/OS includes built-in orchestration of the most commonly used high level conta
 <h2>Marathon</h2>
 <span>
 <p><strong>Description:</strong> Marathon orchestrates long-lived containerized services (apps and pods).</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-marathon.service</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-marathon.service</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Docs](https://mesosphere.github.io/marathon/), [Source](https://github.com/mesosphere/marathon)</p>
 </span>
 </div>
@@ -82,7 +106,12 @@ DC/OS includes built-in orchestration of the most commonly used high level conta
 <h2>Metronome</h2>
 <span>
 <p><strong>Description:</strong> Metronome orchestrates short-lived, scheduled or immediate, containerized jobs.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-metronome.service</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-metronome.service</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Docs](/docs/1.9/usage/jobs/), [Source](https://github.com/dcos/metronome)</p>
 </span>
 </div>
@@ -98,7 +127,7 @@ DC/OS supports multiple container runtimes using [Mesos' containerizer abstracti
 <h2>Mesos Container Runtime</h2>
 <span>
 <p><strong>Description:</strong> Mesos Container Runtime (Mesos Containerizer) is a logical component built-in to the Mesos Agent, not technically a separate process. It containerizes Mesos tasks with configurable isolators. Mesos Container Runtime is often called the Mesos Universal Container Runtime because it supports multiple image formats, including Docker images without using Docker Engine.</p>
-<p><strong>System Service(s):</strong> N/A</p>
+<p><strong>System Service(s):</strong> N/A - The runtime is part of Mesos Agent.</p>
 <p><strong>See Also:</strong> [Mesos Containerizer Docs](http://mesos.apache.org/documentation/latest/mesos-containerizer/)</p>
 </span>
 </div>
@@ -107,7 +136,12 @@ DC/OS supports multiple container runtimes using [Mesos' containerizer abstracti
 <h2>Docker Engine</h2>
 <span>
 <p><strong>Description:</strong> Docker Engine is not installed by the DC/OS Installer, but rather is a system dependency that runs on each node. Mesos Agent also includes a separate logical component called Docker Containerizer which delegates the containerization of Mesos task to Docker Engine.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">docker.service</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">docker.service</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Docker Containerizer Docs](http://mesos.apache.org/documentation/latest/docker-containerizer/), [Docker Engine Docs](https://docs.docker.com/engine/), [Docker Engine Source](https://github.com/docker/docker/)</p>
 </span>
 </div>
@@ -117,7 +151,13 @@ DC/OS supports multiple container runtimes using [Mesos' containerizer abstracti
 <span>
 <p><strong><em>NEW IN 1.9.0</em></strong></p>
 <p><strong>Description:</strong> Docker GC periodically garbage collects Docker containers and images.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-docker-gc.service</code>, <code class="nowrap">dcos-docker-gc.timer</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-docker-gc.service</code></li>
+    <li><code class="nowrap">dcos-docker-gc.timer</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Source](https://github.com/spotify/docker-gc)</p>
 </span>
 </div>
@@ -131,7 +171,13 @@ No software runs perfectly, especially not the first time. Distribute tasks acro
 <h2>DC/OS Diagnostics</h2>
 <span>
 <p><strong>Description:</strong> The DC/OS Diagnostics service aggregates and exposes system component health. DC/OS Diagnostics is also known as DC/OS Distributed Diagnostics Tool (3DT).</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-3dt.service</code>, <code class="nowrap">dcos-3dt.socket</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-3dt.service</code></li>
+    <li><code class="nowrap">dcos-3dt.socket</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/3dt)</p>
 </span>
 </div>
@@ -141,7 +187,15 @@ No software runs perfectly, especially not the first time. Distribute tasks acro
 <span>
 <p><strong><em>NEW IN 1.9.0</em></strong></p>
 <p><strong>Description:</strong> The DC/OS Log service exposes component, container, and task logs.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-log-master.service</code>, <code class="nowrap">dcos-log-master.socket</code>, <code class="nowrap">dcos-log-agent.service</code>, <code class="nowrap">dcos-log-agent.socket</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-log-master.service</code></li>
+    <li><code class="nowrap">dcos-log-master.socket</code></li>
+    <li><code class="nowrap">dcos-log-agent.service</code></li>
+    <li><code class="nowrap">dcos-log-agent.socket</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/dcos-log)</p>
 </span>
 </div>
@@ -150,7 +204,15 @@ No software runs perfectly, especially not the first time. Distribute tasks acro
 <h2>Logrotate</h2>
 <span>
 <p><strong>Description:</strong> Logrotate manages rotation, compression, and deletion of historical log files.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-logrotate-master.service</code>, <code class="nowrap">dcos-logrotate-master.timer</code>, <code class="nowrap">dcos-logrotate-agent.service</code>, <code class="nowrap">dcos-logrotate-agent.timer</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-logrotate-master.service</code></li>
+    <li><code class="nowrap">dcos-logrotate-master.timer</code></li>
+    <li><code class="nowrap">dcos-logrotate-agent.service</code></li>
+    <li><code class="nowrap">dcos-logrotate-agent.timer</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Docs](http://www.linuxcommand.org/man_pages/logrotate8.html), [Source](https://github.com/logrotate/logrotate)</p>
 </span>
 </div>
@@ -160,7 +222,15 @@ No software runs perfectly, especially not the first time. Distribute tasks acro
 <span>
 <p><strong><em>NEW IN 1.9.0</em></strong></p>
 <p><strong>Description:</strong> The DC/OS Metrics service exposes host, container, and task metrics.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-metrics-master.service</code>, <code class="nowrap">dcos-metrics-master.socket</code>, <code class="nowrap">dcos-metrics-agent.service</code>, <code class="nowrap">dcos-metrics-agent.socket</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-metrics-master.service</code></li>
+    <li><code class="nowrap">dcos-metrics-master.socket</code></li>
+    <li><code class="nowrap">dcos-metrics-agent.service</code></li>
+    <li><code class="nowrap">dcos-metrics-agent.socket</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/dcos-metrics)</p>
 </span>
 </div>
@@ -169,7 +239,13 @@ No software runs perfectly, especially not the first time. Distribute tasks acro
 <h2>DC/OS Signal</h2>
 <span>
 <p><strong>Description:</strong> The DC/OS Signal service reports cluster telemetry and analytics to help improve DC/OS. Administrators can [opt-out of telemetry](/docs/1.9/administration/installing/opt-out/#telemetry) at install time.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-signal.service</code>, <code class="nowrap">dcos-signal.timer</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-signal.service</code></li>
+    <li><code class="nowrap">dcos-signal.timer</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/dcos-signal)</p>
 </span>
 </div>
@@ -178,7 +254,12 @@ No software runs perfectly, especially not the first time. Distribute tasks acro
 <h2>DC/OS History</h2>
 <span>
 <p><strong>Description:</strong> The DC/OS History service caches and exposes historical system state to facilitate cluster usage statistics in the GUI.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-history.service</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-history.service</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/dcos/tree/master/packages/dcos-history/extra)</p>
 </span>
 </div>
@@ -192,7 +273,17 @@ In a world where machines are are given numbers instead of names, tasks are sche
 <h2>Admin Router</h2>
 <span>
 <p><strong>Description:</strong> Admin Router exposes a unified control plane proxy for components and services using [NGINX](https://www.nginx.com/). Admin Router Agent proxies node-specific health, logs, metrics, and package management internal endpoints.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-adminrouter.service</code>, <code class="nowrap">dcos-adminrouter-reload.service</code>, <code class="nowrap">dcos-adminrouter-reload.timer</code>, <code class="nowrap">dcos-adminrouter-agent.service</code>, <code class="nowrap">dcos-adminrouter-agent-reload.service</code>, <code class="nowrap">dcos-adminrouter-agent-reload.timer</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-adminrouter.service</code></li>
+    <li><code class="nowrap">dcos-adminrouter-reload.service</code></li>
+    <li><code class="nowrap">dcos-adminrouter-reload.timer</code></li>
+    <li><code class="nowrap">dcos-adminrouter-agent.service</code></li>
+    <li><code class="nowrap">dcos-adminrouter-agent-reload.service</code></li>
+    <li><code class="nowrap">dcos-adminrouter-agent-reload.timer</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/adminrouter)</p>
 </span>
 </div>
@@ -201,7 +292,12 @@ In a world where machines are are given numbers instead of names, tasks are sche
 <h2>Mesos DNS</h2>
 <span>
 <p><strong>Description:</strong> Mesos DNS provides domain name based service discovery within the cluster.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-mesos-dns.service</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-mesos-dns.service</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Docs](http://mesosphere.github.io/mesos-dns/), [Source](https://github.com/mesosphere/mesos-dns)</p>
 </span>
 </div>
@@ -210,7 +306,14 @@ In a world where machines are are given numbers instead of names, tasks are sche
 <h2>Spartan</h2>
 <span>
 <p><strong>Description:</strong> Spartan forwards DNS requests to multiple DNS servers. Spartan Watchdog restarts Spartan when it is unhealthy.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-spartan.service</code>, <code class="nowrap">dcos-spartan-watchdog.service</code>, <code class="nowrap">dcos-spartan-watchdog.timer</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-spartan.service</code></li>
+    <li><code class="nowrap">dcos-spartan-watchdog.service</code></li>
+    <li><code class="nowrap">dcos-spartan-watchdog.timer</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/spartan)</p>
 </span>
 </div>
@@ -219,7 +322,13 @@ In a world where machines are are given numbers instead of names, tasks are sche
 <h2>Generate resolv.conf</h2>
 <span>
 <p><strong>Description:</strong> Generate resolv.conf configures network name resolution ([systemd-resolved](https://www.freedesktop.org/software/systemd/man/systemd-resolved.service.html)) by updating <code class="nowrap">/etc/resolv.conf</code> to facilitate DC/OS's software defined networking.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-gen-resolvconf.service</code>, <code class="nowrap">dcos-gen-resolvconf.timer</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-gen-resolvconf.service</code></li>
+    <li><code class="nowrap">dcos-gen-resolvconf.timer</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/dcos/blob/master/packages/spartan/extra/gen_resolvconf.py)</p>
 </span>
 </div>
@@ -228,7 +337,12 @@ In a world where machines are are given numbers instead of names, tasks are sche
 <h2>Minuteman</h2>
 <span>
 <p><strong>Description:</strong> Minuteman provides distributed [Layer 4](https://en.wikipedia.org/wiki/Transport_layer) virtual IP load balancing.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-minuteman.service</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-minuteman.service</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Docs](/docs/1.9/usage/service-discovery/load-balancing-vips/), [Source](https://github.com/dcos/minuteman)</p>
 </span>
 </div>
@@ -237,7 +351,12 @@ In a world where machines are are given numbers instead of names, tasks are sche
 <h2>Navstar</h2>
 <span>
 <p><strong>Description:</strong> Navstar orchestrates virtual overlay networks using [VXLAN](https://en.wikipedia.org/wiki/Virtual_Extensible_LAN).</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-navstar.service</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-navstar.service</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/navstar)</p>
 </span>
 </div>
@@ -246,7 +365,12 @@ In a world where machines are are given numbers instead of names, tasks are sche
 <h2>Erlang Port Mapping Daemon</h2>
 <span>
 <p><strong>Description:</strong> Erlang Port Mapping Daemon (EPMD) maps symbolic names to machine addresses, facilitating named virtual IPs.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-epmd.service</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-epmd.service</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Source](https://github.com/erlang/epmd)</p>
 </span>
 </div>
@@ -260,7 +384,12 @@ Just as machine operating systems need package management to install, upgrade, c
 <h2>Cosmos</h2>
 <span>
 <p><strong>Description:</strong> Cosmos installs and manages DC/OS packages from [DC/OS package repositories](/docs/1.9/usage/repo/), such as [Mesosphere Universe](https://github.com/mesosphere/universe).</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-cosmos.service</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-cosmos.service</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/cosmos)</p>
 </span>
 </div>
@@ -269,7 +398,13 @@ Just as machine operating systems need package management to install, upgrade, c
 <h2>Pkgpanda</h2>
 <span>
 <p><strong>Description:</strong> Pkgpanda installs and manages DC/OS components.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-pkgpanda-api.service</code>, <code class="nowrap">dcos-pkgpanda-api.socket</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-pkgpanda-api.service</code></li>
+    <li><code class="nowrap">dcos-pkgpanda-api.socket</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/dcos/tree/master/pkgpanda)</p>
 </span>
 </div>
@@ -283,7 +418,12 @@ Identity management in DC/OS is delegated to external identity providers, taking
 <h2>DC/OS Authentication</h2>
 <span>
 <p><strong>Description:</strong> The DC/OS Authentication (OAuth) service authenticates users using [OpenID Connect](http://openid.net/connect/) and [Auth0](https://auth0.com/).</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-oauth.service</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-oauth.service</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Source](https://github.com/dcos/dcos-oauth)</p>
 </span>
 </div>
@@ -297,7 +437,12 @@ DC/OS provides multiple different ways to provision and allocate disk space and 
 <h2>REX-Ray</h2>
 <span>
 <p><strong>Description:</strong> REX-Ray orchestrates provisioning, attachment, and mounting of external persistent volumes.</p>
-<p><strong>System Service(s):</strong> <code class="nowrap">dcos-rexray.service</code></p>
+<p>
+  <strong>System Service(s):</strong>
+  <ul>
+    <li><code class="nowrap">dcos-rexray.service</code></li>
+  </ul>
+</p>
 <p><strong>See Also:</strong> [Docs](http://rexray.readthedocs.io/), [Source](https://github.com/codedellemc/rexray)</p>
 </span>
 </div>
