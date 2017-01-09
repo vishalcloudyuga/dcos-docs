@@ -12,7 +12,7 @@ In future releases, these spaces may be delineated by hierarchical security spac
 
 ## System space
 
-The system space includes all [system services](/docs/1.9/overview/concepts/#system-service). These system services include the [system components](/docs/1.9/overview/components/). These components are all [systemd services](/docs/1.9/overview/concepts/#systemd-service).
+The system space includes all [system services](/docs/1.9/overview/concepts/#system-service). These system services include the [system components](/docs/1.9/overview/architecture/components/). These components are all [systemd services](/docs/1.9/overview/concepts/#systemd-service).
 
 System space services and jobs are scheduled manually by the DC/OS installer and managed by systemd on the nodes themselves.
 
@@ -20,8 +20,8 @@ In future releases, some [Marathon services](/docs/1.9/overview/concepts/#marath
 
 ## User space
 
-The user space includes all [DC/OS services](/docs/1.9/overview/concepts/#user-service) and [DC/OS jobs](http://localhost:3000/docs/1.9/overview/concepts/#dcos-job).
+The user space includes all [DC/OS services](/docs/1.9/overview/concepts/#user-service) and [DC/OS jobs](/docs/1.9/overview/concepts/#dcos-job).
 
 All user space services and jobs are scheduled on top of DC/OS using one of the built in schedulers: Marathon (services) or Metronome (jobs).
 
-DC/OS services that are also [schedulers](/docs/1.9/overview/concepts/#dcos-scheduler) (schedule tasks via Mesos directly) are called [scheduler services](http://localhost:3000/docs/1.9/overview/concepts/#dcos-scheduler-service).
+DC/OS services that are also [schedulers](/docs/1.9/overview/concepts/#dcos-scheduler) (schedule tasks via Mesos directly) are called [scheduler services](/docs/1.9/overview/concepts/#dcos-scheduler-service).
