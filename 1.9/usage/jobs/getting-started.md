@@ -164,7 +164,7 @@ Inspect the log for your job:
 dcos task log --completed <job-id>
 ```
 
-To get the log for a only a specific job run, use a job run ID from `dcos job history <job-id>`
+To get the log for only a specific job run, use a job run ID from `dcos job history <job-id>`
 
 ```
 dcos task log --completed <job-run-id>
