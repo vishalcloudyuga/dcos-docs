@@ -80,4 +80,4 @@ In detail, here are the steps:
 </table>
 
 [auth]: /docs/1.9/administration/id-and-access-mgt/
-[components]: /docs/1.9/overview/components/
+[components]: /docs/1.9/overview/architecture/components/

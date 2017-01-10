@@ -40,7 +40,7 @@ The components of the virtual network interact in the following ways:
 
 # Virtual Network Service: DNS
 
-The [Virtual Network Service](/docs/1.9/overview/components/)
+The [Virtual Network Service](/docs/1.9/overview/architecture/components/)
 maps names to IPs on your virtual network. You can use these DNS addresses to access your task:
 
 * **Container IP:** Provides the container IP address: `<taskname>.<framework_name>.containerip.dcos.thisdcos.directory`
