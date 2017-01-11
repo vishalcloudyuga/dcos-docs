@@ -3,13 +3,13 @@ post_title: DC/OS Ports
 menu_order: 4
 ---
 
-The following is a list of ports used by internal DC/OS [components](/docs/1.9/overview/components/), and their corresponding systemd unit.
+This topic lists the ports that are required to launch DC/OS. Additional ports may be required to launch the individual DC/OS services.
 
 ## All roles
 
 ### TCP
 
-|Port   |systemd unit   | 
+|Port   |DC/OS [component](/docs/1.9/overview/components/) and systemd unit   | 
 |---|---|
 |  61003 | REX-Ray (`dcos-rexray.service`) (default) |  
 |  61053 |  Mesos DNS (`dcos-mesos-dns.service`) |
@@ -23,7 +23,7 @@ The following is a list of ports used by internal DC/OS [components](/docs/1.9/o
 
 ### UDP
 
-|Port   |systemd unit   | 
+|Port   |DC/OS [component](/docs/1.9/overview/components/) and systemd unit   | 
 |---|---|
 | 61053 | Mesos DNS (`dcos-mesos-dns.service`) |
 |  62053 |  DNS Dispatcher (`dcos-spartan.service`) |
@@ -33,7 +33,7 @@ The following is a list of ports used by internal DC/OS [components](/docs/1.9/o
 
 ### TCP
 
-|Port   |systemd unit   | 
+|Port   |DC/OS [component](/docs/1.9/overview/components/) and systemd unit   | 
 |---|---|
 |  53 |  DNS Dispatcher (`dcos-spartan.service`) |  
 |  80 |  Admin Router Service (`dcos-adminrouter.service`) |  
@@ -53,7 +53,7 @@ The following is a list of ports used by internal DC/OS [components](/docs/1.9/o
 
 ### UDP
 
-|Port   |systemd unit   | 
+|Port   |DC/OS [component](/docs/1.9/overview/components/) and systemd unit   | 
 |---|---|
 |  53 |  DNS Dispatcher (`dcos-spartan.service`)  |
 
@@ -61,7 +61,7 @@ The following is a list of ports used by internal DC/OS [components](/docs/1.9/o
 
 ### TCP
 
-|Port   |systemd unit   | 
+|Port   |DC/OS [component](/docs/1.9/overview/components/) and systemd unit   | 
 |---|---|
 |  5051 |  Mesos Agent (`dcos-mesos-slave.service`) |  
 |  61001 |  Admin Router Agent (`dcos-adminrouter-agent`) |  
