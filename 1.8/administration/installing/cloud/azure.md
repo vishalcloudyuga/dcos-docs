@@ -4,7 +4,7 @@ nav_title: Azure
 menu_order: 1
 ---
 
-This document explains how to install DC/OS 1.8 through the Azure Marketplace. You can also install directly by using the [Azure Resource Manager templates](https://downloads.dcos.io/dcos/stable/azure.html) provided.
+This document explains how to install DC/OS 1.8 through the Azure Marketplace. Alternatively, you can install DC/OS 1.8 using an [Azure Resource Manager](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/) template provided [separately here](https://downloads.dcos.io/dcos/stable/azure.html).
 
 To get support on Azure Marketplace-related questions, join the Azure Marketplace [Slack community](http://join.marketplace.azure.com).
 
@@ -28,7 +28,7 @@ Selecting fewer VMs will likely cause certain resource-intensive services such a
 
 ## Step 1: Deploying the template
 
-To deploy DC/OS using an [Azure Resource Manager](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/) template, first go to [portal.azure.com](https://portal.azure.com/), click on `+ New` and enter `DC/OS`:
+To deploy DC/OS using the Azure Marketplace, first go to [portal.azure.com](https://portal.azure.com/), click on `+ New` and enter `DC/OS`:
 
 ![Searching for DC/OS template](../img/dcos-azure-marketplace-step1a.png)
 
@@ -130,9 +130,9 @@ The following commands can be used to run the DC/OS CLI directly from within the
 $ ssh -p2200 azureuser@MASTERFQDN -L 8000:localhost:80
 
 # Install CLI
-azureuser@dcos-master-01234567-0:~$ curl -fLsS --retry 20 -Y 100000 -y 60 https://downloads.dcos.io/binaries/cli/linux/x86-64/dcos-1.8/dcos -o dcos && 
- sudo mv dcos /usr/local/bin && 
- sudo chmod +x /usr/local/bin/dcos && 
+azureuser@dcos-master-01234567-0:~$ curl -fLsS --retry 20 -Y 100000 -y 60 https://downloads.dcos.io/binaries/cli/linux/x86-64/dcos-1.8/dcos -o dcos &&
+ sudo mv dcos /usr/local/bin &&
+ sudo chmod +x /usr/local/bin/dcos &&
  dcos config set core.dcos_url http://localhost
 ```
 
