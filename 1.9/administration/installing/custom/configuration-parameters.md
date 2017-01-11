@@ -113,6 +113,9 @@ This option specifies that Mesos agents are used to discover the masters by givi
 ### <a name="public-agent"></a>public_agent_list
 This parameter specifies a YAML nested list (`-`) of IPv4 addresses to your [public agent](/docs/1.9/overview/concepts/#public) host names.
 
+### <a name="platform"></a>platform
+This parameter is used to distinguish between infrastructure platforms. The value is optional, free-form with no content validation, and used for telemetry only. Please supply an appropriate value to help inform DC/OS platform prioritization decisions. Example values: `aws`, `azure`, `oneview`, `openstack`, `vsphere`, `vagrant-virtualbox`, `onprem` (default).
+
 ## <a name="networking"></a>Networking
 
 ### <a name="dcos-overlay-enable"></a>dcos_overlay_enable
