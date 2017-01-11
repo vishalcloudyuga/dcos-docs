@@ -5,11 +5,11 @@ feature_maturity: preview
 menu_order: 10
 ---
 
-You can create and administer jobs in the DC/OS web interface or via the API.
+You can create and administer jobs in the DC/OS web interface, from the DC/OS CLI, or via the API.
 
 # DC/OS Web Interface
 
-**Note:** The DC/OS web interface does not cover all possible CLI commands and API calls. For more advanced Jobs configuration, use the `dcos job` commands of the DC/OS CLI or the Jobs API.
+**Note:** The DC/OS web interface does not cover all possible CLI commands and API calls. For more advanced jobs configuration, use the `dcos job` commands of the DC/OS CLI or the Jobs API.
 
 ## Add a Job
 
