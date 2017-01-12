@@ -21,7 +21,7 @@ This page provides instructions on how to contribute to the DC/OS documentation.
 
 1. Search [JIRA](https://dcosjira.atlassian.net/issues/?filter=10201) to review the currently open issues and make sure that no one is already working on your issue. If you find an open issue that is unassigned that you want to work, you can assign it to yourself! If you don’t see an issue related to yours, [create a new issue](https://dcosjira.atlassian.net/secure/CreateIssue!default.jspa), select documentation as the component, and assign it to yourself.
 
-  ![Example of the JIRA issues screen](https://d3vv6lp55qjaqc.cloudfront.net/items/0k2v3s3J2T250l0D223A/Image%202016-11-30%20at%2011.25.08%20AM.png?X-CloudApp-Visitor-Id=f9e27f8200d2918234e4cffed03e0a2e&v=2133d36c "JIRA issue")
+  <img src="/images/2017-01-11_JIRA_screen_cap.png"/>
 
 1. If this is your first contribution [Fork](https://help.github.com/articles/fork-a-repo/) the [dcos-docs](https://github.com/dcos/dcos-docs) repo. (Once you’ve forked the repo, that fork stays associated with your GitHub account. If you try to fork it again GitHub will remind you that you already have a fork.)
 
