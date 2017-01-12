@@ -3,13 +3,13 @@ post_title: DC/OS Ports
 menu_order: 4
 ---
 
-The following is a list of ports used by DC/OS [components](/docs/1.9/overview/architecture/components/) and their corresponding systemd unit.
+This topic lists the ports that are required to launch DC/OS. Additional ports may be required to launch the individual DC/OS services.
 
 ## All nodes
 
 ### TCP
 
-| Port | Component | systemd unit |
+|Port   |DC/OS [component](/docs/1.9/overview/components/) and systemd unit   | 
 |---|---|
 | 61003 | REX-Ray | `dcos-rexray.service` |
 | 61053 | Mesos DNS | `dcos-mesos-dns.service` |
@@ -23,8 +23,9 @@ The following is a list of ports used by DC/OS [components](/docs/1.9/overview/a
 
 ### UDP
 
-| Port | Component | systemd unit |
+|Port   |DC/OS [component](/docs/1.9/overview/components/) and systemd unit   | 
 |---|---|
+| 61053 | Mesos DNS | `dcos-mesos-dns.service`|
 | 62053 | Spartan | `dcos-spartan.service` |
 | 64000 | Navstar | `dcos-navstar.service` |
 
@@ -32,7 +33,7 @@ The following is a list of ports used by DC/OS [components](/docs/1.9/overview/a
 
 ### TCP
 
-| Port | Component | systemd unit |
+|Port   |DC/OS [component](/docs/1.9/overview/components/) and systemd unit   | 
 |---|---|
 | 53    | Spartan | `dcos-spartan.service` |
 | 80    | Admin Router | `dcos-adminrouter.service` |
@@ -47,10 +48,12 @@ The following is a list of ports used by DC/OS [components](/docs/1.9/overview/a
 | 8181  | Exhibitor and Zookeeper | `dcos-exhibitor.service` |
 | 9990  | Cosmos | `dcos-cosmos.service` |
 | 15055 | DC/OS History | `dcos-history-service.service` |
+|  Dynamic | DC/OS Metronome | `dcos-metronome.service`|
+|  Dynamic | System Package Manager API | `dcos-pkgpanda-api.service` | 
 
 ### UDP
 
-| Port | Component | systemd unit |
+|Port   |DC/OS [component](/docs/1.9/overview/components/) and systemd unit   |
 |---|---|
 | 53 | Spartan | `dcos-spartan.service` |
 
@@ -58,7 +61,16 @@ The following is a list of ports used by DC/OS [components](/docs/1.9/overview/a
 
 ### TCP
 
-| Port | Component | systemd unit |
+|Port   |DC/OS [component](/docs/1.9/overview/components/) and systemd unit   | 
 |---|---|
 | 5051  |  Mesos Agent | `dcos-mesos-slave.service` |
 | 61001 |  Admin Router Agent | `dcos-adminrouter-agent` |
+|  61002 | Diagnostics | `dcos-3dt.service` |  
+|  1025-2180 | Default advertised port ranges (for Marathon health checks) |  
+|   2182-3887| Default advertised port ranges (for Marathon health checks) |  
+|  3889-5049| Default advertised port ranges (for Marathon health checks) |  
+| 5052-8079| Default advertised port ranges (for Marathon health checks) |  
+|8082-8180| Default advertised port ranges (for Marathon health checks) |  
+|8182-32000 | Default advertised port ranges (for Marathon health checks) |
+
+
