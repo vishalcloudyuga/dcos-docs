@@ -33,8 +33,9 @@ Once your cluster is configured to support GPUs, add the `gpus` parameter to you
      "gpus": 1,
      "instances": 1
 }
-
 ## Docker-Based Application Definition
+
+**Important:** You must use the [DC/OS Universal Container Runtime](/docs/1.8/usage/containerizers/) to run a containerized application that uses GPUs.
 
 {
      "id": "docker-gpu-test",
