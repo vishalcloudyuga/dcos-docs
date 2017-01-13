@@ -215,7 +215,7 @@ To demonstrate the vhost feature:
 
 1.  Find your [public agent IP](/docs/1.9/administration/locate-public-agent/). 
 
-1.  Modify the external nginx app (`nginx-external.json`) to point to your public DNS name. You can modify your app by using the DC/OS CLI or GUI.
+1.  Modify the external nginx app (`nginx-external.json`) to point to your public agent DNS name. You can modify your app by using the DC/OS CLI or GUI.
 
     **DC/OS CLI** 
         
@@ -255,7 +255,7 @@ To demonstrate the vhost feature:
  
     1.  Select **Environment > ADD LABEL**.
     
-    1.  Enter `HAPROXY_0_VHOST` for **KEY** and specify your public DNS name for **VALUE**.
+    1.  Enter `HAPROXY_0_VHOST` for **KEY** and specify your public agent DNS name for **VALUE**.
     
         ![Update app](/docs/1.9/usage/service-discovery/marathon-lb/img/nginx-external-gui.png)
         
