@@ -5,7 +5,7 @@ feature_maturity: experimental
 menu_order: 110 
 ---
 
-You can configure your DC/OS service to use the GPU (Graphics Processing Unit) of your nodes. GPUs can dramatically accelerate big data workloads. [Learn more](http://www.nvidia.com/object/what-is-gpu-computing.html).
+You can configure your DC/OS service to use the GPUs (Graphics Processing Units) of your nodes. GPUs can dramatically accelerate big data workloads. [Learn more](http://www.nvidia.com/object/what-is-gpu-computing.html).
 
 # Configure your Cluster for GPUs
 
