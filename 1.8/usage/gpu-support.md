@@ -17,12 +17,12 @@ Follow these steps to enable GPU support on your cluster.
 
 # Configure your Service to Use GPUs
 
-Once your cluster is configured to support GPUs, add the `gpus` parameter to your Marathon application definition.
+Once your cluster is configured to support GPUs, add the `gpus` parameter to your [Marathon application definition](/docs/1.8/usage/marathon/application-basics/).
 
 # Examples
 
 ## Simple GPU Application Definition
-
+```
 {
      "id": "simple-gpu-test",
      "acceptedResourceRoles":["slave_public", "*"],
@@ -33,25 +33,27 @@ Once your cluster is configured to support GPUs, add the `gpus` parameter to you
      "gpus": 1,
      "instances": 1
 }
+```
+
 ## Docker-Based Application Definition
 
 **Important:** You must use the [DC/OS Universal Container Runtime](/docs/1.8/usage/containerizers/) to run a containerized application that uses GPUs.
-
+```
 {
-     "id": "docker-gpu-test",
-     "acceptedResourceRoles":["slave_public", "*"],
-     "cmd": "while [ true ] ; do nvidia-smi; sleep 5; done",
-     "cpus": 1,
-     "mem": 128,
-     "disk": 0,
-     "gpus": 1,
-     "instances": 1,
-     "container": {
-       "type": "MESOS",
-       "docker": {
-         "network": "HOST",
-         "image": "nvidia/cuda"
-       }
-     }
-   }
-
+    "id": "docker-gpu-test",
+    "acceptedResourceRoles":["slave_public", "*"],
+    "cmd": "while [ true ] ; do nvidia-smi; sleep 5; done",
+    "cpus": 1,
+    "mem": 128,
+    "disk": 0,
+    "gpus": 1,
+    "instances": 1,
+    "container": {
+      "type": "MESOS",
+      "docker": {
+        "network": "HOST",
+        "image": "nvidia/cuda"
+      }
+    }
+}
+```
