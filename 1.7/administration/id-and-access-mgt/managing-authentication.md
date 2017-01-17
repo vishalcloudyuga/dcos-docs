@@ -139,4 +139,4 @@ security features as well as on introducing new ones in the coming releases.
 
  [1]: https://en.wikipedia.org/wiki/STARTTLS
 
-
+![oAuth badge](/docs/1.7/administration/id-and-access-mgt/img/a0-badge-light.png)

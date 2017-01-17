@@ -149,3 +149,5 @@ security features as well as on introducing new ones in the coming releases.
 - [Learn how to monitor a DC/OS cluster](/docs/1.8/administration/monitoring/)
 
  [1]: https://en.wikipedia.org/wiki/STARTTLS
+ 
+ ![oAuth badge](/docs/1.9/administration/id-and-access-mgt/img/a0-badge-light.png)

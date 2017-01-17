@@ -42,3 +42,5 @@ $ curl --header "Authorization: token=$(dcos config show core.dcos_acs_token)" h
 ```bash
 $ curl --header "Authorization: token=$(dcos config show core.dcos_acs_token)" http://<master-host-name>/mesos/master/state.json
 ```
+
+![oAuth badge](/docs/1.8/administration/id-and-access-mgt/img/a0-badge-light.png)

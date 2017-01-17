@@ -41,3 +41,5 @@ The following full command shows how to authenticate to the Mesos API using cURL
 ```bash
 $ curl --header "Authorization: token=$(dcos config show core.dcos_acs_token)" http://<master-host-name>/mesos/master/state.json
 ```
+
+![oAuth badge](/docs/1.7/administration/id-and-access-mgt/img/a0-badge-light.png)
