@@ -43,4 +43,3 @@ $ curl --header "Authorization: token=$(dcos config show core.dcos_acs_token)" h
 $ curl --header "Authorization: token=$(dcos config show core.dcos_acs_token)" http://<master-host-name>/mesos/master/state.json
 ```
 
-

@@ -43,4 +43,3 @@ To manage users:
 
         You can now log in as another user.
 
-

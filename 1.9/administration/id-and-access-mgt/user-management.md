@@ -46,4 +46,3 @@ To manage users:
 ## Next Steps
 
 For more information on security, check out [Security and Authentication](/docs/1.9/administration/id-and-access-mgt/)
-
