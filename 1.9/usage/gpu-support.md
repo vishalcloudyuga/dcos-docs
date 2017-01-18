@@ -60,7 +60,7 @@ Once your service has deployed, check the contents of `stdout` to verify that th
 
 ## Docker-Based Application Definition
 
-**Important:** You must use the [DC/OS Universal Container Runtime](/docs/1.8/usage/containerizers/) to run a containerized application that uses GPUs. To use the Universal Containerizer, set the container type to `MESOS`.
+**Important:** You must use the [DC/OS Universal Container Runtime](/docs/1.8/usage/containerizers/) to run a containerized application that uses GPUs. To use the Universal Container Runtime, set the container type to `MESOS`.
 ```
 {
     "id": "docker-gpu-test",
