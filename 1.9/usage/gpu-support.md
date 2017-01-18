@@ -13,7 +13,7 @@ By default, DC/OS is not configured to run with GPUs, so you must explicitly ena
 
 Follow these steps to enable GPU support on your cluster. 
 
-1. Ensure that all machines in your cluster have [Nvidia GPU libraries](https://developer.nvidia.com/nvidia-management-library-nvml) installed on them. The machines do not need to have GPUs on them, but they will fail to start without the libraries.
+1. Ensure that all machines in your cluster have the [Nvidia Management Library (NVML)](https://developer.nvidia.com/nvidia-management-library-nvml) installed on them. The machines do not need to have GPUs on them, but they will fail to to come online without this library.
 
     If you are using AWS, [generate a custom AWS CF template](https://dcos.io/docs/1.8/administration/installing/cloud/aws/advanced/aws-custom/) that uses one of the following AMIs. 
     
@@ -45,7 +45,7 @@ Once your cluster is configured to support GPUs, add the `gpus` parameter to you
 }
 ```
 
-Once your service has deployed, check the contents of `stdout` to verify that the service is producing the proper output from the `nvidia-smi` command. You should see something like the following, repeated once every 5 seconds. Access the log [via the DC/OS CLI](https://dcos.io/docs/1.9/administration/logging/quickstart/) or from the **Services** > **<my-service>** > **Health** page of the the DC/OS dashboard.
+Once your service has deployed, check the contents of `stdout` to verify that the service is producing the proper output from the `nvidia-smi` command. You should see something like the following, repeated once every 5 seconds. Access the log [via the DC/OS CLI](https://dcos.io/docs/1.9/administration/logging/quickstart/) or from the **Health** page for your service on the DC/OS dashboard.
 ```
 +------------------------------------------------------+
 | NVIDIA-SMI 352.79     Driver Version: 352.79         |
@@ -81,7 +81,7 @@ Once your service has deployed, check the contents of `stdout` to verify that th
 }
 ```
 
-Once your service has deployed, check the contents of `stdout` to verify that the service is producing the proper output from the `nvidia-smi` command. You should see something like the following, repeated once every 5 seconds. Access the log [via the DC/OS CLI](https://dcos.io/docs/1.9/administration/logging/quickstart/) or from the **Services** > **<my-service>** > **Health** page of the the DC/OS dashboard.
+Once your service has deployed, check the contents of `stdout` to verify that the service is producing the proper output from the `nvidia-smi` command. You should see something like the following, repeated once every 5 seconds. Access the log [via the DC/OS CLI](https://dcos.io/docs/1.9/administration/logging/quickstart/) or from the **Health** page for your service on the DC/OS dashboard.
 ```
 +------------------------------------------------------+
 | NVIDIA-SMI 352.79     Driver Version: 352.79         |
