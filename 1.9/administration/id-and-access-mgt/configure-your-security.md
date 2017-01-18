@@ -40,4 +40,3 @@ but will require configuring a callback URL specific to your cluster.
 Similar functionality to customize the installation on AWS and Azure will also
 be made available in a future release.
 
-![oAuth badge](/docs/1.9/administration/id-and-access-mgt/img/a0-badge-light.png)

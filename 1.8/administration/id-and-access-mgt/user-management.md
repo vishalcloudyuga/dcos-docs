@@ -43,4 +43,4 @@ To manage users:
 
         You can now log in as another user.
 
-![oAuth badge](/docs/1.8/administration/id-and-access-mgt/img/a0-badge-light.png)
+

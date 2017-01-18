@@ -47,4 +47,3 @@ To manage users:
 
 For more information on security, check out [Security and Authentication](/docs/1.9/administration/id-and-access-mgt/)
 
-![oAuth badge](/docs/1.9/administration/id-and-access-mgt/img/a0-badge-light.png)
