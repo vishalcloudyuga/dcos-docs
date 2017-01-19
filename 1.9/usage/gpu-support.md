@@ -11,19 +11,25 @@ By default, DC/OS is not configured to run with GPUs, so you must explicitly ena
 
 # Configure your Cluster for GPUs
 
-Follow these steps to enable GPU support on your cluster. 
+Follow these steps to enable GPU support on your cluster. Below are instructions for AWS cloud configuration and configuration for clusters that do not use AWS.
 
-1. Ensure that all machines in your cluster have the [Nvidia Management Library (NVML)](https://developer.nvidia.com/nvidia-management-library-nvml) installed on them. The machines do not need to have GPUs on them, but they will fail to to come online without this library if GPU support is enabled as described below.
+All machines in your cluster must have the [Nvidia Management Library (NVML)](https://developer.nvidia.com/nvidia-management-library-nvml) installed on them. The machines do not need to have GPUs on them, but they will fail to to come online without this library if GPU support is enabled as described below.
 
-    If you are using AWS, [generate a custom AWS CF template](https://dcos.io/docs/1.8/administration/installing/cloud/aws/advanced/aws-custom/) that uses one of the following AMIs. 
-    
+## Configure your AWS Cloud Cluster.
+
+1. Generate [a custom AWS CF template](https://dcos.io/docs/1.8/administration/installing/cloud/aws/advanced/aws-custom/), adding the `enable_gpu_isolation: true` flag to your `config.yaml` file.
+
+1. When you create your stack on [CloudFormation](https://console.aws.amazon.com/cloudformation/home), specify one of the following AMIs. These AMIs have the required [Nvidia Management Library (NVML)](https://developer.nvidia.com/nvidia-management-library-nvml) installed on them.
+
         us-west-2: ami-9b5d97fb
         us-east-1: ami-e10e50f6
         ap-southeast-2: ami-37b28f54    
 
-    If you are not using AWS, find detailed installation instructions [here](https://github.com/apache/mesos/blob/master/docs/gpu-support.md#external-dependencies).
+## Configure a Non-AWS Cluster
 
-1. Add the `enable_gpu_isolation: true` flag to your `config.yaml` when you install DC/OS on your cluster. If you are installing DC/OS from the AWS cloud template, follow [the instructions here](/docs/1.8/administration/installing/cloud/aws/advanced/aws-custom/). Otherwise, follow [the custom installation instructions](/docs/1.8/administration/installing/custom/).
+1. Install the [Nvidia Management Library (NVML)](https://developer.nvidia.com/nvidia-management-library-nvml) on each node of your cluster, unless it is already installed. Find detailed installation instructions [here](https://github.com/apache/mesos/blob/master/docs/gpu-support.md#external-dependencies).
+
+1. Add the `enable_gpu_isolation: true` flag to your `config.yaml` when you [install DC/OS on your cluster](/docs/1.8/administration/installing/custom/).
 
 # Configure your Service to Use GPUs
 
