@@ -11,7 +11,7 @@ By default, DC/OS is not configured to run with GPUs, so you must explicitly ena
 
 # Configure your Cluster for GPUs
 
-Follow these steps to enable GPU support on your cluster. Below are instructions for AWS cloud configuration and configuration for clusters that do not use AWS.
+Follow these steps to enable GPU support on your cluster. Below are instructions for AWS cloud and custom installations.
 
 All machines in your cluster must have the [Nvidia Management Library (NVML)](https://developer.nvidia.com/nvidia-management-library-nvml) installed on them. The machines do not need to have GPUs on them, but they will fail to to come online without this library if GPU support is enabled as described below.
 
