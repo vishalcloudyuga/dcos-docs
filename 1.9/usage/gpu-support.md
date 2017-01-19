@@ -19,6 +19,14 @@ All machines in your cluster must have the [Nvidia Management Library (NVML)](ht
 
 1. Generate [a custom AWS CF template](https://dcos.io/docs/1.8/administration/installing/cloud/aws/advanced/aws-custom/), adding the `enable_gpu_isolation: true` flag to your `config.yaml` file.
 
+        enable_gpu_isolation: true
+        aws_template_storage_bucket: klueska-advanced-aws-gpu
+        aws_template_storage_bucket_path: templates/dcos
+        aws_template_storage_region_name: us-west-2
+        aws_template_upload: true
+        aws_template_storage_access_key_id: <my-access-key-id>
+        aws_template_storage_secret_access_key: <my-secret-access_key>
+
 1. When you create your stack on [CloudFormation](https://console.aws.amazon.com/cloudformation/home), specify one of the following AMIs. These AMIs have the required [Nvidia Management Library (NVML)](https://developer.nvidia.com/nvidia-management-library-nvml) installed on them.
 
         us-west-2: ami-9b5d97fb
@@ -30,6 +38,14 @@ All machines in your cluster must have the [Nvidia Management Library (NVML)](ht
 1. Install the [Nvidia Management Library (NVML)](https://developer.nvidia.com/nvidia-management-library-nvml) on each node of your cluster, unless it is already installed. Find detailed installation instructions [here](https://github.com/apache/mesos/blob/master/docs/gpu-support.md#external-dependencies).
 
 1. Add the `enable_gpu_isolation: true` flag to your `config.yaml` when you [install DC/OS on your cluster](/docs/1.8/administration/installing/custom/).
+
+        enable_gpu_isolation: true
+        aws_template_storage_bucket: klueska-advanced-aws-gpu
+        aws_template_storage_bucket_path: templates/dcos
+        aws_template_storage_region_name: us-west-2
+        aws_template_upload: true
+        aws_template_storage_access_key_id: <my-access-key-id>
+        aws_template_storage_secret_access_key: <my-secret-access_key>
 
 # Configure your Service to Use GPUs
 
