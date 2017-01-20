@@ -22,7 +22,6 @@ All machines in your cluster must have the [Nvidia Management Library (NVML)](ht
         enable_gpu_isolation: true
         aws_template_storage_bucket: <s3-bucket-name>
         aws_template_storage_bucket_path: <path-to-directory>
-        aws_template_storage_region_name: <your-region>
         aws_template_upload: true
         aws_template_storage_access_key_id: <your-access-key-id>
         aws_template_storage_secret_access_key: <your-secret-access_key>
@@ -45,7 +44,6 @@ All machines in your cluster must have the [Nvidia Management Library (NVML)](ht
         enable_gpu_isolation: true
         aws_template_storage_bucket: <s3-bucket-name>
         aws_template_storage_bucket_path: <path-to-directory>
-        aws_template_storage_region_name: <your-region>
         aws_template_upload: true
         aws_template_storage_access_key_id: <your-access-key-id>
         aws_template_storage_secret_access_key: <your-secret-access_key>
