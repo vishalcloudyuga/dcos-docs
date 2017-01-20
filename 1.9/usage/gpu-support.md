@@ -27,7 +27,9 @@ All machines in your cluster must have the [Nvidia Management Library (NVML)](ht
         aws_template_storage_access_key_id: <your-access-key-id>
         aws_template_storage_secret_access_key: <your-secret-access_key>
 
-1. When you create your stack on [CloudFormation](https://console.aws.amazon.com/cloudformation/home), specify one of the following AMIs. These AMIs have the required [Nvidia Management Library (NVML)](https://developer.nvidia.com/nvidia-management-library-nvml) installed on them.
+1. When you create your stack on [CloudFormation](https://console.aws.amazon.com/cloudformation/home), choose one of these three regions: US West (Oregon), US East (N. Virginia), or Asia Pacific (Sydney).
+
+1. Then, specify one of the following AMIs. These AMIs have the required [Nvidia Management Library (NVML)](https://developer.nvidia.com/nvidia-management-library-nvml) installed on them. Choose the AMI that corresponds to the region you chose in the previous step.
 
         us-west-2: ami-9b5d97fb
         us-east-1: ami-e10e50f6
