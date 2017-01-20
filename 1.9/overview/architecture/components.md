@@ -238,7 +238,7 @@ No software runs perfectly, especially not the first time. Distribute tasks acro
 <div data-role="collapsible">
 <h2>DC/OS Signal</h2>
 <span>
-<p><strong>Description:</strong> The DC/OS Signal service reports cluster telemetry and analytics to help improve DC/OS. Administrators can [opt-out of telemetry](/docs/1.9/administration/installing/opt-out/#telemetry) at install time.</p>
+<p><strong>Description:</strong> The DC/OS Signal service reports cluster telemetry and analytics to help improve DC/OS. Administrators can [opt-out of telemetry](/docs/1.9/administration/opt-out/#telemetry) at install time.</p>
 <p>
   <strong>System Service(s):</strong>
   <ul>
