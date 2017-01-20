@@ -23,7 +23,7 @@ From the DC/OS web interface, click the **Jobs** tab, then the **New Job** butto
 * **Command** - The command your job will execute. Leave this blank if you will use a Docker image.
 * **Schedule** - Specify the schedule in cron format, as well as the time zone and starting deadline. Use [this crontab generator](http://crontab.guru) for help.
 * **Docker Container** - Fill in this field if you will use a Docker image to specify the action of your job.
-* **Labels** - Attach metadata to your job so you can filter them. [Learn more about labels](/docs/1.9/usage/tutorials/task-labels.md).
+* **Labels** - Attach metadata to your job so you can filter them. [Learn more about labels](/docs/1.9/usage/tutorials/task-labels/).
 
 ## Modify, View, or Remove a Job
 
