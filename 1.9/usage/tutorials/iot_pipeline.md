@@ -37,7 +37,7 @@ This tutorial demonstrates how you can build a complete IoT pipeline on DC/OS in
     *   **Unix/Linux:** See these [installation instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 # Install the DC/OS services you'll need
-From the DC/OS web interface [**Packages**](/docs/1.9/usage/webinterface/#universe) tab, install Cassandra, Kafka, Marathon-LB, and Zeppelin.
+From the DC/OS web interface [**Universe > Packages**](/docs/1.9/usage/webinterface/#universe) tab, install Cassandra, Kafka, Marathon-LB, and Zeppelin.
 
 __Tip:__ You can also install DC/OS packages from the DC/OS CLI with the [`dcos package install`][11] command.
 
