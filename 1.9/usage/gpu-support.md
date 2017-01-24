@@ -15,38 +15,36 @@ Follow these steps to enable GPU support on your cluster. Below are instructions
 
 All machines in your cluster must have the [Nvidia Management Library (NVML)](https://developer.nvidia.com/nvidia-management-library-nvml) installed on them. The machines do not need to have GPUs on them, but they will fail to to come online without this library if GPU support is enabled as described below.
 
-## Configure your AWS Cloud Cluster.
+## Configure your AWS Cloud Cluster
+
+- Prerequisite: An AWS S3 bucket.
 
 1. Generate [a custom AWS CF template](https://dcos.io/docs/1.8/administration/installing/cloud/aws/advanced/aws-custom/), adding the `enable_gpu_isolation: true` flag to your `config.yaml` file.
 
         enable_gpu_isolation: true
         aws_template_storage_bucket: <s3-bucket-name>
-        aws_template_storage_bucket_path: <path-to-directory>
+        aws_template_storage_bucket_path: templates/dcos
         aws_template_upload: true
         aws_template_storage_access_key_id: <your-access-key-id>
         aws_template_storage_secret_access_key: <your-secret-access_key>
 
 1. When you create your stack on [CloudFormation](https://console.aws.amazon.com/cloudformation/home), choose one of these three regions: US West (Oregon), US East (N. Virginia), or Asia Pacific (Sydney).
 
-1. Then, specify one of the following AMIs. These AMIs have the required [Nvidia Management Library (NVML)](https://developer.nvidia.com/nvidia-management-library-nvml) installed on them. Choose the AMI that corresponds to the region you chose in the previous step.
+1. In your S3 bucket, navigate to `<s3-bucket-name>/templates/`. Then right-click on `dcos` and select **Make Public**.
+
+1. On the **Specify Details** page, specify one of the following AMIs. These AMIs have the required [Nvidia Management Library (NVML)](https://developer.nvidia.com/nvidia-management-library-nvml) installed on them. Choose the AMI that corresponds to the region you chose in the previous step.
 
         us-west-2: ami-9b5d97fb
         us-east-1: ami-e10e50f6
-        ap-southeast-2: ami-37b28f54    
+        ap-southeast-2: ami-37b28f54
+
+1. Also on the **Specify Details** page, make sure that you choose GPU-type machines for your `PrivateAgentInstanceType` and `PublicAgentInstanceType`.
 
 ## Configure a Non-AWS Cluster
 
 1. Install the [Nvidia Management Library (NVML)](https://developer.nvidia.com/nvidia-management-library-nvml) on each node of your cluster, unless it is already installed. Find detailed installation instructions [here](https://github.com/apache/mesos/blob/master/docs/gpu-support.md#external-dependencies).
 
 1. Add the `enable_gpu_isolation: true` flag to your `config.yaml` when you [install DC/OS on your cluster](/docs/1.8/administration/installing/custom/).
-
-        enable_gpu_isolation: true
-        enable_gpu_isolation: true
-        aws_template_storage_bucket: <s3-bucket-name>
-        aws_template_storage_bucket_path: <path-to-directory>
-        aws_template_upload: true
-        aws_template_storage_access_key_id: <your-access-key-id>
-        aws_template_storage_secret_access_key: <your-secret-access_key>
 
 # Configure your Service to Use GPUs
 
