@@ -57,10 +57,10 @@ Use the `zen.sh` script to create the Zen template dependencies. These dependenc
     echo "Public SubnetId: $public_subnet"
     ```
 
-1.  Run the script from from your terminal with a single argument of stack prefix (`STACK_NAME`). 
+1.  Run the `zen.sh` script with an optional tag value for your DC/OS stack specified (`STACK_NAME`), or use the default `dcos`. This value will be used to tag your DC/OS cluster in AWS.  
 
     ```bash
-    $ bash ./zen.sh <STACK_NAME>
+    $ bash ./zen.sh dcos
     ```
 
     The output should look like this:
@@ -136,7 +136,7 @@ Launch the DC/OS web interface by entering the master hostname:
 
     ![DC/OS dashboard](../img/ui-dashboard.gif)
 
-1.  Click the dropdown menu on the upper-left side to install the DC/OS [Command-Line Interface (CLI)][2]. You must install the CLI to administer your DC/OS cluster.
+1.  Click the dropup menu on the lower-left side to install the DC/OS [Command-Line Interface (CLI)][2]. You must install the CLI to administer your DC/OS cluster.
 
     ![install CLI](../img/ui-dashboard-install-cli.gif)
 
