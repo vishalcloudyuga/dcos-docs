@@ -111,7 +111,7 @@ To install your own set of packages you must build a customized local Universe D
     $ sudo make base
     ```
 
-3.  Inside the `Makefile` replace `--selected` flag with the comma-separated list of selected packages preceeded by `--include` flag. To minimize the container size and download time, you can select only what you need. If you do not modify the `Makefile` all default Universe packages will be included.
+3.  Inside the `Makefile` replace `--selected` flag with the comma-separated list of selected packages preceeded by `--include` flag. To minimize the container size and download time, you can select only what you need. If you do not modify the `Makefile`, all *selected* Universe packages will be included. To view which packages are selected, click on the **Universe** tab in the DC/OS web interface. 
 
     ```bash
     $ sed -i -e 's/--selected/--include="marathon-lb,zeppelin"/' Makefile
