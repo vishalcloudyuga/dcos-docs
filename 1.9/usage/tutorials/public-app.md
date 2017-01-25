@@ -1,24 +1,23 @@
 ---
-post_title: Deploying Apps to a Public Node
-nav_title: Public App
+post_title: Deploying Public Services
+nav_title: Public Services
 menu_order: 10
 ---
 
 DC/OS agent nodes can be designated as [public](/docs/1.9/overview/concepts/#public) or [private](/docs/1.9/overview/concepts/#private) during [installation](/docs/1.9/administration/installing/). Public agent nodes provide public access to your DC/OS applications. By default apps are launched on private agent nodes. 
 
-To launch an app on a public node, you must create a Marathon app definition with the `"acceptedResourceRoles":["slave_public"]` parameter specified.
+By default, the public nodes ports are closed and health checks are configured for [Marathon-LB](/docs/1.9/usage/service-discovery/marathon-lb/). The default AWS CloudFormation template has ports 80 and 443 configured by default for the Elastic Load Balancer.
 
 **Prerequisites:**
 
 * DC/OS is [installed](/docs/1.9/administration/installing/)
 * DC/OS CLI is [installed](/docs/1.9/usage/cli/install/)
 
-
-1.  Create a Marathon app definition with the `"acceptedResourceRoles":["slave_public"]` parameter specified. For example:
+1.  Create a Marathon app definition with the required `"acceptedResourceRoles":["slave_public"]` parameter specified. For example:
 
     ```json
     {
-        "id": "/product/service/myapp",
+        "id": "/product/service/myApp",
         "container": {
         "type": "DOCKER",
         "docker": {
@@ -38,10 +37,10 @@ To launch an app on a public node, you must create a Marathon app definition wit
 
     For more information about the `acceptedResourceRoles` parameter, see the Marathon REST API [documentation](https://mesosphere.github.io/marathon/docs/rest-api.html).
 
-1.  Add the your app to Marathon by using this command, where `myapp.json` is your app:
+1.  Add the your app to Marathon by using this command, where `myApp.json` is your app:
 
     ```bash
-    $ dcos marathon app add myapp.json
+    $ dcos marathon app add myApp.json
     ```
 
     If this is added successfully, there is no output.
@@ -58,12 +57,10 @@ To launch an app on a public node, you must create a Marathon app definition wit
     
     ```bash
     ID      MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
-        /myapp   64  0.1    0/1    ---      scale       DOCKER   None
+        /myApp   64  0.1    0/1    ---      scale       DOCKER   None
     ```
     
     **Tip:** You can also view deployed apps by using the **Services** tab of DC/OS [GUI](/docs/1.9/usage/webinterface/#services).
-    
-    
 
  [1]: /docs/1.9/tutorials/containerized-app/
  [3]: /docs/1.9/administration/installing/
