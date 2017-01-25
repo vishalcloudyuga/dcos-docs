@@ -47,12 +47,14 @@ You can create and manage jobs from the DC/OS CLI using `dcos job` commands. To 
             "mem": 32,
             "disk": 0
         },
-        "schedules": {
-            "id": "sleep-schedule",
-            "enabled": true,
-            "cron": "20 0 * * *",
-            "concurrencyPolicy": "ALLOW"
-        }
+        "schedules": [
+            {
+                "id": "sleep-schedule",
+                "enabled": true,
+                "cron": "20 0 * * *",
+                "concurrencyPolicy": "ALLOW"
+            }
+        ]
     }
     ```
  
