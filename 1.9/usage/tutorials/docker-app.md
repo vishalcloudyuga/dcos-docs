@@ -142,8 +142,17 @@ In this tutorial, a custom Docker app is created and added to Marathon.
     /nginx   64  0.1    0/1    ---      scale       DOCKER   None
     ```
     
-1.  Go to your public node and you should see `Hello brave new world!` from your Docker file.
+1.  If you used the [AWS CloudFormation templates](/docs/1.9/administration/installing/cloud/aws/), you must reconfigure the health check on the public ELB to expose the app to the port specified in your app definition (e.g. port 80). 
 
+1.  Go to your public agent to see the site running. For information about how to find your public agent IP, see the [documentation](/docs/1.9/administration/locate-public-agent/).
+
+    You should see the following message in your browser: 
+    
+    ![Hello Brave World](../img/helloworld.png)
+    
+## Next steps
+
+Learn how to load balance your app on a public node using [Marathon-LB](/docs/1.9/usage/service-discovery/marathon-lb/marathon-lb-basic-tutorial/).
     
 
  [1]: https://www.docker.com

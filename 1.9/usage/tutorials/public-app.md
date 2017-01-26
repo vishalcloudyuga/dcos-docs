@@ -67,6 +67,10 @@ By default apps are launched on private agent nodes, but you can use these instr
     You should see the following message in your browser: 
     
     ![Hello Brave World](../img/helloworld.png)
+    
+## Next steps
+
+Learn how to load balance your app on a public node using [Marathon-LB](/docs/1.9/usage/service-discovery/marathon-lb/marathon-lb-basic-tutorial/).
 
  [1]: /docs/1.9/tutorials/containerized-app/
  [3]: /docs/1.9/administration/installing/
