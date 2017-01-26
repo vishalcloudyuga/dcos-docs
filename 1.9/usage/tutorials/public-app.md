@@ -59,8 +59,15 @@ By default apps are launched on private agent nodes, but you can use these instr
     ```
     
     **Tip:** You can also view deployed apps by using the **Services** tab of DC/OS [GUI](/docs/1.9/usage/webinterface/#services).
+
+
+1.  If you used the [AWS CloudFormation templates](/docs/1.9/administration/installing/cloud/aws/), you must reconfigure the health check on the public ELB to expose the app to the port specified in your app definition (e.g. port 80). 
+
+1.  Go to your public agent to see the site running. For information about how to find your public agent IP, see the [documentation](/docs/1.9/administration/locate-public-agent/).
+
+    You should see the following message in your browser: 
     
-Now that your app is deployed to DC/OS, you will need to configure your load balancer to point to the port specified in your app definition (e.g. port `80`).
+    ![Hello Brave World](../img/helloworld.png)
 
  [1]: /docs/1.9/tutorials/containerized-app/
  [3]: /docs/1.9/administration/installing/
