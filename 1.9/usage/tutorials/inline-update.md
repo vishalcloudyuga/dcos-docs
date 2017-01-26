@@ -7,7 +7,7 @@ You can easily view and update the configuration of a deployed app by using the 
 
 **Note:** The process for updating packages from the [DC/OS Universe](/docs/1.9/usage/webinterface/#-a-name-universe-a-universe) is different. Visit the [Managing Services](/docs/1.9/usage/managing-services/config/) section for more information.
 
-## Update an Environment Variable
+# Update an Environment Variable
 
 Use the `dcos marathon app update` command from the DC/OS CLI to update any aspect of your service's JSON service definition. For instance, follow the instructions below to update the environment variable (`env` field) of the service definition.
 
@@ -23,7 +23,7 @@ Now, run the command below to see the result of your update:
 $ dcos marathon app show test-app | jq '.env'
 ```
 
-## Update all Environment Variables
+# Update all Environment Variables
 
 The entire [`env` field][1] can also be updated by specifying a JSON file in a command argument.
 

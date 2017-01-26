@@ -54,14 +54,14 @@ In this tutorial you will learn how to:
 
   * [Kafka API Reference](#api-reference)
 
-## Prerequisites
+# Prerequisites
 
 - A running DC/OS cluster with 3 private agents, each with 2 CPUs and 2 GB of RAM available.
 - [DC/OS CLI](/docs/1.9/usage/cli/install/) installed.
 
-## Install Kafka
+# Install Kafka
 
-### Typical installation
+## Typical installation
 
 Install a Kafka cluster with 3 brokers using the DC/OS CLI:
 
@@ -71,7 +71,7 @@ $ dcos package install kafka
 
 While the DC/OS command line interface (CLI) is immediately available, it takes a few minutes for the Kafka service to start.
 
-### Minimal installation
+## Minimal installation
 
 To start a minimal cluster with a single broker, create a JSON options file named `kafka-minimal.json`:
 ```json
@@ -88,16 +88,16 @@ Install the Kafka cluster:
 $ dcos package install kafka --options=kafka-minimal.json
 ```
 
-## Topic management
+# Topic management
 
-### Add a topic:
+## Add a topic:
 ```bash
 $ dcos kafka topic create topic1 --partitions 1 --replication 1
 ```
 
-## Produce and consume messages
+# Produce and consume messages
 
-### List Kafka client endpoints
+## List Kafka client endpoints
 ```bash
 $ dcos kafka connection
 {
@@ -115,7 +115,7 @@ The above shows an example of what a Kafka client endpoint will look like. Note 
 will be different from cluster to cluster, since these services are dynamically provisioned. Record the
 "address" value from your cluster for use in the next step.
 
-### Produce a message
+## Produce a message
 ```bash
 $ dcos node ssh --master-proxy --leader
 
@@ -126,7 +126,7 @@ root@7d0aed75e582:/bin# echo "Hello, World." | ./kafka-console-producer.sh --bro
 
 Replace the above KAFKA_ADDRESS:PORT with the Kafka client endpoint address from your cluster.
 
-### Consume a message
+## Consume a message
 ```bash
 root@7d0aed75e582:/bin# ./kafka-console-consumer.sh --zookeeper master.mesos:2181/kafka --topic topic1 --from-beginning
 Hello, World.
@@ -134,9 +134,9 @@ Hello, World.
 
 Hit CTRL-C to stop the Kafka consumer process.
 
-## Cleanup
+# Cleanup
 
-### Uninstall
+## Uninstall
 
 Return to the DC/OS CLI environment (exit the Docker container with CTRL-D, exit the SSH session on the master node with
 another CTRL-D).
@@ -151,7 +151,7 @@ Then, use the [framework cleaner](/docs/1.9/usage/managing-services/uninstall/#f
 `framework-principal` is `kafka-principal`
 `zk_path` is `dcos-service-kafka`
 
-## Further resources
+# Further resources
 
 - [DC/OS Kafka Official Documentation](http://docs.mesosphere.com/1.9/usage/service-guides/kafka)
 

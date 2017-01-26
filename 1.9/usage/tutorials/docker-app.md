@@ -6,14 +6,14 @@ menu_order: 05
 
 In this tutorial, a custom Docker app is created and added to Marathon.
 
-### Prerequisites
+## Prerequisites
 
 *   [Docker][1] installed on your workstation
 *   [Docker Hub][2] account
 *   [DC/OS][3] installed
 *   [DC/OS CLI][4] installed
 
-## Create a custom Docker container
+# Create a custom Docker container
 
 1.  In the `dcos` directory created by the DC/OS CLI installation script, create a new directory named `simple-docker-tutorial` and navigate to it:
 
@@ -100,9 +100,9 @@ In this tutorial, a custom Docker app is created and added to Marathon.
     latest: digest: sha256:f733e23e1f5e83a29a223d0a7d30244b30c0d57d17aa0421d962019545d69c17 size: 2185
     ```
 
-## Add your Docker app to Marathon
+# Add your Docker app to Marathon
 
-1.  Create a Marathon app definition with the following contents and save as `nginx.json`. If you’ve created your own Docker container, replace the image name `<username>` with your Docker Hub username:
+1.  Create a Marathon app definition with the following contents and save as `nginx.json`. If you’ve created your own Docker container, replace the image name `mesosphere` with your Docker Hub username:
 
     ```json
     {
@@ -150,7 +150,7 @@ In this tutorial, a custom Docker app is created and added to Marathon.
     
     ![Hello Brave World](../img/helloworld.png)
     
-## Next steps
+# Next steps
 
 Learn how to load balance your app on a public node using [Marathon-LB](/docs/1.9/usage/service-discovery/marathon-lb/marathon-lb-basic-tutorial/).
     
