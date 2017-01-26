@@ -9,7 +9,7 @@ This topic lists the ports that are required to launch DC/OS. Additional ports m
 
 ### TCP
 
-|Port   |DC/OS [component](/docs/1.9/overview/architecture/components/) and systemd unit   | 
+|Port   |DC/OS [component](/docs/1.9/overview/architecture/components/)|  systemd unit   | 
 |---|---|
 | 61003 | REX-Ray | `dcos-rexray.service` |
 | 61053 | Mesos DNS | `dcos-mesos-dns.service` |
@@ -23,7 +23,7 @@ This topic lists the ports that are required to launch DC/OS. Additional ports m
 
 ### UDP
 
-|Port   |DC/OS [component](/docs/1.9/overview/architecture/components/) and systemd unit   | 
+|Port   |DC/OS [component](/docs/1.9/overview/architecture/components/)|  systemd unit   | 
 |---|---|
 | 61053 | Mesos DNS | `dcos-mesos-dns.service`|
 | 62053 | Spartan | `dcos-spartan.service` |
@@ -33,7 +33,7 @@ This topic lists the ports that are required to launch DC/OS. Additional ports m
 
 ### TCP
 
-|Port   |DC/OS [component](/docs/1.9/overview/architecture/components/) and systemd unit   | 
+|Port   |DC/OS [component](/docs/1.9/overview/architecture/components/)|  systemd unit   | 
 |---|---|
 | 53    | Spartan | `dcos-spartan.service` |
 | 80    | Admin Router | `dcos-adminrouter.service` |
@@ -53,7 +53,7 @@ This topic lists the ports that are required to launch DC/OS. Additional ports m
 
 ### UDP
 
-|Port   |DC/OS [component](/docs/1.9/overview/architecture/components/) and systemd unit   |
+|Port   |DC/OS [component](/docs/1.9/overview/architecture/components/)|  systemd unit   |
 |---|---|
 | 53 | Spartan | `dcos-spartan.service` |
 
@@ -61,7 +61,7 @@ This topic lists the ports that are required to launch DC/OS. Additional ports m
 
 ### TCP
 
-|Port   |DC/OS [component](/docs/1.9/overview/architecture/components/) and systemd unit   | 
+|Port   |DC/OS [component](/docs/1.9/overview/architecture/components/)|  systemd unit   | 
 |---|---|
 | 5051  |  Mesos Agent | `dcos-mesos-slave.service` |
 | 61001 |  Admin Router Agent | `dcos-adminrouter-agent` |
