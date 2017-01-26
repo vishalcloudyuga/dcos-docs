@@ -4,9 +4,7 @@ nav_title: Public Services
 menu_order: 10
 ---
 
-DC/OS agent nodes can be designated as [public](/docs/1.9/overview/concepts/#public) or [private](/docs/1.9/overview/concepts/#private) during [installation](/docs/1.9/administration/installing/). Public agent nodes provide public access to your DC/OS applications. By default apps are launched on private agent nodes. 
-
-By default, the public nodes ports are closed and health checks are configured for [Marathon-LB](/docs/1.9/usage/service-discovery/marathon-lb/). The default AWS CloudFormation template has ports 80 and 443 configured by default for the Elastic Load Balancer.
+By default apps are launched on private agent nodes, but you can use these instructions to launch on public agent nodes. DC/OS agent nodes can be designated as [public](/docs/1.9/overview/concepts/#public) or [private](/docs/1.9/overview/concepts/#private) during [installation](/docs/1.9/administration/installing/). Public agent nodes provide public access to your DC/OS applications. 
 
 **Prerequisites:**
 
@@ -61,6 +59,8 @@ By default, the public nodes ports are closed and health checks are configured f
     ```
     
     **Tip:** You can also view deployed apps by using the **Services** tab of DC/OS [GUI](/docs/1.9/usage/webinterface/#services).
+    
+Now that your app is deployed to DC/OS, you will need to configure your load balancer to point to the port specified in your app definition (e.g. port `80`).
 
  [1]: /docs/1.9/tutorials/containerized-app/
  [3]: /docs/1.9/administration/installing/
