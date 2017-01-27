@@ -3,55 +3,23 @@ post_title: dcos help
 menu_order: 3
 ---
 
-You can get a list of all available subcommands with `dcos help`. 
-
-You can display detailed usage information for any DCOS CLI subcommand by entering `dcos <subcommand> --help`.
-
 # Description
+Display DC/OS CLI help information.
 
 # Usage
 
+```bash
+dcos help <subcommand>
+```
+
 # Options
 
-# Parent command
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `--help, h`   |             |  Print usage. |
+| `--info`   |             |  Print a short description of this subcommand. |
+| `--version, v`   |             | Print auth version information. |
+| `<subcommand>`   |             | The subcommand name. |
 
 # Examples
 
-# dcos help
-
-```bash
-Description:
-    The Mesosphere Datacenter Operating System (DC/OS) spans all of the machines in
-your datacenter or cloud and treats them as a single, shared set of resources.
-
-Usage:
-    dcos [options] [<command>] [<args>...]
-
-Options:
-    --debug
-        Enable debug mode.
-    --help
-        Print usage.
-    --log-level=<log-level>
-        Set the logging level. This setting does not affect the output sent to
-        stdout. The severity levels are:
-        The severity level:
-        * debug    Prints all messages.
-        * info     Prints informational, warning, error, and critical messages.
-        * warning  Prints warning, error, and critical messages.
-        * error    Prints error and critical messages.
-        * critical Prints only critical messages to stderr.
-    --version
-        Print version information
-
-Environment Variables:
-    DCOS_CONFIG
-        Set the path to the DC/OS configuration file. By default, this variable
-        is set to ~/.dcos/dcos.toml.
-    DCOS_DEBUG
-        Indicates whether to print additional debug messages to stdout. By
-        default this is set to false.
-    DCOS_LOG_LEVEL
-        Prints log messages to stderr at or above the level indicated. This is
-        equivalent to the --log-level command-line option.
-```

@@ -9,16 +9,15 @@ This command manages DC/OS identity and access.
 # Usage
 
 ```bash
-dcos auth login [OPTIONS]
-dcos auth logout [OPTIONS]
+dcos auth 
 ```
 
 # Child commands
 
 | Command | Description |
 |---------|-------------|
-| `dcos auth login`   |             |  
-| `dcos auth logout`   |             |  
+| [dcos auth login](/docs/1.9/usage/cli/command-reference/dcos-auth-login/)   |   Log in to DC/OS authentication.  |  
+| [dcos auth logout](/docs/1.9/usage/cli/command-reference/dcos-auth-logout/)   |  Log out of DC/OS authentication.  |  
 
 # Options
 
