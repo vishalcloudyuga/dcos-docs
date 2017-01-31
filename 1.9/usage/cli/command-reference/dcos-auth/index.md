@@ -12,6 +12,15 @@ This command manages DC/OS identity and access.
 dcos auth 
 ```
 
+# Options
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `--config-schema`   |             |  Show the configuration schema for the Marathon subcommand. |
+| `--help, h`   |             |  Print usage. |
+| `--info`   |             |  Print a short description of this subcommand. |
+| `--version, v`   |             | Print auth version information. |
+
 # Child commands
 
 | Command | Description |

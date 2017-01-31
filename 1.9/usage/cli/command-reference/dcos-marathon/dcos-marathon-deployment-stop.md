@@ -1,30 +1,27 @@
 ---
-post_title: dcos marathon
-menu_order: 5
+post_title: dcos marathon app add
+menu_order: 1
 ---
 
-You can quickly deploy applications to DC/OS by using the `dcos marathon` command. 
-
 # Description
+Deploy and manage applications to DC/OS.
 
 # Usage
 
+```bash
+dcos marathon
+```
+
 # Options
 
-# Parent command
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `--config-schema`   |             |  Show the configuration schema for the Marathon subcommand. |
+| `--help, h`   |             |  Print usage. |
+| `--info`   |             |  Print a short description of this subcommand. |
+| `--version, v`   |             | Print auth version information. |
 
-# Examples
 
-# dcos marathon
-
-```bash
-Description:
-    Deploy and manage applications to DC/OS.
-
-Usage:
-    dcos marathon --config-schema
-    dcos marathon --help
-    dcos marathon --info
     dcos marathon about
     dcos marathon app add [<app-resource>]
     dcos marathon app list [--json]
@@ -92,7 +89,7 @@ Commands:
     deployment watch
         Monitor deployments.
     group add
-        Create a new group.
+        Add a group.
     group list
         Print the list of groups.
     group scale
@@ -104,7 +101,7 @@ Commands:
     group update
         Update a group.
     pod add
-        Create a new pod.
+        Add a pod.
     pod kill
         Kill one or more running pod instances.
     pod list
@@ -198,3 +195,11 @@ Positional Arguments:
     <scale-factor>
         The factor to scale an application group by.
 ```
+
+# Parent command
+
+| Command | Description |
+|---------|-------------|
+| [dcos marathon](/docs/1.9/usage/cli/command-reference/dcos-marathon/) | Deploy and manage applications to DC/OS. |
+
+# Examples
