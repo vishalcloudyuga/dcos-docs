@@ -27,5 +27,3 @@ dcos auth
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--version, v`   |             | Print auth version information. |
-
-# Examples
