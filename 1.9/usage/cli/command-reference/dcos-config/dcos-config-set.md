@@ -1,7 +1,7 @@
 ---
 post_title: dcos config set
 menu_order: 1
---- 
+---
 
 # Description
 This command adds or sets a DC/OS configuration property.
@@ -9,7 +9,7 @@ This command adds or sets a DC/OS configuration property.
 # Usage
 
 ```bash
-dcos config set <name> <value>
+dcos config set [OPTION]
 ```
 
 # Options
@@ -30,5 +30,23 @@ dcos config set <name> <value>
 
 
 # Examples
+
+## Configure CLI to DC/OS Cluster
+
+```bash
+$ dcos config set core.dcos_url cluster_url
+```
+
+The output should resemble:
+
+```bash
+
+```
+
+## Set SSL setting
+
+``bash
+$ dcos config set core.ssl_verify True
+```
 
 

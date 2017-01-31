@@ -1,15 +1,15 @@
 ---
-post_title: dcos auth logout
-menu_order: 3
+post_title: dcos auth list-providers
+menu_order: 1
 ---
 
 # Description
-Log out of DC/OS authentication.
+List configured authentication providers for your DC/OS cluster.
 
 # Usage
 
 ```bash
-dcos auth logout [OPTION]
+dcos auth list-providers [OPTION]
 ```
 
 # Options
@@ -19,6 +19,7 @@ dcos auth logout [OPTION]
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--version, v`   |             | Print auth version information. |
+| `--json`   |             | Specify a JSON-formatted list of authentication providers. |
 
 # Parent command
 

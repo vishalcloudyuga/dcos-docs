@@ -1,7 +1,7 @@
 ---
 post_title: dcos config
 menu_order: 2
---- 
+---
 
 # Description
 This command manages the DC/OS configuration file. A default configuration file is created during initial DCOS CLI setup and is located in `~/.dcos/dcos.toml`.
@@ -25,4 +25,3 @@ dcos config
 | [dcos config show](/docs/1.9/usage/cli/command-reference/dcos-config/dcos-config-show/)    |             |  
 | [dcos config unset](/docs/1.9/usage/cli/command-reference/dcos-config/dcos-config-unset/)    |             |  
 | [dcos config validate](/docs/1.9/usage/cli/command-reference/dcos-config/dcos-config-validate/)    |             |  
-

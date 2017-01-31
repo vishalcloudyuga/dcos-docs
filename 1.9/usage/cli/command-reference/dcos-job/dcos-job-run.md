@@ -1,15 +1,15 @@
 ---
-post_title: dcos auth logout
-menu_order: 3
+post_title: dcos job run
+menu_order: 5
 ---
-
+    
 # Description
-Log out of DC/OS authentication.
+Run a job now.
 
 # Usage
 
 ```bash
-dcos auth logout [OPTION]
+dcos job run [OPTION]
 ```
 
 # Options
@@ -18,12 +18,13 @@ dcos auth logout [OPTION]
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
+| `<job-id>`   |             |  The job ID. |
 | `--version, v`   |             | Print auth version information. |
 
 # Parent command
 
 | Command | Description |
 |---------|-------------|
-| [dcos auth](/docs/1.9/usage/cli/command-reference/dcos-auth/) |  Manage DC/OS identity and access. |
+| [dcos job](/docs/1.9/usage/cli/command-reference/dcos-job/) |  Deploy and manage jobs in DC/OS. |
 
 # Examples

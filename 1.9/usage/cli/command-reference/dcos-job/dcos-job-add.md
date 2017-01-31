@@ -1,15 +1,15 @@
 ---
-post_title: dcos auth logout
-menu_order: 3
+post_title: dcos job add
+menu_order: 0
 ---
-
+    
 # Description
-Log out of DC/OS authentication.
+Add a job.
 
 # Usage
 
 ```bash
-dcos auth logout [OPTION]
+dcos job add [OPTION]
 ```
 
 # Options
@@ -17,6 +17,7 @@ dcos auth logout [OPTION]
 | Name, shorthand | Default | Description |
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
+| `<job-file>`   |             |  A JSON-formatted job definition. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--version, v`   |             | Print auth version information. |
 
@@ -24,6 +25,6 @@ dcos auth logout [OPTION]
 
 | Command | Description |
 |---------|-------------|
-| [dcos auth](/docs/1.9/usage/cli/command-reference/dcos-auth/) |  Manage DC/OS identity and access. |
+| [dcos job](/docs/1.9/usage/cli/command-reference/dcos-job/) |  Deploy and manage jobs in DC/OS. |
 
 # Examples

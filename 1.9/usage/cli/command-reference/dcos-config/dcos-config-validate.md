@@ -1,7 +1,7 @@
 ---
 post_title: dcos config validate
 menu_order: 4
---- 
+---
 
 # Description
 This command validates changes to the configuration file.
@@ -9,7 +9,7 @@ This command validates changes to the configuration file.
 # Usage
 
 ```bash
-dcos config validate
+dcos config validate [OPTION]
 ```
 
 # Options

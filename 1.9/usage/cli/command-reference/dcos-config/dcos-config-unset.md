@@ -1,7 +1,7 @@
 ---
 post_title: dcos config unset
 menu_order: 3
---- 
+---
 
 # Description
 This command removes a property from the configuration file.
@@ -9,7 +9,7 @@ This command removes a property from the configuration file.
 # Usage
 
 ```bash
-dcos config unset <name>
+dcos config unset [OPTION]
 ```
 
 # Options
@@ -28,3 +28,9 @@ dcos config unset <name>
 | [dcos config](/docs/1.9/usage/cli/command-reference/dcos-config/) |  Manage DC/OS configuration. |
 
 # Examples
+
+## Remove a config value
+
+```bash
+$ dcos config unset core.ssl_verify
+```
