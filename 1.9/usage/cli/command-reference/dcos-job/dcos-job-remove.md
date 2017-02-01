@@ -20,7 +20,7 @@ dcos job remove [OPTION]
 | `--info`   |             |  Print a short description of this subcommand. |
 | `<job-id>`   |             |  The job ID. |
 | `--stop-current-job-runs`   |             |  Remove all running jobs. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

@@ -20,7 +20,7 @@ dcos marathon app restart [OPTION]
 | `--force`   |             | Disable checks in Marathon during updates. |
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

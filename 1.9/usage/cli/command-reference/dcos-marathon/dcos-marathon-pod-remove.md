@@ -20,7 +20,7 @@ dcos marathon pod remove [OPTION]
 | `--force`   |             | Disable checks in Marathon during updates. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `<pod-id>`   |             | The pod ID. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

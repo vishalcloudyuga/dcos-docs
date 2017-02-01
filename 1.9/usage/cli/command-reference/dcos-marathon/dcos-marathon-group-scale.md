@@ -21,7 +21,7 @@ dcos marathon group scale [OPTION]
 | `<group-id>`   |             |  The group ID. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `<scale-factor>`   |             | The factor to scale an application group by. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

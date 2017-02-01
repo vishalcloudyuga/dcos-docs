@@ -1,5 +1,5 @@
 ---
-post_title: dcos marathon app add
+post_title: dcos marathon group update
 menu_order: 22
 ---
 
@@ -21,7 +21,7 @@ dcos marathon group update [OPTION]
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `<properties>`   |             |  List of one or more JSON object properties, separated by a space. The list must be formatted as `<key>=<value>`. For example, `cpus=2.0 mem=308`. If omitted, properties are read from a JSON object provided on stdin. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

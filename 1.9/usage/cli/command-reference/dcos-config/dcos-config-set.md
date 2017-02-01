@@ -4,7 +4,7 @@ menu_order: 1
 ---
 
 # Description
-This command adds or sets a DC/OS configuration property.
+Add or set a DC/OS configuration property.
 
 # Usage
 

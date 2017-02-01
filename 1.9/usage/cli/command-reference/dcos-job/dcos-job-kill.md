@@ -21,7 +21,7 @@ dcos job kill [OPTION]
 | `<job-id>`   |             |  The job ID. |
 | `run-id`   |             |  The job run ID. |
 | `--all`   |             |  Kill all job runs. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

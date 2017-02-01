@@ -19,7 +19,7 @@ dcos job show [OPTION]
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `<job-id>`   |             |  The job ID. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

@@ -4,7 +4,7 @@ menu_order: 2
 ---
 
 # Description
-This command prints the DC/OS configuration file contents.
+Print the DC/OS configuration file contents.
 
 # Usage
 

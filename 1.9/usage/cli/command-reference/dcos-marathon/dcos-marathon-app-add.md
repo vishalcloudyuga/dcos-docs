@@ -18,7 +18,7 @@ dcos marathon app add [OPTION]
 |---------|-------------|-------------|
 | `<app-resource>`   |             |  Path to a file or HTTP(S) URL that contains the app's JSON definition. If omitted, the definition is read from stdin. For a detailed description see the [documentation](https://docs.mesosphere.com/usage/marathon/rest-api/). |
 | `--help, h`   |             |  Print usage. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 
 # Parent command

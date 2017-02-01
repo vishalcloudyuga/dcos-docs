@@ -1,6 +1,6 @@
 ---
 post_title: dcos marathon deployment watch
-menu_order: 16
+menu_order: 16.1
 ---
 
 # Description
@@ -21,7 +21,7 @@ dcos marathon deployment watch [OPTION]
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--interval=<interval>`   |             | Number of seconds to wait between actions. |
 | `--max-count=<max-count>`   |             | Maximum number of entries to fetch and return. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

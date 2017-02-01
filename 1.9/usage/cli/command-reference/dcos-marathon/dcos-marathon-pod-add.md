@@ -19,7 +19,7 @@ dcos marathon pod add [OPTION]
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `<pod-resource>`   |             |  Path to a file or HTTP(S) URL that contains the pod's JSON definition. If omitted, the definition is read from stdin. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

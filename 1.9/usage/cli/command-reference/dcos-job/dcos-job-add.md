@@ -19,7 +19,7 @@ dcos job add [OPTION]
 | `--help, h`   |             |  Print usage. |
 | `<job-file>`   |             |  A JSON-formatted job definition. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

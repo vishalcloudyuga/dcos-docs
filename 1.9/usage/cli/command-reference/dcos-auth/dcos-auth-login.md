@@ -24,7 +24,7 @@ dcos auth login [OPTION]
 | `--private-key=<key_path>`   |             | Specify the path to a file that contains the private key. |
 | `--provider=<provider_id>`   |             | Specify the authentication provider to use for login. |
 | `--username=<username>`   |             | Specify the username for login. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

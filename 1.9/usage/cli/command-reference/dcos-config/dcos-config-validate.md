@@ -4,7 +4,7 @@ menu_order: 4
 ---
 
 # Description
-This command validates changes to the configuration file.
+Validate changes to the configuration file.
 
 # Usage
 

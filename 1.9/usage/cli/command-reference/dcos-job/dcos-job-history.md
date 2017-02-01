@@ -21,7 +21,7 @@ dcos job history [OPTION]
 | `<job-id>`   |             |  Specify the job ID. |
 | `--json`   |             |  Print JSON-formatted list. |
 | `--show-failures`   |             |  Show the failure table and statistics for history. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

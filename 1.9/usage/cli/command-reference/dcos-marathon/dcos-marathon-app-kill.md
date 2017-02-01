@@ -21,7 +21,7 @@ dcos marathon app kill [OPTION]
 | `--host=<host>`   |             | The hostname that is running app. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--scale`   |             | Scale the app down after performing the the operation.  |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

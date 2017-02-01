@@ -20,7 +20,7 @@ dcos job schedule show [OPTION]
 | `--info`   |             |  Print a short description of this subcommand. |
 | `<job-id>`   |             |  The job ID. |
 | `--json`   |             |  Print JSON-formatted list. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

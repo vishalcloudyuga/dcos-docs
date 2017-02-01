@@ -1,15 +1,15 @@
 ---
-post_title: dcos marathon app start
+post_title: dcos marathon app stop
 menu_order: 8
 ---
 
 # Description
-Start an application.
+Stop an application.
 
 # Usage
 
 ```bash
-dcos marathon app start [OPTION]
+dcos marathon app stop [OPTION]
 ```
 
 # Options
@@ -21,7 +21,7 @@ dcos marathon app start [OPTION]
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--instances`   |             | The number of instances. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

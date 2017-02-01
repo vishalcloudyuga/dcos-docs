@@ -18,7 +18,7 @@ dcos auth list-providers [OPTION]
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 | `--json`   |             | Specify a JSON-formatted list of authentication providers. |
 
 # Parent command

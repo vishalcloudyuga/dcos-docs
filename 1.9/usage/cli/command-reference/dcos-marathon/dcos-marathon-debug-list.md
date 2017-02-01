@@ -19,7 +19,7 @@ dcos marathon debug list [OPTION]
 | `--json`   |             |  Print JSON-formatted data. |
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

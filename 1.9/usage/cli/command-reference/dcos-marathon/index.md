@@ -19,7 +19,7 @@ dcos marathon
 | `--config-schema`   |             |  Show the configuration schema for the Marathon subcommand. |
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Child commands
 

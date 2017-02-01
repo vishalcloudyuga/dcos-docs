@@ -22,7 +22,7 @@ dcos job show runs [OPTION]
 | `--json`   |             |  Print JSON-formatted list. |
 | `--q`   |             |  Print an array of run IDs only. |
 | `--run-id <run-id>`   |             |  The ID of a job run. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

@@ -20,7 +20,7 @@ dcos marathon pod list [OPTION]
 | `--help, h`   |             |  Print usage. |
 | `--json`   |             |  Print JSON-formatted data. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

@@ -18,7 +18,7 @@ dcos help <subcommand>
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 | `<subcommand>`   |             | The subcommand name. |
 
 # Examples

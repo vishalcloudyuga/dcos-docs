@@ -4,7 +4,7 @@ menu_order: 3
 ---
 
 # Description
-This command removes a property from the configuration file.
+Remove a property from the configuration file.
 
 # Usage
 

@@ -17,7 +17,7 @@ dcos marathon about [OPTION]
 | Name, shorthand | Default | Description |
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

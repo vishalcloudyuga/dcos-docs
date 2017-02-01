@@ -20,7 +20,7 @@ dcos job schedule update [OPTION]
 | `--info`   |             |  Print a short description of this subcommand. |
 | `<job-id>`   |             |  The job ID. |
 | `<schedule-file>`   |             |  A JSON formatted job schedule file. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

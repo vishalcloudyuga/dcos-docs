@@ -20,7 +20,7 @@ dcos job schedule remove [OPTION]
 | `--info`   |             |  Print a short description of this subcommand. |
 | `<job-id>`   |             |  The job ID. |
 | `<schedule-id>`   |             |  The job schedule ID. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Parent command
 

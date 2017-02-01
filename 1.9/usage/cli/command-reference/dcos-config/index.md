@@ -21,16 +21,15 @@ dcos config
 
 | Name, shorthand | Default | Description |
 |---------|-------------|-------------|
-| `--config-schema`   |             |  Show the configuration schema for the Marathon subcommand. |
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `--version, v`   |             | Print auth version information. |
+| `--version, v`   |             | Print version information. |
 
 # Child commands
 
 | Command | Description |
 |---------|-------------|
-| [dcos config set](/docs/1.9/usage/cli/command-reference/dcos-config/dcos-config-set/)   |             |  
-| [dcos config show](/docs/1.9/usage/cli/command-reference/dcos-config/dcos-config-show/)    |             |  
-| [dcos config unset](/docs/1.9/usage/cli/command-reference/dcos-config/dcos-config-unset/)    |             |  
-| [dcos config validate](/docs/1.9/usage/cli/command-reference/dcos-config/dcos-config-validate/)    |             |  
+| [dcos config set](/docs/1.9/usage/cli/command-reference/dcos-config/dcos-config-set/)   | Add or set a DC/OS configuration property. |  
+| [dcos config show](/docs/1.9/usage/cli/command-reference/dcos-config/dcos-config-show/)    | Print the DC/OS configuration file contents. |  
+| [dcos config unset](/docs/1.9/usage/cli/command-reference/dcos-config/dcos-config-unset/)    | Remove a property from the configuration file. |  
+| [dcos config validate](/docs/1.9/usage/cli/command-reference/dcos-config/dcos-config-validate/)    | Validate changes to the configuration file. |  
