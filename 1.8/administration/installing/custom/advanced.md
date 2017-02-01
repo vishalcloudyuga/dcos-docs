@@ -94,6 +94,8 @@ The DC/OS installation creates these folders:
 
     **Important:** The IP address of a node must not change after DC/OS is installed on the node. For example, the IP address must not change when a node is rebooted or if the DHCP lease is renewed. If the IP address of a node does change, the node must be wiped and reinstalled.
 
+    **Important:** The IP detection scripts must begin with `#!/bin/sh` or `#!/usr/bin/env bash` as shown in the examples below. Do not add any comments before that.
+
     Create an IP detection script for your environment and save as `genconf/ip-detect`. You can use the examples below.
 
     *   #### Use the AWS Metadata Server
