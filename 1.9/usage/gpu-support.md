@@ -17,13 +17,15 @@ All machines in your cluster must have the [Nvidia Management Library (NVML)](ht
 
 ## Configure your AWS Cloud Cluster
 
-- Prerequisite: An AWS S3 bucket.
+### Prerequisites
+- An AWS S3 bucket.
+- The [AWS CLI](https://aws.amazon.com/cli/) installed.
 
 ### Generate a Custom AWS CF template for GPU
 
-1. Download the dcos_generate_config.sh to your bootstrap node.
+1. Download the [dcos_generate_config.sh](https://dcos.io/releases/) script to your bootstrap node.
     ```bash
-    curl -O <installer.sh>
+    curl -O <installer>.sh
     ```
     
 1. Create a directory named `genconf` in the home directory of your bootstrap node and navigate to it.
@@ -95,7 +97,7 @@ Use the `zen.sh` script to create the Zen template dependencies. These dependenc
     echo "Public SubnetId: $public_subnet"
     ```
 
-1. Run the script from from your terminal with a single argument of stack prefix (STACK_NAME).
+1. Run the script from from your local terminal with a single argument of stack prefix (STACK_NAME).
     ```bash
     $ bash ./zen.sh dcos
     ```
@@ -116,7 +118,8 @@ Use the `zen.sh` script to create the Zen template dependencies. These dependenc
 
 1. Go to [CloudFormation](https://console.aws.amazon.com/cloudformation/home) and click **Create Stack**.
 
-1. On the **Select Template** page, specify the custom template that you created. For example, `https://s3-us-west-2.amazonaws.com/joel-test-gpu/templates/dcos/config_id/fe4f3d47e23eda85301c875a28a34a8f48e44f95/cloudformation/el7-zen-1.json`.
+1. On the **Select Template** page, specify the custom template that you created on your master node via the `sudo bash dcos_generate_config.sh --aws-cloudformation` command . For example, `
+https://s3-us-west-2.amazonaws.com/joel-test-gpu/templates/dcos/config_id/fe4f3d47e23eda85301c875a28a34a8f48e44f95/cloudformation/el7-zen-1.json`.
 
 1. On the **Specify Details** page, specify these values and and click **Next**.
     - **StackName** - Specify your cluster name.
@@ -135,7 +138,7 @@ Use the `zen.sh` script to create the Zen template dependencies. These dependenc
     - **PrivateAgentInstanceType** - Specify a machine type of `g2.2xlarge`. This is the GPU-supported machine type.
     - **PrivateSubnet** - Specify the Private SubnetId value from your zen template dependencies (e.g. subnet-e7193fbf).
     - **PublicAgentInstanceCount** - Specify the number of public agent nodes.
-    - **PublicAgentInstanceType** - Specify a machine type of g2.2xlarge. This is the GPU supported machine type.
+    - **PublicAgentInstanceType** - Specify a machine type of `g2.2xlarge`. This is the GPU-supported machine type.
     - **PublicSubnet** - Specify the Public SubnetId value from your zen template dependencies (e.g. subnet-98193fc0).
     - **Vpc** - Specify the VpcId value from your zen template dependencies (e.g. vpc-49a0202e).
 
