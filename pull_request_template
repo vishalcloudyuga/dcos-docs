@@ -15,7 +15,4 @@
 - [ ] I have made this change for all affected versions (e.g. 1.7, 1.8, and 1.9).
 - [ ] My doc follows the style guide: https://github.com/dcos/dcos-docs#contributing.
 
-Ping `@emanic`, `@sascala`, or `@joel-hamill` for reviewing pull request changes.
-
-
-## If you included a comment with your commit, it appears here:
+** Ping a doc team member to review pull request (`@joel-hamill`, `@emanic`, or `@sascala`) **
