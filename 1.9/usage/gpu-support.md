@@ -121,6 +121,8 @@ Use the `zen.sh` script to create the Zen template dependencies. These dependenc
 1. On the **Select Template** page, specify the custom template that you created on your master node via the `sudo bash dcos_generate_config.sh --aws-cloudformation` command . For example, `
 https://s3-us-west-2.amazonaws.com/joel-test-gpu/templates/dcos/config_id/fe4f3d47e23eda85301c875a28a34a8f48e44f95/cloudformation/el7-zen-1.json`.
 
+https://s3-us-west-2.amazonaws.com/suzanne-gpu/templates/dcos/config_id/5686c47130682abf7624b79ec854a68c969fbd11/cloudformation/el7-zen-1.json
+
 1. On the **Specify Details** page, specify these values and and click **Next**.
     - **StackName** - Specify your cluster name.
     - **AdminLocation** - Accept default.
