@@ -52,6 +52,17 @@ This parameter specifies a custom URL that Mesos uses to pull Docker images from
 ### cluster_name
 This parameter specifies the name of your cluster.
 
+### cosmos_config
+This parameter specifies a dictionary of packaging configuration to pass to the [DC/OS package manager](https://github.com/dcos/cosmos). If set, the following options must also be
+specified.
+
+* **staged_package_storage_uri**
+  This parameter specifies where to temporarily store DC/OS packages while they are being added.
+  The value must be a file URL, for example, `file:///var/lib/dcos/cosmos/staged-packages`.
+* **package_storage_uri**
+  This parameter specifies where to permanently store DC/OS packages. The value must be a file URL,
+  for example, `file:///var/lib/dcos/cosmos/packages`.
+
 ### exhibitor_storage_backend
 This parameter specifies the type of storage backend to use for Exhibitor. You can use internal DC/OS storage (`static`) or specify an external storage system (`zookeeper`, `aws_s3`, and `azure`) for configuring and orchestrating ZooKeeper with Exhibitor on the master nodes. Exhibitor automatically configures your ZooKeeper installation on the master nodes during your DC/OS installation.
 
@@ -242,18 +253,6 @@ This parameter specifies whether to enable sharing of anonymous data for your cl
 - `telemetry_enabled: 'false'` Disable anonymous data sharing.
 
 If you’ve already installed your cluster and would like to disable this in-place, you can go through an [upgrade][3] with the same parameter set.
-
-### cosmos_config
-This parameter specifies a dictionary of packaging configuration to pass to the
-[DC/OS package manager](https://github.com/dcos/cosmos). If set, the following options must be
-specified.
-
-* **staged_package_storage_uri**
-  This parameter specifies where to temporarily store DC/OS packages while they are being added.
-  The value must be a file URL, for example, `file:///var/lib/dcos/cosmos/staged-packages`
-* **package_storage_uri**
-  This parameter specifies where to permanently store DC/OS packages. The value must be a file URL,
-  for example, `file:///var/lib/dcos/cosmos/packages`
 
 # <a name="examples1"></a>Example Configurations
 
