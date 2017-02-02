@@ -15,9 +15,6 @@ You can use the `dcos package` command to install and manage software packages f
 
 # Examples
 
-# <a name="cli-dcos-package"></a>dcos package
-
-```bash
 Description:
     Install and manage DC/OS software packages.
 
@@ -111,4 +108,3 @@ Positional Arguments:
     <repo-url>
         URL of the package repository. For example,
         https://universe.mesosphere.com/repo.
-```
