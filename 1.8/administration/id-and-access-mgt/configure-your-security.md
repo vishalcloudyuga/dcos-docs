@@ -44,7 +44,7 @@ In the custom Login Page you can also override the default values by directly en
 ```javascript
 var auth0 = new Auth0({
    domain: "mydomain.auth0.com",
-   clientID: "myClientId,
+   clientID: "myClientId",
    callbackURL: "",
    callbackOnLocationHash: true
  });
