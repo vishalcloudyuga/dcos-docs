@@ -7,7 +7,7 @@ menu_order: 000
 **Prerequisites:**
 
 - DC/OS [installed](/docs/1.8/administration/installing/)
-- DC/OS [installed](/docs/1.8/usage/cli/install/)
+- DC/OS CLI [installed](/docs/1.8/usage/cli/install/)
 
 # Default installation
 
