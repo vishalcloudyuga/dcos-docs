@@ -48,7 +48,6 @@ var auth0 = new Auth0({
  });
 ```
 
-If you don't setup your own social provider keys you will get an error saying "Social provider API keys are required"
+If you don't setup your own social provider keys you will get an error saying "Social provider API keys are required".
 
-Similar functionality to customize the installation on AWS and Azure will also
-be made available in a future release.
+Similar functionality will be added to AWS and Azure in a future release.
