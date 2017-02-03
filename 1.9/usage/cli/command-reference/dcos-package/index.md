@@ -3,108 +3,34 @@ post_title: dcos package
 menu_order: 7
 ---
 
-You can use the `dcos package` command to install and manage software packages from the public <a href="/docs/1.9/usage/repo/">package repository</a>. 
-
 # Description
+Install and manage DC/OS software packages.
 
 # Usage
 
+```bash
+dcos package
+```
+
 # Options
 
-# Parent command
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `--config-schema`   |             |  Show the configuration schema for the subcommand. |
+| `--help, h`   |             |  Print usage. |
+| `--info`   |             |  Print a short description of this subcommand. |
+| `--version, v`   |             | Print version information. |
+        
+# Child commands
 
-# Examples
-
-Description:
-    Install and manage DC/OS software packages.
-
-Usage:
-    dcos package --config-schema
-    dcos package --help
-    dcos package --info
-    dcos package describe [--app --cli --config]
-                          [--render]
-                          [--package-versions]
-                          [--options=<file>]
-                          [--package-version=<package-version>]
-                          <package-name>
-    dcos package install [--cli | [--app --app-id=<app-id>]]
-                         [--package-version=<package-version>]
-                         [--options=<file>]
-                         [--yes]
-                         <package-name>
-    dcos package list [--json --app-id=<app-id> --cli <package-name>]
-    dcos package search [--json <query>]
-    dcos package repo add [--index=<index>] <repo-name> <repo-url>
-    dcos package repo remove <repo-name>
-    dcos package repo list [--json]
-    dcos package uninstall [--cli | [--app --app-id=<app-id> --all]]
-                           <package-name>
-    dcos package update
-
-Commands:
-    describe
-        Get specific details for packages.
-    install
-        Install a package.
-    list
-        Print a list of the installed DC/OS packages.
-    search
-        Search the package repository.
-    repo add
-        Add a package repository to DC/OS.
-    repo remove
-        Remove a package repository from DC/OS.
-    repo list
-        Print the package repository sources. Possible sources include a local
-        file, HTTPS, and Git.
-    uninstall
-        Uninstall a package.
-    update
-        This command has been deprecated. Repositories are dynamically updated
-        as they are added by `dcos package repo add`.
-
-Options:
-    --all
-        All packages.
-    --app
-        Application only.
-    --app-id=<app-id>
-        The application ID.
-    --cli
-        Command line only.
-    --config
-        Print the the configurable properties for the `marathon.json` file.
-    --index=<index>
-        The numerical position in the package repository list. Package
-        repositories are searched in descending order. By default the Universe
-        repository first in the list.
-    -h, --help
-        Print usage.
-    --info
-        Print a short description of this subcommand.
-    --options=<file>
-        Path to a JSON file that contains customized package installation options.
-    --package-version=<package-version>
-        The package version to install.
-    --package-versions
-        Print all versions for this package.
-    --render
-        Collate the marathon.json package template with the values from
-        config.json and --options. If not provided, print the raw templates.
-    --version
-        Print version information.
-    --yes
-        Turn off interactive mode and assume "yes" is the answer to all prompts.
-
-Positional Arguments:
-    <package-name>
-        Name of the DC/OS package in the package repository.
-    <query>
-        Pattern to use for searching the package repository.  You can use
-        complete or partial values.
-    <repo-name>
-        Name of the package repository. For example, `Universe`.
-    <repo-url>
-        URL of the package repository. For example,
-        https://universe.mesosphere.com/repo.
+| Command | Description |
+|---------|-------------|
+| [dcos package describe](/docs/1.9/usage/cli/command-reference/dcos-node/dcos-package/dcos-package-describe/)   | Get specific details for packages. |  
+| [dcos package install](/docs/1.9/usage/cli/command-reference/dcos-node/dcos-package/dcos-package-install/)   | Install a package. |  
+| [dcos package list](/docs/1.9/usage/cli/command-reference/dcos-node/dcos-package/dcos-package-list/)   | Print a list of the installed DC/OS packages. |  
+| [dcos package repo add](/docs/1.9/usage/cli/command-reference/dcos-node/dcos-package/dcos-package-repo-add/)   | Add a package repository to DC/OS. |  
+| [dcos package repo list](/docs/1.9/usage/cli/command-reference/dcos-node/dcos-package/dcos-package-repo-list/)   | Remove a package repository from DC/OS. |  
+| [dcos package repo remove](/docs/1.9/usage/cli/command-reference/dcos-node/dcos-package/dcos-package-repo-remove/)   | Remove a package repository from DC/OS. |  
+| [dcos package search](/docs/1.9/usage/cli/command-reference/dcos-node/dcos-package/dcos-package-search/)   | Search the package repository. |  
+| [dcos package uninstall](/docs/1.9/usage/cli/command-reference/dcos-node/dcos-package/dcos-package-uninstall/)   | Uninstall a package. |  
+| [dcos package update](/docs/1.9/usage/cli/command-reference/dcos-node/dcos-package/dcos-package-update/)   | This command has been deprecated. Repositories are dynamically updated when they are added by the `dcos package repo add` command. | 
