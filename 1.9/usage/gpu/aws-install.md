@@ -114,26 +114,16 @@ Use the `zen.sh` script to create the Zen template dependencies. These dependenc
     https://s3-us-west-2.amazonaws.com/joel-test-gpu/templates/dcos/config_id/fe4f3d47e23eda85301c875a28a34a8f48e44f95/cloudformation/el7-zen-1.json
     ```
     
-1. On the **Specify Details** page, specify these values and and click **Next**.
-    - **StackName** - Specify your cluster name.
-    - **AdminLocation** - Accept default.
+1. On the **Specify Details** page, specify your stack information and click **Next**. Here are the GPU-specific settings.
     - **CustomAMI** - Specify the custom AMI for your region:
 
-      us-west-2: `ami-9b5d97fb`
-      us-east-1: `ami-e10e50f6`
-      ap-southeast-2: `ami-37b28f54`
-
-    - **InternetGateway** - Specify the InternetGatewayId value from your zen template dependencies (e.g. `igw-f15f0895`).
-    - **KeyName** - Specify your AWS EC2 key pair.
+      - us-west-2: `ami-9b5d97fb`
+      - us-east-1: `ami-e10e50f6`
+      - ap-southeast-2: `ami-37b28f54`
+      
     - **MasterInstanceType** - Accept the default master instance type (e.g. `m3.xlarge`).
-    - **OAuthEnabled** - Indicate whether to enable OAuth.
-    - **PrivateAgentInstanceCount** - Specify the number of private agent nodes.
     - **PrivateAgentInstanceType** - Specify a machine type of `g2.2xlarge`. This is the GPU-supported machine type.
-    - **PrivateSubnet** - Specify the Private SubnetId value from your zen template dependencies (e.g. `subnet-e7193fbf`).
-    - **PublicAgentInstanceCount** - Specify the number of public agent nodes.
     - **PublicAgentInstanceType** - Specify a machine type of `g2.2xlarge`. This is the GPU-supported machine type.
-    - **PublicSubnet** - Specify the Public SubnetId value from your zen template dependencies (e.g. `subnet-98193fc0`).
-    - **Vpc** - Specify the VpcId value from your zen template dependencies (e.g. `vpc-49a0202e`).
 
 1. On the **Options** page, accept the defaults and click Next.
     
