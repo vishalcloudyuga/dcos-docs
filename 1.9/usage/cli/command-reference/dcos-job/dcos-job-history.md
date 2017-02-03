@@ -18,10 +18,15 @@ dcos job history [OPTION]
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `<job-id>`   |             |  Specify the job ID. |
 | `--json`   |             |  Print JSON-formatted list. |
 | `--show-failures`   |             |  Show the failure table and statistics for history. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<job-id>`   |             |  Specify the job ID. |
 
 # Parent command
 

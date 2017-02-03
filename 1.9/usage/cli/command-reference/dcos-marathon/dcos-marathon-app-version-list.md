@@ -16,11 +16,16 @@ dcos marathon app version list [OPTION]
 
 | Name, shorthand | Default | Description |
 |---------|-------------|-------------|
-| `<app-id>`   |             |  The application ID. |
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--max-count=<max-count>`   |             | Maximum number of entries to fetch and return. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<app-id>`   |             |  The application ID. |
 
 # Parent command
 

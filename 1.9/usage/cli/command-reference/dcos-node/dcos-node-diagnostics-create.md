@@ -18,8 +18,13 @@ dcos node diagnostics create [OPTION]
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `<nodes>`   |             |  Node to run command upon. A node can be any of the following: IP address, hostname, Mesos ID, or the keywords "all", "masters", "agents". You must use quotation marks around keywords. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<nodes>`   |             |  Node to run command upon. A node can be any of the following: IP address, hostname, Mesos ID, or the keywords "all", "masters", "agents". You must use quotation marks around keywords. |
 
 # Parent command
 

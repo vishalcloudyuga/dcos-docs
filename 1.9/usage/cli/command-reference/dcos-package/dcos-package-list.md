@@ -21,8 +21,13 @@ dcos package list [OPTION]
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--json`   |             |  JSON-formatted data. |
-| `<package-name>`   |             |  Name of the DC/OS package. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<package-name>`   |             |  Name of the DC/OS package. |
 
 # Parent command
 

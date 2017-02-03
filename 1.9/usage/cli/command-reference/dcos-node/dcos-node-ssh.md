@@ -16,7 +16,6 @@ dcos node ssh [OPTION]
 
 | Name, shorthand | Default | Description |
 |---------|-------------|-------------|
-| `<command>`   |             | Command to execute on the DCOS cluster node. |
 | `--config-file=<path>`   |             | Path to SSH configuration file. |
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
@@ -28,6 +27,12 @@ dcos node ssh [OPTION]
 | `--slave=<agent-id>`   |             | This option is deprecated and is replaced by `--mesos-id`. |
 | `--user=<user>`   |   `core`   | The SSH user. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<command>`   |             | Command to execute on the DCOS cluster node. |
 
 # Parent command
 

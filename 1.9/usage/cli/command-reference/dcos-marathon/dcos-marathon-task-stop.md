@@ -18,9 +18,14 @@ dcos marathon task stop [OPTION]
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `<task-id>`   |             |  The task ID. |
 | `--version, v`   |             | Print version information. |
 | `--wipe`   |             | Wipe persistent data. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<task-id>`   |             |  The task ID. |
 
 # Parent command
 

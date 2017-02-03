@@ -18,8 +18,13 @@ dcos job update [OPTION]
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `<job-file>`   |             |  A JSON-formatted job definition. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<job-file>`   |             |  A JSON-formatted job definition. |
 
 # Parent command
 

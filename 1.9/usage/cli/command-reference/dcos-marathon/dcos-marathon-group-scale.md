@@ -18,10 +18,15 @@ dcos marathon group scale [OPTION]
 |---------|-------------|-------------|
 | `--force`   |             | Disable checks in Marathon during updates. |
 | `--help, h`   |             |  Print usage. |
-| `<group-id>`   |             |  The group ID. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `<scale-factor>`   |             | The factor to scale an application group by. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<group-id>`   |             |  The group ID. |
+| `<scale-factor>`   |             | The factor to scale an application group by. |
 
 # Parent command
 

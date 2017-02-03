@@ -19,8 +19,13 @@ dcos marathon pod update [OPTION]
 | `--force`   |             | Disable checks in Marathon during updates. |
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `<pod-id>`   |             | The pod ID. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<pod-id>`   |             | The pod ID. |
 
 # Parent command
 

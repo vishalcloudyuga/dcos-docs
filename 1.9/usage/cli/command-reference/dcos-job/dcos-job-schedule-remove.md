@@ -18,9 +18,14 @@ dcos job schedule remove [OPTION]
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `<job-id>`   |             |  The job ID. |
-| `<schedule-id>`   |             |  The job schedule ID. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<job-id>`   |             |  Specify the job ID. |
+| `<schedule-file>`   |             |  A JSON formatted job schedule file. |
 
 # Parent command
 

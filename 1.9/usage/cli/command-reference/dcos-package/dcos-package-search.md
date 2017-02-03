@@ -19,8 +19,13 @@ dcos package search [OPTION]
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--json`   |             |  JSON-formatted data. |
-| `<query>`   |             |  Pattern to use for searching the package repository.  You can use complete or partial values. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<query>`   |             |  Pattern to use for searching the package repository.  You can use complete or partial values. |
         
 # Parent command
 

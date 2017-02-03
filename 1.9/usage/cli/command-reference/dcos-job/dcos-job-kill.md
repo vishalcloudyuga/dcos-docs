@@ -18,10 +18,15 @@ dcos job kill [OPTION]
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `<job-id>`   |             |  The job ID. |
 | `run-id`   |             |  The job run ID. |
 | `--all`   |             |  Kill all job runs. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<job-id>`   |             |  Specify the job ID. |
 
 # Parent command
 

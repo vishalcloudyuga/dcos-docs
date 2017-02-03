@@ -18,9 +18,14 @@ dcos job schedule add [OPTION]
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `<job-id>`   |             |  The job ID. |
-| `<schedule-file>`   |             |  A JSON formatted job schedule file. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<job-id>`   |             |  Specify the job ID. |
+| `<schedule-file>`   |             |  A JSON formatted job schedule file. |
 
 # Parent command
 

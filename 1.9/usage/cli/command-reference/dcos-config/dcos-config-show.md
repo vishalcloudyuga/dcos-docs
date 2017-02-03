@@ -19,6 +19,11 @@ dcos config show [OPTION]
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--version`   |             |  Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
 | `<name>`   |             |  The name of the property. |
 
 # Parent command

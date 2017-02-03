@@ -16,12 +16,17 @@ dcos marathon app start [OPTION]
 
 | Name, shorthand | Default | Description |
 |---------|-------------|-------------|
-| `<app-id>`   |             |  The application ID. |
 | `--force`   |             | Disable checks in Marathon during updates. |
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--instances`   |             | The number of instances. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<app-id>`   |             |  The application ID. |
 
 # Parent command
 

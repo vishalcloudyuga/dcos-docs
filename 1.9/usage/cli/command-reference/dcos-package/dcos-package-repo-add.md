@@ -19,9 +19,14 @@ dcos package repo add [OPTION]
 | `--help, h`   |             |  Print usage. |
 | `--index=<index>`   |             | The numerical position in the package repository list. Package repositories are searched in descending order. By default, the Universe repository first in the list. |
 | `--info`   |             |  Print a short description of this subcommand. |
+| `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
 | `<repo-name>`   |             |  Name of the package repository. For example, `Universe`. |
 | `<repo-url>`   |             |  URL of the package repository. For example, https://universe.mesosphere.com/repo. |
-| `--version, v`   |             | Print version information. |
         
 # Parent command
 

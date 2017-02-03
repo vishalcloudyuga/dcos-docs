@@ -22,10 +22,15 @@ dcos package install [OPTION]
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--options=<file>`   |             | Path to a JSON file that contains customized package installation options. |
-| `<package-name>`   |             |  Name of the DC/OS package. |
 | `--package-version=<package-version>`   |             | The package version. |
 | `--version, v`   |             | Print version information. |
 | `--yes`   |             | Disable interactive mode and assume "yes" is the answer to all prompts. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<package-name>`   |             |  Name of the DC/OS package. |
         
 # Parent command
 

@@ -22,8 +22,13 @@ dcos package uninstall [OPTION]
 | `--cli`   |             |  Command line only. |
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `<package-name>`   |             |  Name of the DC/OS package. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<package-name>`   |             |  Name of the DC/OS package. |
         
 # Parent command
 

@@ -18,11 +18,16 @@ dcos job show runs [OPTION]
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `<job-id>`   |             |  The job ID. |
 | `--json`   |             |  Print JSON-formatted list. |
 | `--q`   |             |  Print an array of run IDs only. |
 | `--run-id <run-id>`   |             |  The ID of a job run. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<job-id>`   |             |  Specify the job ID. |
 
 # Parent command
 

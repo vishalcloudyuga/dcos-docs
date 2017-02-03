@@ -18,9 +18,14 @@ dcos marathon pod kill [OPTION]
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
+| `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
 | `<instance-ids>`   |             | List of one or more pod instance IDs, separated by a space. |
 | `<pod-id>`   |             | The pod ID. |
-| `--version, v`   |             | Print version information. |
 
 # Parent command
 

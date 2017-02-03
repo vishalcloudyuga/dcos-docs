@@ -18,8 +18,13 @@ dcos marathon task show [OPTION]
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `<task-id>`   |             |  The task ID. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<task-id>`   |             |  The task ID. |
 
 # Parent command
 

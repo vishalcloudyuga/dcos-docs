@@ -22,11 +22,16 @@ dcos package describe [OPTION]
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--options=<file>`   |             | Path to a JSON file that contains customized package installation options. |
-| `<package-name>`   |             |  Name of the DC/OS package. |
 | `--package-versions`   |             | Print all versions for this package. |
 | `--package-version=<package-version>`   |             | The package version. |
 | `--render`   |             |  Collate the `marathon.json` package template with values from the `config.json` and `--options`. If not provided, print the raw templates. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<package-name>`   |             |  Name of the DC/OS package. |
         
 # Parent command
 

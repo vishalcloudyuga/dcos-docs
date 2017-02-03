@@ -16,12 +16,17 @@ dcos marathon deployment watch [OPTION]
 
 | Name, shorthand | Default | Description |
 |---------|-------------|-------------|
-| `<deployment-id>`   |             |  The deployment ID. |
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--interval=<interval>`   |             | Number of seconds to wait between actions. |
 | `--max-count=<max-count>`   |             | Maximum number of entries to fetch and return. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<deployment-id>`   |             |  The deployment ID. |
 
 # Parent command
 

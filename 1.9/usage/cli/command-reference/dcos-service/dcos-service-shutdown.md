@@ -1,36 +1,33 @@
 ---
-post_title: dcos marathon app restart
-menu_order: 5
----
+post_title: dcos service shutdown
+menu_order: 1
+--- 
 
 # Description
-Restart an application.
+Shutdown a service.
 
 # Usage
 
 ```bash
-dcos marathon app restart [OPTION]
+dcos service shutdown [OPTION]
 ```
 
 # Options
 
 | Name, shorthand | Default | Description |
 |---------|-------------|-------------|
-| `--force`   |             | Disable checks in Marathon during updates. |
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
-| `--version, v`   |             | Print version information. |
+| `--version, v`   |             | Print version information. | 
 
 # Positional arguments
 
 | Name, shorthand | Default | Description |
 |---------|-------------|-------------|
-| `<app-id>`   |             |  The application ID. |
+| `<service-id>`   |             | The DC/OS service ID. |
 
 # Parent command
 
 | Command | Description |
 |---------|-------------|
-| [dcos marathon](/docs/1.9/usage/cli/command-reference/dcos-marathon/) | Deploy and manage applications to DC/OS. |
-
-# Examples
+| [dcos service](/docs/1.9/usage/cli/command-reference/dcos-node/dcos-service/)   | Manage DC/OS services. | 

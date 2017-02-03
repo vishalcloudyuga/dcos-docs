@@ -16,11 +16,16 @@ dcos node diagnostics download [OPTION]
 
 | Name, shorthand | Default | Description |
 |---------|-------------|-------------|
-| `<bundle>`   |             |  The bundle filename. For example, `bundle-2017-02-01T00:33:48-110930856.zip`. |
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--location=<location>`   |  Current directory |  Download the diagnostics bundle to a specific location. If not set, the default location is your current working directory. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<bundle>`   |             |  The bundle filename. For example, `bundle-2017-02-01T00:33:48-110930856.zip`. |
 
 # Parent command
 

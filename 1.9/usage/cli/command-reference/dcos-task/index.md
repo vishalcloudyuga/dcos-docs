@@ -4,14 +4,29 @@ menu_order: 9
 ---
 
 # Description
+Manage DC/OS tasks.
 
 # Usage
 
+```bash
+dcos task [OPTION]
+```
+
 # Options
 
-# Parent command
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `--completed`   |             | Print completed and in-progress tasks. |
+| `--help, h`   |             |  Print usage. |
+| `--info`   |             |  Print a short description of this subcommand. |
+| `--json`   |             |  JSON-formatted data. |
+| `--version, v`   |             | Print version information. | 
 
-# Examples
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<task>`   |             |  A full task ID, a partial task ID, or a regular expression. |
 
 # dcos task
 
@@ -59,3 +74,10 @@ Positional Arguments:
     <task>
         A full task ID, a partial task ID, or a regular expression.
 ```
+
+# Child commands
+
+| Command | Description |
+|---------|-------------|
+| [dcos task log](/docs/1.9/usage/cli/command-reference/dcos-node/dcos-task/dcos-task-log/)   | Print the task log. | 
+| [dcos task ls](/docs/1.9/usage/cli/command-reference/dcos-node/dcos-task/dcos-task-ls/)   | Print the list of files in the Mesos task sandbox. | 

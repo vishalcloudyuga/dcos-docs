@@ -16,10 +16,15 @@ dcos marathon deployment stop [OPTION]
 
 | Name, shorthand | Default | Description |
 |---------|-------------|-------------|
-| `<deployment-id>`   |             |  The deployment ID. |
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<deployment-id>`   |             |  The deployment ID. |
 
 # Parent command
 

@@ -16,11 +16,16 @@ dcos marathon deployment list [OPTION]
 
 | Name, shorthand | Default | Description |
 |---------|-------------|-------------|
-| `<app-id>`   |             |  The application ID. |
 | `--help, h`   |             |  Print usage. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--json`   |             |  Print JSON-formatted data. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<app-id>`   |             |  The application ID. |
 
 # Parent command
 

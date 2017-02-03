@@ -17,9 +17,14 @@ dcos job add [OPTION]
 | Name, shorthand | Default | Description |
 |---------|-------------|-------------|
 | `--help, h`   |             |  Print usage. |
-| `<job-file>`   |             |  A JSON-formatted job definition. |
 | `--info`   |             |  Print a short description of this subcommand. |
 | `--version, v`   |             | Print version information. |
+
+# Positional arguments
+
+| Name, shorthand | Default | Description |
+|---------|-------------|-------------|
+| `<job-file>`   |             |  A JSON-formatted job definition. |
 
 # Parent command
 
