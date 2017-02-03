@@ -101,6 +101,7 @@ This page provides instructions on how to contribute to the DC/OS documentation.
 - Use [GitHub-flavored markdown](https://help.github.com/enterprise/11.10.340/user/articles/github-flavored-markdown/).
 - Use relative links.
   - Begin all links at the root `docs` level and include the version number subdirectory. (e.g., `/docs/1.8/administration/sshcluster/`).
+- For links that end with parenthesis, you must use the HTML code `&#41;` for the closing parenthesis. For example, this link `[Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix))` should instead be `[Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix&#41;)`.
 - Do not include file extensions in your link or image paths. For example, the directory `/docs/1.8/administration/` contains a file named `user-management.md`. To link to this content on the live site, you would use the following path: `/docs/1.8/administration/user-management/`.
 - Each directory must contain an `index.md` file. This acts as the base-level topic for each folder in the site (required).
 - The table of contents of each page is automatically generated based on the top-level headers.
