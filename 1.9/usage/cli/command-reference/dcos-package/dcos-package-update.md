@@ -10,4 +10,4 @@ This command has been deprecated. Repositories are dynamically updated as they a
 
 | Command | Description |
 |---------|-------------|
-| [dcos package](/docs/1.9/usage/cli/command-reference/dcos-node/dcos-package/dcos-package/)   | Install and manage DC/OS software packages. |
+| [dcos package](/docs/1.9/usage/cli/command-reference/dcos-package/)   | Install and manage DC/OS software packages. |

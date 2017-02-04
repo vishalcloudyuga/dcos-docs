@@ -30,4 +30,4 @@ dcos service shutdown [OPTION]
 
 | Command | Description |
 |---------|-------------|
-| [dcos service](/docs/1.9/usage/cli/command-reference/dcos-node/dcos-service/)   | Manage DC/OS services. | 
+| [dcos service](/docs/1.9/usage/cli/command-reference/dcos-service/)   | Manage DC/OS services. | 
