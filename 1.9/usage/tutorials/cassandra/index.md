@@ -32,16 +32,16 @@ In this tutorial you will learn how to:
 - [Cassandra CRUD operations](#cassandra-crud-operations)
 - [Cleanup](#cleanup)
 
-## Prerequisites
+# Prerequisites
 
 - A running DC/OS cluster with three nodes, each with 2 CPUs and 2 GB of RAM available.
 - [DC/OS CLI](/docs/1.9/usage/cli/install/) installed.
 
-## Installing Cassandra
+# Installing Cassandra
 
 Assuming you have a DC/OS cluster up and running, the first step is to [install Cassandra](/docs/1.9/usage/managing-services/install/)
 
-### Typical installation
+## Typical installation
 
 Install Cassandra using the DC/OS CLI:
 
@@ -55,7 +55,7 @@ DC/OS Cassandra Service is being installed.
 
 While the DC/OS command line interface (CLI) is immediately available, it takes a few moments for Cassandra to start running in the cluster.
 
-### Custom manual installation procedure
+## Custom manual installation procedure
 
 1. Verify existing DC/OS repositories:
 
@@ -84,11 +84,11 @@ While the DC/OS command line interface (CLI) is immediately available, it takes 
     $ dcos package install --yes --force --package-version=<package_version> Cassandra
     ```
 
-### Manual installation via the web interface
+## Manual installation via the web interface
 
 You can also install the Cassandra service from DC/OS Universe via `http://<dcos-master-dns>/#/universe/packages/`.
 
-### Validate installation
+## Validate installation
 
 Validate that the installation added the enhanced DC/OS CLI for Cassandra:
 
@@ -114,7 +114,7 @@ Commands:
 
 You can also go to the DC/OS dashboard to validate that the Cassandra service is running and healthy.
 
-## Perform Cassandra CRUD operations
+# Perform Cassandra CRUD operations
 
 Retrieve the connection information:
 
@@ -192,9 +192,9 @@ Query again to ensure that the row was deleted successfully:
 cqlsh> SELECT * FROM demo.map;
 ```
 
-## Cleanup
+# Cleanup
 
-### Uninstalling
+## Uninstalling
 
 ```bash
 $ dcos package uninstall cassandra
