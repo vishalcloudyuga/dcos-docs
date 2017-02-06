@@ -1,5 +1,6 @@
 ---
-post_title: Marathon REST API
+post_title: Marathon REST API 
+nav_title: Marathon REST API 
 menu_order: 40
 ---
 
