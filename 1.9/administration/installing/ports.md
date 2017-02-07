@@ -48,8 +48,10 @@ This topic lists the ports that are required to launch DC/OS. Additional ports m
 | 8181  | Exhibitor and Zookeeper | `dcos-exhibitor.service` |
 | 9990  | Cosmos | `dcos-cosmos.service` |
 | 15055 | DC/OS History | `dcos-history-service.service` |
-|  Dynamic | DC/OS Metronome | `dcos-metronome.service`|
-|  Dynamic | System Package Manager API | `dcos-pkgpanda-api.service` | 
+| 15101 | Marathon libprocess | `dcos-marathon.service` |
+| 15201 | Metronome libprocess | `dcos-metronome.service`|
+| Dynamic | DC/OS Metronome | `dcos-metronome.service`|
+| Dynamic | System Package Manager API | `dcos-pkgpanda-api.service` | 
 
 ### UDP
 
