@@ -36,6 +36,8 @@ Once your service has deployed, check the contents of `stdout` to verify that th
 +-------------------------------+----------------------+----------------------+
 ```
 
+You will also see an entry for **GPU** on the **Configuration** tab of the page for your service.
+
 ## Docker-Based Application Definition
 
 **Important:** You must use the [DC/OS Universal Container Runtime](/docs/1.8/usage/containerizers/) to run a containerized application that uses GPUs. To use the Universal Container Runtime, set the container type to `MESOS`.
@@ -71,3 +73,5 @@ Once your service has deployed, check the contents of `stdout` to verify that th
 | N/A   34C    P0    39W / 150W |     34MiB /  7679MiB |      0%      Default |
 +-------------------------------+----------------------+----------------------+
 ```
+
+You will also see an entry for **GPU** on the **Configuration** tab of the page for your service.
