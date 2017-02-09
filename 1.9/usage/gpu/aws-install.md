@@ -6,7 +6,7 @@ menu_order: 2
 ---
 
 #  Prerequisites
-- An AWS S3 bucket.
+- An AWS S3 bucket with a [bucket policy](https://dcos.io/docs/1.8/administration/installing/cloud/aws/advanced/aws-custom/) that allows the launched AWS instances to download the files from the S3 bucket.
 - The [AWS CLI](https://aws.amazon.com/cli/) installed.
 
 ## Generate a Custom AWS CF template for GPU
@@ -89,7 +89,7 @@ Use the `zen.sh` script to create the Zen template dependencies. These dependenc
 
 1. Run the script from from your local terminal with a single argument of stack prefix (STACK_NAME).
     ```bash
-    $ bash ./zen.sh dcos
+    $ bash ./zen.sh <stack-name>
     ```
     
     The output should look like this:
