@@ -563,7 +563,7 @@ Just as machine operating systems need package management to install, upgrade, c
 
 # IAM and Security
 
-Identity management in DC/OS is delegated to external identity providers, taking advantage of existing infrastructure to reduce the cost and time to market. Security is provided via OAuth authentication and enforced at the edge by Admin Router's reverse proxy.
+Identity management in DC/OS is delegated to external identity providers, taking advantage of existing infrastructure to reduce the cost and time to market. Security is provided via OpenID Connect authentication and enforced at the edge by Admin Router's reverse proxy.
 
 <div data-role="collapsible">
 <h2>DC/OS Authentication</h2>
