@@ -22,7 +22,7 @@ dcos-logrotate.timer             dcos-spartan.service
 ```
 
 ## Admin Router Service
-Admin Router is our core internal load balancer. Admin Router is a customized [Nginx](https://www.nginx.com/resources/wiki/) which allows us to proxy all the internal services on :80.
+Admin Router is our core internal load balancer. Admin Router is a customized [NGINX](https://www.nginx.com/resources/wiki/) which allows us to proxy all the internal services on :80.
 
 Without Admin Router being up, you could not access the DC/OS UI. Admin Router is a core component of the DC/OS ecosystem.
 
@@ -46,6 +46,8 @@ From this complete list of cluster hosts, it queries all 3DT health endpoints (`
 ## Distributed DNS Proxy
 Distributed DNS Proxy is our internal DNS dispatcher. It conforms to RFC5625 as a DNS forwarder for DC/OS cluster services.
 
+## Downloads Service
+This component (`dcos-download.service`) downloads the DC/OS installation tarball on first boot.
 
 ## Erlang Port Mapper (EPMD) Service
 The erlang port mapper is designed to support our internal layer 4 load balancer we call `minuteman`.

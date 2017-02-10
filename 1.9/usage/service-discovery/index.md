@@ -16,4 +16,4 @@ DC/OS provides a number of tools out of the box for service discovery and load b
 [2]: /docs/1.9/usage/service-discovery/load-balancing-vips/
 [3]: /docs/1.9/usage/service-discovery/marathon-lb/
 [4]: /docs/1.9/usage/service-discovery/mesos-dns/
-[5]: /docs/1.9/usage/service-discovery/dns-naming/
+[5]: /docs/1.9/usage/service-discovery/mesos-dns/service-naming/

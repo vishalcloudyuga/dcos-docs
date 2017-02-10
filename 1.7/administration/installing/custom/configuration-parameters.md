@@ -18,7 +18,7 @@ This required parameter specifies the URI path for the DC/OS installer to store 
 This parameter specifies the name of your cluster.
 
 ### exhibitor_storage_backend
-This parameter specifies the type of storage backend to use for Exhibitor. You can use internal DC/OS storage (`static`) or specify an external storage system (`zookeeper`, `aws_s3`, `azure`, and `shared_filesystem`) for configuring and orchestrating Zookeeper with Exhibitor on the master nodes. Exhibitor automatically configures your Zookeeper installation on the master nodes during your DC/OS installation.
+This parameter specifies the type of storage backend to use for Exhibitor. You can use internal DC/OS storage (`static`) or specify an external storage system (`zookeeper`, `aws_s3`, `azure`, and `shared_filesystem`) for configuring and orchestrating ZooKeeper with Exhibitor on the master nodes. Exhibitor automatically configures your ZooKeeper installation on the master nodes during your DC/OS installation.
 
 *   `exhibitor_storage_backend: static`
     This option specifies that the Exhibitor storage backend is managed internally within your cluster.
@@ -27,7 +27,7 @@ This parameter specifies the type of storage backend to use for Exhibitor. You c
     *   **exhibitor_zk_hosts**
         This parameter specifies a comma-separated list (`<ZK_IP>:<ZK_PORT>, <ZK_IP>:<ZK_PORT>, <ZK_IP:ZK_PORT>`) of one or more ZooKeeper node IP and port addresses to use for configuring the internal Exhibitor instances. Exhibitor uses this ZooKeeper cluster to orchestrate it's configuration. Multiple ZooKeeper instances are recommended for failover in production environments.
     *   **exhibitor_zk_path**
-        This parameter specifies the filepath that Exhibitor uses to store data, including the `zoo.cfg` file.
+        This parameter specifies the filepath that Exhibitor uses to store data.
 *   `exhibitor_storage_backend: aws_s3`
     This option specifies an Amazon Simple Storage Service (S3) bucket for shared storage. If you specify `aws_s3`, you must also specify these parameters:
     *  **aws_access_key_id**

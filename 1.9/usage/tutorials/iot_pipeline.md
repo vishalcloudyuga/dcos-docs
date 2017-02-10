@@ -32,9 +32,12 @@ This tutorial demonstrates how you can build a complete IoT pipeline on DC/OS in
 *  [DC/OS](/docs/1.9/administration/installing/) installed with at least 5 [private agents][6] and 1 [public agent][6].
 *  [DC/OS CLI](/docs/1.9/usage/cli/install/) installed.
 *  The public IP address of your public agent node. After you have installed DC/OS with a public agent node declared, you can [navigate to the public IP address][9] of your public agent node.
+*   Git:
+    *   **OS X:** Get the installer from [Git downloads](http://git-scm.com/download/mac).
+    *   **Unix/Linux:** See these [installation instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 # Install the DC/OS services you'll need
-From the DC/OS web interface [**Universe**](/docs/1.9/usage/webinterface/#universe) tab, install Cassandra, Kafka, Marathon-LB, and Zeppelin.
+From the DC/OS web interface [**Universe > Packages**](/docs/1.9/usage/webinterface/#universe) tab, install Cassandra, Kafka, Marathon-LB, and Zeppelin.
 
 __Tip:__ You can also install DC/OS packages from the DC/OS CLI with the [`dcos package install`][11] command.
 
@@ -110,7 +113,7 @@ Use the `post-tweets.json` app a large number of Shakespeare tweets from a file:
         $ dcos marathon app add post-tweets.json
     
 
-The app will post more than 100k tweets one by one, so you'll see them coming in steadily when you refresh the page. Click the **Network** tab in the DC/OS web interface to see the load balancing in action.
+The app will post more than 100k tweets one by one, so you'll see them coming in steadily when you refresh the page. Click the **Networking** tab in the DC/OS web interface to see the load balancing in action.
 
 The post-tweets app works by streaming to the VIP `1.1.1.1:30000`. This address is declared in the `cmd` parameter of the `post-tweets.json` app definition. The app uses the service discovery and load balancer service that is installed on every DC/OS node. You can see the Tweeter app defined with this VIP in the json definition under `VIP_0`.
 
@@ -135,7 +138,7 @@ Next, you'll perform real-time analytics on the stream of tweets coming in from 
  [1]: https://docs.mesosphere.com/1.9/usage/service-guides/cassandra/
  [2]: https://docs.mesosphere.com/1.9/usage/service-guides/kafka
  [3]: https://docs.mesosphere.com/1.9/usage/service-guides/spark/
- [4]: https://docs.mesosphere.com/1.9/usage/service-guides/zeppelin/
+ [4]: http://zeppelin.apache.org/
  [5]: https://github.com/mesosphere/marathon-lb
  [6]: /docs/1.9/overview/concepts/
  [7]: /docs/1.9/administration/installing/cloud/

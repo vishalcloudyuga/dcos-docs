@@ -11,9 +11,16 @@ A named VIP contains 3 components:
  * Port (a port which the service is available on)
  * Service name
 
-You can assign a VIP to your application from the DC/OS web interface. The values you enter when you deploy a new service are translated into the appropriate `portDefininitions` or `portMappings` entry in your Marathon application definition.
+You can assign a VIP to your application from the DC/OS web interface. The values you enter when you deploy a new service are translated into these Marathon application definition entries:
 
-* VIPs follow the naming convention `<service-name>.marathon.l4lb.thisdcos.directory:<port>`.
+- `portDefininitions` if not using Docker containers
+- `portMappings` if using Docker containers
+
+VIPs follow this naming convention:
+ 
+```
+<service-name>.marathon.l4lb.thisdcos.directory:<port>
+```
 
 ## Prerequisite:
 
@@ -21,10 +28,10 @@ You can assign a VIP to your application from the DC/OS web interface. The value
 
 ## Create a VIP:
 
-1.  From the DC/OS [web interface](/docs/1.9/usage/webinterface/), click on the **Services** tab and either click your service name or click **Deploy Service** to create a new service.
+1.  From the DC/OS [web interface](/docs/1.9/usage/webinterface/), click on the **Services** tab and either click your service name or click **RUN A SERVICE** to create a new service.
 
-    *   Select the **Network** tab.
-    *   To edit an existing application, click **Edit**. You can then select the **Network** menu option.
+    *   Select the **Networking** tab.
+    *   To edit an existing application, click **Edit**. You can then select the **Networking** menu option.
 
 2.  Check the **Load Balanced** checkbox, then fill in the **LB Port**, **Name**, and **Protocol** fields. As you fill in these fields, the service addresses that Marathon sets up will appear at the bottom of the screen. You can assign multiple VIPs to your app by clicking **+ Add an endpoint**.
 

@@ -25,7 +25,7 @@ A bootstrap node is required to run the scripts and to bootstrap the DC/OS clust
 1.  After creating the bootstrap instance, start the instance and run the following from the shell. These commands install prerequisite software on your bootstrap node.
 
     ```bash
-    $ sudo gcloud components update &&
+    $ sudo yum update google-cloud-sdk &&
     sudo yum update &&
     sudo yum install epel-release &&
     sudo yum install python-pip &&
@@ -136,7 +136,7 @@ You must create the RSA public/private keypairs to allow passwordless logins via
 1.  Download the `dcos-gce` scripts
 
     ```bash
-    $ git clone https://github.com/ajazam/dcos-gce
+    $ git clone https://github.com/dcos-labs/dcos-gce
     ```
 
 1.  Change directory.
@@ -145,7 +145,11 @@ You must create the RSA public/private keypairs to allow passwordless logins via
     $ cd dcos-gce
     ```
 
-1.  Review and customize the `dcos_gce/group_vars/all`. You should review `project`, `subnet`, `login_name`, `bootstrap_public_ip`, and `zone`. To install DC/OS v1.8.4 stable ensure dcos_installer_download_path = "https://downloads.dcos.io/dcos/stable/{{ dcos_installer_filename }}?_ga=1.106931012.674486911.1475259096"
+1.  Review and customize the `dcos_gce/group_vars/all`. You should review `project`, `subnet`, `login_name`, `bootstrap_public_ip`, and `zone`. To install DC/OS v1.8.4 stable, ensure that:
+
+    ```
+    dcos_installer_download_path = "https://downloads.dcos.io/dcos/stable/{{ dcos_installer_filename }}?_ga=1.106931012.674486911.1475259096"
+    ```
 
 1.  Insert following into `~/.ansible.cfg` to stop host key checking.
 
@@ -211,7 +215,7 @@ Specify the login name used for accessing each GCE instance. Default: `ajazam`.
 Specify the bootstrap nodes public IP. Default: `10.132.0.2`.
 
 ### zone
-You can optionally specify your preferred zone. Default: `europe-west1-d`.
+You can optionally specify your preferred zone. Default: `europe-west1-c`.
 
 
 ### Group 2
@@ -252,7 +256,7 @@ Specify the number appended to the text *agent* is used to define the hostname o
 Specify the location of the gcloudbin binary. Default: `/usr/local/bin/gcloud`.
 
 ### image
-Specify the disk image used on the master and agent. Default: `/centos-cloud/centos-7-v20160921`.
+Specify the disk image used on the master and agent. Default: `/centos-cloud/centos-7-v20161027`.
 
 ### bootstrap_public_port
 Specify the port on the bootstrap node which is used to fetch the DC/OS installer from each of the master and agent nodes. Default: `8080`.

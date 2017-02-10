@@ -17,8 +17,8 @@ For a complete set of DC/OS configuration options, see the [Advanced AWS Install
 An Amazon EC2 <a href="https://aws.amazon.com/ec2/pricing/" target="_blank">m3.xlarge</a> instance.  Selecting smaller-sized VMs is not recommended, and selecting fewer VMs will likely cause certain resource-intensive services, such as distributed datastores, to not work properly.
 
 *   You have the option of 1 or 3 Mesos master nodes.
-*   5 [private](/docs/1.9/overview/concepts/#private) Mesos agent nodes is the default.
-*   1 [public](/docs/1.9/overview/concepts/#public) Mesos agent node is the default.
+*   5 [private](/docs/1.9/overview/concepts/#private) Mesos agent nodes is the template default.
+*   1 [public](/docs/1.9/overview/concepts/#public) Mesos agent node is the template default. By default, ports are closed and health checks are configured for [Marathon-LB](/docs/1.9/usage/service-discovery/marathon-lb/). Ports 80 and 443 are configured for the AWS Elastic Load Balancer.
 
 ## Software
 
@@ -77,7 +77,7 @@ Launch the DC/OS web interface by entering the Mesos Master hostname:
 
     ![DC/OS dashboard](../img/ui-dashboard.gif)
 
-1.  Click the dropup menu on the lower-left side to install the DC/OS [Command-Line Interface (CLI)][2]. You must install the CLI to administer your DC/OS cluster.
+1.  Click the dropdown menu on the upper-left side to install the DC/OS [Command-Line Interface (CLI)][2]. You must install the CLI to administer your DC/OS cluster.
 
     ![install CLI](../img/ui-dashboard-install-cli.gif)
 
@@ -92,5 +92,5 @@ Launch the DC/OS web interface by entering the Mesos Master hostname:
  [2]: /docs/1.9/usage/cli/install/
  [3]: /docs/1.9/usage/
  [4]: https://aws.amazon.com/autoscaling/
- [10]: /docs/1.9/administration/user-management/
+ [10]: /docs/1.9/administration/id-and-access-mgt/user-management/
 

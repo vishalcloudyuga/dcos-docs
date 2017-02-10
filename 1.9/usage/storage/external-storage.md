@@ -1,7 +1,7 @@
 ---
 post_title: External Persistent Volumes
 menu_order: 1
-feature-maturity: experimental
+feature_maturity: experimental
 ---
 
 Use external volumes when fault-tolerance is crucial for your app. If a host fails, the native Marathon instance reschedules your app on another host, along with its associated data, without user intervention. External volumes also typically offer a larger amount of storage.
@@ -166,7 +166,7 @@ driver.
 
 ### Create an Application with External Volumes from the DC/OS Web Interface
 
-1. Click the **Services** tab, then **Deploy Service**.
+1. Click the **Services** tab, then **RUN A SERVICE**.
 
 1. If you are using a Docker Container, click **Container Settings** and configure your Docker container.
 

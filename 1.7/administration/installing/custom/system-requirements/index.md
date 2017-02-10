@@ -107,6 +107,9 @@ Here are the agent node hardware requirements.
 *   Each node has unfettered IP-to-IP connectivity from itself to all nodes in the DC/OS cluster.
 *   UDP must be open for ingress to port 53 on the masters. To attach to a cluster, the Mesos agent node service (`dcos-mesos-slave`) uses this port to find `leader.mesos`. 
 
+### High Speed Internet Access
+
+High speed internet access is recommended for DC/OS installation. A minimum 10 MBit per second is required for DC/OS services. The installation of some DC/OS services will fail if the artifact download time exceeds the value of MESOS_EXECUTOR_REGISTRATION_TIMEOUT within the file `/opt/mesosphere/etc/mesos-slave-common`. The default value for MESOS_EXECUTOR_REGISTRATION_TIMEOUT is 10 minutes.
 
 # Software Prerequisites
 
@@ -171,9 +174,9 @@ Before installing DC/OS, you must ensure that your bootstrap node has the follow
 
 Download and save the [DC/OS setup file][3] to your bootstrap node. This file is used to create your customized DC/OS build file.
 
-### Docker Nginx (advanced installer)
+### Docker NGINX (advanced installer)
 
-For advanced install only, install the Docker Nginx image with this command:
+For advanced install only, install the Docker NGINX image with this command:
 
 ```bash
 $ sudo docker pull nginx

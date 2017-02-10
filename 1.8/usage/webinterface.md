@@ -32,7 +32,7 @@ From the dashboard you can easily monitor the health of your cluster.
 
 *   The Task Failure Rate panel provides a graph of the current percentage of tasks that are failing in your cluster.
 
-*   The Services Health panel provides an overview of the health of your services. Each service provides a healthcheck, run at intervals. This indicator shows the current status according to that healthcheck. A maximum of 5 services are displayed, sorted by priority of the most unhealthy. You can click the View all Services button for detailed information and a complete list of your services.
+*   The Services Health panel provides an overview of the health of your services. Each service provides a health check, run at intervals. This indicator shows the current status according to that health check. A maximum of 5 services are displayed, sorted by priority of the most unhealthy. You can click the View all Services button for detailed information and a complete list of your services.
 
 *   The Tasks panel provides the current number of tasks that are staged and running.
 
@@ -79,7 +79,7 @@ Clicking on a node opens the Nodes side panel, which provides CPU, memory, and d
 
 # <a name="network"></a>Network
 
-The Network tab provides information helpful for troubleshooting your virtual networks. You can see which containers are on which network and see their IP addresses. For more information, see the [documentation](/docs/1.8/administration/overlay-networks/ip-per-container/).
+The Network tab provides information helpful for troubleshooting your virtual networks. You can see which containers are on which network and see their IP addresses. For more information, see the [documentation](/docs/1.8/administration/virtual-networks/ip-per-container/).
 
 ![Network](../img/ui-dashboard-network.gif)
 

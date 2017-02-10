@@ -57,10 +57,10 @@ Use the `zen.sh` script to create the Zen template dependencies. These dependenc
     echo "Public SubnetId: $public_subnet"
     ```
 
-1.  Run the script from the CLI with a single argument, `STACK_NAME`. This argument is used to tag the AWS resources created. For example, to add the `dcos` tag:
+1.  Run the `zen.sh` script with an optional tag value for your DC/OS stack specified (`STACK_NAME`), or use the default `dcos`. This value will be used to tag your DC/OS cluster in AWS.  
 
     ```bash
-    $ bash ./zen.sh dcos
+    $ bash ./zen.sh <STACK_NAME>
     ```
 
     The output should look like this:
@@ -78,7 +78,7 @@ Use the `zen.sh` script to create the Zen template dependencies. These dependenc
 ## <a name="launch"></a>Launch the DC/OS advanced template on CloudFormation
 
 1.  Go to [CloudFormation](https://console.aws.amazon.com/cloudformation/home) and click **Create Stack**.
-1.  On the **Select Template** page, upload the [Zen](/docs/1.9/administration/installing/cloud/aws/advanced/template-reference/#zen) template from your workstation and click **Next**.
+1.  On the **Select Template** page, upload the [Zen](/docs/1.9/administration/installing/cloud/aws/advanced/template-reference/#zen) template (e.g. `https://s3-us-west-2.amazonaws.com/dcos/templates/dcos/config_id/6a7451f6dec/cloudformation/el7-zen-1.json`) from your workstation and click **Next**.
 1.  On the **Specify Details** page, specify these values and and click **Next**.
 
     ![AWS UI](../img/aws-advanced-1.png)
@@ -136,7 +136,7 @@ Launch the DC/OS web interface by entering the master hostname:
 
     ![DC/OS dashboard](../img/ui-dashboard.gif)
 
-1.  Click the dropup menu on the lower-left side to install the DC/OS [Command-Line Interface (CLI)][2]. You must install the CLI to administer your DC/OS cluster.
+1.  Click the dropdown menu on the upper-left side to install the DC/OS [Command-Line Interface (CLI)][2]. You must install the CLI to administer your DC/OS cluster.
 
     ![install CLI](../img/ui-dashboard-install-cli.gif)
 

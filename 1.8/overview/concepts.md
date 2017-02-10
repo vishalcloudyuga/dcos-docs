@@ -75,9 +75,9 @@ An infrastructure network is a physical or virtual network provided by the infra
 
 #### <a name="dcos-virtual-network"></a>Virtual Network
 
-A DC/OS virtual network is specifically an overlay network internal to the cluster that connects DC/OS components and containerized tasks running on DC/OS.
+A DC/OS virtual network is specifically an virtual network internal to the cluster that connects DC/OS components and containerized tasks running on DC/OS.
 
-- The overlay network provided by DC/OS is VXLAN managed by the Virtual Network Service (Navstar).
+- The virtual network provided by DC/OS is VXLAN managed by the Virtual Network Service (Navstar).
 - Virtual networks must be configured by an administrator before being used by tasks.
 - Tasks on DC/OS may opt-in to being placed on a specific virtual network and given a container-specific IP.
 - Virtual networks allow logical subdivision of the tasks running on DC/OS.
@@ -106,7 +106,7 @@ For more information, see [Network Security](/docs/1.8/administration/securing-y
 
 ##### <a name="private-agent-node"></a>Private Agent Node
 
-A private agent node is an agent node that is on a network that *does not* have ingress access from outside of the cluster via the cluster’s infrastructure networking.
+A private agent node is an agent node that is on a network that *does not* allow ingress from outside of the cluster via the cluster’s infrastructure networking.
 
 - The Mesos agent on each private agent node is, by default, configured with none of its resources allocated to any specific Mesos roles (`*`).
 - Most service packages install by default on private agent nodes.
@@ -114,7 +114,7 @@ A private agent node is an agent node that is on a network that *does not* have 
 
 ##### <a name="public-agent-node"></a>Public Agent Node
 
-A public agent node is an agent node that is on a network that *does* have ingress access from outside of the cluster via the cluster’s infrastructure networking.
+A public agent node is an agent node that is on a network that *does* allow ingress from outside of the cluster via the cluster’s infrastructure networking.
 
 - The Mesos agent on each public agent node is configured with the `public_ip:true` agent attribute and all of its resources allocated to the `slave_public` role.
 - Public agent nodes are used primarily for externally facing reverse proxy load balancers, like [Marathon-LB](/docs/1.8/usage/service-discovery/marathon-lb/).
@@ -273,7 +273,7 @@ The following terms are contextually correct when talking about Apache Mesos, bu
 - [Containerizer](#mesos-containerizer)
   - [Mesos Universal Container Runtime](#mesos-universal-container-runtime)
   - [Docker Runtime](#mesos-docker-runtime)
-- [Exhibitor &amp; Zookeeper](#mesos-exhibitor-zookeeper)
+- [Exhibitor &amp; ZooKeeper](#mesos-exhibitor-zookeeper)
 - [Mesos\-DNS](#mesos-dns)
 
 ### <a name="apache-mesos"></a>Apache Mesos
@@ -355,7 +355,7 @@ The Mesos Universal Container Runtime is a containerizer that supports tradition
 
 The Docker Runtime is a containerizer that supports launching Docker containers from Docker images with [Docker-Engine](https://www.docker.com/products/docker-engine).
 
-### <a name="mesos-exhibitor-zookeeper"></a>Exhibitor &amp; Zookeeper
+### <a name="mesos-exhibitor-zookeeper"></a>Exhibitor &amp; ZooKeeper
 
 Mesos depends on ZooKeeper, a high-performance coordination service to manage the cluster state. Exhibitor automatically configures and manages ZooKeeper on the [master nodes](#master-node).
 

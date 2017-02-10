@@ -30,7 +30,7 @@ From the DC/OS UI you can uninstall services from the **Services** or **Universe
 
 ### Universe tab
 
-1.  Navigate to the **Universe** page in the DC/OS [UI](/docs/1.9/usage/webinterface/#universe).
+1.  Navigate to the **Universe > Packages** page in the DC/OS [UI](/docs/1.9/usage/webinterface/#universe).
 
 2.  Click on the **Installed** tab to see your installed services.
 
@@ -39,7 +39,9 @@ From the DC/OS UI you can uninstall services from the **Services** or **Universe
 ### Services tab
 
 1.  Navigate to the [**Services**](/docs/1.9/usage/webinterface/#services) tab in the DC/OS UI.
-1.  Select your application and click **Edit**, then select the **More -> Destroy**.
+1.  Select your application and click the toggle to **Destroy**.
+    
+    ![Destory app](/docs/1.9/usage/managing-services/img/app-destory.png)
 
 ## <a name="framework-cleaner"></a>Cleaning up ZooKeeper
 
@@ -59,10 +61,29 @@ The script takes the following flags:
 
 These are some examples of default configurations (these will vary depending on selected task name, etc):
 
-* Cassandra default: docker run mesosphere/janitor /janitor.py -r cassandra-role -p cassandra-principal -z dcos-service-cassandra
-* HDFS default: docker run mesosphere/janitor /janitor.py -r hdfs-role -p hdfs-principal -z dcos-service-hdfs
-* Kafka default: docker run mesosphere/janitor /janitor.py -r kafka-role -p kafka-principal -z dcos-service-kafka
-* Custom values: docker run mesosphere/janitor /janitor.py -r <custom_role> -p <custom_principal> -z dcos-service-<custom_service_name>
+* Cassandra default: 
+
+  ```bash
+  $ docker run mesosphere/janitor /janitor.py -r cassandra-role -p cassandra-principal -z dcos-service-cassandra
+  ```
+  
+* HDFS default: 
+
+  ```bash
+  $ docker run mesosphere/janitor /janitor.py -r hdfs-role -p hdfs-principal -z dcos-service-hdfs
+  ```
+  
+* Kafka default: 
+
+  ```bash
+  $ docker run mesosphere/janitor /janitor.py -r kafka-role -p kafka-principal -z dcos-service-kafka
+  ```
+  
+* Custom values: 
+  
+  ```bash
+  $ docker run mesosphere/janitor /janitor.py -r <custom_role> -p <custom_principal> -z dcos-service-<custom_service_name>
+  ```
 
 ### Running from the DC/OS CLI
 

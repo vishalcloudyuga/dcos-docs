@@ -217,9 +217,9 @@ To install DC/OS:
     ├── dcos-genconf.<HASH>.tar
     ├── dcos_generate_config.sh
     ├── genconf
+    │   ├── cluster_packages.json
     │   ├── config.yaml
     │   ├── ip-detect
-    │   ├── cluster_packages.json
     │   ├── serve
     │   ├── ssh_key
     │   ├── state
@@ -389,5 +389,5 @@ After DC/OS is installed and deployed across your cluster, you can add more agen
  [7]: /docs/1.8/administration/installing/custom/uninstall/
  [8]: /docs/1.8/usage/
  [9]: /docs/1.8/administration/installing/custom/troubleshooting/
- [10]: /docs/1.8/administration/user-management/
+ [10]: /docs/1.8/administration/id-and-access-mgt/user-management/
  [11]: /docs/1.8/administration/installing/custom/convert-agent-type/

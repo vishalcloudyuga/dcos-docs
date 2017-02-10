@@ -10,20 +10,20 @@ The HTTP Proxy must perform on-the-fly HTTP request and response header modifica
 
 These instructions provide a tested [HAProxy](http://www.haproxy.org/) configuration example that handles the named request/response rewriting. This example ensures that the communication between HAProxy and DC/OS Admin Router is TLS-encrypted.
 
-**Tip:**
-
-To avoid having to reconfigure DC/OS, you can use this DNS entry to find your task IP.
-
-* **Agent IP:** Provides the agent IP address: `<taskname>.<framework_name>.agentip.dcos.<dcos_name>.directory`
-
-Terminology:
-* `taskname`: The name of the task
-* `framework_name`: The name of the framework, if you are unsure, it is likely `marathon`
-* `dcos_name`: The name of your DC/OS, which defaults to `thisdcos`
-
 1.  Install HAProxy [1.6.9](http://www.haproxy.org/#down).
 
 1.  Create an HAProxy configuration for DC/OS. This example is for a DC/OS cluster on AWS. For more information on HAProxy configuration parameters, see the [documentation](https://cbonte.github.io/haproxy-dconv/configuration-1.6.html#3).
+
+    **Tip:** You can find your task IP by using the agent IP address DNS entry.
+    
+    ```
+    <taskname>.<framework_name>.agentip.dcos.thisdcos.directory
+    ```
+    
+    Where:
+    
+    * `taskname`: The name of the task.
+    * `framework_name`: The name of the framework, if you are unsure, it is likely `marathon`.
 
     ```
     global

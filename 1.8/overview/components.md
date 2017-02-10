@@ -62,11 +62,11 @@ You can view the DC/OS component details in the <a href="https://github.com/dcos
   </tr>
   <tr>
     <td>Erlang Port Mapping Daemon</td>
-    <td>This component (`dcos-epmd.service`) supports the internal DC/OS layer 4 load balancer that is called <a href="https://github.com/Netflix/exhibitor">Minuteman</a>.</td>
+    <td>This component (`dcos-epmd.service`) supports the internal DC/OS layer 4 load balancer that is called <a href="https://github.com/dcos/minuteman">Minuteman</a>.</td>
   </tr>
   <tr>
     <td>Exhibitor</td>
-    <td>This component (`dcos-exhibitor.service`) is the Exhibitor supervisor for Zookeeper. DC/OS uses Exhibitor, a project from <a href="https://github.com/Netflix/exhibitor">Netflix</a>, to manage and automate the deployment of <a href="/docs/1.8/overview/concepts/#exhibitorforzookeeper">ZooKeeper</a>.</td>
+    <td>This component (`dcos-exhibitor.service`) is the Exhibitor supervisor for ZooKeeper. DC/OS uses Exhibitor, a project from <a href="https://github.com/Netflix/exhibitor">Netflix</a>, to manage and automate the deployment of <a href="/docs/1.8/overview/concepts/#exhibitorforzookeeper">ZooKeeper</a>.</td>
   </tr>
   <tr>
     <td>Generate resolv.conf</td>
@@ -130,7 +130,7 @@ You can view the DC/OS component details in the <a href="https://github.com/dcos
   </tr>
   <tr>
     <td>Virtual Network Service</td>
-    <td>This component (`dcos-navstar.service/`) is a daemon that provides virtual networking and DNS services. It is the network overlay orchestrator. For more information, see the <a href="https://github.com/dcos/navstar">documentation</a>.</td>
+    <td>This component (`dcos-navstar.service`) is a daemon that provides virtual networking and DNS services. It is the network overlay orchestrator. For more information, see the <a href="https://github.com/dcos/navstar">documentation</a>.</td>
   </tr>
   <tr>
     <td>OAuth</td>

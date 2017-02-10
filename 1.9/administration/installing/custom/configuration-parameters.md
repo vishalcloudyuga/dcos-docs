@@ -52,6 +52,17 @@ This parameter specifies a custom URL that Mesos uses to pull Docker images from
 ### cluster_name
 This parameter specifies the name of your cluster.
 
+### cosmos_config
+This parameter specifies a dictionary of packaging configuration to pass to the [DC/OS package manager](https://github.com/dcos/cosmos). If set, the following options must also be
+specified.
+
+* **staged_package_storage_uri**
+  This parameter specifies where to temporarily store DC/OS packages while they are being added.
+  The value must be a file URL, for example, `file:///var/lib/dcos/cosmos/staged-packages`.
+* **package_storage_uri**
+  This parameter specifies where to permanently store DC/OS packages. The value must be a file URL,
+  for example, `file:///var/lib/dcos/cosmos/packages`.
+
 ### exhibitor_storage_backend
 This parameter specifies the type of storage backend to use for Exhibitor. You can use internal DC/OS storage (`static`) or specify an external storage system (`zookeeper`, `aws_s3`, and `azure`) for configuring and orchestrating ZooKeeper with Exhibitor on the master nodes. Exhibitor automatically configures your ZooKeeper installation on the master nodes during your DC/OS installation.
 
@@ -62,7 +73,7 @@ This parameter specifies the type of storage backend to use for Exhibitor. You c
     *   **exhibitor_zk_hosts**
         This parameter specifies a comma-separated list (`<ZK_IP>:<ZK_PORT>, <ZK_IP>:<ZK_PORT>, <ZK_IP:ZK_PORT>`) of one or more ZooKeeper node IP and port addresses to use for configuring the internal Exhibitor instances. Exhibitor uses this ZooKeeper cluster to orchestrate it's configuration. Multiple ZooKeeper instances are recommended for failover in production environments.
     *   **exhibitor_zk_path**
-        This parameter specifies the filepath that Exhibitor uses to store data, including the `zoo.cfg` file.
+        This parameter specifies the filepath that Exhibitor uses to store data.
 *   `exhibitor_storage_backend: aws_s3`
     This option specifies an Amazon Simple Storage Service (S3) bucket for shared storage. If you specify `aws_s3`, you must also specify these parameters:
     *  **aws_access_key_id**
@@ -113,24 +124,27 @@ This option specifies that Mesos agents are used to discover the masters by givi
 ### <a name="public-agent"></a>public_agent_list
 This parameter specifies a YAML nested list (`-`) of IPv4 addresses to your [public agent](/docs/1.9/overview/concepts/#public) host names.
 
+### <a name="platform"></a>platform
+This parameter specifies the infrastructure platform. The value is optional, free-form with no content validation, and used for telemetry only. Please supply an appropriate value to help inform DC/OS platform prioritization decisions. Example values: `aws`, `azure`, `oneview`, `openstack`, `vsphere`, `vagrant-virtualbox`, `onprem` (default).
+
 ## <a name="networking"></a>Networking
 
 ### <a name="dcos-overlay-enable"></a>dcos_overlay_enable
 
-This parameter specifies whether to enable DC/OS overlay networks.
+This parameter specifies whether to enable DC/OS virtual networks.
 
-**Important:** Overlay networks require Docker 1.11. If you are using Docker 1.10 or earlier, you must specify `dcos_overlay_enable: 'false'`. For more information, see the [system requirements](/docs/1.9/administration/installing/custom/system-requirements/).
+**Important:** Virtual networks require Docker 1.11. If you are using Docker 1.10 or earlier, you must specify `dcos_overlay_enable: 'false'`. For more information, see the [system requirements](/docs/1.9/administration/installing/custom/system-requirements/).
 
-*  `dcos_overlay_enable: 'false'` Do not enable the DC/OS overlay network.
-*  `dcos_overlay_enable: 'true'` Enable the DC/OS overlay network. This is the default value. When the overlay network is enabled you can also specify the following parameters:
+*  `dcos_overlay_enable: 'false'` Do not enable the DC/OS virtual network.
+*  `dcos_overlay_enable: 'true'` Enable the DC/OS virtual network. This is the default value. When the virtual network is enabled you can also specify the following parameters:
 
-    *  `dcos_overlay_config_attempts` This parameter specifies how many failed configuration attempts are allowed before the overlay configuration modules stop trying to configure an overlay network.
+    *  `dcos_overlay_config_attempts` This parameter specifies how many failed configuration attempts are allowed before the overlay configuration modules stop trying to configure an virtual network.
 
         __Tip:__ The failures might be related to a malfunctioning Docker daemon.
 
     *  `dcos_overlay_mtu` This parameter specifies the maximum transmission unit (MTU) of the Virtual Ethernet (vEth) on the containers that are launched on the overlay.
 
-    *  `dcos_overlay_network` This group of parameters define an overlay network for DC/OS.  The default configuration of DC/OS provides an overlay network named `dcos` whose YAML configuration is as follows:
+    *  `dcos_overlay_network` This group of parameters define an virtual network for DC/OS.  The default configuration of DC/OS provides an virtual network named `dcos` whose YAML configuration is as follows:
 
         ```
         dcos_overlay_network:
@@ -142,16 +156,16 @@ This parameter specifies whether to enable DC/OS overlay networks.
                 prefix: 26
         ```
 
-        *  `vtep_subnet` This parameter specifies a dedicated address space that is used for the VxLAN backend for the overlay network. This address space should not be routeable from outside the agents or master.
+        *  `vtep_subnet` This parameter specifies a dedicated address space that is used for the VxLAN backend for the virtual network. This address space should not be routeable from outside the agents or master.
         *  `vtep_mac_oui` This parameter specifies the MAC address of the interface connecting to it in the public node.
             
             **Important:** The last 3 bytes must be `00`.
         *  __overlays__
-            *  `name` This parameter specifies the canonical name (see [limitations](/docs/1.9/administration/overlay-networks/) for constraints on naming overlay networks).
-            *  `subnet` This parameter specifies the subnet that is allocated to the overlay network.
+            *  `name` This parameter specifies the canonical name (see [limitations](/docs/1.9/administration/virtual-networks/) for constraints on naming virtual networks).
+            *  `subnet` This parameter specifies the subnet that is allocated to the virtual network.
             *  `prefix` This parameter specifies the size of the subnet that is allocated to each agent and thus defines the number of agents on which the overlay can run. The size of the subnet is carved from the overlay subnet.
 
- For more information see the [example](#overlay) and [documentation](/docs/1.9/administration/overlay-networks/).
+ For more information see the [example](#overlay) and [documentation](/docs/1.9/administration/virtual-networks/).
 
 ### <a name="dns-search"></a>dns_search
 This parameter specifies a space-separated list of domains that are tried when an unqualified domain is entered (e.g. domain searches that do not contain &#8216;.&#8217;). The Linux implementation of `/etc/resolv.conf` restricts the maximum number of domains to 6 and the maximum number of characters the setting can have to 256. For more information, see <a href="http://man7.org/linux/man-pages/man5/resolv.conf.5.html">man /etc/resolv.conf</a>.
@@ -181,11 +195,11 @@ This required parameter specifies a YAML nested list (`-`) of DNS resolvers for 
 
 ### use_proxy
 
-This parameters specifies whether to enable the DC/OS proxy.
+This parameter specifies whether to enable the DC/OS proxy. 
 
-*  `use_proxy: 'false'` Do not configure DC/OS [components](/docs/1.9/overview/components/) to use a custom proxy. This is the default value.
-*  `use_proxy: 'true'` Configure DC/OS [components](/docs/1.9/overview/components/) to use a custom proxy. If you specify `use_proxy: 'true'`, you can also specify these parameters:
-    
+*  `use_proxy: 'false'` Do not configure DC/OS [components](/docs/1.9/overview/architecture/components/) to use a custom proxy. This is the default value.
+*  `use_proxy: 'true'` Configure DC/OS [components](/docs/1.9/overview/architecture/components/) to use a custom proxy. If you specify `use_proxy: 'true'`, you can also specify these parameters:
+
     *  `http_proxy: <your_http_proxy>` This parameter specifies the HTTP proxy.
     *  `https_proxy: <your_https_proxy>` This parameter specifies the HTTPS proxy.
     *  `no_proxy: - <ip-address>` This parameter specifies YAML nested list (-) of addresses to exclude from the proxy.
@@ -209,6 +223,12 @@ This parameter specifies whether to check if Network Time Protocol (NTP) is enab
 
 ### <a name="docker-remove"></a>docker_remove_delay
 This parameter specifies the amount of time to wait before removing stale Docker images stored on the agent nodes and the Docker image generated by the installer. It is recommended that you accept the default value 1 hour.
+
+### <a name="enable-docker-gc"></a>enable_docker_gc
+This parameter specifies whether to run the [docker-gc](https://github.com/spotify/docker-gc#excluding-images-from-garbage-collection) script, a simple Docker container and image garbage collection script, once every hour to clean up stray Docker containers. You can configure the runtime behavior by using the `/etc/` config. For more information, see the [documentation](https://github.com/spotify/docker-gc#excluding-images-from-garbage-collection)
+
+*  `enable_docker_gc: 'true'` Run the docker-gc scripts once every hour. This is the default value for [cloud](/docs/1.9/administration/installing/cloud/) template installations.
+*  `enable_docker_gc: 'false'` Do not run the docker-gc scripts once every hour. This is the default value for [custom](/docs/1.9/administration/installing/custom/) installations.
 
 ### <a name="gc-delay"></a>gc_delay
 This parameter specifies the maximum amount of time to wait before cleaning up the executor directories. It is recommended that you accept the default value of 2 days.
@@ -238,7 +258,6 @@ This parameter specifies whether to enable sharing of anonymous data for your cl
 - `telemetry_enabled: 'false'` Disable anonymous data sharing.
 
 If you’ve already installed your cluster and would like to disable this in-place, you can go through an [upgrade][3] with the same parameter set.
-
 
 # <a name="examples1"></a>Example Configurations
 
@@ -333,13 +352,12 @@ ssh_port: '<port-number>'
 ssh_user: <username>
 ```
 
-#### <a name="overlay"></a>DC/OS cluster with three masters, an Exhibitor/ZooKeeper managed internally, two DC/OS overlay networks, two private agents, and Google DNS
+#### <a name="overlay"></a>DC/OS cluster with three masters, an Exhibitor/ZooKeeper managed internally, two DC/OS virtual networks, two private agents, and Google DNS
 
 ```yaml
     agent_list:
     - <agent-private-ip-1>
     - <agent-private-ip-2>
-    - <agent-private-ip-3>
     # Use this bootstrap_url value unless you have moved the DC/OS installer assets.
     bootstrap_url: file:///opt/dcos_install_tmp
     cluster_name: <cluster-name>
@@ -376,7 +394,6 @@ ssh_user: <username>
     agent_list:
     - <agent-private-ip-1>
     - <agent-private-ip-2>
-    - <agent-private-ip-3>
     # Use this bootstrap_url value unless you have moved the DC/OS installer assets.
     bootstrap_url: file:///opt/dcos_install_tmp
     cluster_name: <cluster-name>
@@ -405,7 +422,6 @@ ssh_user: <username>
     agent_list:
     - <agent-private-ip-1>
     - <agent-private-ip-2>
-    - <agent-private-ip-3>
     # Use this bootstrap_url value unless you have moved the DC/OS installer assets.
     bootstrap_url: file:///opt/dcos_install_tmp
     cluster_docker_credentials:
@@ -428,6 +444,31 @@ ssh_user: <username>
     - 8.8.8.8
     ssh_port: 22
     ssh_user: centos
+```
+
+#### <a name="cosmos-config"></a>DC/OS cluster with one master, an Exhibitor/ZooKeeper managed internally, three private agents, Google DNS, and the package manager (Cosmos) configured with persistent storage.
+
+```yaml
+    agent_list:
+    - <agent-private-ip-1>
+    - <agent-private-ip-2>
+    - <agent-private-ip-3>
+    # Use this bootstrap_url value unless you have moved the DC/OS installer assets.
+    bootstrap_url: file:///opt/dcos_install_tmp
+    cluster_name: <cluster-name>
+    master_discovery: static
+    master_list:
+    - <master-private-ip-1>
+    resolvers:
+    # You probably do not want to use these values since they point to public DNS servers.
+    # Instead use values that are more specific to your particular infrastructure.
+    - 8.8.4.4
+    - 8.8.8.8
+    ssh_port: 22
+    ssh_user: centos
+    cosmos_config:
+      staged_package_storage_uri: file:///var/lib/dcos/cosmos/staged-packages
+      package_storage_uri: file:///var/lib/dcos/cosmos/packages
 ```
 
  [1]: https://en.wikipedia.org/wiki/YAML

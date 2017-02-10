@@ -33,7 +33,7 @@ This parameter specifies the type of storage backend to use for Exhibitor. You c
     *   **exhibitor_zk_hosts**
         This parameter specifies a comma-separated list (`<ZK_IP>:<ZK_PORT>, <ZK_IP>:<ZK_PORT>, <ZK_IP:ZK_PORT>`) of one or more ZooKeeper node IP and port addresses to use for configuring the internal Exhibitor instances. Exhibitor uses this ZooKeeper cluster to orchestrate it's configuration. Multiple ZooKeeper instances are recommended for failover in production environments.
     *   **exhibitor_zk_path**
-        This parameter specifies the filepath that Exhibitor uses to store data, including the `zoo.cfg` file.
+        This parameter specifies the filepath that Exhibitor uses to store data. 
 *   `exhibitor_storage_backend: aws_s3`
     This option specifies an Amazon Simple Storage Service (S3) bucket for shared storage. If you specify `aws_s3`, you must also specify these parameters:
     *  **aws_access_key_id**
@@ -88,20 +88,20 @@ This parameter specifies a YAML nested list (`-`) of IPv4 addresses to your [pub
 
 ### <a name="dcos-overlay-enable"></a>dcos_overlay_enable
 
-This parameter specifies whether to enable DC/OS overlay networks.
+This parameter specifies whether to enable DC/OS virtual networks.
 
-**Important:** Overlay networks require Docker 1.11. If you are using Docker 1.10 or earlier, you must specify `dcos_overlay_enable: 'false'`. For more information, see the [system requirements](/docs/1.8/administration/installing/custom/system-requirements/).
+**Important:** Virtual networks require Docker 1.11. If you are using Docker 1.10 or earlier, you must specify `dcos_overlay_enable: 'false'`. For more information, see the [system requirements](/docs/1.8/administration/installing/custom/system-requirements/).
 
-*  `dcos_overlay_enable: 'false'` Do not enable the DC/OS overlay network.
-*  `dcos_overlay_enable: 'true'` Enable the DC/OS overlay network. This is the default value. When the overlay network is enabled you can also specify the following parameters:
+*  `dcos_overlay_enable: 'false'` Do not enable the DC/OS virtual network.
+*  `dcos_overlay_enable: 'true'` Enable the DC/OS virtual network. This is the default value. When the virtual network is enabled you can also specify the following parameters:
 
-    *  `dcos_overlay_config_attempts` This parameter specifies how many failed configuration attempts are allowed before the overlay configuration modules stop trying to configure an overlay network.
+    *  `dcos_overlay_config_attempts` This parameter specifies how many failed configuration attempts are allowed before the overlay configuration modules stop trying to configure an virtual network.
 
         __Tip:__ The failures might be related to a malfunctioning Docker daemon.
 
     *  `dcos_overlay_mtu` This parameter specifies the maximum transmission unit (MTU) of the Virtual Ethernet (vEth) on the containers that are launched on the overlay.
 
-    *  `dcos_overlay_network` This group of parameters define an overlay network for DC/OS.  The default configuration of DC/OS provides an overlay network named `dcos` whose YAML configuration is as follows:
+    *  `dcos_overlay_network` This group of parameters define an virtual network for DC/OS.  The default configuration of DC/OS provides an virtual network named `dcos` whose YAML configuration is as follows:
 
         ```
         dcos_overlay_network:
@@ -113,16 +113,16 @@ This parameter specifies whether to enable DC/OS overlay networks.
                 prefix: 26
         ```
 
-        *  `vtep_subnet` This parameter specifies a dedicated address space that is used for the VxLAN backend for the overlay network. This address space should not be routeable from outside the agents or master.
+        *  `vtep_subnet` This parameter specifies a dedicated address space that is used for the VxLAN backend for the virtual network. This address space should not be routeable from outside the agents or master.
         *  `vtep_mac_oui` This parameter specifies the MAC address of the interface connecting to it in the public node. 
             
             **Important:** The last 3 bytes must be `00`.
         *  __overlays__
-            *  `name` This parameter specifies the canonical name (see [limitations](/docs/1.8/administration/overlay-networks/) for constraints on naming overlay networks).
-            *  `subnet` This parameter specifies the subnet that is allocated to the overlay network.
+            *  `name` This parameter specifies the canonical name (see [limitations](/docs/1.8/administration/virtual-networks/) for constraints on naming virtual networks).
+            *  `subnet` This parameter specifies the subnet that is allocated to the virtual network.
             *  `prefix` This parameter specifies the size of the subnet that is allocated to each agent and thus defines the number of agents on which the overlay can run. The size of the subnet is carved from the overlay subnet.
 
- For more information see the [example](#overlay) and [documentation](/docs/1.8/administration/overlay-networks/).
+ For more information see the [example](#overlay) and [documentation](/docs/1.8/administration/virtual-networks/).
 
 ### <a name="dns-search"></a>dns_search
 This parameter specifies a space-separated list of domains that are tried when an unqualified domain is entered (e.g. domain searches that do not contain &#8216;.&#8217;). The Linux implementation of `/etc/resolv.conf` restricts the maximum number of domains to 6 and the maximum number of characters the setting can have to 256. For more information, see <a href="http://man7.org/linux/man-pages/man5/resolv.conf.5.html">man /etc/resolv.conf</a>.
@@ -152,7 +152,7 @@ This required parameter specifies a YAML nested list (`-`) of DNS resolvers for 
 
 ### use_proxy
 
-This parameters specifies whether to enable the DC/OS proxy.
+This parameter specifies whether to enable the DC/OS proxy. 
 
 *  `use_proxy: 'false'` Do not configure DC/OS [components](/docs/1.8/overview/components/) to use a custom proxy. This is the default value.
 *  `use_proxy: 'true'` Configure DC/OS [components](/docs/1.8/overview/components/) to use a custom proxy. If you specify `use_proxy: 'true'`, you can also specify these parameters:
@@ -304,7 +304,7 @@ ssh_port: '<port-number>'
 ssh_user: <username>
 ```
 
-#### <a name="overlay"></a>DC/OS cluster with three masters, an Exhibitor/ZooKeeper managed internally, two DC/OS overlay networks, two private agents, and Google DNS
+#### <a name="overlay"></a>DC/OS cluster with three masters, an Exhibitor/ZooKeeper managed internally, two DC/OS virtual networks, two private agents, and Google DNS
 
 ```yaml
     agent_list:

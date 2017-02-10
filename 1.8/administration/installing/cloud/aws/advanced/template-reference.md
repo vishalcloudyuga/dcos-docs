@@ -213,7 +213,7 @@ The master templates create masters, on top of the infrastructure stack already 
   </tr>
   <tr>
     <td>ExhibitorS3Bucket</td>
-    <td>S3 Bucket resource name. Used by Exhibitor for Zookeeper discovery and coordination. See Exhibitor documentation on 'shared configuration': https://github.com/Netflix/exhibitor/wiki/Shared-Configuration for more information</td>
+    <td>S3 Bucket resource name. Used by Exhibitor for ZooKeeper discovery and coordination. See Exhibitor documentation on 'shared configuration': https://github.com/Netflix/exhibitor/wiki/Shared-Configuration for more information</td>
   </tr>
   <tr>
     <td>KeyName</td>

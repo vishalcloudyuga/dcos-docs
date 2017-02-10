@@ -32,16 +32,16 @@ In this tutorial you will learn how to:
 - [Cassandra CRUD operations](#cassandra-crud-operations)
 - [Cleanup](#cleanup)
 
-## Prerequisites
+# Prerequisites
 
 - A running DC/OS cluster with three nodes, each with 2 CPUs and 2 GB of RAM available.
 - [DC/OS CLI](/docs/1.9/usage/cli/install/) installed.
 
-## Installing Cassandra
+# Installing Cassandra
 
 Assuming you have a DC/OS cluster up and running, the first step is to [install Cassandra](/docs/1.9/usage/managing-services/install/)
 
-### Typical installation
+## Typical installation
 
 Install Cassandra using the DC/OS CLI:
 
@@ -55,7 +55,7 @@ DC/OS Cassandra Service is being installed.
 
 While the DC/OS command line interface (CLI) is immediately available, it takes a few moments for Cassandra to start running in the cluster.
 
-### Custom manual installation procedure
+## Custom manual installation procedure
 
 1. Verify existing DC/OS repositories:
 
@@ -84,11 +84,11 @@ While the DC/OS command line interface (CLI) is immediately available, it takes 
     $ dcos package install --yes --force --package-version=<package_version> Cassandra
     ```
 
-### Manual installation via the web interface
+## Manual installation via the web interface
 
 You can also install the Cassandra service from DC/OS Universe via `http://<dcos-master-dns>/#/universe/packages/`.
 
-### Validate installation
+## Validate installation
 
 Validate that the installation added the enhanced DC/OS CLI for Cassandra:
 
@@ -114,7 +114,7 @@ Commands:
 
 You can also go to the DC/OS dashboard to validate that the Cassandra service is running and healthy.
 
-## Perform Cassandra CRUD operations
+# Perform Cassandra CRUD operations
 
 Retrieve the connection information:
 
@@ -192,15 +192,15 @@ Query again to ensure that the row was deleted successfully:
 cqlsh> SELECT * FROM demo.map;
 ```
 
-## Cleanup
+# Cleanup
 
-### Uninstalling
+## Uninstalling
 
 ```bash
 $ dcos package uninstall cassandra
 ```
 
-Use the [framework cleaner](/docs/1.9/usage/managing-services/uninstall/#framework-cleaner) script to remove your Cassandra instance from Zookeeper and to destroy all data associated with it. The script requires several arguments, the values for which are derived from your service name:
+Use the [framework cleaner](/docs/1.9/usage/managing-services/uninstall/#framework-cleaner) script to remove your Cassandra instance from ZooKeeper and to destroy all data associated with it. The script requires several arguments, the values for which are derived from your service name:
 
 `framework-role` is `cassandra-role`
 `framework-principal` is `cassandra-principal`
@@ -208,5 +208,5 @@ Use the [framework cleaner](/docs/1.9/usage/managing-services/uninstall/#framewo
 
 **Further resources**
 
-1. [DC/OS Cassandra Official Documentation](https://docs.mesosphere.com/1.9/usage/services/cassandra/)
+1. [DC/OS Cassandra Official Documentation](https://docs.mesosphere.com/usage/service-guides/cassandra/)
 1. [DataStax Cassandra Documentation](http://docs.datastax.com)
