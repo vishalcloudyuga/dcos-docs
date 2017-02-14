@@ -5,8 +5,6 @@ menu_order: 1
 
 Here are some recommendations for monitoring a DC/OS cluster. You can use any monitoring tools. The endpoints listed below will help you troubleshoot when issues occur.
 
- or configure the metrics to report periodically to:
-
 Your monitoring tools should leverage historic data points so that you can track changes and deviations. You should monitor your cluster when it is known to be in a healthy state as well as unhealthy. This will give you a baseline for what is “normal” in the DC/OS environment. With this historical data, you can fine tune your tools and set appropriate thresholds and conditions. When these thresholds are exceeded, you can send alerts to administrators.
 
 Mesos and Marathon expose the following types of metrics:
@@ -18,7 +16,7 @@ Marathon has a timer metric that determines how long an event has taken place. T
 
 ## Marathon metrics
 
-Marathon provides a number of [metrics][1] for monitoring. Here are the ones that are particularly useful to DC/OS. You can query the metrics HTTP endpoint in your DC/OS cluster at `<master-IP>/marathon/metrics`.
+Marathon provides a number of [metrics][1] for monitoring. Here are the ones that are particularly useful to DC/OS. 
 
 **Lifetime metrics**
 
