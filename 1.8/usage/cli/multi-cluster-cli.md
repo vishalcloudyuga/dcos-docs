@@ -26,6 +26,8 @@ This variable only affects the terminal you are currently connected to. After yo
     export DCOS_CONFIG=~./dcos-config/dcos-alice.toml
     ```
 
-1.  To disconnect from a cluster, close the terminal session.
-    
-   
+1.  To disconnect from a cluster, close the terminal session or run this command:
+
+    ```bash
+    $ unset DCOS_CONFIG
+    ```
