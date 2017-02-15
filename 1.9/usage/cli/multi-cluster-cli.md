@@ -8,9 +8,9 @@ You can connect the CLI to multiple DC/OS clusters at the same time by using the
 
 This variable only affects the terminal you are currently connected to. After you end the terminal session, the configuration is removed and your default configuration remains.
 
-**Recommendation:** Make a back up your default CLI configuration file (`dcos.toml`) before connecting to multiple clusters. By default, this file is located in `/<home-directory>/.dcos/dcos.toml`. You can use this file as a template for additional configurations.
+**Recommendation:** Make a back up of your default CLI configuration file (`dcos.toml`) before connecting to multiple clusters. By default, this file is located in `/<home-directory>/.dcos/dcos.toml`. You can use this file as a template for additional configurations.
 
-1.  Create a cluster configuration file and save to a unique location (e.g. `/dcos-config/dcos-alice.toml`). The file type must be `.toml`.
+1.  Create a cluster configuration file and save to a unique location (e.g., `/dcos-config/dcos-alice.toml`). The file type must be `.toml`.
 
     **Tip:** You can use the default configuration file (`dcos.toml`) as a template.
 
