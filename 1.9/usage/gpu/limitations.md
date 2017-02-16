@@ -5,7 +5,7 @@ feature_maturity: experimental
 menu_order: 3
 ---
 
-- Unlike other resources, like  CPUs, memory, and disk, you can only specify whole numbers of GPUs in your application definition. If a fractional amount is selected, launching the task will result in a TASK_ERROR.
+- Unlike other resources, like  CPUs, memory, and disk, you can only specify whole numbers of GPUs in your application definition. If a fractional amount is selected, launching the task will result in a `TASK_ERROR`.
 
 - Nvidia GPU support is only available for tasks launched through the [DC/OS Universal container runtime](/docs/1.9/usage/containerizers/). No support exists for launching GPU-capable tasks through the Docker containerizer. The DC/OS Universal container runtime supports running docker images natively, however, so this limitation should not affect the vast majority of users.
 
