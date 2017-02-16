@@ -18,9 +18,9 @@ To change the number of agent nodes with AWS:
 
 Your new machines will take a few minutes to initialize; you can watch them in the EC2 console. The DC/OS web interface will update as soon as the new nodes register.
 
-## Upgrading
+<!-- ## Upgrading
 
-See the upgrade [documentation](/docs/1.9/administration/installing/cloud/aws/upgrading/).
+See the upgrade [documentation](/docs/1.9/administration/installing/cloud/aws/upgrading/). -->
 
  [1]: /docs/1.9/administration/securing-your-cluster/
  [2]: /docs/1.9/administration/installing/cloud/aws/
