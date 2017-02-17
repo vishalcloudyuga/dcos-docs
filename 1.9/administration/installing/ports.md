@@ -36,8 +36,8 @@ This topic lists the ports that are required to launch DC/OS. Additional ports m
 |Port   |DC/OS [component](/docs/1.9/overview/architecture/components/)|  systemd unit   | 
 |---|---|
 | 53    | Spartan | `dcos-spartan.service` |
-| 80    | Admin Router | `dcos-adminrouter.service` |
-| 443   | Admin Router | `dcos-adminrouter.service` |
+| 80    | Admin Router Master | `dcos-adminrouter.service` |
+| 443   | Admin Router Master | `dcos-adminrouter.service` |
 | 1050  | DC/OS Diagnostics (3DT) | `dcos-3dt.service` |
 | 1801  | DC/OS Authentication | `dcos-oauth.service` |
 | 2181  | Exhibitor and Zookeeper | `dcos-exhibitor.service` |
