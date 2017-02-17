@@ -570,7 +570,7 @@ Identity management in DC/OS is delegated to external identity providers, taking
 <div data-role="collapsible">
 <h2>DC/OS Authentication</h2>
 <div>
-<p><strong>Description:</strong> The DC/OS Authentication (OAuth) service authenticates users using [OpenID Connect](http://openid.net/connect/) and [Auth0](https://auth0.com/).</p>
+<p><strong>Description:</strong> The DC/OS Authentication (OAuth) service authenticates DC/OS users using [OpenID Connect](http://openid.net/connect/) and [Auth0](https://auth0.com/).</p>
 <p>
   <strong>System Service(s):</strong>
   <ul>
