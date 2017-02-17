@@ -264,7 +264,7 @@ No software runs perfectly, especially not the first time. Distribute tasks acro
 <h2>DC/OS Log</h2>
 <div>
 <p><strong><em>NEW IN 1.9.0</em></strong></p>
-<p><strong>Description:</strong> The DC/OS Log service exposes component, container, and task logs.</p>
+<p><strong>Description:</strong> The DC/OS Log service exposes node, component, and container (task) logs.</p>
 <p>
   <strong>System Service(s):</strong>
   <ul>
