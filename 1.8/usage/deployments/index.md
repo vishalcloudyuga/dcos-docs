@@ -3,7 +3,7 @@ post_title: Deployments
 menu_order: 5
 ---
 
-Every change in the definition of applications or group in DC/OS is performed as a Marathon deployment. A deployment is a set of actions, including:
+Every change in the definition of applications or group in DC/OS is performed as a Marathon deployment. A [deployment](/1.8/usage/marathon/rest-api/#!/deployments/V2Deployments) is a set of actions, including:
 
 - Start
 - Stop
