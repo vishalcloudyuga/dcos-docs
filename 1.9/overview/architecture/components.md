@@ -497,8 +497,10 @@ In a world where machines are are given numbers instead of names, tasks are sche
 </div>
 </div>
 
+<a name="epmd"></a>
+<a name="erlang-port-mapping-daemon"></a>
 <div data-role="collapsible">
-<h2>Erlang Port Mapping Daemon</h2>
+<h2>Erlang Port Mapping Daemon (EPMD)</h2>
 <div>
 <p><strong>Description:</strong> Erlang Port Mapping Daemon (EPMD) maps symbolic names to machine addresses, facilitating named virtual IPs.</p>
 <p>
