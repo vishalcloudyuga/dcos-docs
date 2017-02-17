@@ -521,10 +521,12 @@ In a world where machines are are given numbers instead of names, tasks are sche
 
 Just as machine operating systems need package management to install, upgrade, configure, and remove individual applications and services, a datacenter operating system needs package management to do the same for distributed services. In DC/OS there are two levels of package management: machine-level for components; and cluster-level for user services.
 
+<a name="cosmos"></a>
+<a name="dcos-package-manager"></a>
 <div data-role="collapsible">
-<h2>Cosmos</h2>
+<h2>DC/OS Package Manager (Cosmos)</h2>
 <div>
-<p><strong>Description:</strong> Cosmos installs and manages DC/OS packages from <a href="/docs/1.9/usage/repo/">DC/OS package repositories</a>, such as <a href="https://github.com/mesosphere/universe">Mesosphere Universe</a>.</p>
+<p><strong>Description:</strong> DC/OS Package Manager (Cosmos) installs and manages DC/OS packages from <a href="/docs/1.9/usage/repo/">DC/OS package repositories</a>, such as the <a href="https://github.com/mesosphere/universe">Mesosphere Universe</a>.</p>
 <p>
   <strong>System Service(s):</strong>
   <ul>

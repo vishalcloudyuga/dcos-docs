@@ -42,11 +42,11 @@ This topic lists the ports that are required to launch DC/OS. Additional ports m
 | 1801  | DC/OS Authentication | `dcos-oauth.service` |
 | 2181  | Exhibitor and Zookeeper | `dcos-exhibitor.service` |
 | 5050  | Mesos Master | `dcos-mesos-master.service` |
-| 7070  | Cosmos | `dcos-cosmos.service` |
+| 7070  | DC/OS Package Manager (Cosmos) | `dcos-cosmos.service` |
 | 8080  | Marathon | `dcos-marathon.service` |
 | 8123  | Mesos DNS | `dcos-mesos-dns.service` |
 | 8181  | Exhibitor and Zookeeper | `dcos-exhibitor.service` |
-| 9990  | Cosmos | `dcos-cosmos.service` |
+| 9990  | DC/OS Package Manager (Cosmos) | `dcos-cosmos.service` |
 | 15055 | DC/OS History | `dcos-history-service.service` |
 | 15101 | Marathon libprocess | `dcos-marathon.service` |
 | 15201 | Metronome libprocess | `dcos-metronome.service`|
