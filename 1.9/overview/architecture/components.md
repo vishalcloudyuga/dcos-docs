@@ -419,10 +419,12 @@ In a world where machines are are given numbers instead of names, tasks are sche
 </div>
 </div>
 
+<a name="spartan"></a>
+<a name="dns-forwarder"></a>
 <div data-role="collapsible">
-<h2>Spartan</h2>
+<h2>DNS Forwarder (Spartan)</h2>
 <div>
-<p><strong>Description:</strong> Spartan forwards DNS requests to multiple DNS servers. Spartan Watchdog restarts Spartan when it is unhealthy.</p>
+<p><strong>Description:</strong> DNS Forwarder (Spartan) forwards DNS requests to multiple DNS servers. Spartan Watchdog restarts Spartan when it is unhealthy.</p>
 <p>
   <strong>System Service(s):</strong>
   <ul>

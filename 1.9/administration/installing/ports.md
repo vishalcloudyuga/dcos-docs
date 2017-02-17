@@ -15,9 +15,9 @@ This topic lists the ports that are required to launch DC/OS. Additional ports m
 | 61053 | Mesos DNS | `dcos-mesos-dns.service` |
 | 61420 | Erlang Port Mapping Daemon (EPMD) | `dcos-epmd.service` |
 | 61421 | Minuteman | `dcos-minuteman.service` |
-| 62053 | Spartan | `dcos-spartan.service` |
+| 62053 | DNS Forwarder (Spartan) | `dcos-spartan.service` |
 | 62080 | Navstar | `dcos-navstar.service` |
-| 62501 | Spartan | `dcos-spartan.service` |
+| 62501 | DNS Forwarder (Spartan) | `dcos-spartan.service` |
 | 62502 | Navstar | `dcos-navstar.service` |
 | 62503 | Minuteman | `dcos-minuteman.service` |
 
@@ -26,7 +26,7 @@ This topic lists the ports that are required to launch DC/OS. Additional ports m
 |Port   |DC/OS [component](/docs/1.9/overview/architecture/components/)|  systemd unit   | 
 |---|---|
 | 61053 | Mesos DNS | `dcos-mesos-dns.service`|
-| 62053 | Spartan | `dcos-spartan.service` |
+| 62053 | DNS Forwarder (Spartan) | `dcos-spartan.service` |
 | 64000 | Navstar | `dcos-navstar.service` |
 
 ## Master
@@ -35,7 +35,7 @@ This topic lists the ports that are required to launch DC/OS. Additional ports m
 
 |Port   |DC/OS [component](/docs/1.9/overview/architecture/components/)|  systemd unit   | 
 |---|---|
-| 53    | Spartan | `dcos-spartan.service` |
+| 53    | DNS Forwarder (Spartan) | `dcos-spartan.service` |
 | 80    | Admin Router Master | `dcos-adminrouter.service` |
 | 443   | Admin Router Master | `dcos-adminrouter.service` |
 | 1050  | DC/OS Diagnostics (3DT) | `dcos-3dt.service` |
@@ -57,7 +57,7 @@ This topic lists the ports that are required to launch DC/OS. Additional ports m
 
 |Port   |DC/OS [component](/docs/1.9/overview/architecture/components/)|  systemd unit   |
 |---|---|
-| 53 | Spartan | `dcos-spartan.service` |
+| 53 | DNS Forwarder (Spartan) | `dcos-spartan.service` |
 
 ## Agent
 
