@@ -241,9 +241,9 @@ DC/OS supports multiple container runtimes using [Mesos' containerizer abstracti
 No software runs perfectly, especially not the first time. Distribute tasks across a cluster and the normal patterns of analyzing and debugging these services become tedious and painful. So DC/OS includes several components to help ease the pain of debugging distributed systems by aggregating, caching, and streaming logs, metrics, and cluster state metadata.
 
 <div data-role="collapsible">
-<h2>DC/OS Diagnostics</h2>
+<h2>DC/OS Diagnostics (3DT)</h2>
 <div>
-<p><strong>Description:</strong> The DC/OS Diagnostics service aggregates and exposes system component health. DC/OS Diagnostics is also known as DC/OS Distributed Diagnostics Tool (3DT).</p>
+<p><strong>Description:</strong> DC/OS Diagnostics (3DT) aggregates and exposes component health. DC/OS Diagnostics is also known as DC/OS Distributed Diagnostics Tool (3DT).</p>
 <p>
   <strong>System Service(s):</strong>
   <ul>

@@ -64,7 +64,7 @@ For each category this data is collected:
 
 ## Diagnostics
 
-This information is collected from the [DC/OS Diagnostics](/docs/1.9/overview/architecture/components/#dcos-diagnostics) component. For every systemd unit, the following information is collected, where `<UNIT_NAME>` is component name:
+This information is collected from the [DC/OS Diagnostics (3DT)](/docs/1.9/overview/architecture/components/#dcos-diagnostics) component. For every systemd unit, the following information is collected, where `<UNIT_NAME>` is component name:
 
 ```
 "health-unit-dcos-<UNIT_NAME>-total": 3, "health-unit-dcos-<UNIT_NAME>-unhealthy": 0,
