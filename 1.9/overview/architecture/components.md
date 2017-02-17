@@ -443,7 +443,7 @@ In a world where machines are are given numbers instead of names, tasks are sche
 <div data-role="collapsible">
 <h2>Generate resolv.conf</h2>
 <div>
-<p><strong>Description:</strong> Generate resolv.conf configures network name resolution (<a href="https://www.freedesktop.org/software/systemd/man/systemd-resolved.service.html)">systemd-resolved</a> by updating <code class="nowrap">/etc/resolv.conf</code> to facilitate DC/OS's software defined networking.</p>
+<p><strong>Description:</strong> Generate resolv.conf configures network name resolution by updating <code class="nowrap">/etc/resolv.conf</code> to facilitate DC/OS's software defined networking.</p>
 <p>
   <strong>System Service(s):</strong>
   <ul>
