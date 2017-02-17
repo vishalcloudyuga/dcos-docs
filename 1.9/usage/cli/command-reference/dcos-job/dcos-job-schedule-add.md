@@ -9,7 +9,7 @@ Add a schedule to a job.
 # Usage
 
 ```bash
-dcos job schedule add [OPTION]
+dcos job schedule add <job-id> <schedule-file> [OPTION]
 ```
 
 # Options
@@ -34,3 +34,5 @@ dcos job schedule add [OPTION]
 | [dcos job](/docs/1.9/usage/cli/command-reference/dcos-job/) |  Deploy and manage jobs in DC/OS. |
 
 # Examples
+
+For job examples, see the [documentation](/docs/1.9/usage/jobs/examples/#create-job-schedule).

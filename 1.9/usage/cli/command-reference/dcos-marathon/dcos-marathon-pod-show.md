@@ -9,7 +9,7 @@ Display detailed information for a specific pod.
 # Usage
 
 ```bash
-dcos marathon pod show [OPTION]
+dcos marathon pod show <pod-id> [OPTION]
 ```
 
 # Options

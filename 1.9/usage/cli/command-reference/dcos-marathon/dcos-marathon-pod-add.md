@@ -9,7 +9,7 @@ Add a pod.
 # Usage
 
 ```bash
-dcos marathon pod add [OPTION]
+dcos marathon pod add <pod-resource> [OPTION]
 ```
 
 # Options

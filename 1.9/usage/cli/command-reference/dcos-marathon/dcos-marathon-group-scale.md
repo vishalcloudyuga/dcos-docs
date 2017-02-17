@@ -9,7 +9,7 @@ Scale a group.
 # Usage
 
 ```bash
-dcos marathon group scale [OPTION]
+dcos marathon group scale <group-id> <scale-factor> [OPTION]
 ```
 
 # Options

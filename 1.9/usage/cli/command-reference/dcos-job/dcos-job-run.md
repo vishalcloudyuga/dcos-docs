@@ -9,7 +9,7 @@ Run a job now.
 # Usage
 
 ```bash
-dcos job run [OPTION]
+dcos job run <job-id> [OPTION]
 ```
 
 # Options

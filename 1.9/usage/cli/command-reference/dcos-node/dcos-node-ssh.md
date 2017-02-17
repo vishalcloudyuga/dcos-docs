@@ -9,7 +9,7 @@ Establish an SSH connection to the master or agent nodes of your DC/OS cluster.
 # Usage
 
 ```bash
-dcos node ssh [OPTION]
+dcos node ssh <command> [OPTION]
 ```
 
 # Options

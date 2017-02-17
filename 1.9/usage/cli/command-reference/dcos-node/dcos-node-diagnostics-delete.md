@@ -9,7 +9,7 @@ View the details of diagnostics bundles.
 # Usage
 
 ```bash
-dcos node diagnostics delete [OPTION]
+dcos node diagnostics delete <bundle> [OPTION]
 ```
 
 # Options

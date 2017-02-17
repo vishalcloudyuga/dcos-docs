@@ -9,7 +9,7 @@ Print the list of files in the Mesos task sandbox.
 # Usage
 
 ```bash
-dcos task ls [OPTION]
+dcos task ls <task> <path> [OPTION]
 ```
 
 # Options

@@ -9,7 +9,7 @@ Show a job schedule.
 # Usage
 
 ```bash
-dcos job schedule show [OPTION]
+dcos job schedule show <job-id> [OPTION]
 ```
 
 # Options

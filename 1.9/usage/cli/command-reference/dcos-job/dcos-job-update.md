@@ -9,7 +9,7 @@ Update a job.
 # Usage
 
 ```bash
-dcos job update [OPTION]
+dcos job update <job-file> [OPTION]
 ```
 
 # Options

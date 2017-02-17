@@ -9,7 +9,7 @@ Update a pod.
 # Usage
 
 ```bash
-dcos marathon pod update [OPTION]
+dcos marathon pod update <pod-id> [OPTION]
 ```
 
 # Options

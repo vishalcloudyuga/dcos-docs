@@ -9,7 +9,7 @@ Remove a pod.
 # Usage
 
 ```bash
-dcos marathon pod remove [OPTION]
+dcos marathon pod remove <pod-id> [OPTION]
 ```
 
 # Options

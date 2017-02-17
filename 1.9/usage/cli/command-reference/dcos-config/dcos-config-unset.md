@@ -9,7 +9,7 @@ Remove a property from the configuration file.
 # Usage
 
 ```bash
-dcos config unset [OPTION]
+dcos config unset <name> [OPTION]
 ```
 
 # Options
@@ -36,6 +36,14 @@ dcos config unset [OPTION]
 
 ## Remove a config value
 
+In this example, the `core.ssl_verify` property is removed.
+
 ```bash
 $ dcos config unset core.ssl_verify
+```
+
+The output should resemble:
+
+```bash
+Removed [core.ssl_verify]
 ```

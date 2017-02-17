@@ -9,7 +9,7 @@ Print a list of currently deployed applications.
 # Usage
 
 ```bash
-dcos marathon deployment list [OPTION]
+dcos marathon deployment list <app-id> [OPTION]
 ```
 
 # Options

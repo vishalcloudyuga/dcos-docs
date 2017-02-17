@@ -9,7 +9,7 @@ Shutdown a service.
 # Usage
 
 ```bash
-dcos service shutdown [OPTION]
+dcos service shutdown <service-id> [OPTION]
 ```
 
 # Options

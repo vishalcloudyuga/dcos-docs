@@ -9,7 +9,7 @@ Deploy and manage applications to DC/OS.
 # Usage
 
 ```bash
-dcos marathon group remove [OPTION]
+dcos marathon group remove <group-id> [OPTION]
 ```
 
 # Options

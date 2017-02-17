@@ -9,7 +9,7 @@ Search the package repository.
 # Usage
 
 ```bash
-dcos package search [OPTION]
+dcos package search <query> [OPTION]
 ```
 
 # Options

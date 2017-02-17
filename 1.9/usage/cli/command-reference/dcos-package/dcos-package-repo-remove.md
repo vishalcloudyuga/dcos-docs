@@ -9,7 +9,7 @@ Remove a package repository from DC/OS.
 # Usage
 
 ```bash
-dcos package repo remove [OPTION]
+dcos package repo remove <repo-name> [OPTION]
 ```
 
 # Options

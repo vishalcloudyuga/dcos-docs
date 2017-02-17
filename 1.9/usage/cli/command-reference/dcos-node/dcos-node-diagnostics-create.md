@@ -9,7 +9,7 @@ Create a diagnostics bundle.
 # Usage
 
 ```bash
-dcos node diagnostics create [OPTION]
+dcos node diagnostics create <nodes> [OPTION]
 ```
 
 # Options

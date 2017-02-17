@@ -14,17 +14,11 @@ dcos config validate [OPTION]
 
 # Options
 
-| Name, shorthand | Default | Description |
-|---------|-------------|-------------|
-| `--help, h`   |             |  Print usage. |
-| `--info`   |             |  Print a short description of this subcommand. |
-| `--version`   |             |  Print version information. |
+None.
 
 # Parent command
 
 | Command | Description |
 |---------|-------------|
 | [dcos config](/docs/1.9/usage/cli/command-reference/dcos-config/) |  Manage DC/OS configuration. |
-
-# Examples
 

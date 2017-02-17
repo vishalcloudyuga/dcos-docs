@@ -9,7 +9,7 @@ Print a list of the installed DC/OS packages.
 # Usage
 
 ```bash
-dcos package list [OPTION]
+dcos package list <package-name> [OPTION]
 ```
 
 # Options

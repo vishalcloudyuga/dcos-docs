@@ -9,7 +9,7 @@ Remove an application.
 # Usage
 
 ```bash
-dcos marathon app remove [OPTION]
+dcos marathon app remove <app-id> [OPTION]
 ```
 
 # Options

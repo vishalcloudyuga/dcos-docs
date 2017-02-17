@@ -9,7 +9,7 @@ Remove jobs.
 # Usage
 
 ```bash
-dcos job remove [OPTION]
+dcos job remove <job-id> [OPTION]
 ```
 
 # Options

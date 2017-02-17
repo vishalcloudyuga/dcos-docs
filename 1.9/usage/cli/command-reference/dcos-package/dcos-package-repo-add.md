@@ -9,7 +9,7 @@ Add a package repository to DC/OS.
 # Usage
 
 ```bash
-dcos package repo add [OPTION]
+dcos package repo add <repo-name> <repo-url> [OPTION]
 ```
 
 # Options

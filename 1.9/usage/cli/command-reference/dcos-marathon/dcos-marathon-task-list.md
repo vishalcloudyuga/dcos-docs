@@ -9,7 +9,7 @@ List all tasks.
 # Usage
 
 ```bash
-dcos marathon task list [OPTION]
+dcos marathon task list <app-id> [OPTION]
 ```
 
 # Options

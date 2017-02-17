@@ -9,7 +9,7 @@ Show the successful and failure status of job runs.
 # Usage
 
 ```bash
-dcos job show runs [OPTION]
+dcos job show runs <job-id> [OPTION]
 ```
 
 # Options

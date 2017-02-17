@@ -9,7 +9,7 @@ Kill the job.
 # Usage
 
 ```bash
-dcos job kill [OPTION]
+dcos job kill <job-id> [OPTION]
 ```
 
 # Options
@@ -34,4 +34,5 @@ dcos job kill [OPTION]
 |---------|-------------|
 | [dcos job](/docs/1.9/usage/cli/command-reference/dcos-job/) |  Deploy and manage jobs in DC/OS. |
 
-# Examples
+<!-- # Examples -->
+

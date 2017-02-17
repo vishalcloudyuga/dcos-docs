@@ -9,7 +9,7 @@ Deploy and manage applications to DC/OS.
 # Usage
 
 ```bash
-dcos marathon group update [OPTION]
+dcos marathon group update <group-id> <properties> <key>=<value> [OPTION]
 ```
 
 # Options

@@ -9,7 +9,7 @@ Uninstall a package.
 # Usage
 
 ```bash
-dcos package uninstall [OPTION]
+dcos package uninstall <package-name> [OPTION]
 ```
 
 # Options

@@ -9,7 +9,7 @@ Monitor deployments.
 # Usage
 
 ```bash
-dcos marathon deployment watch [OPTION]
+dcos marathon deployment watch <deployment-id> [OPTION]
 ```
 
 # Options

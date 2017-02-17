@@ -9,7 +9,7 @@ Restart an application.
 # Usage
 
 ```bash
-dcos marathon app restart [OPTION]
+dcos marathon app restart <app-id> [OPTION]
 ```
 
 # Options

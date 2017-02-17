@@ -9,7 +9,7 @@ Start a service from a non-native DC/OS package. See `dcos experimental package 
 # Usage
 
 ```bash
-dcos experimental service start [OPTION]
+dcos experimental service start <package-name> [OPTION]
 ```
 
 # Options

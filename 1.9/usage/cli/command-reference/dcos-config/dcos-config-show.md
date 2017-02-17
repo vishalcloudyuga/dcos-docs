@@ -9,7 +9,7 @@ Print the DC/OS configuration file contents.
 # Usage
 
 ```bash
-dcos config show [OPTION]
+dcos config show <name> [OPTION]
 ``` 
 
 # Options
@@ -35,7 +35,8 @@ dcos config show [OPTION]
 # Examples
 
 ## View a specific config value
-In this example, the DC/OS URL is shown:
+
+In this example, the DC/OS URL is shown.
 
 ```bash
 $ dcos config show core.dcos_url
@@ -49,8 +50,10 @@ https://your-cluster-9vqnkrq5pt2n-2781474.cloue-1.elb.amazonaws.com
 
 ## View all config values
 
+In this example, all config values are shown.
+
 ```bash
-$ [core.dcos_url]: set to 'https://your-cluster-9vqnkrq5pt2n-2781474.cloue-1.elb.amazonaws.com'
+$ dcos config show
 ```
 
 The output should resemble:

@@ -9,7 +9,7 @@ Add a group.
 # Usage
 
 ```bash
-dcos marathon group add [OPTION]
+dcos marathon group add <group-resource> [OPTION]
 ```
 
 # Options

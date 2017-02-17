@@ -9,7 +9,7 @@ Start an application.
 # Usage
 
 ```bash
-dcos marathon app start [OPTION]
+dcos marathon app start <app-id> [OPTION]
 ```
 
 # Options

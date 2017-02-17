@@ -9,7 +9,7 @@ Add a job.
 # Usage
 
 ```bash
-dcos job add [OPTION]
+dcos job add <job-file>` [OPTION]
 ```
 
 # Options
@@ -33,3 +33,5 @@ dcos job add [OPTION]
 | [dcos job](/docs/1.9/usage/cli/command-reference/dcos-job/) |  Deploy and manage jobs in DC/OS. |
 
 # Examples
+
+For job examples, see the [documentation](/docs/1.9/usage/jobs/examples/#create-job).

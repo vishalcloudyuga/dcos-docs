@@ -9,7 +9,7 @@ Update a job schedule.
 # Usage
 
 ```bash
-dcos job schedule update [OPTION]
+dcos job schedule update <job-id> <schedule-file> [OPTION]
 ```
 
 # Options

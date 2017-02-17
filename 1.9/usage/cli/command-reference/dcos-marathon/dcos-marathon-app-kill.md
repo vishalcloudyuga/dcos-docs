@@ -9,7 +9,7 @@ Kill a running application instance.
 # Usage
 
 ```bash
-dcos marathon app kill [OPTION]
+dcos marathon app kill <app-id> [OPTION]
 ```
 
 # Options

@@ -9,7 +9,7 @@ Remove a job schedule.
 # Usage
 
 ```bash
-dcos job schedule remove [OPTION]
+dcos job schedule remove <job-id> <schedule-file> [OPTION]
 ```
 
 # Options

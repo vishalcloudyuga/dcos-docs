@@ -9,7 +9,7 @@ Show the job.
 # Usage
 
 ```bash
-dcos job show [OPTION]
+dcos job show <job-id> [OPTION]
 ```
 
 # Options

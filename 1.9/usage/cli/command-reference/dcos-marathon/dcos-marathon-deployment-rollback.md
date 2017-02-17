@@ -9,7 +9,7 @@ Remove a deployed application.
 # Usage
 
 ```bash
-dcos marathon deployment rollback [OPTION]
+dcos marathon deployment rollback <deployment-id> [OPTION]
 ```
 
 # Options

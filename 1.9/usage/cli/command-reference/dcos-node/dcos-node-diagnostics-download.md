@@ -9,7 +9,7 @@ View the details of diagnostics bundles.
 # Usage
 
 ```bash
-dcos node diagnostics download [OPTION]
+dcos node diagnostics download <bundle> [OPTION]
 ```
 
 # Options

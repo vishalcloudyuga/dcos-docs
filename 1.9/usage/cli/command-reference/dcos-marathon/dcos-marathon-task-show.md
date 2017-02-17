@@ -9,7 +9,7 @@ List a specific task.
 # Usage
 
 ```bash
-dcos marathon task show [OPTION]
+dcos marathon task show <task-id> [OPTION]
 ```
 
 # Options

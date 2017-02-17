@@ -9,7 +9,7 @@ Kill one or more running pod instances.
 # Usage
 
 ```bash
-dcos marathon pod kill [OPTION]
+dcos marathon pod kill <instance-ids> <pod-id> [OPTION]
 ```
 
 # Options

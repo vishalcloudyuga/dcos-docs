@@ -9,7 +9,7 @@ Get specific details for packages.
 # Usage
 
 ```bash
-dcos package describe [OPTION]
+dcos package describe <package-name> [OPTION]
 ```
 
 # Options

@@ -9,7 +9,7 @@ Print the task log.
 # Usage
 
 ```bash
-dcos task log [OPTION]
+dcos task log <file> <task> [OPTION]
 ```
 
 # Options

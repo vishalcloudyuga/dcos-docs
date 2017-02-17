@@ -9,7 +9,7 @@ Stop an application.
 # Usage
 
 ```bash
-dcos marathon app stop [OPTION]
+dcos marathon app stop <app-id> [OPTION]
 ```
 
 # Options

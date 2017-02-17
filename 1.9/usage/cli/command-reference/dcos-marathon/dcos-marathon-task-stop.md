@@ -9,7 +9,7 @@ Stop a task.
 # Usage
 
 ```bash
-dcos marathon task stop [OPTION]
+dcos marathon task stop <task-id> [OPTION]
 ```
 
 # Options

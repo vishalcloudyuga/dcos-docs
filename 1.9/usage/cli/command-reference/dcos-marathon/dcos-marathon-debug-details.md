@@ -9,7 +9,7 @@ View debugging information for Marathon application deployments that are waiting
 # Usage
 
 ```bash
-dcos marathon debug details [OPTION]
+dcos marathon debug details <app-id> [OPTION]
 ```
 
 # Options

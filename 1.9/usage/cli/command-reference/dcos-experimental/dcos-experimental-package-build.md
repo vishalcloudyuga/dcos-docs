@@ -9,7 +9,7 @@ Build a package locally to be added to DC/OS or to be shared with Universe.
 # Usage
 
 ```bash
-dcos experimental package build [OPTION]
+dcos experimental package build <build-definition> [OPTION]
 ```
 
 # Options

@@ -9,7 +9,7 @@ Deploy and manage applications to DC/OS.
 # Usage
 
 ```bash
-dcos marathon app show [OPTION]
+dcos marathon app show <app-id> [OPTION]
 ```
 
 # Options

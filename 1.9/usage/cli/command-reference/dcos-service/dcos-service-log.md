@@ -11,7 +11,7 @@ Print the service logs.
 # Usage
 
 ```bash
-dcos service log [OPTION]
+dcos service log <file> <service> [OPTION]
 ```
 
 # Options

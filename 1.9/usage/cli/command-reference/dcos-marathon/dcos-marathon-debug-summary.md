@@ -9,7 +9,7 @@ List the current queue and debugging information of Marathon application deploym
 # Usage
 
 ```bash
-dcos marathon debug summary [OPTION]
+dcos marathon debug summary <app-id> [OPTION]
 ```
 
 # Options

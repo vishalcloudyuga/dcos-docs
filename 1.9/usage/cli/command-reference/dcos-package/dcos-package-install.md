@@ -9,7 +9,7 @@ Install a package.
 # Usage
 
 ```bash
-dcos package install [OPTION]
+dcos package install <package-name> [OPTION]
 ```
 
 # Options

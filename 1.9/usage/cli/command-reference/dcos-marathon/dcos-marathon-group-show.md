@@ -9,7 +9,7 @@ Print a detailed list of groups.
 # Usage
 
 ```bash
-dcos marathon group show [OPTION]
+dcos marathon group show <group-id> [OPTION]
 ```
 
 # Options

@@ -9,7 +9,7 @@ Cancel the in-progress deployment of an application.
 # Usage
 
 ```bash
-dcos marathon deployment stop [OPTION]
+dcos marathon deployment stop <deployment-id> [OPTION]
 ```
 
 # Options

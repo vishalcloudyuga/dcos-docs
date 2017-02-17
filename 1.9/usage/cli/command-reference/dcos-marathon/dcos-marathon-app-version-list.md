@@ -9,7 +9,7 @@ List the version history of an application.
 # Usage
 
 ```bash
-dcos marathon app version list [OPTION]
+dcos marathon app version list <app-id> [OPTION]
 ```
 
 # Options
