@@ -310,7 +310,7 @@ No software runs perfectly, especially not the first time. Distribute tasks acro
 <h2>DC/OS Metrics</h2>
 <div>
 <p><strong><em>NEW IN 1.9.0</em></strong></p>
-<p><strong>Description:</strong> The DC/OS Metrics service exposes host, container, and task metrics.</p>
+<p><strong>Description:</strong> The DC/OS Metrics service exposes node, container, and application metrics.</p>
 <p>
   <strong>System Service(s):</strong>
   <ul>
