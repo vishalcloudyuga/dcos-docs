@@ -53,7 +53,7 @@ This parameter specifies a custom URL that Mesos uses to pull Docker images from
 This parameter specifies the name of your cluster.
 
 ### cosmos_config
-This parameter specifies a dictionary of packaging configuration to pass to the [DC/OS package manager](https://github.com/dcos/cosmos). If set, the following options must also be
+This parameter specifies a dictionary of packaging configuration to pass to the [DC/OS Package Manager (Cosmos)](https://github.com/dcos/cosmos). If set, the following options must also be
 specified.
 
 * **staged_package_storage_uri**
@@ -446,7 +446,7 @@ ssh_user: <username>
     ssh_user: centos
 ```
 
-#### <a name="cosmos-config"></a>DC/OS cluster with one master, an Exhibitor/ZooKeeper managed internally, three private agents, Google DNS, and the package manager (Cosmos) configured with persistent storage.
+#### <a name="cosmos-config"></a>DC/OS cluster with one master, an Exhibitor/ZooKeeper managed internally, three private agents, Google DNS, and DC/OS Package Manager (Cosmos) configured with persistent storage.
 
 ```yaml
     agent_list:
