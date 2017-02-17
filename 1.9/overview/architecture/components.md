@@ -77,7 +77,7 @@ DC/OS provides a way to view and operate a large number of individual machine-le
 <div data-role="collapsible">
 <h2>DC/OS Installer</h2>
 <div>
-<p><strong>Description:</strong> The DC/OS Installer (dcos_generate_config.sh) generates install artifacts and installs DC/OS. As part of the install process on each node, the DC/OS Download service downloads the install artifacts from the bootstrap machine and the DC/OS Setup service installs components using PkgPanda.</p>
+<p><strong>Description:</strong> The DC/OS Installer (dcos_generate_config.sh) generates install artifacts and installs DC/OS. As part of the install process on each node, the DC/OS Download service downloads the install artifacts from the bootstrap machine and the DC/OS Setup service installs components using the DC/OS Component Package Manager (Pkgpanda).</p>
 <p>
   <strong>System Service(s):</strong>
   <ul>
@@ -546,10 +546,12 @@ Just as machine operating systems need package management to install, upgrade, c
 </div>
 </div>
 
+<a name="pkgpanda"></a>
+<a name="dcos-component-package-manager"></a>
 <div data-role="collapsible">
-<h2>Pkgpanda</h2>
+<h2>DC/OS Component Package Manager (Pkgpanda)</h2>
 <div>
-<p><strong>Description:</strong> Pkgpanda installs and manages DC/OS components.</p>
+<p><strong>Description:</strong> DC/OS Component Package Manager (Pkgpanda) installs and manages DC/OS components.</p>
 <p>
   <strong>System Service(s):</strong>
   <ul>
@@ -632,7 +634,7 @@ Several components are configured to use [systemd timers](https://www.freedeskto
 
 # Component Installation
 
-DC/OS components are installed, upgraded, and managed by [pkgpanda](https://github.com/dcos/dcos/tree/master/pkgpanda), a package manager for systemd units.
+DC/OS components are installed, upgraded, and managed by [DC/OS Component Package Manager (Pkgpanda)](https://github.com/dcos/dcos/tree/master/pkgpanda), a package manager for systemd units.
 
 To see the full list of packages managed by the DC/OS installer, see the [packages directory of the DC/OS source repository](https://github.com/dcos/dcos/tree/master/packages).
 

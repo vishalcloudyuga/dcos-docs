@@ -51,7 +51,7 @@ This topic lists the ports that are required to launch DC/OS. Additional ports m
 | 15101 | Marathon libprocess | `dcos-marathon.service` |
 | 15201 | DC/OS Jobs (Metronome) libprocess | `dcos-metronome.service`|
 | Dynamic | DC/OS Jobs (Metronome) | `dcos-metronome.service`|
-| Dynamic | System Package Manager API | `dcos-pkgpanda-api.service` | 
+| Dynamic | DC/OS Component Package Manager (Pkgpanda) | `dcos-pkgpanda-api.service` |
 
 ### UDP
 
