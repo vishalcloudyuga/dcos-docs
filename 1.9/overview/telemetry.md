@@ -11,7 +11,7 @@ To continuously improve the DC/OS experience, a telemetry component is included 
 # <a name="core"></a>Core telemetry
 The [DC/OS Signal](/docs/1.9/overview/architecture/components/#dcos-signal) component queries the diagnostics service `/system/health/v1/report` endpoint on the leading master and sends this data to [Segment](https://segment.com/docs/) which Mesosphere then uses to track usage metrics and customer support.
 
-The information collected by the Signal component is separated into these categories: Diagnostics, Mesos, and Package service. 
+The information reported by DC/OS Signal comes from several other components: DC/OS Diagnostics (3DT), Apache Mesos, and DC/OS Package Manager (Cosmos).
 
 For each category this data is collected:
 
@@ -32,7 +32,7 @@ For each category this data is collected:
 </pre>
 </td></tr>
 <tr><td>event</td>
-<td>This is the category that appears in Segment. Possible values are <code>package_list</code> (Package service), <code>health</code> (Diagnostics), and <code>mesos_track</code> (Mesos). For example:
+<td>This is the category that appears in Segment. Possible values are <code>package_list</code> (DC/OS Package Manager (Cosmos)), <code>health</code> (DC/OS Diagnostics (3DT)), and <code>mesos_track</code> (Apache Mesos). For example:
 <pre>
 "event": "package_list"
 </pre>
