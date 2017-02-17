@@ -152,10 +152,12 @@ DC/OS includes built-in orchestration of the most commonly used high level conta
 </div>
 </div>
 
+<a name="metronome"></a>
+<a name="dcos-jobs"></a>
 <div data-role="collapsible">
-<h2>Metronome</h2>
+<h2>DC/OS Jobs (Metronome)</h2>
 <div>
-<p><strong>Description:</strong> Metronome orchestrates short-lived, scheduled or immediate, containerized jobs.</p>
+<p><strong>Description:</strong> DC/OS Jobs (Metronome) orchestrates short-lived, scheduled or immediate, containerized jobs.</p>
 <p>
   <strong>System Service(s):</strong>
   <ul>
