@@ -33,4 +33,4 @@ dcos job schedule update <job-id> <schedule-file> [OPTION]
 |---------|-------------|
 | [dcos job](/docs/1.9/usage/cli/command-reference/dcos-job/) |  Deploy and manage jobs in DC/OS. |
 
-# Examples
+<!-- # Examples -->

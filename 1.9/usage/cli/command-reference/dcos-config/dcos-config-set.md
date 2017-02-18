@@ -54,7 +54,7 @@ In this example, the public master IP of the cluster is set to `http://www.yourc
 $ dcos config set core.dcos_url http://www.yourcloud.com
 ```
 
-The output should resemble:
+Here is the output:
 
 ```bash
 [core.dcos_url]: changed from 'https://joel-ee-m-elasticl-4s1iwxbuuz86-366325365.us-west-2.elb.amazonaws.com' to 'http://www.yourcloud.com'
@@ -68,7 +68,7 @@ In this example, the verify SSL certificates for HTTPS is set to `true`.
 $ dcos config set core.ssl_verify true
 ```
 
-The output should resemble:
+Here is the output:
 
 ```bash
 [core.ssl_verify]: set to 'true'

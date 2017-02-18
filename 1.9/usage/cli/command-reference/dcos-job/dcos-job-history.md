@@ -46,7 +46,7 @@ In this example, a job history is shown.
     $ dcos job list
     ```
     
-    The output should resemble:
+    Here is the output:
     
     ```bash
     ID                DESCRIPTION                      STATUS       LAST SUCCESFUL RUN  
@@ -60,7 +60,7 @@ In this example, a job history is shown.
     $ dcos job history my-scheduled-job
     ```
     
-    The output should resemble:
+    Here is the output:
     
     ```bash
     'my-scheduled-job'  Successful runs: 1 Last Success: 2017-02-17T23:18:33.842+0000

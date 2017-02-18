@@ -42,7 +42,7 @@ In this example, the DC/OS URL is shown.
 $ dcos config show core.dcos_url
 ```
 
-The output should resemble:
+Here is the output:
 
 ```bash
 https://your-cluster-9vqnkrq5pt2n-2781474.cloue-1.elb.amazonaws.com
@@ -56,7 +56,7 @@ In this example, all config values are shown.
 $ dcos config show
 ```
 
-The output should resemble:
+Here is the output:
 
 ```bash
 core.dcos_url https://your-cluster-9vqnkrq5pt2n-2781474.cloue-1.elb.amazonaws.com

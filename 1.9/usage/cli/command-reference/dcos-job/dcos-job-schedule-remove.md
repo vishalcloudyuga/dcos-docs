@@ -34,3 +34,13 @@ dcos job schedule remove <job-id> <schedule-file> [OPTION]
 | [dcos job](/docs/1.9/usage/cli/command-reference/dcos-job/) |  Deploy and manage jobs in DC/OS. |
 
 # Examples
+
+## Remove a job
+
+In this example, a job named `my-job` is removed.
+
+```bash
+$ dcos job remove my-job
+```
+
+**Tip:** You can view the job IDs with the `dcos job list` command.

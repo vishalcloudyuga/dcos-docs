@@ -35,4 +35,4 @@ dcos job schedule add <job-id> <schedule-file> [OPTION]
 
 # Examples
 
-For job examples, see the [documentation](/docs/1.9/usage/jobs/examples/#create-job-schedule).
+For examples using `job add`, see the [documentation](/docs/1.9/usage/jobs/examples/#create-job-schedule).

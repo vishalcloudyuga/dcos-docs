@@ -42,7 +42,7 @@ In this example, the `core.ssl_verify` property is removed.
 $ dcos config unset core.ssl_verify
 ```
 
-The output should resemble:
+Here is the output:
 
 ```bash
 Removed [core.ssl_verify]
