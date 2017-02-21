@@ -52,6 +52,17 @@ This parameter specifies a custom URL that Mesos uses to pull Docker images from
 ### cluster_name
 This parameter specifies the name of your cluster.
 
+### cosmos_config
+This parameter specifies a dictionary of packaging configuration to pass to the [DC/OS Package Manager (Cosmos)](https://github.com/dcos/cosmos). If set, the following options must also be
+specified.
+
+* **staged_package_storage_uri**
+  This parameter specifies where to temporarily store DC/OS packages while they are being added.
+  The value must be a file URL, for example, `file:///var/lib/dcos/cosmos/staged-packages`.
+* **package_storage_uri**
+  This parameter specifies where to permanently store DC/OS packages. The value must be a file URL,
+  for example, `file:///var/lib/dcos/cosmos/packages`.
+
 ### exhibitor_storage_backend
 This parameter specifies the type of storage backend to use for Exhibitor. You can use internal DC/OS storage (`static`) or specify an external storage system (`zookeeper`, `aws_s3`, and `azure`) for configuring and orchestrating ZooKeeper with Exhibitor on the master nodes. Exhibitor automatically configures your ZooKeeper installation on the master nodes during your DC/OS installation.
 
@@ -112,6 +123,9 @@ This option specifies that Mesos agents are used to discover the masters by givi
 
 ### <a name="public-agent"></a>public_agent_list
 This parameter specifies a YAML nested list (`-`) of IPv4 addresses to your [public agent](/docs/1.9/overview/concepts/#public) host names.
+
+### <a name="platform"></a>platform
+This parameter specifies the infrastructure platform. The value is optional, free-form with no content validation, and used for telemetry only. Please supply an appropriate value to help inform DC/OS platform prioritization decisions. Example values: `aws`, `azure`, `oneview`, `openstack`, `vsphere`, `vagrant-virtualbox`, `onprem` (default).
 
 ## <a name="networking"></a>Networking
 
@@ -181,14 +195,19 @@ This required parameter specifies a YAML nested list (`-`) of DNS resolvers for 
 
 ### use_proxy
 
-This parameters specifies whether to enable the DC/OS proxy.
+This parameter specifies whether to enable the DC/OS proxy. 
 
 *  `use_proxy: 'false'` Do not configure DC/OS [components](/docs/1.9/overview/architecture/components/) to use a custom proxy. This is the default value.
 *  `use_proxy: 'true'` Configure DC/OS [components](/docs/1.9/overview/architecture/components/) to use a custom proxy. If you specify `use_proxy: 'true'`, you can also specify these parameters:
-    **Important:** The specified proxies must be resolvable from the provided list of [resolvers](#resolvers).
+
     *  `http_proxy: <your_http_proxy>` This parameter specifies the HTTP proxy.
     *  `https_proxy: <your_https_proxy>` This parameter specifies the HTTPS proxy.
     *  `no_proxy: - <ip-address>` This parameter specifies YAML nested list (-) of addresses to exclude from the proxy.
+    
+    **Important:** 
+    
+    - The specified proxies must be resolvable from the provided list of [resolvers](#resolvers).
+    - If an HTTP proxy is configured for your operating system, the IP addresses of all DC/OS nodes must be included in the `no_proxy` list. 
 
 For more information, see the [examples](#http-proxy).
 
@@ -239,18 +258,6 @@ This parameter specifies whether to enable sharing of anonymous data for your cl
 - `telemetry_enabled: 'false'` Disable anonymous data sharing.
 
 If you’ve already installed your cluster and would like to disable this in-place, you can go through an [upgrade][3] with the same parameter set.
-
-### cosmos_config
-This parameter specifies a dictionary of packaging configuration to pass to the
-[DC/OS package manager](https://github.com/dcos/cosmos). If set, the following options must be
-specified.
-
-* **staged_package_storage_uri**
-  This parameter specifies where to temporarily store DC/OS packages while they are being added.
-  The value must be a file URL, for example, `file:///var/lib/dcos/cosmos/staged-packages`
-* **package_storage_uri**
-  This parameter specifies where to permanently store DC/OS packages. The value must be a file URL,
-  for example, `file:///var/lib/dcos/cosmos/packages`
 
 # <a name="examples1"></a>Example Configurations
 
@@ -439,7 +446,7 @@ ssh_user: <username>
     ssh_user: centos
 ```
 
-#### <a name="cosmos-config"></a>DC/OS cluster with one master, an Exhibitor/ZooKeeper managed internally, three private agents, Google DNS, and the package manager (Cosmos) configured with persistent storage.
+#### <a name="cosmos-config"></a>DC/OS cluster with one master, an Exhibitor/ZooKeeper managed internally, three private agents, Google DNS, and DC/OS Package Manager (Cosmos) configured with persistent storage.
 
 ```yaml
     agent_list:

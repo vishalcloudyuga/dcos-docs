@@ -16,7 +16,7 @@ menu_order: 11
 **Scope**:
 
 In the following tutorial you will learn about how to use Spark on DC/OS, from the simple first steps
-of how to launch a Spark job to using Spark interactively with [Apache Zeppelin](https://zeppelin.incubator.apache.org/).
+of how to launch a Spark job to using Spark interactively with [Apache Zeppelin](http://zeppelin.apache.org/).
 
 # Installing
 
@@ -37,7 +37,7 @@ The Apache Spark DC/OS Service has been successfully installed!
 	Issues: https://issues.apache.org/jira/browse/SPARK
 ```
 
-While the DC/OS command line interface (CLI) is immediately available it takes a few minutes until Spark is actually running in the cluster. Let's first check the DC/OS CLI and its new subcommand `spark`:
+While the DC/OS command line interface (CLI) is immediately available, it takes a few minutes until Spark is actually running in the cluster. Let's first check the DC/OS CLI and its new subcommand `spark`:
 
 ```bash
 $ dcos spark
@@ -67,8 +67,8 @@ By clicking on the `Open Service` button, you can access the Spark drivers page 
 
 # Executing a Spark job
 
-Now that you've set up Spark, it's time to launch your first Spark job. We will use one of the [existing examples](https://github.com/apache/spark/blob/master/examples/src/main/scala/org/apache/spark/examples/SparkPi.scala) that comes with Spark.
-Also, note that when you execute the `dcos spark run` command the first time, DC/OS downloads the necessary assets to your local machine and that can take (depending on your connection) some 10 mins or more.
+Now that you've set up Spark, it's time to launch your first Spark job. We will use one of the [examples](https://github.com/apache/spark/blob/master/examples/src/main/scala/org/apache/spark/examples/SparkPi.scala) that come with Spark.
+Also, note that when you execute the `dcos spark run` command the first time, DC/OS downloads the necessary assets to your local machine. Depending on your network connection, that can take 10 minutes or longer.
 
 ```bash
 $ dcos spark run --submit-args='-Dspark.mesos.coarse=true --driver-cores 1 --driver-memory 1024M --class org.apache.spark.examples.SparkPi https://downloads.mesosphere.com/spark/assets/spark-examples_2.10-1.4.0-SNAPSHOT.jar 30'
@@ -127,11 +127,11 @@ You can learn about further options on how to run a Spark job via the [DC/OS doc
 
 # Using Spark Interactively
 
-To interactively work with Spark, you can use [Apache Zeppelin](https://zeppelin.incubator.apache.org/) and here's what you need to do to install it.
+To interactively work with Spark, you can use [Apache Zeppelin](http://zeppelin.apache.org/) and here's what you need to do to install it.
 
 You typically want to access Zeppelin via a web browser outside of the DC/OS cluster. To access the Zeppelin UI from outside of the DC/OS cluster you have a number of options available: from launching it on a public node to [using Marathon-LB](/docs/1.9/usage/service-discovery/marathon-lb/).
 
-The following section will show you how to launch Zeppelin on a public node. This is fine for testing but be aware that this is going to make Zeppelin available on the public Internet (i.e. access from `0.0.0.0`) and with it, everyone out there can access your data and launch Spark jobs on your DC/OS cluster.
+The following section will show you how to launch Zeppelin on a public node. This is fine for testing but be aware that this is going to make Zeppelin available on the public Internet (i.e., accessible from `0.0.0.0`) and with it, everyone out there can access your data and launch Spark jobs on your DC/OS cluster.
 
 To launch Zeppelin on a public node, create a JSON file `options.json` with the following content:
 

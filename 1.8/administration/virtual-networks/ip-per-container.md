@@ -69,7 +69,7 @@ In the above example, we have defined two virtual networks. The virtual network 
 
 # Retrieving virtual network state
 
-After DC/OS installation is complete, you can query the virtual network configuration using the `https://leader.mesos/overlay-master/state` endpoint from within the cluster. The `network` key at the bottom lists the current overlay configuration and the `agents` key is a list showing how overlays are split across the Mesos agents. The following shows the network state when there is a single overlay in the cluster named `dcos`.
+After DC/OS installation is complete, you can query the virtual network configuration using the `https://<master-IP>/mesos/overlay-master/state` endpoint from your browser. The `network` key at the bottom lists the current overlay configuration and the `agents` key is a list showing how overlays are split across the Mesos agents. The following shows the network state when there is a single overlay in the cluster named `dcos`.
 
 ```json
 "agents": [
@@ -176,7 +176,7 @@ After DC/OS installation is complete, you can query the virtual network configur
 
 To delete your virtual network, uninstall DC/OS, then delete the overlay replicated log on the master nodes and the iptable rules on the agent nodes that are associated with the virtual networks.
 
-## The Replicated Log
+## The Overlay Replicated Log
 
 DC/OS overlay uses a replicated log to persist the virtual network state across Mesos master reboots and to recover overlay state when a new Mesos master is elected. The overlay replicated log is stored at `/var/lib/dcos/mesos/master/overlay_replicated_log`. The overlay replicated log is **not** removed when DC/OS is uninstalled from the cluster, so you need to delete this log manually before reinstalling DC/OS. Otherwise, the Mesos master will try to reconcile the existing overlay replicated log during startup and will fail if it finds an virtual network that was not configured.
 
@@ -188,7 +188,7 @@ The virtual networks install IPMASQ rules in order to allow containers to talk o
 <a name="replace"></a>
 # Replacing or Adding New Virtual Networks
 
-To replace your virtual network, uninstall DC/OS and delete the replicated log on the master nodes and the iptable rules on the agent nodes. Then, reinstall with the desired networks specified in your `config.yaml` file.
+To replace your virtual network, uninstall DC/OS and delete the overlay replicated log on the master nodes and the iptable rules on the agent nodes. Then, reinstall with the desired networks specified in your `config.yaml` file.
 
 # Troubleshooting
 

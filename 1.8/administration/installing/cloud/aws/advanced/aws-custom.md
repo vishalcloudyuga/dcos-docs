@@ -4,7 +4,9 @@ nav_title: Custom CF Template
 menu_order: 102
 ---
 
-You can create custom advanced templates for DC/OS. You can then deploy and run DC/OS from your own private S3 bucket. 
+You can create custom CloudFormation advanced templates for DC/OS. You can then deploy and run DC/OS from your own private S3 bucket. 
+
+The custom templates are created from the DC/OS advanced installer.
 
 **Prerequisites:**
 
@@ -47,23 +49,7 @@ You can create custom advanced templates for DC/OS. You can then deploy and run 
     aws_template_storage_secret_access_key: <your-secret-access_key>
     ```
     
-    **aws_template_storage_bucket**
-    Specify the name of your S3 bucket. For example, `aws_template_storage_bucket: dcos-aws-advanced`.
-    
-    **aws_template_storage_bucket_path**
-    Specify the S3 bucket storage path. For example, `aws_template_storage_bucket_path: templates/dcos`.
-    
-    **aws_template_storage_region_name**
-    Specify the S3 region. For example, `aws_template_storage_region_name: us-west-2`
-    
-    **aws_template_upload**
-    Specify whether to automatically upload the customized advanced templates to your S3 bucket. For example, `aws_template_upload: true`. If you specify `true`, you must also specify these parameters:
-    
-    *  **aws_template_storage_access_key_id**
-       Specify the AWS [Access Key ID](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html). For example, `aws_template_storage_access_key_id: AKIAIOSFODNN7EXAMPLE`  
-        
-    *  **aws_template_storage_secret_access_key**
-       Specify the AWS [Secret Access Key](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html). For example, `aws_template_storage_secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`.
+    For parameters descriptions and configuration examples, see the [documentation](/docs/1.8/administration/installing/custom/configuration-parameters/).
     
 1.  Run the DC/OS installer script with the AWS argument specified. This command creates and uploads a custom build of the DC/OS artifacts and templates to the specified S3 bucket.
 
@@ -76,8 +62,13 @@ You can create custom advanced templates for DC/OS. You can then deploy and run 
     ```bash
     AWS CloudFormation templates now available at: https://<amazon-web-endpoint>/<path-to-directory>
     ```
+1.  Go to [S3](https://console.aws.amazon.com/s3/home) and navigate to your S3 bucket shown above in `<path-to-directory>`.
+    
+    1.  Select **cloudformation** and then select the zen template for the number of desired masters. For example, select **el7-zen-1.json** for a single master configuration. 
+    1.  Right-click and select **Properties**, and then copy the Amazon S3 template URL.
 1.  Go to [CloudFormation](https://console.aws.amazon.com/cloudformation/home) and click **Create Stack**.
 1.  On the **Select Template** page, specify the Amazon S3 template URL path to your Zen template. For example, `https://s3-us-west-2.amazonaws.com/user-aws/templates/config_id/14222z9104081387447be59e178438749d154w3g/cloudformation/el7-zen-1.json`.
+1.  Complete your installation by following [these instructions](/docs/1.8/administration/installing/cloud/aws/advanced/quickstart/).
 
 ### Template reference
 For the complete advanced configuration options, see the template reference [documentation](/docs/1.8/administration/installing/cloud/aws/advanced/template-reference/).

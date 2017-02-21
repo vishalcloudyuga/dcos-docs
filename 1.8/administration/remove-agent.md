@@ -12,7 +12,7 @@ To shut down and safely remove an agent node follow these steps.
     $ systemctl kill -s SIGUSR1 dcos-mesos-slave
     ```
 
-If an agent is already shut down, go to the Mesos `/machine/down` [endpoint](http://mesos.apache.org/documentation/latest/maintenance/) and [instruct](http://mesos.apache.org/documentation/latest/endpoints/master/machine/down/) Mesos that it is dead and not just gone because of a network partition.
+If an agent is already shut down, go to the Mesos `/machine/down` [endpoint](http://mesos.apache.org/documentation/latest/endpoints/master/machine/down/) and [instruct](https://github.com/apache/mesos/blob/master/docs/maintenance.md#starting-maintenance) Mesos that it is dead and not just gone because of a network partition.
 
 
 
