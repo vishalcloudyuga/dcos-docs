@@ -1,6 +1,6 @@
 ---
-post_title: Configure Your Service
-nav_title: Configure Your Service for GPUs
+post_title: Configure Your Service for GPUs
+nav_title: Configure Your Service
 feature_maturity: experimental
 menu_order: 3
 ---
