@@ -4,6 +4,9 @@ menu_order: 1
 feature_maturity: experimental
 ---
 
+**Warning:** Volume size is specified in GB. There is currently an inaccuracy in the DC/OS GUI where the volume size is marked in MiB. When creating a volume, make sure you specify the number of **GB** you need, not MiB.
+volume size unit to MiB. However, Marathon still regards the size as GB and forward it directly to Mesos.
+
 Use external volumes when fault-tolerance is crucial for your app. If a host fails, the native Marathon instance reschedules your app on another host, along with its associated data, without user intervention. External volumes also typically offer a larger amount of storage.
 
 Marathon applications normally lose their state when they terminate and are relaunched. In some contexts, for instance, if your application uses MySQL, you’ll want your application to preserve its state. You can use an external storage service, such as Amazon's Elastic Block Store (EBS), to create a persistent volume that follows your application instance.
@@ -15,7 +18,7 @@ An external storage service enables your apps to be more fault-tolerant. If a ho
 To use external volumes with DC/OS, you must enable them during installation. If you're installing DC/OS from the [AWS cloud templates][1], then your cluster will be configured to use Amazon EBS and you can skip this section. Otherwise, install DC/OS using the [CLI][2] or [Advanced][3] installation method with these special configuration settings:
 
 1.  Specify your REX-Ray config in the `rexray_config` parameter in your `genconf/config.yaml` file. Consult the [REX-Ray documentation][4] for more information on how to create your configuration.
-    
+
         rexray_config:
           rexray:
             loglevel: info
@@ -29,11 +32,11 @@ To use external volumes with DC/OS, you must enable them during installation. If
                 ignoreusedcount: true
 
     This example configures REX-Ray to use Amazon's EBS for storage and IAM for authorization.
-    
+
     **Note:** Setting `rexray.modules.default-admin.host` to `tcp://127.0.0.1:61003` is recommended to avoid port conflicts with tasks running on agents.
 
 2.  If your cluster will be hosted on Amazon Web Services and REX-Ray is configured to use IAM, assign an IAM role to your agent nodes with the following policy:
-    
+
         {
             "Version": "2012-10-17",
             "Statement": [
@@ -59,10 +62,10 @@ To use external volumes with DC/OS, you must enable them during installation. If
                 }
             ]
         }
-        
-    
+
+
     Consult the [REX-Ray documentation][5] for more information.
-        
+
 
 ## Scaling your App
 
@@ -105,7 +108,7 @@ You can specify an external volume in your Marathon app definition. [Learn more 
         "maximumOverCapacity": 0
       }
     }
-    
+
 
 In the app definition above:
 
@@ -120,7 +123,7 @@ In the app definition above:
 *   Create multiple volumes by adding additional items in the `container.volumes` array.
 
 *   Volume parameters cannot be changed after you create the application.
-    
+
     **Important:** Marathon will not launch apps with external volumes if `upgradeStrategy.minimumHealthCapacity` is greater than 0.5, or if `upgradeStrategy.maximumOverCapacity` does not equal 0.
 
 #### Using a Docker Container
@@ -157,7 +160,7 @@ Below is a sample app definition that uses a Docker container and specifies an e
         "maximumOverCapacity": 0
       }
     }
-    
+
 
 *   The `containerPath` must be absolute for Docker containers.
 
@@ -171,7 +174,7 @@ driver.
 1. If you are using a Docker Container, click **Container Settings** and configure your Docker container.
 
 1. Click **Volumes** and enter your Volume Name and Container Path.
- 
+
 1. Click **Deploy**.
 
 <a name="implicit-vol"></a>
