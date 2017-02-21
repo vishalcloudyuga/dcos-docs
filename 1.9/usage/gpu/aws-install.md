@@ -18,7 +18,7 @@ menu_order: 2
   ```
   **Important:** You must run the `zen.sh` script before performing the next steps.
 
-1. Follow the instructions [here](docs/1.9/administration/installing/cloud/aws/advanced/quickstart/) to create a cluster with advanced AWS templates, but use the following GPS-specific configuration.
+1. Follow the instructions [here](docs/1.9/administration/installing/cloud/aws/advanced/quickstart/) to create a cluster with advanced AWS templates, but use the following GPU-specific configuration.
 
 1. On the **Create Stack** > **Specify Details** page, specify your stack information and click **Next**. Here are the GPU-specific settings.
   - **CustomAMI** - Specify the custom AMI for your region:

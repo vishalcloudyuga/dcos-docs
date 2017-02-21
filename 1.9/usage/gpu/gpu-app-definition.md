@@ -54,7 +54,6 @@ You will also see an entry for **GPU** on the **Configuration** tab of the page 
     "container": {
       "type": "MESOS",
       "docker": {
-        "network": "HOST",
         "image": "nvidia/cuda"
       }
     }
