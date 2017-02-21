@@ -53,7 +53,7 @@ This parameter specifies a custom URL that Mesos uses to pull Docker images from
 This parameter specifies the name of your cluster.
 
 ### cosmos_config
-This parameter specifies a dictionary of packaging configuration to pass to the [DC/OS Package Manager (Cosmos)](https://github.com/dcos/cosmos). If set, the following options must also be
+This parameter specifies a dictionary of packaging configuration to pass to the [DC/OS package manager](https://github.com/dcos/cosmos). If set, the following options must also be
 specified.
 
 * **staged_package_storage_uri**
@@ -133,7 +133,7 @@ This parameter specifies the infrastructure platform. The value is optional, fre
 
 This parameter specifies whether to enable DC/OS virtual networks.
 
-**Important:** Virtual networks require Docker 1.11. If you are using Docker 1.10 or earlier, you must specify `dcos_overlay_enable: 'false'`. For more information, see the [system requirements](/docs/1.9/administration/installing/custom/system-requirements/).
+**Important:** Virtual networks require minimum Docker version 1.11. If you are using Docker 1.10 or earlier, you must specify `dcos_overlay_enable: 'false'`. For more information, see the [system requirements](/docs/1.9/administration/installing/custom/system-requirements/).
 
 *  `dcos_overlay_enable: 'false'` Do not enable the DC/OS virtual network.
 *  `dcos_overlay_enable: 'true'` Enable the DC/OS virtual network. This is the default value. When the virtual network is enabled you can also specify the following parameters:
@@ -199,15 +199,10 @@ This parameter specifies whether to enable the DC/OS proxy.
 
 *  `use_proxy: 'false'` Do not configure DC/OS [components](/docs/1.9/overview/architecture/components/) to use a custom proxy. This is the default value.
 *  `use_proxy: 'true'` Configure DC/OS [components](/docs/1.9/overview/architecture/components/) to use a custom proxy. If you specify `use_proxy: 'true'`, you can also specify these parameters:
-
+    **Important:** The specified proxies must be resolvable from the provided list of [resolvers](#resolvers).
     *  `http_proxy: <your_http_proxy>` This parameter specifies the HTTP proxy.
     *  `https_proxy: <your_https_proxy>` This parameter specifies the HTTPS proxy.
     *  `no_proxy: - <ip-address>` This parameter specifies YAML nested list (-) of addresses to exclude from the proxy.
-    
-    **Important:** 
-    
-    - The specified proxies must be resolvable from the provided list of [resolvers](#resolvers).
-    - If an HTTP proxy is configured for your operating system, the IP addresses of all DC/OS nodes must be included in the `no_proxy` list. 
 
 For more information, see the [examples](#http-proxy).
 
@@ -446,7 +441,7 @@ ssh_user: <username>
     ssh_user: centos
 ```
 
-#### <a name="cosmos-config"></a>DC/OS cluster with one master, an Exhibitor/ZooKeeper managed internally, three private agents, Google DNS, and DC/OS Package Manager (Cosmos) configured with persistent storage.
+#### <a name="cosmos-config"></a>DC/OS cluster with one master, an Exhibitor/ZooKeeper managed internally, three private agents, Google DNS, and the package manager (Cosmos) configured with persistent storage.
 
 ```yaml
     agent_list:
