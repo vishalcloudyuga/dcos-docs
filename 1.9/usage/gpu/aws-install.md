@@ -6,7 +6,7 @@ menu_order: 2
 ---
 
 #  Prerequisites
-- The [AWS DC/OS advanced template system requirements](https://dcos.io/docs/1.9/administration/installing/cloud/aws/advanced/system-requirements/).
+- The AWS DC/OS advanced template [system requirements](https://dcos.io/docs/1.9/administration/installing/cloud/aws/advanced/system-requirements/).
 - The `zen.sh` script copied to your local machine. The script and instructions are [here](/docs/1.9/administration/installing/cloud/aws/advanced/quickstart/).
 
 ## Create Dependencies
@@ -36,3 +36,5 @@ menu_order: 2
 1. On the **Review** page, check the acknowledgement box, then click **Create**.
 
     **Tip**: If the **Create New Stack** page is shown, either AWS is still processing your request or you’re looking at a different region. Navigate to the correct region and refresh the page to see your stack.
+
+1. Create [an application definition that employs GPUs](/docs/1.9/usage/gpu/gpu-app-definition).
