@@ -138,5 +138,3 @@ security features as well as on introducing new ones in the coming releases.
 - [Learn how to monitor a DC/OS cluster](/docs/1.7/administration/monitoring/)
 
  [1]: https://en.wikipedia.org/wiki/STARTTLS
-
-

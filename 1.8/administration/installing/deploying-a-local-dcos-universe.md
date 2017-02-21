@@ -34,6 +34,7 @@ You can install and run DC/OS services on a datacenter without internet access w
     ```bash
     $ cp dcos-local-universe-http.service /etc/systemd/system/dcos-local-universe-http.service
     $ systemctl daemon-reload
+    $ systemctl enable dcos-local-universe-http
     $ systemctl start dcos-local-universe-http
     ```
 
@@ -44,6 +45,7 @@ You can install and run DC/OS services on a datacenter without internet access w
     ```bash
     $ cp dcos-local-universe-registry.service /etc/systemd/system/dcos-local-universe-registry.service
     $ systemctl daemon-reload
+    $ systemctl enable dcos-local-universe-registry
     $ systemctl start dcos-local-universe-registry
     ```
 
@@ -111,7 +113,7 @@ To install your own set of packages you must build a customized local Universe D
     $ sudo make base
     ```
 
-3.  Inside the `Makefile` replace `--selected` flag with the comma-separated list of selected packages preceeded by `--include` flag. To minimize the container size and download time, you can select only what you need. If you do not modify the `Makefile` all default Universe packages will be included.
+3.  Inside the `Makefile` replace `--selected` flag with the comma-separated list of selected packages preceeded by `--include` flag. To minimize the container size and download time, you can select only what you need. If you do not modify the `Makefile`, all *selected* Universe packages will be included. To view which packages are selected, click on the **Universe** tab in the DC/OS web interface. 
 
     ```bash
     $ sed -i -e 's/--selected/--include="marathon-lb,zeppelin"/' Makefile
@@ -130,7 +132,7 @@ To install your own set of packages you must build a customized local Universe D
     ```
 
  [1]: https://downloads.mesosphere.com/universe/public/local-universe.tar.gz
- [2]: https://raw.githubusercontent.com/mesosphere/universe/version-2.x/local/dcos-local-universe-http.service
- [3]: https://raw.githubusercontent.com/mesosphere/universe/version-2.x/local/dcos-local-universe-registry.service
+ [2]: https://raw.githubusercontent.com/mesosphere/universe/version-3.x/docker/local-universe/dcos-local-universe-http.service
+ [3]: https://raw.githubusercontent.com/mesosphere/universe/version-3.x/docker/local-universe/dcos-local-universe-registry.service
  [4]: #build
  [5]: #default

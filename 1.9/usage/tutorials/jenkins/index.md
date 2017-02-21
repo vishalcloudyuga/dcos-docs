@@ -11,22 +11,22 @@ infrastructure by dynamically creating and destroying Jenkins agents as demand
 increases or decreases, and enables you to avoid the statically partitioned
 infrastructure typical of a traditional Jenkins deployment.
 
-### Time Estimate
+## Time Estimate
 
 Varies (up to 45 minutes)
 
-### Target Audiences
+## Target Audiences
 
 Operators, Application administrators, Quality / Release engineers, CI/CD
 administrators
 
-### Scope
+## Scope
 
 In the following tutorial, you'll learn about how to use Jenkins on DC/OS.
 You'll learn how to install Jenkins, and then how to use it to build and deploy
 a Docker image on Marathon.
 
-### Table of Contents
+## Table of Contents
 
   * Prerequisites
   * Installing Jenkins in a development environment
@@ -39,7 +39,7 @@ a Docker image on Marathon.
   * Uninstalling Jenkins
   * Further reading
 
-## Preparation
+# Preparation
 
 Assuming you already have a DC/OS cluster up and running, you'll first want to
 [install a user-specific Marathon instance][marathon-service-docs]. This will
@@ -65,7 +65,7 @@ history as files on disk. Therefore, we have two options for deploying
 Jenkins on DC/OS: pin it to a single node, or use a network file system such
 as NFS, CIFS, and so on.
 
-## Installing Jenkins in a development environment
+# Installing Jenkins in a development environment
 
 If you only want to run Jenkins in a development environment, it's trivial
 to pin it to a single agent in the DC/OS cluster. Create the file
@@ -94,7 +94,7 @@ $ dcos package install jenkins --options=options.json
 
 Once ready, Jenkins will appear as a service in the DC/OS dashboard.
 
-## Installing Jenkins in production
+# Installing Jenkins in production
 
 As mentioned previously, running Jenkins in a production environment will
 require that each machine in the cluster has an external volume mounted at the
@@ -130,7 +130,7 @@ If you don't have a file share set up and are looking for a solution, continue
 to the next section for instructions on how to set up a shares using
 CIFS on Microsoft Azure or NFS on Amazon EFS.
 
-### Creating a CIFS file share on Microsoft Azure
+## Creating a CIFS file share on Microsoft Azure
 
 First, you need to create a [Storage Account][azure-storage-account] in the
 same resource group in which you've launched your DC/OS cluster.
@@ -144,7 +144,7 @@ Now, create a file share. In this example, I used `jenkins`:
 
 ![Azure Portal: File Service](img/azure-portal-storage-fileshare.png)
 
-### Mounting an Azure CIFS file share on Debian
+## Mounting an Azure CIFS file share on Debian
 
 Next, login to the DC/OS master node. To determine the master, look up the SSH
 connection string labeled `SSHMASTER0` in the `Outputs` section of the
@@ -216,7 +216,7 @@ $ parallel-ssh -O StrictHostKeyChecking=no -l azureuser -h pssh_agents "if [ ! -
 $ parallel-ssh -O StrictHostKeyChecking=no -l azureuser -h pssh_agents "mount -t cifs //mh9storage.file.core.windows.net/jenkins /mnt/jenkins -o vers=3.0,username=REDACTED,password=REDACTED,dir_mode=0777,file_mode=0777"
 ```
 
-### Creating an NFS file share with Amazon EFS
+## Creating an NFS file share with Amazon EFS
 
 To start, open the [Amazon EFS console][amazon-efs-console], click
 `Create file system` and then `Create file system`. Ensure you are in the
@@ -243,7 +243,7 @@ on instructions for mounting on Amazon, Red Hat, and SuSE Linux:
 
 See below for instructions on mounting an NFS volume on CoreOS.
 
-### Mounting an NFS file share on CoreOS
+## Mounting an NFS file share on CoreOS
 
 First, get the link to the EFS NFS fileshare you created in the previous
 step, replacing `xxxxxxxx` with your unique EFS ID:
@@ -255,7 +255,7 @@ echo $(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zo
 Next, follow our [documentation for mounting NFS volumes][dcos-nfs-docs] to
 mount your EFS NFS filesystem on each of your DC/OS agents.
 
-## Building a Docker image and deploying it to Marathon
+# Building a Docker image and deploying it to Marathon
 
 *Note: for this example, I'll assume you already have your own Docker Hub
 account or access to a Docker image registry.*
@@ -299,7 +299,7 @@ An example of a Marathon deployment follows:
 
 ![Marathon deployment post-build configuration](img/jenkins-marathon-post-build-config.png)
 
-## Uninstalling Jenkins
+# Uninstalling Jenkins
 
 Using the DC/OS CLI, run the following command:
 
@@ -307,7 +307,7 @@ Using the DC/OS CLI, run the following command:
 $ dcos package uninstall jenkins
 ```
 
-## Further Reading
+# Further Reading
 
   * [Jenkins project website][jenkins-website] (jenkins-ci.org)
   * [Jenkins service documentation][jenkins-service-docs] (mesosphere.com)
