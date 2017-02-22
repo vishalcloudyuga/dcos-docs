@@ -68,7 +68,7 @@ Proceed with upgrading every master node using the following procedure. When you
     $ curl -O http://<bootstrap_url>:<your_port>/dcos_install.sh
     ```
 
-1.  Uninstall pkgpanda:
+1.  Uninstall DC/OS using the DC/OS Component Package Manager (Pkgpanda):
 
     ```
     $ sudo -i /opt/mesosphere/bin/pkgpanda uninstall
