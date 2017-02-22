@@ -11,7 +11,7 @@ This document provides instructions for upgrading a DC/OS cluster from version 1
 
 - The Advanced Installation method is the _only_ recommended upgrade path for DC/OS. It is recommended that you familiarize yourself with the [Advanced DC/OS Installation Guide][advanced-install] before proceeding.
 - The [VIP features](/docs/1.9/usage/service-discovery/load-balancing-vips/virtual-ip-addresses/), added in DC/OS 1.8, require that ports 32768 - 65535 are open between all agent and master nodes for both TCP and UDP.
-- Virtual networks require Docker 1.11. For more information, see the [documentation](/docs/1.9/administration/virtual-networks/).
+- Virtual networks require minimum Docker version 1.11. For more information, see the [documentation](/docs/1.9/administration/virtual-networks/).
 - The DC/OS UI and APIs may be inconsistent or unavailable while masters are being upgraded. Avoid using them until all masters have been upgraded and have rejoined the cluster. You can monitor the health of a master during an upgrade by watching Exhibitor on port 8181.
 - Task history in the Mesos UI will not persist through the upgrade.
 
@@ -68,7 +68,7 @@ Proceed with upgrading every master node using the following procedure. When you
     $ curl -O http://<bootstrap_url>:<your_port>/dcos_install.sh
     ```
 
-1.  Uninstall DC/OS using the DC/OS Component Package Manager (Pkgpanda):
+1.  Uninstall pkgpanda:
 
     ```
     $ sudo -i /opt/mesosphere/bin/pkgpanda uninstall
@@ -126,7 +126,7 @@ Proceed with upgrading every master node using the following procedure. When you
 
 ### On all DC/OS Agents:
 
-1.  Download The dcos_install.sh Script
+1.  Download the dcos_install.sh Script
 
     ```
     $ curl -O http://<bootstrap_url>:<your_port>/dcos_install.sh
@@ -138,7 +138,7 @@ Proceed with upgrading every master node using the following procedure. When you
     $ sudo -i /opt/mesosphere/bin/pkgpanda uninstall
     ```
 
-1.  Remove The DC/OS 1.8 Data Directory and add `mesos-resources`
+1.  Remove the DC/OS 1.8 data directory and add `mesos-resources`
 
     ```
     $ sudo rm -rf /opt/mesosphere /etc/mesosphere
