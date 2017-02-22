@@ -20,7 +20,7 @@ In addition to the general [Docker requirements and recommendations for DC/OS][1
 
 The following instructions demonstrate how to use Docker with OverlayFS on CentOS 7.
 
-1.  Upgrade CentOS to 7.2:
+1.  Upgrade CentOS to 7.3:
 
     ```bash
     $ sudo yum upgrade --assumeyes --tolerant

@@ -126,19 +126,19 @@ Proceed with upgrading every master node using the following procedure. When you
 
 ### On all DC/OS Agents:
 
-1.  Download The dcos_install.sh Script
+1.  Download the dcos_install.sh Script
 
     ```
     $ curl -O http://<bootstrap_url>:<your_port>/dcos_install.sh
     ```
 
-1.  Uninstall pkgpanda
+1.  Uninstall DC/OS using the DC/OS Component Package Manager (Pkgpanda)
 
     ```
     $ sudo -i /opt/mesosphere/bin/pkgpanda uninstall
     ```
 
-1.  Remove The DC/OS 1.8 Data Directory and add `mesos-resources`
+1.  Remove the DC/OS 1.8 data directory and add `mesos-resources`
 
     ```
     $ sudo rm -rf /opt/mesosphere /etc/mesosphere
