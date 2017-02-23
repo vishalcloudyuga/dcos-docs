@@ -5,7 +5,6 @@ feature_maturity: experimental
 ---
 
 **Warning:** Volume size is specified in GiB. There is currently an inaccuracy in the DC/OS GUI where the volume size is marked in MiB. When creating a volume, make sure you specify the number of **GiB** you need, not MiB.
-volume size unit to MiB. However, Marathon still regards the size as GiB and forward it directly to Mesos.
 
 Use external volumes when fault-tolerance is crucial for your app. If a host fails, the native Marathon instance reschedules your app on another host, along with its associated data, without user intervention. External volumes also typically offer a larger amount of storage.
 
