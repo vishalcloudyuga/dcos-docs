@@ -4,8 +4,8 @@ menu_order: 1
 feature_maturity: experimental
 ---
 
-**Warning:** Volume size is specified in GB. There is currently an inaccuracy in the DC/OS GUI where the volume size is marked in MiB. When creating a volume, make sure you specify the number of **GB** you need, not MiB.
-volume size unit to MiB. However, Marathon still regards the size as GB and forward it directly to Mesos.
+**Warning:** Volume size is specified in GiB. There is currently an inaccuracy in the DC/OS GUI where the volume size is marked in MiB. When creating a volume, make sure you specify the number of **GiB** you need, not MiB.
+volume size unit to MiB. However, Marathon still regards the size as GiB and forward it directly to Mesos.
 
 Use external volumes when fault-tolerance is crucial for your app. If a host fails, the native Marathon instance reschedules your app on another host, along with its associated data, without user intervention. External volumes also typically offer a larger amount of storage.
 
@@ -181,7 +181,7 @@ driver.
 
 ### Implicit Volumes
 
-The default implicit volume size is 16 GB. If you are using the Mesos containerizer, you can modify this default for a particular volume by setting `volumes[x].external.size`. You cannot modify this default for a particular volume if you are using the Docker containerizer. For both the Mesos and Docker containerizers, however, you can modify the default size for all implicit volumes by [modifying the REX-Ray configuration][4].
+The default implicit volume size is 16 GiB. If you are using the Mesos containerizer, you can modify this default for a particular volume by setting `volumes[x].external.size`. You cannot modify this default for a particular volume if you are using the Docker containerizer. For both the Mesos and Docker containerizers, however, you can modify the default size for all implicit volumes by [modifying the REX-Ray configuration][4].
 
 ## Potential Pitfalls
 
