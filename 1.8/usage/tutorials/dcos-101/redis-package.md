@@ -36,7 +36,7 @@ By the end of this session we will have installed our first service - Redis - fr
 
 # Deep Dive
   [Universe](https://github.com/mesosphere/universe) is a package registry made available for DC/OS Clusters.
-  It enables you to easily install services such as Apache Spark or Apache Cassandra in your cluster without having to deal with manual configuration. Universe packages are by many different contributors. There are two two categories of packages right now:
+  It enables you to easily install services such as Apache Spark or Apache Cassandra in your cluster without having to deal with manual configuration. Universe packages are by many different contributors. There are two categories of packages right now:
   First, selected packages that have undergone testing and certification. Second, community packages, which are not as well tested.
 
   You can also add your own repo that includes your custom packages. See [the documentation](https://docs.mesosphere.com/1.8/usage/repo/) for details.
