@@ -106,19 +106,19 @@ Proceed with upgrading every master node using the following procedure. When you
 
 ### On all DC/OS Agents:
 
-1.  Download The dcos_install.sh Script
+1.  Download the dcos_install.sh script:
 
     ```
     $ curl -O http://<bootstrap_url>:<your_port>/dcos_install.sh
     ```
 
-1.  Uninstall pkgpanda
+1.  Uninstall pkgpanda:
 
     ```
     $ sudo -i /opt/mesosphere/bin/pkgpanda uninstall
     ```
 
-1.  Remove the DC/OS install and config directories
+1.  Remove the DC/OS install and config directories:
 
     ```
     $ sudo rm -rf /opt/mesosphere /etc/mesosphere
@@ -131,7 +131,7 @@ Proceed with upgrading every master node using the following procedure. When you
     $ sudo touch /var/lib/dcos/mesos-resources
     ```
 
-1.  Install DC/OS 1.8
+1.  Install DC/OS 1.8:
 
     -  [Private](/docs/1.8/overview/concepts/#private) agents (default)
 
@@ -145,7 +145,7 @@ Proceed with upgrading every master node using the following procedure. When you
        $ sudo bash dcos_install.sh -d slave_public
        ```
 
-1.  Validate the upgrade
+1.  Validate the upgrade:
 
     - Verify that `curl http://<dcos_agent_private_ip>:5051/metrics/snapshot` has the metric `slave/registered` with a value of `1`.
     - Monitor the Mesos UI to verify that the upgraded node rejoins the DC/OS cluster and that tasks are reconciled (`http://<dcos_master>/mesos`).

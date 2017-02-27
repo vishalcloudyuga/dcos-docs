@@ -69,7 +69,7 @@ Proceed with upgrading every master node one-at-a-time in any order using the fo
     $ sudo bash ./dcos_node_upgrade.sh
     ```
 
-1.  Validate the upgrade
+1.  Validate the upgrade:
 
     - Monitor the Exhibitor UI to confirm that the Master rejoins the ZooKeeper quorum successfully (the status indicator will turn green).  The Exhibitor UI is available at `http://<dcos_master>:8181/`.
     - Verify that `curl http://<dcos_master_private_ip>:5050/metrics/snapshot` has the metric `registrar/log/recovered` with a value of `1`.
@@ -87,7 +87,7 @@ Proceed with upgrading every agent in any order. Agent upgrades can be paralleli
     $ sudo bash dcos_node_upgrade.sh
     ```
 
-1.  Validate the upgrade
+1.  Validate the upgrade:
 
     - Verify that `curl http://<dcos_agent_private_ip>:5051/metrics/snapshot` has the metric `slave/registered` with a value of `1`.
     - Monitor the Mesos UI to verify that the upgraded node rejoins the DC/OS cluster and that tasks are reconciled (`http://<dcos_master>/mesos`).
