@@ -73,7 +73,7 @@ Proceed with upgrading every master node using the following procedure. When you
     $ sudo -i /opt/mesosphere/bin/pkgpanda uninstall
     ```
 
-1.  Remove the DC/OS 1.6 data directory:
+1.  Remove the DC/OS install and config directories:
 
     ```
     $ sudo rm -rf /opt/mesosphere /etc/mesosphere
@@ -108,7 +108,7 @@ Proceed with upgrading every master node using the following procedure. When you
     $ sudo -i /opt/mesosphere/bin/pkgpanda uninstall
     ```
 
-1.  Remove The DC/OS 1.6 Data Directory and add `mesos-resources`
+1.  Remove the DC/OS install and config directories
 
     ```
     $ sudo rm -rf /opt/mesosphere /etc/mesosphere
