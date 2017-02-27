@@ -181,3 +181,5 @@ You can view logs from tasks or the host subsystem with the `dcos node log` comm
     ...
     ```
     
+For examples using the logging API, see the [documentation](/docs/1.9/administration/logging/logging-api/).
+    
