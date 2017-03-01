@@ -1,6 +1,6 @@
 ---
-nav_title: Configuring IP-per-Container
-post_title: Configuring IP-per-Container in Virtual Networks
+nav_title: Configuring Overlay Networks
+post_title: Configuring in Overlay Networks and IP-per-Container
 feature_maturity: preview
 menu_order: 10
 ---
