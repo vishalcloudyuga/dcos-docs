@@ -35,3 +35,7 @@ dcos task log <file> <task> [OPTION]
 | Command | Description |
 |---------|-------------|
 | [dcos task](/docs/1.9/usage/cli/command-reference/dcos-task/)   | Manage DC/OS tasks. | 
+
+# Examples
+
+For an example, see the [documentation](/docs/1.9/administration/logging/service-logs/).
