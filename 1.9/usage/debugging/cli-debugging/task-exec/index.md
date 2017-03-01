@@ -1,18 +1,19 @@
 ---
-post_title: Debugging
+nav_title: dcos task exec
+post_title: The dcos task exec Command
 feature_maturity: experimental
-menu_order: 3.3
+menu_order: 10
 ---
 
-The `dcos task exec` command allows you to execute an arbitrary command inside of a task's container and stream its output back to your local terminal. It offers an experience very similar to [`docker exec`](https://docs.docker.com/engine/reference/commandline/exec/), without any need for SSH keys. 
+The `dcos task exec` command allows you to execute an arbitrary command inside of a task's container and stream its output back to your local terminal. It offers an experience very similar to [`docker exec`](https://docs.docker.com/engine/reference/commandline/exec/), without any need for SSH keys.
 
 You can execute this command in any of the following four modes.
 
-- `dcos task exec <task-id> <command>` (no flags): streams STDOUT and STDERR from the remote terminal to your local terminal as raw bytes. 
+- `dcos task exec <task-id> <command>` (no flags): streams STDOUT and STDERR from the remote terminal to your local terminal as raw bytes.
 
-- `dcos task exec --tty <task-id> <command>`: streams STDOUT and STDERR from the remote terminal to your local terminal, but not as raw bytes. Instead, this option puts your local terminal into raw mode, allocates a remote pseudo terminal (PYT), and streams the STDOUT and STDERR through the remote PTY. 
+- `dcos task exec --tty <task-id> <command>`: streams STDOUT and STDERR from the remote terminal to your local terminal, but not as raw bytes. Instead, this option puts your local terminal into raw mode, allocates a remote pseudo terminal (PYT), and streams the STDOUT and STDERR through the remote PTY.
 
-- `dcos task exec --interactive <task-id> <command>` streams STDOUT and STDERR from the remote terminal to your local terminal and streams STDIN from your local terminal to the remote command. 
+- `dcos task exec --interactive <task-id> <command>` streams STDOUT and STDERR from the remote terminal to your local terminal and streams STDIN from your local terminal to the remote command.
 
 - `dcos task exec --interactive --tty <task-id> <command>`: streams STDOUT and STDERR from the remote terminal to your local terminal and streams STDIN from your local terminal to the remote terminal. Also puts your local terminal into raw mode; allocates a remote pseudo terminal (PYT); and streams STDOUT, STDERR, and STDIN through the remote PTY. This mode offers the maximum functionality.
 

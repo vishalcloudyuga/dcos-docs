@@ -8,6 +8,8 @@ Marathon handles tasks in the following ways. You can consult the DC/OS logs for
 
 You can [configure Marathon's behavior when a task is unreachable](/docs/1.9/usage/task-handling/configure-task-handling.md).
 
+![Task Handling Flow](/docs/1.9/usage/marathon/img/task-handling.png)
+
 # Terminal states
 
 ```
