@@ -29,3 +29,9 @@ dcos marathon pod list [OPTION]
 | [dcos marathon](/docs/1.9/usage/cli/command-reference/dcos-marathon/) | Deploy and manage applications to DC/OS. |
 
 # Examples
+
+# List Pods
+List pods and the number of containers they have with the following command:
+```
+$ dcos marathon pod list
+```

@@ -42,3 +42,4 @@ dcos node ssh <command> [OPTION]
 
 # Examples
 
+For an example, see the [documentation](/docs/1.9/administration/access-node/sshcluster/).

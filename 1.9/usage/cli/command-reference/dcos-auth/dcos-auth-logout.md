@@ -25,5 +25,3 @@ dcos auth logout [OPTION]
 | Command | Description |
 |---------|-------------|
 | [dcos auth](/docs/1.9/usage/cli/command-reference/dcos-auth/) |  Manage DC/OS identity and access. |
-
-# Examples

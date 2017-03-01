@@ -33,4 +33,4 @@ dcos marathon app show <app-id> [OPTION]
 |---------|-------------|
 | [dcos marathon](/docs/1.9/usage/cli/command-reference/dcos-marathon/) | Deploy and manage applications to DC/OS. |
 
-# Examples
+<!-- # Examples -->

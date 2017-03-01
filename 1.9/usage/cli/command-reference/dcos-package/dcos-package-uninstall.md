@@ -35,3 +35,7 @@ dcos package uninstall <package-name> [OPTION]
 | Command | Description |
 |---------|-------------|
 | [dcos package](/docs/1.9/usage/cli/command-reference/dcos-package/)   | Install and manage DC/OS software packages. |
+
+# Examples
+
+For an example, see the [documentation](/docs/1.9/usage/managing-services/uninstall/).

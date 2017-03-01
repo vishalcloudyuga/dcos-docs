@@ -33,3 +33,5 @@ dcos marathon app add <app-resource> [OPTION]
 | [dcos marathon](/docs/1.9/usage/cli/command-reference/dcos-marathon/) | Deploy and manage applications to DC/OS. |
 
 # Examples
+
+For examples, see the [documentation](/docs/1.9/usage/tutorials/inline-update/).

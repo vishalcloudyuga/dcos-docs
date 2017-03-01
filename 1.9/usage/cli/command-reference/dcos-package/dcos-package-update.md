@@ -1,5 +1,5 @@
  ---
-post_title: dcos package describe
+post_title: dcos package update
 menu_order: 8
 ---
 

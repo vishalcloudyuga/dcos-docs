@@ -34,3 +34,12 @@ dcos marathon pod update <pod-id> [OPTION]
 | [dcos marathon](/docs/1.9/usage/cli/command-reference/dcos-marathon/) | Deploy and manage applications to DC/OS. |
 
 # Examples
+
+# Update Pod
+To update a pod, first modify the JSON definition for the pod, then run the following command: 
+
+```
+$ dcos marathon pod update <pod-id> < <new-pod-definition>
+```
+
+If the pod is currently deploying, you will not be able to update the pod. To update the pod anyway, run the command with the `--force` flag.

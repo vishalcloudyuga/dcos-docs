@@ -34,3 +34,11 @@ dcos marathon pod remove <pod-id> [OPTION]
 | [dcos marathon](/docs/1.9/usage/cli/command-reference/dcos-marathon/) | Deploy and manage applications to DC/OS. |
 
 # Examples
+
+# Remove a Pod
+Remove a pod with the following command:
+```
+$ dcos marathon pod remove <pod-id>
+```
+
+If the pod is currently deploying, you will not be able to remove the pod. To remove the pod anyway, run the command with the `--force` flag.

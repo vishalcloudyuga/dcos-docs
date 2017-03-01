@@ -33,3 +33,10 @@ dcos marathon pod show <pod-id> [OPTION]
 | [dcos marathon](/docs/1.9/usage/cli/command-reference/dcos-marathon/) | Deploy and manage applications to DC/OS. |
 
 # Examples
+
+# Show Pod JSON
+To see the pod definition, run the following command:
+```
+$ dcos marathon pod show <pod-id>
+```
+You can use the `show` command to read data about the pod programmatically.

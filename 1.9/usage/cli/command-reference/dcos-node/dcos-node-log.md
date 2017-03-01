@@ -32,5 +32,5 @@ dcos node log [OPTION]
 |---------|-------------|
 | [dcos node](/docs/1.9/usage/cli/command-reference/dcos-node/) | View DC/OS node information. | 
 
-# Examples
+<!-- # Examples -->
 
