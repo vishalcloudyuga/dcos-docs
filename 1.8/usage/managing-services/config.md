@@ -1,6 +1,5 @@
 ---
-post_title: Advanced Configuration
-nav_title: Configuring
+post_title: Configuring Universe Services
 menu_order: 001
 ---
 

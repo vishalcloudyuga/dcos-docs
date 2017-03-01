@@ -1,7 +1,6 @@
 ---
-post_title: Deploying Public Services
-nav_title: Public Services
-menu_order: 10
+post_title: Deploying a Public Service
+menu_order: 005
 ---
 
 DC/OS agent nodes can be designated as [public](/docs/1.8/overview/concepts/#public) or [private](/docs/1.8/overview/concepts/#private) during [installation](/docs/1.8/administration/installing/). Public agent nodes provide public access to your DC/OS applications. By default apps are launched on private agent nodes. 

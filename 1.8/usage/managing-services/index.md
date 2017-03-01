@@ -1,6 +1,7 @@
 ---
-post_title: Managing Universe Services
+post_title: Managing Services
 menu_order: 70 
 ---
 
-DC/OS Universe services are Marathon applications that are packaged and available from the DC/OS Universe repository. Available DC/OS services include [Mesos frameworks](http://mesos.apache.org/documentation/latest/frameworks/) and other applications. DC/OS services are created by the DC/OS [community](https://dcos.io/community/) and by Mesosphere. 
+DC/OS services are Marathon applications that are deployed on DC/OS. DC/OS services are available from a package repository such as the [Mesosphere Universe](/docs/1.8/overview/concepts/#mesosphere-universe), or you can create your own.
+

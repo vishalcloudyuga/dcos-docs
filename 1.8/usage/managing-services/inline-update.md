@@ -1,7 +1,6 @@
 ---
-post_title: Updating a User-Created Service inline
-nav_title: Updating a Service inline
-menu_order: 30
+post_title: Updating a User-Created Service
+menu_order: 006
 ---
 
 The [DC/OS CLI][1] Marathon sub-command allows you to easily view and update the configuration of existing services that you have created.

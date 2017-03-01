@@ -1,7 +1,6 @@
 ---
-post_title: Creating and Running a Service on DC/OS
-nav_title: Creating and Running a Service 
-menu_order: 4.5 
+post_title: Creating and Running
+menu_order: 002
 ---
 
 #  DC/OS Services
