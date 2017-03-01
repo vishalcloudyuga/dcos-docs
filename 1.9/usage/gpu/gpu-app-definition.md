@@ -5,7 +5,7 @@ feature_maturity: experimental
 menu_order: 3
 ---
 
-Once your cluster is configured to support GPUs, add the `gpus` parameter to your [Marathon application definition](/docs/1.8/usage/marathon/application-basics/).
+Once your cluster is configured to support GPUs, add the `gpus` parameter to your [Marathon application definition](/docs/1.9/usage/marathon/application-basics/).
 
 # Examples
 
@@ -40,7 +40,7 @@ You will also see an entry for **GPU** on the **Configuration** tab of the page 
 
 ## Docker-Based Application Definition
 
-**Important:** You must use the [DC/OS Universal Container Runtime](/docs/1.8/usage/containerizers/) to run a containerized application that uses GPUs. To use the Universal Container Runtime, set the container type to `MESOS`.
+**Important:** You must use the [DC/OS Universal Container Runtime](/docs/1.9/usage/containerizers/) to run a containerized application that uses GPUs. To use the Universal Container Runtime, set the container type to `MESOS`.
 ```
 {
     "id": "docker-gpu-test",
