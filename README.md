@@ -1,7 +1,7 @@
 # DC/OS Documentation [![Build Status](https://jenkins.mesosphere.com/service/jenkins/buildStatus/icon?job=public-dcos-docs-master)](https://jenkins.mesosphere.com/service/jenkins/job/public-dcos-docs-master)
 Documentation for the Datacenter Operating System (DC/OS)
 
-These documents are used as source to generate [dev.dcos.io/docs](https://dev.dcos.io/docs) (staging) and [dcos.io/docs](/docs) (production). They are submoduled into [dcos-website](https://github.com/dcos/dcos-website) for deployment.
+These documents are used as source to generate [dev.dcos.io/docs](https://dev.dcos.io/docs) (staging and internal to Mesosphere) and [dcos.io/docs](/docs) (production). They are submoduled into [dcos-website](https://github.com/dcos/dcos-website) for deployment.
 
 
 **Issue tracking is moving to the [DCOS JIRA](https://jira.mesosphere.com/browse/DCOS_OSS) `documentation` component.
